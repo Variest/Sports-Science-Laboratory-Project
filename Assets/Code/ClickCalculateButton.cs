@@ -7,11 +7,12 @@ public class ClickCalculateButton : MonoBehaviour {
     TestInput test;
     public Button calculateButton;
     public GameObject resultField;
+    public GameObject panel;
 	// Use this for initialization
 	void Start () {
         test = resultField.GetComponent<TestInput>();
         calculateButton.onClick.AddListener(taskOnClick);
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -20,6 +21,7 @@ public class ClickCalculateButton : MonoBehaviour {
     void taskOnClick()
     {
         test.Calculate();
+        panel.SetActive(true);
     }
 }
 
