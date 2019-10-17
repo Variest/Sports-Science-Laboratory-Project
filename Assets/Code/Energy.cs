@@ -107,7 +107,7 @@ public class Energy
             case 0.1f:
                 CE = 5.047f;
                 break;
-        }           
+        }
     }
 
     void EEfunction()
