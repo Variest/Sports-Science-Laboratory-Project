@@ -2,28 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript1 : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
-
 //ENERGY EXPENDITURE
 public class Energy
 {
     float CE; //calorific equivalent of 02 - geeeeez
     float EE; //energy expenditure
-    Pulmonaryvents vents;
-    vents.getcomponent<Pulmonaryvents>();
+    void Start()
+    {
+        Pulmonaryvents vents;
+        vents.getcomponent<Pulmonaryvents>();
+    }
 
     void CEfunction()
     {
@@ -122,7 +110,7 @@ public class Energy
             case 0.1f:
                 CE = 5.047f;
                 break;
-        }           
+        }
     }
 
     void EEfunction()
