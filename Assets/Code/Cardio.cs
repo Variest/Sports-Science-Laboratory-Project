@@ -33,19 +33,23 @@ public class Cardio : MonoBehaviour
     float ESV; //end systolic volume -			measured - MIGHT BE INPUT? (changes a little bit)
     float SW; //stroke work =					SV*MAP
     float TPR; //total peripheral resistance =	MAP/CO
-
+   
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
 
+    CharacterCustomiser character;//declares character script
+    Pulmonaryvents vents;//declares vents script
+    Bike bike;// declares bike script
     //VO2 and AGE/GENDER and Wattage
-    void Start()
-    {
-        CharacterCustomiser character;
-        character = GetComponent<CharacterCustomiser>();
-        Pulmonaryvents vents;
-        vents = GetComponent<Pulmonaryvents>();
-        Bike bike;
-        bike = GetComponent<Bike>();
+
+ 
+
+    public void Start()
+    {//sets scripts to variables to allow them to be connected.
+    character = GetComponent<CharacterCustomiser>();
+    vents = GetComponent<Pulmonaryvents>();
+    bike = GetComponent<Bike>();  
+
     }
 
     //FUNCTIONS LEVEL 1
@@ -93,7 +97,7 @@ public class Cardio : MonoBehaviour
 
     void OPfunction()
     {
-        OP = (vents.V02 / HR);
+        OP = (vents.VO2 / HR);
     }
 
     void HRmaxfunction()
