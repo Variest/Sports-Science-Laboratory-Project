@@ -22,3 +22,4 @@ public class ClickCalculateButton : MonoBehaviour {
         test.Calculate();
     }
 }
+

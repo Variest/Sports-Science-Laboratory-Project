@@ -103,9 +103,3 @@ public class TestInput : MonoBehaviour {
         Debug.Log("VO2fr = " + ventCalc.OxygenBreath());
     }
 }
-
-enum ChosenFunction
-{
-    monday,
-    tuesday 
-}

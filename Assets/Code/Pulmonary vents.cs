@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pulmonaryvents 
+public class Pulmonaryvents
 {
 
     [Header("Values used for inspiration and expiration of air")]
@@ -146,7 +146,7 @@ public class Pulmonaryvents
         float temp = VO2 * 1000;
         float temp2 = temp / weight; //converting the VO2 value from litres into ml/kg
         MET = temp2 / 3.5f;
-        
+
     }
     public void OxygenBreath()
     {
