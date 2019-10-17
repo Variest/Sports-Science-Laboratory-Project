@@ -18,32 +18,32 @@ public class Lungs : MonoBehaviour
 
 public class Lung : MonoBehaviour
 {
-    float FEV1; //forced expired volume in the first second of exhalation
-    float FVC; //maximum volume expired after exhalation
-    float FVR; //ratio of the two
+    public float FEV1; //forced expired volume in the first second of exhalation
+    public float FVC; //maximum volume expired after exhalation
+    public float FVR; //ratio of the two
 
-    float ERV; //expiratory reserve volume - maximum expiration at the end of tidal expiration
-    float FRC; //functional residual capaciy - volume in lungers after tidal expiration
-    float IC; //inspiratory capacity - maximum volume inspired following tidal expiration
-    float IRV; //inspiratory reserve volume - maximum inspiration at the end of tidal inspiration
-    float MVV; //maximal voluntary ventilation - measures ventilatory caspacity, requires deep breathing
-    float PEF; //peak expiratory flow rate - maximum flow available
-    float PEmax; //peak expiratory mouth pressure - pressure in mouth during expiration
-    float PIF; //peak inspiratory flow rate - maximum flow available - RARELY MEASURED?
-    float PImax; //peak inspiratory mouth pressure - pressure in mouth during inspiration
-    float RV; //residual volume - volume in lungs after maximum expiration
-    float TLC; //total lung capacity - volume in lungers after maximum inspiration
-    float VC; //vital capacity - the greatest amount of air that can be expired after a maximal inspiration
+    public float ERV; //expiratory reserve volume - maximum expiration at the end of tidal expiration
+    public float FRC; //functional residual capaciy - volume in lungers after tidal expiration
+    public float IC; //inspiratory capacity - maximum volume inspired following tidal expiration
+    public float IRV; //inspiratory reserve volume - maximum inspiration at the end of tidal inspiration
+    public float MVV; //maximal voluntary ventilation - measures ventilatory caspacity, requires deep breathing
+    public float PEF; //peak expiratory flow rate - maximum flow available
+    public float PEmax; //peak expiratory mouth pressure - pressure in mouth during expiration
+    public float PIF; //peak inspiratory flow rate - maximum flow available - RARELY MEASURED?
+    public float PImax; //peak inspiratory mouth pressure - pressure in mouth during inspiration
+    public float RV; //residual volume - volume in lungs after maximum expiration
+    public float TLC; //total lung capacity - volume in lungers after maximum inspiration
+    public float VC; //vital capacity - the greatest amount of air that can be expired after a maximal inspiration
 
 
 
     CharacterCustomiser character;
-    Pulmonaryvents vents;
+    pvEquations vents;
     // Start is called before the first frame update
     void Start()
     {
         character = GetComponent<CharacterCustomiser>();
-        vents = GetComponent<Pulmonaryvents>();
+        vents = GetComponent<pvEquations>();
 
     }
 

@@ -5,14 +5,13 @@ using UnityEngine;
 //ENERGY EXPENDITURE
 public class Energy : MonoBehaviour
 {
-    float CE; //calorific equivalent of 02 - geeeeez
-    float EE; //energy expenditure
+    pvEquations vents;
 
-    Pulmonaryvents vents;
+    float CE; //calorific equivalent of 02 - geeeeez
+    public float EE; //energy expenditure
     void Start()
     {
-        vents = GetComponent<Pulmonaryvents>();
-
+        vents = GetComponent<pvEquations>();
     }
 
     void CEfunction()
