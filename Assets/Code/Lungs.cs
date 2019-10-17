@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class Lungs : MonoBehaviour
 {
     
@@ -12,6 +14,7 @@ public class Lungs : MonoBehaviour
         
     }
 }
+
 
 public class Lung : MonoBehaviour
 {
@@ -32,6 +35,8 @@ public class Lung : MonoBehaviour
     float TLC; //total lung capacity - volume in lungers after maximum inspiration
     float VC; //vital capacity - the greatest amount of air that can be expired after a maximal inspiration
 
+
+
     CharacterCustomiser character;
     Pulmonaryvents vents;
     // Start is called before the first frame update
@@ -39,6 +44,7 @@ public class Lung : MonoBehaviour
     {
         character = GetComponent<CharacterCustomiser>();
         vents = GetComponent<Pulmonaryvents>();
+
     }
 
     void setupfunction()

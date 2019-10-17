@@ -2,37 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-}
-
 // Cardiovascular Functions.cpp : This file contains the 'main' function. Program execution begins and ends there.
 
 public class Cardio : MonoBehaviour
 {
     //IMPORTANT INTEGERS
     float Bla; //blood lactate -				measured - we're on to something
-    float BPd; //diastolic blood pressure -		PROBABLY INPUT - this tends not to change with exercise
+    float BPd; //diastolic blood pressure -		PROBABLY INPUT - this tends not to change too much with exercise
     float HR; //heart rate -					measured, but we have a decent way of calculating it;
-              //MEN - 4.7 BPM/10W
-              //WOMEN - 7.1 BPM/10W
+                                                //MEN - 4.7 BPM/10W
+                                                //WOMEN - 7.1 BPM/10W
     float HRmax; //heart rate maximum =			(220-age)
     float MAP; //mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
     float OP; //oxygen pulse =					VO2/HR
     float BPs; //systolic blood pressure -		measured, we have a DECENT way of measuring it;
-               //MEN - (0.346*W + 135.76)
-               //WOMEN - (0.103*W + 155.72)
+                                                //MEN - (0.346*W + 135.76)
+                                                //WOMEN - (0.103*W + 155.72)
 
     //OTHER STUFF
     float CO; //cardiac output =				SV*HR OR MAP/TPR
@@ -56,19 +41,30 @@ public class Cardio : MonoBehaviour
     Pulmonaryvents vents;//declares vents script
     Bike bike;// declares bike script
     //VO2 and AGE/GENDER and Wattage
+
+ 
+
     public void Start()
     {//sets scripts to variables to allow them to be connected.
     character = GetComponent<CharacterCustomiser>();
     vents = GetComponent<Pulmonaryvents>();
     bike = GetComponent<Bike>();  
+
     }
 
     //FUNCTIONS LEVEL 1
 
-    void BPsfunction(float BPsfunc)
+    void BPsfunction()
     {
-        BPs = BPsfunc;
-        //POTENTIALLY  if(character.gender == true){ BPs = (0.346*bike.W + 135.76)} OR  else if(character.gender == false){BPs = (0.103*bike.W + 155.72)};
+        if(character.gender == true)
+        {
+            BPs = (0.346 * bike.wattage + 135.76);
+        }
+
+        else if(character.gender == false)
+        {
+            BPs = (0.103 * bike.wattage + 155.72);
+        }
     }
 
     void BPdfunction(float BPdfunc)
@@ -81,10 +77,17 @@ public class Cardio : MonoBehaviour
         Bla = Blafunc;
     }
 
-    void HRfunction(float HRfunc)
+    void HRfunction()
     {
-        HR = HRfunc;
-        //POTENTIALLY if(character.gender == true){ HR = (4.7*bike.W)/10} else if(character.gender == false){HR = (7.1*bike.W)/10};
+        if(character.gender == true)
+        {
+            HR = (4.7 * bike.wattage) / 10;
+        }
+
+        else if(character.gender == false)
+        {
+            HR = (7.1 * bike.W) / 10;
+        }
     }
 
     void MAPfunction()
