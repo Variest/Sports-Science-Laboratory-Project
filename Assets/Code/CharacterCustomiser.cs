@@ -7,9 +7,9 @@ public class CharacterCustomiser : MonoBehaviour
 {
         public bool gender = false;
         public int race = 0;
-        int age = 16;
-        float height = 0.0f;
-        float weight = 0.0f;
+        public int age = 16;
+        public float height = 0.0f;
+        public float weight = 0.0f;
         //Class Variables
         bool swimwear = false;
         bool gasMarkOn = false;

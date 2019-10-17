@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class Lungs : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -17,7 +13,7 @@ public class Lungs : MonoBehaviour
     }
 }
 
-public class Lung
+public class Lung : MonoBehaviour
 {
     float FEV1; //forced expired volume in the first second of exhalation
     float FVC; //maximum volume expired after exhalation
@@ -35,10 +31,15 @@ public class Lung
     float RV; //residual volume - volume in lungs after maximum expiration
     float TLC; //total lung capacity - volume in lungers after maximum inspiration
     float VC; //vital capacity - the greatest amount of air that can be expired after a maximal inspiration
+
     CharacterCustomiser character;
-    character.getcomponent<CharacterCustomiser>();
     Pulmonaryvents vents;
-    vents.getcomponent<Pulmonaryvents>();
+    // Start is called before the first frame update
+    void Start()
+    {
+        character = GetComponent<CharacterCustomiser>();
+        vents = GetComponent<Pulmonaryvents>();
+    }
 
     void setupfunction()
     {
@@ -72,11 +73,11 @@ public class Lung
     {
         if(character.gender == true)
         {
-            FEV1 = ((0.043 * character.height) - (0.029 * character.age) - 2.49);
+            FEV1 = ((0.043f * character.height) - (0.029f * character.age) - 2.49f);
         }
         else if(character.gender == false)
         {
-            FEV1 = ((0.0395 * character.height) - (0.025 * character.age) - 2.6);
+            FEV1 = ((0.0395f * character.height) - (0.025f * character.age) - 2.6f);
         };
         
         if(character.race == 1)
@@ -94,11 +95,11 @@ public class Lung
     {
         if (character.gender == true)
         {
-            FVC = ((0.0576 * character.height) - (0.026 * character.age) - 4.34);
+            FVC = ((0.0576f * character.height) - (0.026f * character.age) - 4.34f);
         }
         else if (character.gender == false)
         {
-            FVC = ((0.0443 * character.height) - (0.026 * character.age) - 2.89);
+            FVC = ((0.0443f * character.height) - (0.026f * character.age) - 2.89f);
         };
 
         if (character.race == 1)
