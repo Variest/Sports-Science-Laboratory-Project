@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //ENERGY EXPENDITURE
-public class Energy
+public class Energy : MonoBehaviour
 {
     float CE; //calorific equivalent of 02 - geeeeez
     float EE; //energy expenditure
+    Pulmonaryvents vents;
     void Start()
     {
-        Pulmonaryvents vents;
-        vents.getcomponent<Pulmonaryvents>();
+        vents = GetComponent<Pulmonaryvents>();
     }
 
     void CEfunction()

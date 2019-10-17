@@ -58,12 +58,12 @@ public class Cardio : MonoBehaviour
     {
         if(character.gender == true)
         {
-            BPs = (0.346 * bike.wattage + 135.76);
+            BPs = (0.346f * bike.wattage + 135.76f);
         }
 
         else if(character.gender == false)
         {
-            BPs = (0.103 * bike.wattage + 155.72);
+            BPs = (0.103f * bike.wattage + 155.72f);
         }
     }
 
@@ -81,12 +81,12 @@ public class Cardio : MonoBehaviour
     {
         if(character.gender == true)
         {
-            HR = (4.7 * bike.wattage) / 10;
+            HR = (4.7f * bike.wattage) / 10;
         }
 
         else if(character.gender == false)
         {
-            HR = (7.1 * bike.W) / 10;
+            HR = (7.1f * bike.wattage) / 10;
         }
     }
 

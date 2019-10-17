@@ -10,7 +10,7 @@ public class Bike : MonoBehaviour
     //HEART RATE INCREASE STUFF
     //FOR MEN: 4.7 BPM/10W
     //FOR WOMEN 7.6 BPM/10W
-    float wattage;
+    public float wattage;
     float resistance;
     float RPM;
     float RPMmax = 200;
