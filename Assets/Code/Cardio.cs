@@ -58,20 +58,12 @@ public class Cardio : MonoBehaviour
     {
         if(character.gender == true)
         {
-<<<<<<< HEAD
             BPs = (0.346f * bike.wattage + 135.76f);
-=======
-            BPs = (0.346 * bike.wattage + 135.76);
->>>>>>> refs/remotes/origin/master
         }
 
         else if(character.gender == false)
         {
-<<<<<<< HEAD
             BPs = (0.103f * bike.wattage + 155.72f);
-=======
-            BPs = (0.103 * bike.wattage + 155.72);
->>>>>>> refs/remotes/origin/master
         }
     }
 
@@ -89,20 +81,12 @@ public class Cardio : MonoBehaviour
     {
         if(character.gender == true)
         {
-<<<<<<< HEAD
             HR = (4.7f * bike.wattage) / 10;
-=======
-            HR = (4.7 * bike.wattage) / 10;
->>>>>>> refs/remotes/origin/master
         }
 
         else if(character.gender == false)
         {
-<<<<<<< HEAD
             HR = (7.1f * bike.wattage) / 10;
-=======
-            HR = (7.1 * bike.W) / 10;
->>>>>>> refs/remotes/origin/master
         }
     }
 

@@ -7,17 +7,12 @@ public class Energy : MonoBehaviour
 {
     float CE; //calorific equivalent of 02 - geeeeez
     float EE; //energy expenditure
-<<<<<<< HEAD
+
     Pulmonaryvents vents;
     void Start()
     {
         vents = GetComponent<Pulmonaryvents>();
-=======
-    void Start()
-    {
-        Pulmonaryvents vents;
-        vents.getcomponent<Pulmonaryvents>();
->>>>>>> refs/remotes/origin/master
+
     }
 
     void CEfunction()
