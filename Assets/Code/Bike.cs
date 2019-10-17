@@ -1,39 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Bike : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
-
-public class bike
 {
     //HEART RATE INCREASE STUFF
     //FOR MEN: 4.7 BPM/10W
     //FOR WOMEN 7.6 BPM/10W
-	float wattage;
+    float wattage;
     float resistance;
     float RPM;
+    float RPMmax = 200;
+    float LoadMax = 12;
+    float WattMax = 2400;
 
-    bike()
+    Bike() { }
+
+    void Resfunction(float Resfunc)
     {
-        resistance = 40; //this needs a function for putting in information
-        RPM = 0;
+        resistance = Resfunc;
+        if (resistance > LoadMax)
+        {
+            resistance = LoadMax;
+        };
+    }
+
+    void RPMfunction(float RPMfunc)
+    {
+        RPM = RPMfunc;
+        if (RPM > RPMmax)
+        {
+            RPM = RPMmax;
+        };
     }
 
     void wattagefunc()
     {
         wattage = (RPM * resistance);
     }
+
 };
