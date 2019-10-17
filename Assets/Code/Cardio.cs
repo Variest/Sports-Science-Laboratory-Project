@@ -47,7 +47,7 @@ public class Cardio : MonoBehaviour
 
     //FUNCTIONS LEVEL 1
 
-    void BPsfunction(float BPsfunc)
+    void BPsfunction()
     {
         if(character.gender == true)
         {
@@ -70,7 +70,7 @@ public class Cardio : MonoBehaviour
         Bla = Blafunc;
     }
 
-    void HRfunction(float HRfunc)
+    void HRfunction()
     {
         if(character.gender == true)
         {
