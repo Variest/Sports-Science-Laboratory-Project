@@ -47,8 +47,9 @@ public class TestInput : MonoBehaviour {
         //float temp3 = float.Parse(box3.text);
         //float answer = temp1 + temp2 + temp3;
         //resultField.text = answer.ToString();
-        /*
+       
         functionChosen = tempChoser.value;
+        /*
         switch(functionChosen)
         {
             case (0):
@@ -84,12 +85,33 @@ public class TestInput : MonoBehaviour {
         float tempTime = float.Parse(timeTbox.text);
         float tempVolume = float.Parse(volTbox.text);
         //debugging for the actual equations and shit idk
+        switch (functionChosen)
+        {
+            case (0):
+                Debug.Log("VE(ATPS) = " + ventCalc.CalcVeATPS(tempVolume, tempTime));
+                ventCalc.CalcVeSTPD(tempPb, tempPH2O, tempExpTemperature);
+                ventCalc.CalcVeBTPS(tempPb, tempPH2O, tempExpTemperature);
+
+                break;
+            case (1):
+                ventCalc.CalcVeATPS(tempVolume, tempTime);
+
+                Debug.Log("VE(STPD) = " + ventCalc.CalcVeSTPD(tempPb, tempPH2O, tempExpTemperature));
+                ventCalc.CalcVeBTPS(tempPb, tempPH2O, tempExpTemperature);
+                break;
+            case (2):
+                ventCalc.CalcVeATPS(tempVolume, tempTime);
+                ventCalc.CalcVeSTPD(tempPb, tempPH2O, tempExpTemperature);
+                Debug.Log("VE(BTPS) = " + ventCalc.CalcVeBTPS(tempPb, tempPH2O, tempExpTemperature));
+                break;
+        }
+
         Debug.Log("expire time = " + ventCalc.ExpireTime());
         Debug.Log("Inpire / expire ratio = " + ventCalc.InspireExpireRatio());
         Debug.Log("VE = " + ventCalc.CalcVE());
-        Debug.Log("VE(ATPS) = " + ventCalc.CalcVeATPS(tempVolume, tempTime));
-        Debug.Log("VE(STPD) = " + ventCalc.CalcVeSTPD(tempPb, tempPH2O, tempExpTemperature));
-        Debug.Log("VE(BTPS) = " + ventCalc.CalcVeBTPS(tempPb, tempPH2O, tempExpTemperature));
+        //Debug.Log("VE(ATPS) = " + ventCalc.CalcVeATPS(tempVolume, tempTime));
+        //Debug.Log("VE(STPD) = " + ventCalc.CalcVeSTPD(tempPb, tempPH2O, tempExpTemperature));
+       // Debug.Log("VE(BTPS) = " + ventCalc.CalcVeBTPS(tempPb, tempPH2O, tempExpTemperature));
         Debug.Log("VI = " + ventCalc.calcVI());
         Debug.Log("VCO2 = " + ventCalc.calcVCO2());
         Debug.Log("VO2 = " + ventCalc.OxygenConsumption());
