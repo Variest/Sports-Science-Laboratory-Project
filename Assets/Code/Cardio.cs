@@ -38,12 +38,15 @@ public class Cardio : MonoBehaviour
     //levels two and three are very codependent, however, with them needing variables from eachother
 
     //VO2 and AGE/GENDER and Wattage
-    CharacterCustomiser character;
-    character = GetComponent<CharacterCustomiser>();
-    Pulmonaryvents vents;
-    vents = GetComponent<Pulmonaryvents>();
-    Bike bike;
-    bike = GetComponent<Bike>();
+    void Start()
+    {
+        CharacterCustomiser character;
+        character = GetComponent<CharacterCustomiser>();
+        Pulmonaryvents vents;
+        vents = GetComponent<Pulmonaryvents>();
+        Bike bike;
+        bike = GetComponent<Bike>();
+    }
 
     //FUNCTIONS LEVEL 1
 

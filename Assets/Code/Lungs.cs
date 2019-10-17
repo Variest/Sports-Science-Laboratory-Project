@@ -21,10 +21,13 @@ public class Lung
     float RV; //residual volume - volume in lungs after maximum expiration
     float TLC; //total lung capacity - volume in lungers after maximum inspiration
     float VC; //vital capacity - the greatest amount of air that can be expired after a maximal inspiration
-    CharacterCustomiser character;
-    character.getcomponent<CharacterCustomiser>();
-    Pulmonaryvents vents;
-    vents.getcomponent<Pulmonaryvents>();
+    void Start()
+    {
+        CharacterCustomiser character;
+        character.getcomponent<CharacterCustomiser>();
+        Pulmonaryvents vents;
+        vents.getcomponent<Pulmonaryvents>();
+    }
 
     void setupfunction()
     {

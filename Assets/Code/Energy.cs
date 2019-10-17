@@ -7,8 +7,11 @@ public class Energy
 {
     float CE; //calorific equivalent of 02 - geeeeez
     float EE; //energy expenditure
-    Pulmonaryvents vents;
-    vents.getcomponent<Pulmonaryvents>();
+    void Start()
+    {
+        Pulmonaryvents vents;
+        vents.getcomponent<Pulmonaryvents>();
+    }
 
     void CEfunction()
     {
