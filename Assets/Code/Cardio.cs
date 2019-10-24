@@ -7,31 +7,34 @@ using UnityEngine;
 public class Cardio : MonoBehaviour
 {
     //IMPORTANT INTEGERS
-    public float Bla; //blood lactate -				measured - we're on to something
-    public float BlaT; //blood lactate threshold -     85% of max heart rate or 75% of VO2Max
-    public float BPd; //diastolic blood pressure -		PROBABLY INPUT - this tends not to change too much with exercise
-    public float HR; //heart rate -					measured, but we have a decent way of calculating it;
-              //MEN - 4.7 BPM/10W
-              //WOMEN - 7.1 BPM/10W
-    public float HRmax; //heart rate maximum =			(220-age)
-    public float MAP; //mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
-    public float OP; //oxygen pulse =					VO2/HR
+    public float Bla; //blood lactate -				    
+    public float BlaT; //blood lactate threshold -      85% of max heart rate or 75% of VO2Max
+    public float BPd; //diastolic blood pressure -		PROBABLY INPUT - this tends not to change too much with exercise 
     public float BPs; //systolic blood pressure -		measured, we have a DECENT way of measuring it;
-               //MEN - (0.346*W + 135.76)
-               //WOMEN - (0.103*W + 155.72)
+                                                        //MEN - (0.346*W + 135.76)
+                                                        //WOMEN - (0.103*W + 155.72)
+    public float MAP; //mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
+    public float HR; //heart rate -					    measured, but we have a decent way of calculating it;
+                                                        //MEN - 4.7 BPM/10W
+                                                        //WOMEN - 7.1 BPM/10W
+    public float HRmax; //heart rate maximum =			(220-age)
+    public float OP; //oxygen pulse =					VO2/HR
+   
 
     //OTHER STUFF
-    public float CO; //cardiac output =				SV*HR OR MAP/TPR
-    public float BG; //glucose -						measured - ???? (dont need this anyway tbh)
+    public float CO; //cardiac output =				    SV*HR OR MAP/TPR
     public float HRres; //heart rate reserve =		    HRmax-HRresting
     public float BP; //mean blood pressure =			CO*TPR
     public float SV; //stroke volume =					EDV-ESV
-    public float HRrest; //heart rate resting -		input
+    public float HRrest; //heart rate resting -	    	input
 
     //LESS IMPORTANT
     public float EF; //ejection fraction =				(SV/EDV)*100
-    public float EDV; //end diastolic volume -			measured - MIGHT BE INPUT? (changes a little bit)
-    public float ESV; //end systolic volume -			measured - MIGHT BE INPUT? (changes a little bit)
+    public float EDV; //end diastolic volume -			measured - MIGHT BE INPUT? (changes a little bit) ABOUT 120 mm, INCREASES BY 18% AT MAXIMAL EXERCISE
+    public float ESV; //end systolic volume -			measured - MIGHT BE INPUT? (changes a little bit) ABOUT 40-50 mm, DECREASES BY 21% AT MAXIMAL EXERCISE
+                                                        //okay so what these are is: EDV - volume of blood in heart at maximum succ, ESV - volume of blood in heart after it squeezed.
+                                                        //during exercise the heart generally just gets bigger - minimum pressure doesn't change, but everything else goes futher in it's direction.
+                                                        //end systolic volume/pressure changes the most, though - Volume goes down whilst pressure goes up (more squeeze). EDV goes up a bit, P no change.
     public float SW; //stroke work =					SV*MAP
     public float TPR; //total peripheral resistance =	MAP/CO
 
@@ -40,8 +43,7 @@ public class Cardio : MonoBehaviour
 
     CharacterCustomiser character; //declares character script
     pvEquations vents; //declares vents script
-    Bike bike;// declares bike script
-              //VO2 and AGE/GENDER and Wattage
+    Bike bike; //declares bike script
 
     public void Start()
     {
@@ -125,11 +127,6 @@ public class Cardio : MonoBehaviour
     void COfunction()
     {
         CO = (SV * HR);
-    }
-
-    void BGfunction(float BGfunc)
-    {
-        BG = BGfunc; //what the fuck
     }
 
     void HRrestfunction(float HRrestfunc)
