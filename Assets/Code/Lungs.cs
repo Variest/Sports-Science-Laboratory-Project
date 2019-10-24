@@ -2,24 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-public class Lungs : MonoBehaviour
-{
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
-
-
 public class Lung : MonoBehaviour
 {
-    public float FEV1; //forced expired volume in the first second of exhalation
-    public float FVC; //maximum volume expired after exhalation
+    public float FEV1 = 1.0f; //forced expired volume in the first second of exhalation
+    public float FVC = 1.0f; //maximum volume expired after exhalation
     public float FVR; //ratio of the two
 
     public float ERV; //expiratory reserve volume - maximum expiration at the end of tidal expiration
@@ -95,6 +81,7 @@ public class Lung : MonoBehaviour
             FEV1 *= 0.87f;
         };
 
+        FVRfunction();
     }
 
     void FVCfunction()
@@ -116,6 +103,8 @@ public class Lung : MonoBehaviour
         {
             FVC *= 0.87f;
         };
+
+        FVRfunction();
     }
 
     void FVRfunction()
