@@ -131,7 +131,7 @@ public class Cardio : MonoBehaviour
 
     void HRrestfunction(float HRrestfunc)
     {
-        HRrest = HRrestfunc; //assumed to be input
+        HRrest = HRrestfunc; //INPUT
     }
 
     void BPfunction()
@@ -158,12 +158,12 @@ public class Cardio : MonoBehaviour
 
     void EDVfunction(float EDVfunc)
     {
-        EDV = EDVfunc; //still needs a model
+        EDV = EDVfunc; //INPUT, INCREASES BY UP TO 21%
     }
 
     void ESVfunction(float ESVfunc)
     {
-        ESV = ESVfunc; //still needs a model
+        ESV = ESVfunc; //INPUT, DECREASES BY UP TO 18%
     }
 
     void SWfunction()
