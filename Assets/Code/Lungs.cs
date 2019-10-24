@@ -30,7 +30,6 @@ public class Lung : MonoBehaviour
     {
         character = GetComponent<CharacterCustomiser>();
         vents = GetComponent<pvEquations>();
-
     }
 
     void setupfunction()

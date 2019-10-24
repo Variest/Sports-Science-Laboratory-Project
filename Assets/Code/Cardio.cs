@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Cardiovascular Functions.cpp : This file contains the 'main' function. Program execution begins and ends there.
-
 public class Cardio : MonoBehaviour
 {
     //IMPORTANT INTEGERS

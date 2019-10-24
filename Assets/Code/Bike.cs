@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Bike : MonoBehaviour
 {
-    //HEART RATE INCREASE STUFF
-    //FOR MEN: 4.7 BPM/10W
-    //FOR WOMEN 7.6 BPM/10W
     public float WorkDone;
     float resistance;
     float RPM;
