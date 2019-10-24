@@ -8,7 +8,7 @@ public class Bike : MonoBehaviour
     //HEART RATE INCREASE STUFF
     //FOR MEN: 4.7 BPM/10W
     //FOR WOMEN 7.6 BPM/10W
-    public float wattage;
+    public float WorkDone;
     float resistance;
     float RPM;
     float RPMmax = 200;
@@ -37,7 +37,7 @@ public class Bike : MonoBehaviour
 
     void WorkDone()
     {
-        wattage = (RPM * resistance); //CYCLING IS 30% EFFICIENT
+        WorkDone = (RPM * resistance) / 0.3f; //CYCLING IS 30% EFFICIENT
     }
 
 };

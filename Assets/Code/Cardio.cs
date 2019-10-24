@@ -9,7 +9,7 @@ public class Cardio : MonoBehaviour
     //IMPORTANT INTEGERS
     public float Bla; //blood lactate -				    
     public float BlaT; //blood lactate threshold -      85% of max heart rate or 75% of VO2Max
-    public float BPd; //diastolic blood pressure -		PROBABLY INPUT - this tends not to change too much with exercise 
+    public float BPd; //diastolic blood pressure -		INPUT 
     public float BPs; //systolic blood pressure -		measured, we have a DECENT way of measuring it;
                                                         //MEN - (0.346*W + 135.76)
                                                         //WOMEN - (0.103*W + 155.72)
@@ -59,12 +59,12 @@ public class Cardio : MonoBehaviour
     {
         if (character.gender == true)
         {
-            BPs = (0.346f * bike.wattage + 135.76f);
+            BPs = (0.346f * bike.WorkDone + 135.76f);
         }
 
         else if (character.gender == false)
         {
-            BPs = (0.103f * bike.wattage + 155.72f);
+            BPs = (0.103f * bike.WorkDone + 155.72f);
         }
     }
 
