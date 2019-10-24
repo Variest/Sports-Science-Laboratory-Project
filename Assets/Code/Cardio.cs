@@ -91,12 +91,12 @@ public class Cardio : MonoBehaviour
         if (HR >= HRmax)
         {
             HR = HRmax;
-            //DANGER! DANGER!
+            //DANGER! DANGER! - ANOTHER VISUAL THING
         }
 
         if (HR >= BlaT)
         {
-            //IT'S STARTING TO HURT, BL RISES
+            //IT'S STARTING TO HURT, BL RISES - THIS IS A VISUAL THING
         }
     }
 
