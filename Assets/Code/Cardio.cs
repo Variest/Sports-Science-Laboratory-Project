@@ -70,24 +70,24 @@ public class Cardio : MonoBehaviour
 
     void BPdfunction(float BPdfunc)
     {
-        BPd = BPdfunc; //generally stays the same during exercise, probably input
+        BPd = BPdfunc; //INPUT
     }
 
     void BLafunction(float Blafunc)
     {
-        Bla = Blafunc; //still needs a model
+        Bla = Blafunc; //MODEL NEEDED
     }
 
     void HRfunction()
     {
         if (character.gender == true)
         {
-            HR = (4.7f * bike.wattage) / 10;
+            HR = (4.7f * bike.WorkDone) / 10;
         }
 
         else if (character.gender == false)
         {
-            HR = (7.1f * bike.wattage) / 10;
+            HR = (7.1f * bike.WorkDone) / 10;
         }
 
         if (HR >= HRmax)
