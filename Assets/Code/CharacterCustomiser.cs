@@ -14,11 +14,15 @@ public class CharacterCustomiser : MonoBehaviour
         bool swimwear = false;
         bool gasMaskOn = false;
 
+    public Dropdown ddSex;
+    public Dropdown ddRace;
+    public CharacterAvatar Avatar;
     public Button ChangeAvatar;
     // Start is called before the first frame update
     void Start()
     {   //Declares and sets the button
         Button btn = ChangeAvatar.GetComponent<Button>();
+        Avatar = GetComponent<CharacterAvatar>();
         btn.onClick.AddListener(TaskOnClick);
     }
 
