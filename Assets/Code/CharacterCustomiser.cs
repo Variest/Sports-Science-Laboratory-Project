@@ -12,7 +12,7 @@ public class CharacterCustomiser : MonoBehaviour
         public float weight = 0.0f;
         //Class Variables
         bool swimwear = false;
-        bool gasMarkOn = false;
+        bool gasMaskOn = false;
 
     public Button ChangeAvatar;
     // Start is called before the first frame update
