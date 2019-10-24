@@ -35,7 +35,7 @@ public class Bike : MonoBehaviour
         };
     }
 
-    void WorkDone()
+    void Workdonefunc()
     {
         WorkDone = (RPM * resistance) / 0.3f; //CYCLING IS 30% EFFICIENT
     }
