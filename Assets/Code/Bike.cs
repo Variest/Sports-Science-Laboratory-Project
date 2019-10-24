@@ -35,9 +35,9 @@ public class Bike : MonoBehaviour
         };
     }
 
-    void wattagefunc()
+    void WorkDone()
     {
-        wattage = (RPM * resistance);
+        wattage = (RPM * resistance); //CYCLING IS 30% EFFICIENT
     }
 
 };

@@ -68,12 +68,12 @@ public class Cardio : MonoBehaviour
 
     void BPdfunction(float BPdfunc)
     {
-        BPd = BPdfunc;
+        BPd = BPdfunc; //generally stays the same during exercise, probably input
     }
 
     void BLafunction(float Blafunc)
     {
-        Bla = Blafunc;
+        Bla = Blafunc; //still needs a model
     }
 
     void HRfunction()
@@ -129,12 +129,12 @@ public class Cardio : MonoBehaviour
 
     void BGfunction(float BGfunc)
     {
-        BG = BGfunc;
+        BG = BGfunc; //what the fuck
     }
 
     void HRrestfunction(float HRrestfunc)
     {
-        HRrest = HRrestfunc;
+        HRrest = HRrestfunc; //assumed to be input
     }
 
     void BPfunction()
@@ -161,12 +161,12 @@ public class Cardio : MonoBehaviour
 
     void EDVfunction(float EDVfunc)
     {
-        EDV = EDVfunc;
+        EDV = EDVfunc; //still needs a model
     }
 
     void ESVfunction(float ESVfunc)
     {
-        ESV = ESVfunc;
+        ESV = ESVfunc; //still needs a model
     }
 
     void SWfunction()
