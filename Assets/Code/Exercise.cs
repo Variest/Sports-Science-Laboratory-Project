@@ -63,7 +63,7 @@ public class Module : MonoBehaviour
     }
 
 
-    //FOR THE BIKES
+    //FOR THE BIKES and rowing i guess? hmhmhmhm.....
 
     void Resfunction(float Resfunc)
     {

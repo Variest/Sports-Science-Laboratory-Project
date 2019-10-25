@@ -41,14 +41,14 @@ public class Cardio : MonoBehaviour
 
     CharacterCustomiser character; //declares character script
     pvEquations vents; //declares vents script
-    Bike bike; //declares bike script
+    Module exercise; //declares bike script
 
     public void Start()
     {
         //sets scripts to variables to allow them to be connected.
         character = GetComponent<CharacterCustomiser>();
         vents = GetComponent<pvEquations>();
-        bike = GetComponent<Bike>();
+        exercise = GetComponent<Module>();
     }
 
     //FUNCTIONS LEVEL 1
@@ -57,12 +57,12 @@ public class Cardio : MonoBehaviour
     {
         if (character.gender == true)
         {
-            BPs = (0.346f * bike.WorkDone + 135.76f);
+            BPs = (0.346f * exercise.WorkDone + 135.76f);
         }
 
         else if (character.gender == false)
         {
-            BPs = (0.103f * bike.WorkDone + 155.72f);
+            BPs = (0.103f * exercise.WorkDone + 155.72f);
         }
     }
 
@@ -80,12 +80,12 @@ public class Cardio : MonoBehaviour
     {
         if (character.gender == true)
         {
-            HR = (4.7f * bike.WorkDone) / 10;
+            HR = (4.7f * exercise.WorkDone) / 10;
         }
 
         else if (character.gender == false)
         {
-            HR = (7.1f * bike.WorkDone) / 10;
+            HR = (7.1f * exercise.WorkDone) / 10;
         }
 
         if (HR >= HRmax)
