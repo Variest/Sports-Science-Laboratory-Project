@@ -84,9 +84,9 @@ public class Module : MonoBehaviour
         };
     }
 
-    void BikeWorkdonefunc()
+    void Workdonefunc()
     {
-        WorkDone = ((RPM * resistance) / 0.3f) / 60f; //CYCLING IS 30% EFFICIENT watts are /s
+        WorkDone = ((RPM * resistance) / efficiency) / 60f; //CYCLING IS 30% EFFICIENT watts are /s
     }
 
 };
