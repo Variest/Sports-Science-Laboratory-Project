@@ -5,18 +5,18 @@ using UnityEngine;
 public class Module : MonoBehaviour
 {
     public float WorkDone;
-    float resistance;
-    float RPM;
-    float RPMmax;
-    float LoadMax;
-    float WattMax;
-    float inclineMax;
-    float declineMax;
-    float speed;
-    float MaxSpeed;
-    string Model = null;
-    string exerciseType = null;
-    float efficiency;
+    public float resistance;
+    public float RPM;
+    public float RPMmax;
+    public float LoadMax;
+    public float WattMax;
+    public float inclineMax;
+    public float declineMax;
+    public float speed;
+    public float MaxSpeed;
+    public string Model = null;
+    public string exerciseType = null;
+    public float efficiency;
 
     Module(float model)
     {

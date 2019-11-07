@@ -7,11 +7,19 @@ public class Energy : MonoBehaviour
 {
     float CE; //calorific equivalent of 02
     public float EE; //energy expenditure
+    public float ME; //mechanical efficency
 
     pvEquations vents;
+    Module exercise;
     void Start()
     {
         vents = GetComponent<pvEquations>();
+        exercise = GetComponent<Module>();
+    }
+
+    void MEfunc()
+    {
+        ME = (exercise.efficiency * 100);
     }
 
     void CEfunction() //changes the calorific equivalent of air depending on respiratory quotient
