@@ -20,8 +20,7 @@ public class Lung : MonoBehaviour
     public float RV; //residual volume - volume in lungs after maximum expiration
     public float TLC; //total lung capacity - volume in lungers after maximum inspiration
     public float VC; //vital capacity - the greatest amount of air that can be expired after a maximal inspiration
-
-
+       
 
     CharacterCustomiser character;
     pvEquations vents;
@@ -60,7 +59,7 @@ public class Lung : MonoBehaviour
         };
     }
 
-    void FEV1function()
+    void FEV1function() //changes things based on character settings
     {
         if(character.gender == true)
         {
@@ -80,7 +79,7 @@ public class Lung : MonoBehaviour
             FEV1 *= 0.87f;
         };
 
-        FVRfunction();
+        FVRfunction(); //after this changes, FVR is assumed to change, so needs to be recalculated
     }
 
     void FVCfunction()
@@ -110,4 +109,6 @@ public class Lung : MonoBehaviour
     {
         FVR = (FEV1 / FVC);
     }
+
+    Lung(){}
 };

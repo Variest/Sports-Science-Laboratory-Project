@@ -55,12 +55,12 @@ public class Cardio : MonoBehaviour
 
     void BPsfunction()
     {
-        if (character.gender == true)
+        if (character.gender == true) //male
         {
             BPs = (0.346f * exercise.WorkDone + 135.76f);
         }
 
-        else if (character.gender == false)
+        else if (character.gender == false) //female
         {
             BPs = (0.103f * exercise.WorkDone + 155.72f);
         }
@@ -174,5 +174,5 @@ public class Cardio : MonoBehaviour
         TPR = (MAP / CO);
     }
 
-    Cardio() { }
+    Cardio(){}
 };

@@ -18,8 +18,9 @@ public class Module : MonoBehaviour
     string exerciseType = null;
     float efficiency;
 
-    Module(float model) {
-        switch (model)
+    Module(float model)
+    {
+        switch (model) //switch based on what type of module theyre using
         {
             case 1f: //MORE INFO NEEDED
                 Model = "Treadmill"; 
@@ -63,7 +64,7 @@ public class Module : MonoBehaviour
     }
 
 
-    //FOR THE BIKES and rowing i guess? hmhmhmhm.....
+    //For bikes and rowing, running is entirely different
 
     void Resfunction(float Resfunc)
     {
@@ -76,7 +77,7 @@ public class Module : MonoBehaviour
 
     void RPMfunction(float RPMfunc)
     {
-        RPM = RPMfunc;
+        RPM = RPMfunc; //how fast are they going?
 
         if (RPM > RPMmax)
         {
@@ -86,7 +87,6 @@ public class Module : MonoBehaviour
 
     void Workdonefunc()
     {
-        WorkDone = ((RPM * resistance) / efficiency) / 60f; //CYCLING IS 30% EFFICIENT watts are /s
+        WorkDone = ((RPM * resistance) / efficiency) / 60f; //watts are /s
     }
-
 };

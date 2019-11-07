@@ -65,6 +65,7 @@ public class pvEquations : MonoBehaviour
     [Space(10)]
     [Header("Work Rate")]
     public float W; //work rate
+
     public float ExpireTime()
     {
         //used to calculate the value for Expiratory time, or TE

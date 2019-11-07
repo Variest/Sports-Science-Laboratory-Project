@@ -14,7 +14,7 @@ public class WaterVapourConversion : MonoBehaviour
         WVfunc();
     }
 
-    // Update is called once per frame
+    //this is called after the gas temperature is set, and changes the vapour in the air
     void WVfunc()
     {
         switch (gasTemp)
