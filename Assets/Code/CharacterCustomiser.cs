@@ -8,7 +8,7 @@ public class CharacterCustomiser : MonoBehaviour
         public bool gender = false; //false for female, true for male
         public int race = 0; //0 = white, 1 = black, 2 = asian
         public int age = 16;
-        public float height = 0.0f;
+        public float height = 0.0f; //PLEASE PUT THIS IN CENTIMETRES
         public float weight = 0.0f;
         //Class Variables
         bool swimwear = false;

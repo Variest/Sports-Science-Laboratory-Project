@@ -39,6 +39,10 @@ public class Cardio : MonoBehaviour
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
 
+    //CARDIOVASCULAR MODULES
+    //basic: Heart Rate (FC/HR), Oxygen Pulse (OP), Mean Arterial Pressure (MAP), Max Heart Rate (HRMax)
+    //advanced: above + Blood Lactate (Bla), Cardiac Output (CO), Blood Pressure (Bpd, Bps), Stroke Volume (SV), Heart Rate Reserve (HRres), SPO2 (complicated thing from PVEquations)
+
     CharacterCustomiser character; //declares character script
     pvEquations vents; //declares vents script
     Module exercise; //declares bike script
@@ -71,7 +75,7 @@ public class Cardio : MonoBehaviour
         BPd = BPdfunc; //INPUT
     }
 
-    void BLafunction(float Blafunc)
+    void Blafunction(float Blafunc)
     {
         Bla = Blafunc; //MODEL NEEDED
     }
@@ -98,6 +102,8 @@ public class Cardio : MonoBehaviour
         {
             //IT'S STARTING TO HURT, BL RISES - THIS IS A VISUAL THING
         }
+
+        updatefunc();
     }
 
     void MAPfunction()
@@ -157,6 +163,7 @@ public class Cardio : MonoBehaviour
     void EDVfunction(float EDVfunc)
     {
         EDV = EDVfunc; //INPUT, INCREASES BY UP TO 21%
+        
     }
 
     void ESVfunction(float ESVfunc)
@@ -172,6 +179,12 @@ public class Cardio : MonoBehaviour
     void TPRfunction()
     {
         TPR = (MAP / CO);
+    }
+
+    void updatefunc()
+    {
+        EDV *= (1 + (((HR / HRmax) / 100) * 0.18f)); //this tracks the change of blood volume as HR changes
+        ESV *= (1 - (((HR / HRmax) / 100) * 0.21f));
     }
 
     Cardio(){}

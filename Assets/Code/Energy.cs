@@ -121,5 +121,5 @@ public class Energy : MonoBehaviour
         EE = (vents.VO2 * CE);
     }
 
-    Energy() { }
+    Energy(){}
 };
