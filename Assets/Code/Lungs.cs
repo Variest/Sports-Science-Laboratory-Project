@@ -14,54 +14,58 @@ public class Lung : MonoBehaviour
     public float IRV; //inspiratory reserve volume - maximum inspiration at the end of tidal inspiration
     public float MVV; //maximal voluntary ventilation - measures ventilatory caspacity, requires deep breathing
     public float PEF; //peak expiratory flow rate - maximum flow available
-    public float PEmax; //peak expiratory mouth pressure - pressure in mouth during expiration
+    public float PEmax = 90; //peak expiratory mouth pressure - pressure in mouth during expiration
     public float PIF; //peak inspiratory flow rate - maximum flow available - RARELY MEASURED?
-    public float PImax; //peak inspiratory mouth pressure - pressure in mouth during inspiration
+    public float PImax = 80; //peak inspiratory mouth pressure - pressure in mouth during inspiration
     public float RV; //residual volume - volume in lungs after maximum expiration
     public float TLC; //total lung capacity - volume in lungers after maximum inspiration
     public float VC; //vital capacity - the greatest amount of air that can be expired after a maximal inspiration
-
-
+       
 
     CharacterCustomiser character;
     pvEquations vents;
+    Cardio cardio;
     // Start is called before the first frame update
     void Start()
     {
         character = GetComponent<CharacterCustomiser>();
         vents = GetComponent<pvEquations>();
-
+        cardio = GetComponent<Cardio>();
     }
 
     void setupfunction()
     {
         if (character.gender == true) //M
         {
-            ERV = 1200;
-            FRC = 2400;
-            IC = 3600;
-            IRV = 3000;
-            MVV = 160000; //THIS COULD BE A VARIALBE
-            PEF = 600000; //THIS COULD BE A VARIABLE
-            RV = 1200;
-            TLC = 6000;
-            VC = 4800;
+            //litres
+            ERV = 1.2f;
+            FRC = 2.4f;
+            IC = 3.6f;
+            IRV = 3;
+            MVV = 160; //THIS COULD BE A VARIALBE
+            PEF = 600; //THIS COULD BE A VARIABLE
+            RV = 1.2f;
+            TLC = 6;
+            VC = 4.8f;
+            PEF = 600;
         }
         else if (character.gender == false) //F
         {
-            ERV = 800;
-            FRC = 1800;
-            IC = 2400;
-            IRV = 19000;
-            MVV = 100000;
-            PEF = 430000;
-            RV = 1000;
-            TLC = 4200;
-            VC = 3200;
+            //litres
+            ERV = 0.8f;
+            FRC = 1.8f;
+            IC = 2.4f;
+            IRV = 1.9f;
+            MVV = 100;
+            PEF = 430;
+            RV = 1;
+            TLC = 4.2f;
+            VC = 3.2f;
+            PEF = 430;
         };
     }
 
-    void FEV1function()
+    void FEV1function() //changes things based on character settings
     {
         if(character.gender == true)
         {
@@ -81,7 +85,7 @@ public class Lung : MonoBehaviour
             FEV1 *= 0.87f;
         };
 
-        FVRfunction();
+        FVRfunction(); //after this changes, FVR is assumed to change, so needs to be recalculated
     }
 
     void FVCfunction()
@@ -111,4 +115,16 @@ public class Lung : MonoBehaviour
     {
         FVR = (FEV1 / FVC);
     }
+
+    void PImaxfunction()
+    {
+        PImax = (80 + (((cardio.HR / cardio.HRmax) / 100) * 220));
+    }
+
+    void PEmaxfunction()
+    {
+        PEmax = (90 + (((cardio.HR / cardio.HRmax) / 100) * 210));
+    }
+
+    Lung(){}
 };
