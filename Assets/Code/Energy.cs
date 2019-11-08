@@ -2,30 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript1 : MonoBehaviour
+//ENERGY EXPENDITURE
+public class Energy : MonoBehaviour
 {
-    // Start is called before the first frame update
+    float CE; //calorific equivalent of 02
+    public float EE; //energy expenditure
+    public float ME; //mechanical efficency
+
+    pvEquations vents;
+    Module exercise;
     void Start()
     {
-        
+        vents = GetComponent<pvEquations>();
+        exercise = GetComponent<Module>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void MEfunc()
     {
-        
+        ME = (exercise.efficiency * 100);
     }
-}
 
-//ENERGY EXPENDITURE
-public class Energy
-{
-    float CE; //calorific equivalent of 02 - geeeeez
-    float EE; //energy expenditure
-    Pulmonaryvents vents;
-    vents.getcomponent<Pulmonaryvents>();
-
-    void CEfunction()
+    void CEfunction() //changes the calorific equivalent of air depending on respiratory quotient
     {
         switch (vents.RQ)
         {
@@ -122,7 +119,9 @@ public class Energy
             case 0.1f:
                 CE = 5.047f;
                 break;
-        }           
+        }
+
+        EEfunction(); //is called after this changes to make sure it doesnt miss anything
     }
 
     void EEfunction()
@@ -130,5 +129,5 @@ public class Energy
         EE = (vents.VO2 * CE);
     }
 
-    Energy() { }
+    Energy(){}
 };

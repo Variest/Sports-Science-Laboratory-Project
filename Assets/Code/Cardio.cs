@@ -2,93 +2,128 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
-
-// Cardiovascular Functions.cpp : This file contains the 'main' function. Program execution begins and ends there.
-
-public class Cardio
+public class Cardio : MonoBehaviour
 {
     //IMPORTANT INTEGERS
-    float Bla; //blood lactate -				measured
-    float BPd; //diastolic blood pressure -		measured
-    float HR; //heart rate -					measured
-    float HRmax; //heart rate maximum =			(220-age)
-    float MAP; //mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
-    float OP; //oxygen pulse =					VO2/HR
-    float BPs; //systolic blood pressure -		measured
+    public float Bla; //blood lactate -				    
+    public float BlaT; //blood lactate threshold -      85% of max heart rate or 75% of VO2Max
+    public float BPd; //diastolic blood pressure -		INPUT 
+    public float BPs; //systolic blood pressure -		measured, we have a DECENT way of measuring it;
+                                                        //MEN - (0.346*W + 135.76)
+                                                        //WOMEN - (0.103*W + 155.72)
+    public float MAP; //mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
+    public float HR; //heart rate -					    measured, but we have a decent way of calculating it;
+                                                        //MEN - 4.7 BPM/10W
+                                                        //WOMEN - 7.1 BPM/10W
+    public float HRmax; //heart rate maximum =			(220-age)
+    public float OP; //oxygen pulse =					VO2/HR
+   
 
     //OTHER STUFF
-    float CO; //cardiac output =				SV*HR OR MAP/TPR
-    float BG; //glucose -						measured
-    float HRres; //heart rate reserve =		    HRmax-HRresting
-    float BP; //mean blood pressure =			CO*TPR
-    float SV; //stroke volume =					EDV-ESV
-    float HRrest; //heart rate resting -		input
+    public float CO; //cardiac output =				    SV*HR OR MAP/TPR
+    public float HRres; //heart rate reserve =		    HRmax-HRresting
+    public float BP; //mean blood pressure =			CO*TPR
+    public float SV; //stroke volume =					EDV-ESV
+    public float HRrest; //heart rate resting -	    	input
 
     //LESS IMPORTANT
-    float EF; //ejection fraction =				(SV/EDV)*100
-    float EDV; //end diastolic volume -			measured
-    float ESV; //end systolic volume -			measured
-    float SW; //stroke work =					SV*MAP
-    float TPR; //total peripheral resistance =	MAP/CO
+    public float EF; //ejection fraction =				(SV/EDV)*100
+    public float EDV; //end diastolic volume -			measured - MIGHT BE INPUT? (changes a little bit) ABOUT 120 mm, INCREASES BY 18% AT MAXIMAL EXERCISE
+    public float ESV; //end systolic volume -			measured - MIGHT BE INPUT? (changes a little bit) ABOUT 40-50 mm, DECREASES BY 21% AT MAXIMAL EXERCISE
+                                                        //okay so what these are is: EDV - volume of blood in heart at maximum succ, ESV - volume of blood in heart after it squeezed.
+                                                        //during exercise the heart generally just gets bigger - minimum pressure doesn't change, but everything else goes futher in it's direction.
+                                                        //end systolic volume/pressure changes the most, though - Volume goes down whilst pressure goes up (more squeeze). EDV goes up a bit, P no change.
+    public float SW; //stroke work =					SV*MAP
+    public float TPR; //total peripheral resistance =	MAP/CO
 
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
 
-    //VO2 and AGE - DELETE LATER, ONCE FUSED
-    CharacterCustomiser character;
-    character.getcomponent<CharacterCustomiser>();
-    Pulmonaryvents vents;
-    vents.getcomponent<Pulmonaryvents>();
+    //CARDIOVASCULAR MODULES
+    //basic: Heart Rate (FC/HR), Oxygen Pulse (OP), Mean Arterial Pressure (MAP), Max Heart Rate (HRMax)
+    //advanced: above + Blood Lactate (Bla), Cardiac Output (CO), Blood Pressure (Bpd, Bps), Stroke Volume (SV), Heart Rate Reserve (HRres), SPO2 (complicated thing from PVEquations)
+
+    CharacterCustomiser character; //declares character script
+    pvEquations vents; //declares vents script
+    Module exercise; //declares bike script
+
+    public void Start()
+    {
+        //sets scripts to variables to allow them to be connected.
+        character = GetComponent<CharacterCustomiser>();
+        vents = GetComponent<pvEquations>();
+        exercise = GetComponent<Module>();
+    }
 
     //FUNCTIONS LEVEL 1
 
-    void BPsfunction(float BPsfunc)
+    void BPsfunction()
     {
-        BPs = BPsfunc;
+        if (character.gender == true) //male
+        {
+            BPs = (0.346f * exercise.WorkDone + 135.76f);
+        }
+
+        else if (character.gender == false) //female
+        {
+            BPs = (0.103f * exercise.WorkDone + 155.72f);
+        }
     }
 
     void BPdfunction(float BPdfunc)
     {
-        BPd = BPdfunc;
+        BPd = BPdfunc; //INPUT
     }
 
-    void BLafunction(float Blafunc)
+    void Blafunction(float Blafunc)
     {
-        Bla = Blafunc;
+        Bla = Blafunc; //MODEL NEEDED
     }
 
-    void HRfunction(float HRfunc)
+    void HRfunction()
     {
-        HR = HRfunc;
+        if (character.gender == true)
+        {
+            HR = (4.7f * exercise.WorkDone) / 10;
+        }
+
+        else if (character.gender == false)
+        {
+            HR = (7.1f * exercise.WorkDone) / 10;
+        }
+
+        if (HR >= HRmax)
+        {
+            HR = HRmax;
+            //DANGER! DANGER! - ANOTHER VISUAL THING
+        }
+
+        if (HR >= BlaT)
+        {
+            //IT'S STARTING TO HURT, BL RISES - THIS IS A VISUAL THING
+        }
+
+        updatefunc();
     }
 
     void MAPfunction()
     {
-        MAP = BPd + ((BPs - BPd)/3);
+        MAP = BPd + ((BPs - BPd) / 3);
     }
 
     void OPfunction()
     {
-        OP = (vents.V02 / HR);
+        OP = (vents.VO2 / HR);
     }
 
     void HRmaxfunction()
     {
         HRmax = (220 - character.age);
+    }
+
+    void BlaTfunction()
+    {
+        BlaT = (HRmax * 0.85f);
     }
 
     //FUNCTIONS LEVEL 2
@@ -98,14 +133,9 @@ public class Cardio
         CO = (SV * HR);
     }
 
-    void BGfunction(float BGfunc)
-    {
-        BG = BGfunc;
-    }
-
     void HRrestfunction(float HRrestfunc)
     {
-        HRrest = HRrestfunc;
+        HRrest = HRrestfunc; //INPUT
     }
 
     void BPfunction()
@@ -132,12 +162,13 @@ public class Cardio
 
     void EDVfunction(float EDVfunc)
     {
-        EDV = EDVfunc;
+        EDV = EDVfunc; //INPUT, INCREASES BY UP TO 21%
+        
     }
 
     void ESVfunction(float ESVfunc)
     {
-        ESV = ESVfunc;
+        ESV = ESVfunc; //INPUT, DECREASES BY UP TO 18%
     }
 
     void SWfunction()
@@ -150,5 +181,11 @@ public class Cardio
         TPR = (MAP / CO);
     }
 
-    Cardio() { }
+    void updatefunc()
+    {
+        EDV *= (1 + (((HR / HRmax) / 100) * 0.18f)); //this tracks the change of blood volume as HR changes
+        ESV *= (1 - (((HR / HRmax) / 100) * 0.21f));
+    }
+
+    Cardio(){}
 };
