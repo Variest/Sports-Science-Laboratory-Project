@@ -36,6 +36,8 @@ public class Cardio : MonoBehaviour
     public float SW; //stroke work =					SV*MAP
     public float TPR; //total peripheral resistance =	MAP/CO
 
+    public float HRtarg; //TESTING
+
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
 
@@ -53,6 +55,13 @@ public class Cardio : MonoBehaviour
         character = GetComponent<CharacterCustomiser>();
         vents = GetComponent<pvEquations>();
         exercise = GetComponent<Module>();
+    }
+
+    public void Update() //IS THIS OK?
+    {
+        HR = Mathf.SmoothStep(0, HRtarg, HR); //TESTING
+        EDV *= (1 + (((HR / HRmax) / 100) * 0.18f)); //this tracks the change of blood volume as HR changes
+        ESV *= (1 - (((HR / HRmax) / 100) * 0.21f));        
     }
 
     //FUNCTIONS LEVEL 1
@@ -84,12 +93,12 @@ public class Cardio : MonoBehaviour
     {
         if (character.gender == true)
         {
-            HR = (4.7f * exercise.WorkDone) / 10;
+            HRtarg = (HRrest + (4.7f * exercise.WorkDone) / 10);
         }
 
         else if (character.gender == false)
         {
-            HR = (7.1f * exercise.WorkDone) / 10;
+            HRtarg = (HRrest + (7.1f * exercise.WorkDone) / 10);
         }
 
         if (HR >= HRmax)
@@ -101,9 +110,7 @@ public class Cardio : MonoBehaviour
         if (HR >= BlaT)
         {
             //IT'S STARTING TO HURT, BL RISES - THIS IS A VISUAL THING
-        }
-
-        updatefunc();
+        }        
     }
 
     void MAPfunction()
@@ -181,11 +188,6 @@ public class Cardio : MonoBehaviour
         TPR = (MAP / CO);
     }
 
-    void updatefunc()
-    {
-        EDV *= (1 + (((HR / HRmax) / 100) * 0.18f)); //this tracks the change of blood volume as HR changes
-        ESV *= (1 - (((HR / HRmax) / 100) * 0.21f));
-    }
 
     Cardio(){}
 };
