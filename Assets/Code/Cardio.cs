@@ -40,6 +40,8 @@ public class Cardio : MonoBehaviour
     public float HRtarg; //TESTING
     public float BPsTarg; //TESTING
     public float BPsBase; //TESTING
+    public float EDVbase;
+    public float ESVbase;
 
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
@@ -65,8 +67,8 @@ public class Cardio : MonoBehaviour
         //CALCULATION
         HR = Mathf.SmoothStep(HRrest, HRtarg, HR); //TESTING - this gradually increases heartrate from resting to the relevant level 
         BPs = Mathf.SmoothStep(BPsBase, BPsTarg, BPs);
-        EDV *= (1 + (((HR / HRmax) / 100) * 0.18f)); //this tracks the change of blood volume as HR changes
-        ESV *= (1 - (((HR / HRmax) / 100) * 0.21f));
+        EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
+        ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
         SVfunction(); //update everything else for relevant stuff
         COfunction();
         OPfunction();
@@ -97,7 +99,7 @@ public class Cardio : MonoBehaviour
         BPsBase = BPsfunc;
     }
 
-    void BTargPsfunction()
+    void BPsTargfunction()
     {
         if (character.gender == true) //male
         {
@@ -190,12 +192,14 @@ public class Cardio : MonoBehaviour
     void EDVfunction(float EDVfunc)
     {
         EDV = EDVfunc; //INPUT, INCREASES BY UP TO 21%
+        EDVbase = EDVfunc;
         
     }
 
     void ESVfunction(float ESVfunc)
     {
         ESV = ESVfunc; //INPUT, DECREASES BY UP TO 18%
+        ESVbase = ESVfunc;
     }
 
     void SWfunction()
