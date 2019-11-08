@@ -110,9 +110,7 @@ public class Cardio : MonoBehaviour
         if (HR >= BlaT)
         {
             //IT'S STARTING TO HURT, BL RISES - THIS IS A VISUAL THING
-        }
-
-        updatefunc();
+        }        
     }
 
     void MAPfunction()
