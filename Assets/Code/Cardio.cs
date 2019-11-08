@@ -37,11 +37,11 @@ public class Cardio : MonoBehaviour
     public float SW; //CA stroke work =					SV*MAP
     public float TPR; //CA total peripheral resistance =	MAP/CO
 
-    public float HRtarg; //TESTING
-    public float BPsTarg; //TESTING
-    public float BPsBase; //TESTING
-    public float EDVbase;
-    public float ESVbase;
+    public float HRtarg; //TESTING CB
+    public float BPsTarg; //TESTING CB
+    public float BPsBase; //TESTING I
+    public float EDVbase; //TESTING I
+    public float ESVbase; //TESTING I
 
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
