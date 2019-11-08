@@ -8,7 +8,7 @@ public class Cardio : MonoBehaviour
     public float Bla; //blood lactate -				    
     public float BlaT; //blood lactate threshold -      85% of max heart rate or 75% of VO2Max
     public float BPd; //diastolic blood pressure -		INPUT 
-    public float BPs; //systolic blood pressure -		measured, we have a DECENT way of measuring it;
+    public float BPs; //systolic blood pressure -		INPUT, and we have a DECENT way of modelling it;
                                                         //MEN - (0.346*W + 135.76)
                                                         //WOMEN - (0.103*W + 155.72)
     public float MAP; //mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
@@ -37,6 +37,8 @@ public class Cardio : MonoBehaviour
     public float TPR; //total peripheral resistance =	MAP/CO
 
     public float HRtarg; //TESTING
+    public float BPsTarg; //TESTING
+    public float BPsBase; //TESTING
 
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
@@ -57,25 +59,40 @@ public class Cardio : MonoBehaviour
         exercise = GetComponent<Module>();
     }
 
-    public void Update() //IS THIS OK?
+    public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
     {
-        HR = Mathf.SmoothStep(0, HRtarg, HR); //TESTING
+        HR = Mathf.SmoothStep(HRrest, HRtarg, HR); //TESTING - this gradually increases heartrate from resting to the relevant level 
+        BPs = Mathf.SmoothStep(BPsBase, BPsTarg, BPs);
         EDV *= (1 + (((HR / HRmax) / 100) * 0.18f)); //this tracks the change of blood volume as HR changes
-        ESV *= (1 - (((HR / HRmax) / 100) * 0.21f));        
+        ESV *= (1 - (((HR / HRmax) / 100) * 0.21f));
+        SVfunction(); //update everything else for relevant stuff
+        COfunction();
+        OPfunction();
+        MAPfunction();
+        EFfunction();
+        SWfunction();
+        TPRfunction();
+        BPfunction();
     }
 
     //FUNCTIONS LEVEL 1
 
-    void BPsfunction()
+    public void BPsfunction(float BPsfunc)
+    {
+        BPs = BPsfunc;
+        BPsBase = BPsfunc;
+    }
+
+    void BTargPsfunction()
     {
         if (character.gender == true) //male
         {
-            BPs = (0.346f * exercise.WorkDone + 135.76f);
+            BPsTarg = (0.346f * exercise.WorkDone + BPsBase);
         }
 
         else if (character.gender == false) //female
         {
-            BPs = (0.103f * exercise.WorkDone + 155.72f);
+            BPsTarg = (0.103f * exercise.WorkDone + BPsBase);
         }
     }
 
