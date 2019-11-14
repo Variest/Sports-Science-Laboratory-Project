@@ -6,7 +6,7 @@ public class Cardio : MonoBehaviour
 {
     //IMPORTANT INTEGERS
     //I = INPUT, M = MODELLED, CA = CALCULATED CONSTANTLY CB = CALCULATED ONCE
-    public float Bla; //I/M blood lactate -				what the fuck?
+    public float Bla; //I/M! blood lactate -			what the fuck?
     public float BlaT; //CB blood lactate threshold -   85% of max heart rate or 75% of VO2Max
     public float BPd; //I diastolic blood pressure -	INPUT 
     public float BPs; //I/M systolic blood pressure -	INPUT, and we have a DECENT way of modelling it;
@@ -53,6 +53,7 @@ public class Cardio : MonoBehaviour
     CharacterCustomiser character; //declares character script
     pvEquations vents; //declares vents script
     Module exercise; //declares bike script
+    Timer timer;
 
     public void Start()
     {
@@ -60,23 +61,19 @@ public class Cardio : MonoBehaviour
         character = GetComponent<CharacterCustomiser>();
         vents = GetComponent<pvEquations>();
         exercise = GetComponent<Module>();
+        timer = GetComponent<Timer>();
     }
 
     public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
     {
         //CALCULATION
-        HR = Mathf.SmoothStep(HRrest, HRtarg, HR); //TESTING - this gradually increases heartrate from resting to the relevant level 
-        BPs = Mathf.SmoothStep(BPsBase, BPsTarg, BPs);
+        if(timer.recalculate == true)
+        {
+            MathFunc();
+        };
+
         EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
         ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
-        SVfunction(); //update everything else for relevant stuff
-        COfunction();
-        OPfunction();
-        MAPfunction();
-        EFfunction();
-        SWfunction();
-        TPRfunction();
-        BPfunction();
 
         //OUTPUT
         if (HR >= HRmax)
@@ -89,11 +86,29 @@ public class Cardio : MonoBehaviour
         {
             //IT'S STARTING TO HURT, Blood Lactate RISES - THIS IS A VISUAL THING
         }
+
+        SVfunction(); //update everything else for relevant stuff
+        COfunction();
+        OPfunction();
+        MAPfunction();
+        EFfunction();
+        SWfunction();
+        TPRfunction();
+        BPfunction();
     }
 
+    public void MathFunc()
+    {
+        BPsTargfunction();
+        HRfunction();
+        Mathf.SmoothStep(HRrest, HRtarg, HR);
+        Mathf.SmoothStep(BPsBase, BPsTarg, HR);
+        timer.recalculate = false;
+    }
+    
     //FUNCTIONS LEVEL 1
 
-    public void BPsfunction(float BPsfunc)
+    public void BPsfunction(float BPsfunc) //USE THIS ONE FOR INPUT
     {
         BPs = BPsfunc;
         BPsBase = BPsfunc;

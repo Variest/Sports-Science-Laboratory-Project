@@ -59,11 +59,9 @@ public class Module : MonoBehaviour
                 exerciseType = "Rowing";
                 efficiency = 0.25f;
                 break;
-
         }
     }
-
-
+    
     //For bikes and rowing, running is entirely different
 
     void Resfunction(float Resfunc)
@@ -75,7 +73,7 @@ public class Module : MonoBehaviour
         };
     }
 
-    void RPMfunction(float RPMfunc)
+    public void RPMfunction(float RPMfunc)
     {
         RPM = RPMfunc; //how fast are they going?
 
@@ -87,6 +85,11 @@ public class Module : MonoBehaviour
 
     void Workdonefunc()
     {
-        WorkDone = ((RPM * resistance) / efficiency) / 60f; //watts are /s
+        WorkDone = (((RPM * resistance) / efficiency) / 60); //watts are /s
+    }
+
+    void Update()
+    {
+        Workdonefunc();
     }
 };
