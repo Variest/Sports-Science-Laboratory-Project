@@ -5,17 +5,24 @@ using UnityEngine;
 //ENERGY EXPENDITURE
 public class Energy : MonoBehaviour
 {
-    float CE; //calorific equivalent of 02 - geeeeez
-    float EE; //energy expenditure
+    float CE; //calorific equivalent of 02
+    public float EE; //energy expenditure
+    public float ME; //mechanical efficency
 
-    Pulmonaryvents vents;
+    pvEquations vents;
+    Module exercise;
     void Start()
     {
-        vents = GetComponent<Pulmonaryvents>();
-
+        vents = GetComponent<pvEquations>();
+        exercise = GetComponent<Module>();
     }
 
-    void CEfunction()
+    void MEfunc()
+    {
+        ME = (exercise.efficiency * 100);
+    }
+
+    void CEfunction() //changes the calorific equivalent of air depending on respiratory quotient
     {
         switch (vents.RQ)
         {
@@ -113,6 +120,8 @@ public class Energy : MonoBehaviour
                 CE = 5.047f;
                 break;
         }
+
+        EEfunction(); //is called after this changes to make sure it doesnt miss anything
     }
 
     void EEfunction()
@@ -120,5 +129,5 @@ public class Energy : MonoBehaviour
         EE = (vents.VO2 * CE);
     }
 
-    Energy() { }
+    Energy(){}
 };

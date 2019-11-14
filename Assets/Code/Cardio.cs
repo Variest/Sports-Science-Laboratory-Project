@@ -2,92 +2,115 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Cardiovascular Functions.cpp : This file contains the 'main' function. Program execution begins and ends there.
-
 public class Cardio : MonoBehaviour
 {
     //IMPORTANT INTEGERS
-    float Bla; //blood lactate -				measured - we're on to something
-    float BPd; //diastolic blood pressure -		PROBABLY INPUT - this tends not to change too much with exercise
-    float HR; //heart rate -					measured, but we have a decent way of calculating it;
-                                                //MEN - 4.7 BPM/10W
-                                                //WOMEN - 7.1 BPM/10W
-    float HRmax; //heart rate maximum =			(220-age)
-    float MAP; //mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
-    float OP; //oxygen pulse =					VO2/HR
-    float BPs; //systolic blood pressure -		measured, we have a DECENT way of measuring it;
-                                                //MEN - (0.346*W + 135.76)
-                                                //WOMEN - (0.103*W + 155.72)
+    public float Bla; //blood lactate -				    
+    public float BlaT; //blood lactate threshold -      85% of max heart rate or 75% of VO2Max
+    public float BPd; //diastolic blood pressure -		INPUT 
+    public float BPs; //systolic blood pressure -		measured, we have a DECENT way of measuring it;
+                                                        //MEN - (0.346*W + 135.76)
+                                                        //WOMEN - (0.103*W + 155.72)
+    public float MAP; //mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
+    public float HR; //heart rate -					    measured, but we have a decent way of calculating it;
+                                                        //MEN - 4.7 BPM/10W
+                                                        //WOMEN - 7.1 BPM/10W
+    public float HRmax; //heart rate maximum =			(220-age)
+    public float OP; //oxygen pulse =					VO2/HR
+   
 
     //OTHER STUFF
-    float CO; //cardiac output =				SV*HR OR MAP/TPR
-    float BG; //glucose -						measured - ???? (dont need this anyway tbh)
-    float HRres; //heart rate reserve =		    HRmax-HRresting
-    float BP; //mean blood pressure =			CO*TPR
-    float SV; //stroke volume =					EDV-ESV
-    float HRrest; //heart rate resting -		input
+    public float CO; //cardiac output =				    SV*HR OR MAP/TPR
+    public float HRres; //heart rate reserve =		    HRmax-HRresting
+    public float BP; //mean blood pressure =			CO*TPR
+    public float SV; //stroke volume =					EDV-ESV
+    public float HRrest; //heart rate resting -	    	input
 
     //LESS IMPORTANT
-    float EF; //ejection fraction =				(SV/EDV)*100
-    float EDV; //end diastolic volume -			measured - MIGHT BE INPUT? (changes a little bit)
-    float ESV; //end systolic volume -			measured - MIGHT BE INPUT? (changes a little bit)
-    float SW; //stroke work =					SV*MAP
-    float TPR; //total peripheral resistance =	MAP/CO
-   
+    public float EF; //ejection fraction =				(SV/EDV)*100
+    public float EDV; //end diastolic volume -			measured - MIGHT BE INPUT? (changes a little bit) ABOUT 120 mm, INCREASES BY 18% AT MAXIMAL EXERCISE
+    public float ESV; //end systolic volume -			measured - MIGHT BE INPUT? (changes a little bit) ABOUT 40-50 mm, DECREASES BY 21% AT MAXIMAL EXERCISE
+                                                        //okay so what these are is: EDV - volume of blood in heart at maximum succ, ESV - volume of blood in heart after it squeezed.
+                                                        //during exercise the heart generally just gets bigger - minimum pressure doesn't change, but everything else goes futher in it's direction.
+                                                        //end systolic volume/pressure changes the most, though - Volume goes down whilst pressure goes up (more squeeze). EDV goes up a bit, P no change.
+    public float SW; //stroke work =					SV*MAP
+    public float TPR; //total peripheral resistance =	MAP/CO
+
+    public float HRtarg; //TESTING
+
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
 
-    CharacterCustomiser character;//declares character script
-    Pulmonaryvents vents;//declares vents script
-    Bike bike;// declares bike script
-    //VO2 and AGE/GENDER and Wattage
+    //CARDIOVASCULAR MODULES
+    //basic: Heart Rate (FC/HR), Oxygen Pulse (OP), Mean Arterial Pressure (MAP), Max Heart Rate (HRMax)
+    //advanced: above + Blood Lactate (Bla), Cardiac Output (CO), Blood Pressure (Bpd, Bps), Stroke Volume (SV), Heart Rate Reserve (HRres), SPO2 (complicated thing from PVEquations)
 
- 
+    CharacterCustomiser character; //declares character script
+    pvEquations vents; //declares vents script
+    Module exercise; //declares bike script
 
     public void Start()
-    {//sets scripts to variables to allow them to be connected.
-    character = GetComponent<CharacterCustomiser>();
-    vents = GetComponent<Pulmonaryvents>();
-    bike = GetComponent<Bike>();  
+    {
+        //sets scripts to variables to allow them to be connected.
+        character = GetComponent<CharacterCustomiser>();
+        vents = GetComponent<pvEquations>();
+        exercise = GetComponent<Module>();
+    }
 
+    public void Update() //IS THIS OK?
+    {
+        HR = Mathf.SmoothStep(0, HRtarg, HR); //TESTING
+        EDV *= (1 + (((HR / HRmax) / 100) * 0.18f)); //this tracks the change of blood volume as HR changes
+        ESV *= (1 - (((HR / HRmax) / 100) * 0.21f));        
     }
 
     //FUNCTIONS LEVEL 1
 
     void BPsfunction()
     {
-        if(character.gender == true)
+        if (character.gender == true) //male
         {
-            BPs = (0.346f * bike.wattage + 135.76f);
+            BPs = (0.346f * exercise.WorkDone + 135.76f);
         }
 
-        else if(character.gender == false)
+        else if (character.gender == false) //female
         {
-            BPs = (0.103f * bike.wattage + 155.72f);
+            BPs = (0.103f * exercise.WorkDone + 155.72f);
         }
     }
 
     void BPdfunction(float BPdfunc)
     {
-        BPd = BPdfunc;
+        BPd = BPdfunc; //INPUT
     }
 
-    void BLafunction(float Blafunc)
+    void Blafunction(float Blafunc)
     {
-        Bla = Blafunc;
+        Bla = Blafunc; //MODEL NEEDED
     }
 
     void HRfunction()
     {
-        if(character.gender == true)
+        if (character.gender == true)
         {
-            HR = (4.7f * bike.wattage) / 10;
+            HRtarg = (HRrest + (4.7f * exercise.WorkDone) / 10);
         }
 
-        else if(character.gender == false)
+        else if (character.gender == false)
         {
-            HR = (7.1f * bike.wattage) / 10;
+            HRtarg = (HRrest + (7.1f * exercise.WorkDone) / 10);
         }
+
+        if (HR >= HRmax)
+        {
+            HR = HRmax;
+            //DANGER! DANGER! - ANOTHER VISUAL THING
+        }
+
+        if (HR >= BlaT)
+        {
+            //IT'S STARTING TO HURT, BL RISES - THIS IS A VISUAL THING
+        }        
     }
 
     void MAPfunction()
@@ -105,6 +128,11 @@ public class Cardio : MonoBehaviour
         HRmax = (220 - character.age);
     }
 
+    void BlaTfunction()
+    {
+        BlaT = (HRmax * 0.85f);
+    }
+
     //FUNCTIONS LEVEL 2
 
     void COfunction()
@@ -112,14 +140,9 @@ public class Cardio : MonoBehaviour
         CO = (SV * HR);
     }
 
-    void BGfunction(float BGfunc)
-    {
-        BG = BGfunc;
-    }
-
     void HRrestfunction(float HRrestfunc)
     {
-        HRrest = HRrestfunc;
+        HRrest = HRrestfunc; //INPUT
     }
 
     void BPfunction()
@@ -146,12 +169,13 @@ public class Cardio : MonoBehaviour
 
     void EDVfunction(float EDVfunc)
     {
-        EDV = EDVfunc;
+        EDV = EDVfunc; //INPUT, INCREASES BY UP TO 21%
+        
     }
 
     void ESVfunction(float ESVfunc)
     {
-        ESV = ESVfunc;
+        ESV = ESVfunc; //INPUT, DECREASES BY UP TO 18%
     }
 
     void SWfunction()
@@ -164,5 +188,6 @@ public class Cardio : MonoBehaviour
         TPR = (MAP / CO);
     }
 
-    Cardio() { }
+
+    Cardio(){}
 };

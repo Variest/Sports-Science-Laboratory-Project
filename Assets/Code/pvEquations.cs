@@ -6,23 +6,22 @@ public class pvEquations : MonoBehaviour
 {
 
     [Header("Values used for inspiration and expiration of air")]
+
     public float TI; //inspiratory time
     public float TE; //expiratory time
     public float TITE; //result for TI/TE
     public float breathTime; //total breath time
-
-
+    
     [Space(10)]
     [Header("Fractional Concentrations")]
+
     public float FECO2; //fractional concentration of expired carbon dioxide
     public float FICO2; //fractional concentration of inspired carbon dioxide 
     public float FEO2; //fractional concentration of expired oxygen
     public float FIO2; //fractional concentration of inspired oxygen
 
     [Space(10)]
-
     [Header("Minute Ventilation")]
-
 
     public float veATPS; //minute ventilation in an ATPS environment
     public float veSTPD; //minute ventilation in an STPD environment
@@ -44,6 +43,7 @@ public class pvEquations : MonoBehaviour
     public float VO2fr; //oxygen breath value
     public float VCO2; //carbon dioxide output
     public float EPOC; //excess post-exercise oxygen consumption
+
     [Space(10)]
     [Header("End-Tidal Partial Pressures")]
 
@@ -52,11 +52,14 @@ public class pvEquations : MonoBehaviour
 
     [Space(10)]
     [Header("Respiratory variables")]
+
     public float fr; //respiratory rate
     public float RER; //respiratory exchange ratio
     public float RQ; //respiratory quotient
+
     [Space(10)]
     [Header("Ventilatory variables")]
+
     public float Vecap; //ventilatory capacity
     public float VeVO2; //ventilatory equivalent for oxygen
     public float VeVCO2; //ventilatory equivalent for carbon dioxide
@@ -64,7 +67,10 @@ public class pvEquations : MonoBehaviour
 
     [Space(10)]
     [Header("Work Rate")]
+
     public float W; //work rate
+
+
     public float ExpireTime()
     {
         //used to calculate the value for Expiratory time, or TE

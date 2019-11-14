@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class CharacterCustomiser : MonoBehaviour
 {
-        public bool gender = false;
-        public int race = 0;
+        public bool gender = false; //false for female, true for male
+        public int race = 0; //0 = white, 1 = black, 2 = asian
         public int age = 16;
-        public float height = 0.0f;
+        public float height = 0.0f; //PLEASE PUT THIS IN CENTIMETRES
         public float weight = 0.0f;
         //Class Variables
         bool swimwear = false;
@@ -17,16 +17,14 @@ public class CharacterCustomiser : MonoBehaviour
     public Button ChangeAvatar;
     // Start is called before the first frame update
     void Start()
-    {   //Declares and sets the button
+    {  
+        //Declares and sets the button
         Button btn = ChangeAvatar.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
     }
 
     // Update is called once per frame
-    void Update()
-    {
-          
-    }
+    void Update(){}
 
     void TaskOnClick()
     {//What happens when the button is clicked
