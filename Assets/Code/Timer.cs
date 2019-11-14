@@ -11,6 +11,7 @@ public class Timer : MonoBehaviour
     float increase = 0;
     public float counter = 0;
     public float timer;
+    public float elapsed;
     float limit;
     public bool recalculate = true;
     public Stopwatch mini = new Stopwatch();
@@ -48,6 +49,7 @@ public class Timer : MonoBehaviour
         }
 
         timer = mini.ElapsedMilliseconds;
+        elapsed = main.ElapsedMilliseconds;
 
     }
 
