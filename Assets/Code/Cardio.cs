@@ -68,8 +68,9 @@ public class Cardio : MonoBehaviour
     {
         //CALCULATION
         if(timer.recalculate == true)
-        { //every time the work being done increases (when the timer mini resets)
-          //a lot of things need to be recalculated (HR, BPs) and some other stuff too
+        { 
+            //every time the work being done increases (when the timer mini resets)
+            //a lot of things need to be recalculated (HR, BPs) and some other stuff too
             MathFunc();
         };
 
