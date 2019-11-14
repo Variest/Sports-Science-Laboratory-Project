@@ -19,7 +19,7 @@ public class Lung : MonoBehaviour
     public float PImax = 80; //peak inspiratory mouth pressure - pressure in mouth during inspiration
     public float RV; //residual volume - volume in lungs after maximum expiration
     public float TLC; //total lung capacity - volume in lungers after maximum inspiration
-    public float VC; //vital capacity - the greatest amount of air that can be expired after a maximal inspiration
+    public float VC = 0; //vital capacity - the greatest amount of air that can be expired after a maximal inspiration
        
 
     CharacterCustomiser character;
@@ -31,6 +31,16 @@ public class Lung : MonoBehaviour
         character = GetComponent<CharacterCustomiser>();
         vents = GetComponent<pvEquations>();
         cardio = GetComponent<Cardio>();
+    }
+
+    private void Update()
+    {
+        PImaxfunction();
+        PEmaxfunction();
+        setupfunction();
+        FEV1function();
+        FVCfunction();
+        FVRfunction();
     }
 
     void setupfunction()
@@ -46,8 +56,7 @@ public class Lung : MonoBehaviour
             PEF = 600; //THIS COULD BE A VARIABLE
             RV = 1.2f;
             TLC = 6;
-            VC = 4.8f;
-            PEF = 600;
+            VC = 4.8f;            
         }
         else if (character.gender == false) //F
         {
@@ -61,7 +70,6 @@ public class Lung : MonoBehaviour
             RV = 1;
             TLC = 4.2f;
             VC = 3.2f;
-            PEF = 430;
         };
     }
 
@@ -83,9 +91,7 @@ public class Lung : MonoBehaviour
         else if(character.race == 2)
         {
             FEV1 *= 0.87f;
-        };
-
-        FVRfunction(); //after this changes, FVR is assumed to change, so needs to be recalculated
+        };        
     }
 
     void FVCfunction()
@@ -107,8 +113,6 @@ public class Lung : MonoBehaviour
         {
             FVC *= 0.87f;
         };
-
-        FVRfunction();
     }
 
     void FVRfunction()
