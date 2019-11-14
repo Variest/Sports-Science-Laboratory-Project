@@ -103,6 +103,7 @@ public class Cardio : MonoBehaviour
         HRfunction();
         Mathf.SmoothStep(HRrest, HRtarg, HR);
         Mathf.SmoothStep(BPsBase, BPsTarg, HR);
+        //PROBLEM - SMOOTHSTEP IS TOO FAST, BUT SMOOTHDAMP, WHICH I CAN CONTROL THE TIME OF IS TOO COMPLICATED
         timer.recalculate = false;
     }
     
