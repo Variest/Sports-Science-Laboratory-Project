@@ -18,6 +18,17 @@ public class Module : MonoBehaviour
     public string exerciseType = null;
     public float efficiency;
 
+    Timer timer;
+    private void Start()
+    {
+        timer = GetComponent<Timer>();
+    }
+
+    void Update()
+    {    
+        Workdonefunc();
+    }
+
     Module(float model)
     {
         switch (model) //switch based on what type of module theyre using
@@ -88,8 +99,5 @@ public class Module : MonoBehaviour
         WorkDone = (((RPM * resistance) / efficiency) / 60); //watts are /s
     }
 
-    void Update()
-    {
-        Workdonefunc();
-    }
+
 };

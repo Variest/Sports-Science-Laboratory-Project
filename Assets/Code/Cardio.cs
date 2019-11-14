@@ -68,7 +68,8 @@ public class Cardio : MonoBehaviour
     {
         //CALCULATION
         if(timer.recalculate == true)
-        {
+        { //every time the work being done increases (when the timer mini resets)
+          //a lot of things need to be recalculated (HR, BPs) and some other stuff too
             MathFunc();
         };
 
@@ -84,7 +85,7 @@ public class Cardio : MonoBehaviour
 
         if (HR >= BlaT)
         {
-            //IT'S STARTING TO HURT, Blood Lactate RISES - THIS IS A VISUAL THING
+            //IT'S STARTING TO HURT, Blood Lactate RISES EXPONENTIALLY - THIS IS A VISUAL THING
         }
 
         SVfunction(); //update everything else for relevant stuff
