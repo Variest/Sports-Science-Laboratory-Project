@@ -7,12 +7,12 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    float intervals = 0;
-    float increase = 0;
-    public float counter = 0;
-    public float timer;
-    public float elapsed;
-    float limit;
+    float intervals = 0; //how long between each boost in intensity
+    float increase = 0; //increase RPM by how many (MAYBE CHANGE TO FLAT WORK DONE?)
+    public float counter = 0; //how many ten second/s have passed
+    public float timer; //time between each loop
+    public float elapsed; //total time elapsed
+    float limit; //entire experiment runs for X seconds
     public bool recalculate = true;
     public Stopwatch mini = new Stopwatch();
     public Stopwatch main = new Stopwatch();
@@ -56,12 +56,12 @@ public class Timer : MonoBehaviour
             moments.Restart();
         } //INDEPENDENT TIMER - EVERY TEN SECONDS
 
-        timer = mini.ElapsedMilliseconds;
-        elapsed = main.ElapsedMilliseconds;
+        timer = (mini.ElapsedMilliseconds / 1000); //SECONDS
+        elapsed = (main.ElapsedMilliseconds / 1000); //SECONDS
 
     }
 
-    void intervalsfunc(float intervalfunc)
+    void intervalfunc(float intervalfunc)
     {
         intervals = intervalfunc;
     }
