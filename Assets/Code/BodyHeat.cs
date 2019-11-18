@@ -9,7 +9,8 @@ public class BodyHeat : MonoBehaviour
     public float BodyWater;
     public float WaterDrunk = 1000; //DEFAULTS TO 1 LITRE, which is a normal amount
     public float WaterPrcnt;
-    public float SweatRate = 1000;
+    public float SweatRate;
+    public float MaxSweatRate = 1000; //PER HOUR
     public float SweatPower = 2400; //JOULES PER G (ML) OF SWEAT
     public float CoolPower;
     public float humidity = 30; //percent
@@ -51,13 +52,13 @@ public class BodyHeat : MonoBehaviour
                         //DEAD
                     }
                     //PROBABLY UNCONSCIOUS
-                    SweatRate = 4000;
+                    MaxSweatRate = 4000;
                 }
                 //WOOZY, EXTREMELY SWEATY
-                SweatRate = 3000;
+                MaxSweatRate = 3000;
             }
             //SWEATY BOY
-            SweatRate = 1500;
+            MaxSweatRate = 1500;
         }
         
 
@@ -89,7 +90,13 @@ public class BodyHeat : MonoBehaviour
 
     void sweatfunc()
     {
-        CoolPower = ((SweatRate/3600) * SweatPower); //this is how much heat (in watts) is lost as sweat per second
+        SweatRate = ((exercise.HeatWork / SweatPower)); //this is HOW MANY MLs ARE NEEDED
+        if((SweatRate * 3600) > MaxSweatRate)
+        {
+            SweatRate = MaxSweatRate;
+        }
+
+        CoolPower = (SweatRate * SweatPower); //this is how much heat (in watts) is lost as sweat per second
 
         if (humidity >= 60)
         {
