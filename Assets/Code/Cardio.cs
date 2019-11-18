@@ -67,7 +67,7 @@ public class Cardio : MonoBehaviour
     public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
     {
         //CALCULATION
-        if(timer.recalculate == true)
+        if(timer.recalculateCARDIO == true)
         {
             //every time the work being done increases (when the timer mini resets)
             //a lot of things need to be recalculated (HR, BPs) and some other stuff too

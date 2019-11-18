@@ -18,7 +18,7 @@ public class Timer : MonoBehaviour
     public Stopwatch main = new Stopwatch(); //measures entire time, and ends the test
     public Stopwatch moments = new Stopwatch(); //every ten seconds, used for loops etc.
     float tenseconds = 10000;
-    bool tensecond = false;
+    public bool tensecond = false;
 
     Module exercise;
 
