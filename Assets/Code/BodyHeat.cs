@@ -7,7 +7,7 @@ public class BodyHeat : MonoBehaviour
     public float BodyTemp = 36.0f;
     public float BodyWaterBase;
     public float BodyWater;
-    public float WaterDrunk;
+    public float WaterDrunk = 1000; //DEFAULTS TO 1 LITRE, which is a normal amount
     public float WaterPrcnt;
 
     Module exercise; //use heatwork and workdone
@@ -67,6 +67,16 @@ public class BodyHeat : MonoBehaviour
         
     }
 
+    void bodyheatfunc()
+    {
+
+    }
+
+    void sweatfunc()
+    {
+
+    }
+
     void waterdrinkfunc(float waterdrink)  //how much water they have drunk before the test, defaults to a litre
     {
         WaterDrunk = waterdrink;
@@ -82,8 +92,8 @@ public class BodyHeat : MonoBehaviour
         {
             BodyWater = ((customiser.weight * 0.55f) * 1000);
         }
-
-        BodyWater += WaterDrunk;
+                
         BodyWaterBase = BodyWater;
+        BodyWater += WaterDrunk;
     }
 }

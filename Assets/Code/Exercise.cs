@@ -16,7 +16,11 @@ public class Module : MonoBehaviour
     public float speed;
     public float MaxSpeed;
     public string Model = null;
-    public string exerciseType = null;
+    public float exerciseType;
+    public float treadsetting = 0;
+    public float incline;
+    public float decline;
+    public float MomentSpeed;
 
     public float WorkDone;
     public float BodyWork;
@@ -24,10 +28,12 @@ public class Module : MonoBehaviour
 
     Timer timer;
     WaterVapourConversion heat;
+    CharacterCustomiser customiser;
     private void Start()
     {
         heat = GetComponent<WaterVapourConversion>();
         timer = GetComponent<Timer>();
+        customiser = GetComponent<CharacterCustomiser>();
     }
 
     void Update()
@@ -41,42 +47,42 @@ public class Module : MonoBehaviour
         {
             case 1f: //MORE INFO NEEDED
                 Model = "Treadmill"; 
-                MaxSpeed = 24;
+                MaxSpeed = 24; //km/h
                 inclineMax = 25; //percent
                 declineMax = 3; //percent
-                exerciseType = "Running";
-                efficiency = 0.15f;
+                exerciseType = 2;
+                efficiency = 0.05f;
                 break;
             case 2f:
                 Model = "Monarch";
                 WattMax = 2400;
                 RPMmax = 200;
                 LoadMax = 12;
-                exerciseType = "Cycling";
-                efficiency = 0.3f;
+                exerciseType = 1;
+                efficiency = 0.2f;
                 break;
             case 3f:
                 Model = "Excalibur";
                 WattMax = 3000;
                 RPMmax = 180;
-                LoadMax = 15;
-                exerciseType = "Cycling";
-                efficiency = 0.3f;
+                LoadMax = 25;
+                exerciseType = 1;
+                efficiency = 0.2f;
                 break;
             case 4f:
                 Model = "Arm Ergonometer";
                 WattMax = 3000;
                 RPMmax = 180;
-                LoadMax = 15;
-                exerciseType = "Arm Rowing";
-                efficiency = 0.2f;
+                LoadMax = 25;
+                exerciseType = 1;
+                efficiency = 0.15f;
                 break;
             case 5f: //MORE INFO NEEDED
                 Model = "Rower";
                 WattMax = 3000;
                 RPMmax = 100;
                 LoadMax = 30;
-                exerciseType = "Rowing";
+                exerciseType = 1;
                 efficiency = 0.25f;
                 break;
         }
@@ -103,10 +109,40 @@ public class Module : MonoBehaviour
         };
     }
 
+    public void inclinefunc (float inclinefunc)
+    {
+        if(treadsetting == 1)
+        {
+            incline = inclinefunc;
+        }
+        else if(treadsetting == 2)
+        {
+            decline = inclinefunc;
+        }
+    }
+
     void Workdonefunc()
     {
         //work done (BY THE BODY - lots of energy is lost as heat)
-        WorkDone = ((RPM / 60) * resistance); //watts are /s, rpm is /minute
+        if (exerciseType == 1) //for cycles and rowing (ergometers)
+        {
+            WorkDone = ((RPM / 60) * resistance); //watts are /s, rpm is /minute
+        }
+        else if(exerciseType == 2) //running
+        {
+            MomentSpeed = ((speed * 1000)/3600); //gets metres in a single second, then * by force
+            WorkDone = (MomentSpeed * (customiser.weight/3)); //THIS LINE SUCKS DICK
+
+            if(treadsetting == 1)
+            {
+                WorkDone += ((MomentSpeed * incline) * customiser.weight);
+            }
+            else if (treadsetting == 2)
+            {
+                WorkDone -= ((MomentSpeed * decline) * customiser.weight);
+            }
+        }
+
         BodyWork = (WorkDone / efficiency);
         HeatWork = (BodyWork - WorkDone);
 

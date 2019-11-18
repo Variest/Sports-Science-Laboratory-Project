@@ -68,15 +68,17 @@ public class Cardio : MonoBehaviour
     {
         //CALCULATION
         if(timer.recalculate == true)
-        { //every time the work being done increases (when the timer mini resets)
-          //a lot of things need to be recalculated (HR, BPs) and some other stuff too
+        {
+            //every time the work being done increases (when the timer mini resets)
+            //a lot of things need to be recalculated (HR, BPs) and some other stuff too
             MathFunc();
-        };
+        }
 
         EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
         ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
 
         //OUTPUT
+
         if (HR >= HRmax)
         {
             HR = HRmax;
@@ -106,7 +108,7 @@ public class Cardio : MonoBehaviour
         Mathf.SmoothStep(BPsBase, BPsTarg, HR);
         //PROBLEM - SMOOTHSTEP MIGHT BE TOO FAST
         //BUT SMOOTHDAMP, WHICH I CAN CONTROL THE TIME OF, IS TOO COMPLICATED
-        timer.recalculate = false;
+        timer.recalculateCARDIO = false;
     }
     
     //FUNCTIONS LEVEL 1
