@@ -14,10 +14,11 @@ public class Timer : MonoBehaviour
     public float elapsed; //total time elapsed
     float limit; //entire experiment runs for X seconds
     public bool recalculate = true;
-    public Stopwatch mini = new Stopwatch();
-    public Stopwatch main = new Stopwatch();
-    public Stopwatch moments = new Stopwatch();
+    public Stopwatch mini = new Stopwatch(); //revolves around the player's input
+    public Stopwatch main = new Stopwatch(); //measures entire time, and ends the test
+    public Stopwatch moments = new Stopwatch(); //every ten seconds, used for loops etc.
     float tenseconds = 10000;
+    bool tensecond = false;
 
     Module exercise;
 
@@ -54,6 +55,8 @@ public class Timer : MonoBehaviour
         {
             counter++;
             moments.Restart();
+            tensecond = true;
+
         } //INDEPENDENT TIMER - EVERY TEN SECONDS
 
         timer = (mini.ElapsedMilliseconds / 1000); //SECONDS

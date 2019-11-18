@@ -41,6 +41,10 @@ public class Lung : MonoBehaviour
         FEV1function();
         FVCfunction();
         FVRfunction();
+        if(VC == 0)
+        {
+            setupfunction();
+        }
     }
 
     void setupfunction()

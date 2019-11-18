@@ -121,12 +121,12 @@ public class Cardio : MonoBehaviour
     {
         if (character.gender == true) //male
         {
-            BPsTarg = (0.346f * exercise.WorkDone + BPsBase);
+            BPsTarg = (0.346f * exercise.BodyWork + BPsBase);
         }
 
         else if (character.gender == false) //female
         {
-            BPsTarg = (0.103f * exercise.WorkDone + BPsBase);
+            BPsTarg = (0.103f * exercise.BodyWork + BPsBase);
         }
     }
 
@@ -144,12 +144,12 @@ public class Cardio : MonoBehaviour
     {
         if (character.gender == true)
         {
-            HRtarg = (HRrest + (4.7f * exercise.WorkDone) / 10);
+            HRtarg = (HRrest + (4.7f * exercise.BodyWork) / 10);
         }
 
         else if (character.gender == false)
         {
-            HRtarg = (HRrest + (7.1f * exercise.WorkDone) / 10);
+            HRtarg = (HRrest + (7.1f * exercise.BodyWork) / 10);
         }
     }
 
