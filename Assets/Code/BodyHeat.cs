@@ -9,6 +9,11 @@ public class BodyHeat : MonoBehaviour
     public float BodyWater;
     public float WaterDrunk = 1000; //DEFAULTS TO 1 LITRE, which is a normal amount
     public float WaterPrcnt;
+    public float SweatRate = 1000;
+    public float SweatPower = 2400; //JOULES PER G (ML) OF SWEAT
+    public float CoolPower;
+    public float humidity = 30; //percent
+    public float HeatGain;
 
     Module exercise; //use heatwork and workdone
     WaterVapourConversion heat; //gastemp is what you want!
@@ -28,8 +33,15 @@ public class BodyHeat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(BodyTemp >= 37.0f)
+        if (time.tensecond)
         {
+            sweatfunc();
+            bodyheatfunc();
+            time.tensecond = false;
+        }
+
+        if(BodyTemp >= 37.0f)
+        {          
             if(BodyTemp >= 38.0f)
             {
                 if(BodyTemp >= 39.0f)
@@ -39,12 +51,15 @@ public class BodyHeat : MonoBehaviour
                         //DEAD
                     }
                     //PROBABLY UNCONSCIOUS
+                    SweatRate = 4000;
                 }
                 //WOOZY, EXTREMELY SWEATY
+                SweatRate = 3000;
             }
             //SWEATY BOY
+            SweatRate = 1500;
         }
-        //WORKING HARD
+        
 
         WaterPrcnt = (BodyWater / BodyWaterBase);
 
@@ -69,12 +84,35 @@ public class BodyHeat : MonoBehaviour
 
     void bodyheatfunc()
     {
-
+        HeatGain = exercise.HeatWork - CoolPower;
     }
 
     void sweatfunc()
     {
+        CoolPower = ((SweatRate/3600) * SweatPower); //this is how much heat (in watts) is lost as sweat per second
 
+        if (humidity >= 60)
+        {
+            if (humidity >= 70)
+            {
+                if (humidity >= 80)
+                {
+                    if (humidity >= 90)
+                    {
+                        if (humidity >= 100)
+                        {
+                            CoolPower *= 0.1f;
+                        }
+                        CoolPower *= 0.2f;
+                    }
+                    CoolPower *= 0.3f;
+                }
+                CoolPower *= 0.5f;
+            }
+            CoolPower *= 0.8f;
+        }
+                
+        BodyWater -= (SweatRate / 360); //divide by 3600 for seconds, and times by 10, making 360
     }
 
     void waterdrinkfunc(float waterdrink)  //how much water they have drunk before the test, defaults to a litre
