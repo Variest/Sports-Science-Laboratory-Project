@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Module : MonoBehaviour
 {
-    public float WorkDone;
+
     public float resistance;
     public float RPM;
     public float RPMmax;
@@ -12,16 +12,28 @@ public class Module : MonoBehaviour
     public float WattMax;
     public float inclineMax;
     public float declineMax;
+    public float efficiency;
     public float speed;
     public float MaxSpeed;
     public string Model = null;
-    public string exerciseType = null;
-    public float efficiency;
+    public float exerciseType;
+    public float treadsetting = 0;
+    public float incline;
+    public float decline;
+    public float MomentSpeed;
+
+    public float WorkDone;
+    public float BodyWork;
+    public float HeatWork;
 
     Timer timer;
+    WaterVapourConversion heat;
+    CharacterCustomiser customiser;
     private void Start()
     {
+        heat = GetComponent<WaterVapourConversion>();
         timer = GetComponent<Timer>();
+        customiser = GetComponent<CharacterCustomiser>();
     }
 
     void Update()
@@ -33,41 +45,44 @@ public class Module : MonoBehaviour
     {
         switch (model) //switch based on what type of module theyre using
         {
-            case 1f: //MORE INFO NEEDED
+            case 1f: 
                 Model = "Treadmill"; 
-                MaxSpeed = 24;
-                inclineMax = 25;
-                declineMax = 3;
-                exerciseType = "Running";
-                efficiency = 0.25f;
+                MaxSpeed = 24; //km/h
+                inclineMax = 25; //percent
+                declineMax = 3; //percent
+                exerciseType = 2;
+                efficiency = 0.05f;
                 break;
             case 2f:
                 Model = "Monarch";
                 WattMax = 2400;
                 RPMmax = 200;
                 LoadMax = 12;
-                exerciseType = "Cycling";
-                efficiency = 0.3f;
+                exerciseType = 1;
+                efficiency = 0.2f;
                 break;
             case 3f:
                 Model = "Excalibur";
                 WattMax = 3000;
                 RPMmax = 180;
-                LoadMax = 15;
-                exerciseType = "Cycling";
-                efficiency = 0.3f;
+                LoadMax = 25;
+                exerciseType = 1;
+                efficiency = 0.2f;
                 break;
             case 4f:
                 Model = "Arm Ergonometer";
                 WattMax = 3000;
                 RPMmax = 180;
-                LoadMax = 15;
-                exerciseType = "Arm Rowing";
+                LoadMax = 25;
+                exerciseType = 1;
+                efficiency = 0.15f;
                 break;
-            case 5f: //MORE INFO NEEDED
+            case 5f: 
                 Model = "Rower";
+                WattMax = 3000;
                 RPMmax = 100;
-                exerciseType = "Rowing";
+                LoadMax = 30;
+                exerciseType = 1;
                 efficiency = 0.25f;
                 break;
         }
@@ -94,9 +109,45 @@ public class Module : MonoBehaviour
         };
     }
 
+    public void inclinefunc (float inclinefunc)
+    {
+        if(treadsetting == 1)
+        {
+            incline = inclinefunc;
+        }
+        else if(treadsetting == 2)
+        {
+            decline = inclinefunc;
+        }
+    }
+
     void Workdonefunc()
     {
-        WorkDone = (((RPM * resistance) / efficiency) / 60); //watts are /s
+        //work done (BY THE BODY - lots of energy is lost as heat)
+        switch (exerciseType)
+        {
+            case 1:
+            WorkDone = ((RPM / 60) * (resistance * 10)); //watts are /s, rpm is /minute, *10 is for correction?
+                break;
+            case 2:
+            MomentSpeed = ((speed * 1000) / 3600); //gets metres in a single second, then * by force
+            WorkDone = (MomentSpeed * (customiser.weight / 3)); //THIS LINE SUCKS DICK, IT'S A COMPLETE GUESS               
+            switch(treadsetting)            
+            {
+            case 0:
+                break;
+            case 1:
+            WorkDone += ((MomentSpeed * incline) * customiser.weight);
+               break;
+            case 2:
+            WorkDone -= ((MomentSpeed * decline) * customiser.weight);
+               break;
+            }    
+               break;
+        }
+        BodyWork = (WorkDone / efficiency);
+        HeatWork = (BodyWork - WorkDone);
+
     }
 
 

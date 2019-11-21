@@ -43,6 +43,8 @@ public class Cardio : MonoBehaviour
     public float EDVbase; //TESTING I
     public float ESVbase; //TESTING I
 
+    private float velocity = 0.0f;
+
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
 
@@ -67,27 +69,31 @@ public class Cardio : MonoBehaviour
     public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
     {
         //CALCULATION
-        if(timer.recalculate == true)
-        { 
+        if(timer.recalculateCARDIO == true)
+        {
             //every time the work being done increases (when the timer mini resets)
             //a lot of things need to be recalculated (HR, BPs) and some other stuff too
             MathFunc();
-        };
-
-        EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
-        ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
-
+        }
         //OUTPUT
+
         if (HR >= HRmax)
         {
             HR = HRmax;
             //DANGER! DANGER! - ANOTHER VISUAL THING
+            //MAKE IT SO THE SUBJECT CAN ONLY STAY AT THIS LEVEL FOR A CERTAIN AMOUNT OF TIME
         }
 
         if (HR >= BlaT)
         {
+            //CREATE AN EQUATION USING WORK RATE TO INCREASE BL
             //IT'S STARTING TO HURT, Blood Lactate RISES EXPONENTIALLY - THIS IS A VISUAL THING
+            //NORMAL BL is like 1-2, but it can go up to 25 during intense exercise, but this is a worst-case scenario
+            //normal people BL go up to like 10-15 before they give up. perhaps make this an option.
         }
+
+        EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
+        ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
 
         SVfunction(); //update everything else for relevant stuff
         COfunction();
@@ -103,11 +109,14 @@ public class Cardio : MonoBehaviour
     {
         BPsTargfunction();
         HRfunction();
-        Mathf.SmoothStep(HRrest, HRtarg, HR);
-        Mathf.SmoothStep(BPsBase, BPsTarg, HR);
-        //PROBLEM - SMOOTHSTEP MIGHT BE TOO FAST
-        //BUT SMOOTHDAMP, WHICH I CAN CONTROL THE TIME OF, IS TOO COMPLICATED
-        timer.recalculate = false;
+        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, 20);
+        //HOW TO USE SMOOTHDAMP
+           //1 = START POSITION
+           //2 = FINISH
+           //3 = THIS IS THE WIERD ONE. JUST DO A 'PRIVATE FLOAT'
+           //4 - TIME IN SECONDS
+        BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocity, 20);
+        timer.recalculateCARDIO = false;
     }
     
     //FUNCTIONS LEVEL 1
@@ -118,40 +127,65 @@ public class Cardio : MonoBehaviour
         BPsBase = BPsfunc;
     }
 
+    public void BPsreset()
+    {
+        BPs = BPsBase;
+    }
+
     void BPsTargfunction()
     {
         if (character.gender == true) //male
         {
-            BPsTarg = (0.346f * exercise.WorkDone + BPsBase);
+            BPsTarg = (0.346f * exercise.BodyWork);
         }
 
         else if (character.gender == false) //female
         {
-            BPsTarg = (0.103f * exercise.WorkDone + BPsBase);
+            BPsTarg = (0.103f * exercise.BodyWork);
         }
     }
 
-    void BPdfunction(float BPdfunc)
+    public void BPdfunction(float BPdfunc)
     {
         BPd = BPdfunc; //INPUT
     }
 
-    void Blafunction(float Blafunc)
-    {
-        Bla = Blafunc; //MODEL NEEDED
-    }
 
     void HRfunction()
     {
         if (character.gender == true)
         {
-            HRtarg = (HRrest + (4.7f * exercise.WorkDone) / 10);
+            HRtarg = (0.32f * exercise.BodyWork);
+            //HEALTHY PEOPLE CAN BE -0.9 AND UNHEALTHY +0.9
         }
 
         else if (character.gender == false)
         {
-            HRtarg = (HRrest + (7.1f * exercise.WorkDone) / 10);
+            HRtarg = (0.43f * exercise.BodyWork);
+            //+/- 0.15
         }
+
+        //backup
+        if(HRtarg < HRrest)
+        {
+            HRtarg = (HRrest + (0.1f * exercise.BodyWork));
+        }
+    }
+
+    public void HRrestfunction(float HRrestfunc)
+    {
+        HRrest = HRrestfunc; //INPUT
+        HR = HRrestfunc;
+    }
+
+    public void HRresetfunc()
+    {
+        HR = Mathf.SmoothDamp(HR, HRrest, ref velocity, 5);
+    }
+
+    void HRmaxfunction()
+    {
+        HRmax = (220 - character.age);
     }
 
     void MAPfunction()
@@ -163,15 +197,17 @@ public class Cardio : MonoBehaviour
     {
         OP = (vents.VO2 / HR);
     }
-
-    void HRmaxfunction()
-    {
-        HRmax = (220 - character.age);
-    }
-
+    
     void BlaTfunction()
     {
         BlaT = (HRmax * 0.85f);
+    }
+
+    public void Blafunction()
+    {
+        Bla = 1.0f; //MODEL NEEDED
+        //OKAY TIME TO BS ONE
+
     }
 
     //FUNCTIONS LEVEL 2
@@ -181,10 +217,6 @@ public class Cardio : MonoBehaviour
         CO = (SV * HR);
     }
 
-    void HRrestfunction(float HRrestfunc)
-    {
-        HRrest = HRrestfunc; //INPUT
-    }
 
     void BPfunction()
     {
@@ -208,14 +240,14 @@ public class Cardio : MonoBehaviour
         EF = ((SV / EDV) * 100);
     }
 
-    void EDVfunction(float EDVfunc)
+    public void EDVfunction(float EDVfunc)
     {
         EDV = EDVfunc; //INPUT, INCREASES BY UP TO 21%
         EDVbase = EDVfunc;
         
     }
 
-    void ESVfunction(float ESVfunc)
+    public void ESVfunction(float ESVfunc)
     {
         ESV = ESVfunc; //INPUT, DECREASES BY UP TO 18%
         ESVbase = ESVfunc;
