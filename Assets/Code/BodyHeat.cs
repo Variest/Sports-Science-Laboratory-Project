@@ -16,6 +16,8 @@ public class BodyHeat : MonoBehaviour
     public float humidity = 30; //percent
     public float HeatGain;
     public float metabolism = 85; //HUMAN METABOLISM TAKES 85W POWER CONSTANTLY
+    public float HeatCapacity = 0.83f;
+    public float KCAL = 4184; //4184 joules = 1KCAL
 
     Module exercise; //use heatwork and workdone
     WaterVapourConversion heat; //gastemp is what you want!
@@ -91,6 +93,11 @@ public class BodyHeat : MonoBehaviour
     void bodyheatfunc()
     {
         HeatGain = (exercise.HeatWork + metabolism) - CoolPower;
+        if (HeatGain > 0)
+        {
+            BodyTemp += (((HeatGain / KCAL) / customiser.weight) * HeatCapacity * 10);
+            //body temperature rise = how many KCAL's gained in heat energy/weight * HC coefficient (ten seconds)
+        }
     }
 
     void sweatfunc()

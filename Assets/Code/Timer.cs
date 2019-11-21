@@ -34,7 +34,8 @@ public class Timer : MonoBehaviour
     void Update()
     {
         if ((intervals > 0) && (limit > 0) && (increase > 0) && (mini.IsRunning == false))
-        {
+        { //if all the correct integers are set, then GO
+            //PERHAPS PUT A 'START' BUTTON INSTEAD OF CHECKING MINI?
             main.Start();
             mini.Start();
             moments.Start();
@@ -45,7 +46,6 @@ public class Timer : MonoBehaviour
             mini.Restart();
             exercise.RPMfunction((exercise.RPM + increase));
             recalculateCARDIO = true;
-
         } //MINI TIMER - TIMES BETWEEN EACH INCREASE IN INTENSITY
                
         if(main.IsRunning && main.ElapsedMilliseconds == (limit*1000))

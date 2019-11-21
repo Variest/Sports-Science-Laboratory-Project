@@ -86,6 +86,7 @@ public class Cardio : MonoBehaviour
 
         if (HR >= BlaT)
         {
+            //CREATE AN EQUATION USING WORK RATE TO INCREASE BL
             //IT'S STARTING TO HURT, Blood Lactate RISES EXPONENTIALLY - THIS IS A VISUAL THING
             //NORMAL BL is like 1-2, but it can go up to 25 during intense exercise, but this is a worst-case scenario
             //normal people BL go up to like 10-15 before they give up. perhaps make this an option.
@@ -93,6 +94,7 @@ public class Cardio : MonoBehaviour
 
         EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
         ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
+
         SVfunction(); //update everything else for relevant stuff
         COfunction();
         OPfunction();
@@ -201,9 +203,11 @@ public class Cardio : MonoBehaviour
         BlaT = (HRmax * 0.85f);
     }
 
-    public void Blafunction(float Blafunc)
+    public void Blafunction()
     {
-        Bla = Blafunc; //MODEL NEEDED
+        Bla = 1.0f; //MODEL NEEDED
+        //OKAY TIME TO BS ONE
+
     }
 
     //FUNCTIONS LEVEL 2

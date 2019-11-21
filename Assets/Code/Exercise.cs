@@ -127,15 +127,13 @@ public class Module : MonoBehaviour
         switch (exerciseType)
         {
             case 1:
-            WorkDone = ((RPM / 60) * (resistance * 10)); //watts are /s, rpm is /minute
+            WorkDone = ((RPM / 60) * (resistance * 10)); //watts are /s, rpm is /minute, *10 is for correction?
                 break;
             case 2:
             MomentSpeed = ((speed * 1000) / 3600); //gets metres in a single second, then * by force
-            WorkDone = (MomentSpeed * (customiser.weight / 3)); //THIS LINE SUCKS DICK
-                break;
-        }
-        switch(treadsetting)            
-        {
+            WorkDone = (MomentSpeed * (customiser.weight / 3)); //THIS LINE SUCKS DICK, IT'S A COMPLETE GUESS               
+            switch(treadsetting)            
+            {
             case 0:
                 break;
             case 1:
@@ -144,8 +142,9 @@ public class Module : MonoBehaviour
             case 2:
             WorkDone -= ((MomentSpeed * decline) * customiser.weight);
                break;
-        }    
-
+            }    
+               break;
+        }
         BodyWork = (WorkDone / efficiency);
         HeatWork = (BodyWork - WorkDone);
 
