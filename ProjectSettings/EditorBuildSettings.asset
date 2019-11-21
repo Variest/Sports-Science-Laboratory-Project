@@ -8,4 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Main Menu Scene.unity
+    guid: cec60f7ddb5028340a7e118d12f6a4f5
+  - enabled: 1
+    path: Assets/Scenes/Avatar Customisation Scene.unity
+    guid: 6d705a32dea900b43972a6c1ef8d624b
+  - enabled: 1
+    path: Assets/Scenes/Main Scene.unity
+    guid: 3d0326525dd5352468739691bb86bf24
+  - enabled: 1
+    path: Assets/Scenes/Module Selection Scene.unity
+    guid: e4285391ea846cf45800c2dec959641f
+  - enabled: 1
+    path: Assets/Scenes/Variables Scene.unity
+    guid: 5c87c2c535928f74297321894ffa779f
   m_configObjects: {}
