@@ -45,7 +45,7 @@ public class Module : MonoBehaviour
     {
         switch (model) //switch based on what type of module theyre using
         {
-            case 1f: //MORE INFO NEEDED
+            case 1f: 
                 Model = "Treadmill"; 
                 MaxSpeed = 24; //km/h
                 inclineMax = 25; //percent
@@ -77,7 +77,7 @@ public class Module : MonoBehaviour
                 exerciseType = 1;
                 efficiency = 0.15f;
                 break;
-            case 5f: //MORE INFO NEEDED
+            case 5f: 
                 Model = "Rower";
                 WattMax = 3000;
                 RPMmax = 100;
@@ -124,24 +124,27 @@ public class Module : MonoBehaviour
     void Workdonefunc()
     {
         //work done (BY THE BODY - lots of energy is lost as heat)
-        if (exerciseType == 1) //for cycles and rowing (ergometers)
+        switch (exerciseType)
         {
+            case 1:
             WorkDone = ((RPM / 60) * resistance); //watts are /s, rpm is /minute
+                break;
+            case 2:
+            MomentSpeed = ((speed * 1000) / 3600); //gets metres in a single second, then * by force
+            WorkDone = (MomentSpeed * (customiser.weight / 3)); //THIS LINE SUCKS DICK
+                break;
         }
-        else if(exerciseType == 2) //running
+        switch(treadsetting)            
         {
-            MomentSpeed = ((speed * 1000)/3600); //gets metres in a single second, then * by force
-            WorkDone = (MomentSpeed * (customiser.weight/3)); //THIS LINE SUCKS DICK
-
-            if(treadsetting == 1)
-            {
-                WorkDone += ((MomentSpeed * incline) * customiser.weight);
-            }
-            else if (treadsetting == 2)
-            {
-                WorkDone -= ((MomentSpeed * decline) * customiser.weight);
-            }
-        }
+            case 0:
+                break;
+            case 1:
+            WorkDone += ((MomentSpeed * incline) * customiser.weight);
+               break;
+            case 2:
+            WorkDone -= ((MomentSpeed * decline) * customiser.weight);
+               break;
+        }    
 
         BodyWork = (WorkDone / efficiency);
         HeatWork = (BodyWork - WorkDone);

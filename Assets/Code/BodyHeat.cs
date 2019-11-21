@@ -73,12 +73,16 @@ public class BodyHeat : MonoBehaviour
                     if(WaterPrcnt <= 0.8)
                     {
                         //DEAD
+                        MaxSweatRate *= 0.2f;
                     }
                     //DANGEROUSLY EXHAUSTED
+                    MaxSweatRate *= 0.4f;
                 }
                 //DIZZY, SERIOUSLY TIRED
+                MaxSweatRate *= 0.7f;
             }
             //A BIT TIRED
+            MaxSweatRate *= 0.9f;
         }
         
     }
@@ -90,7 +94,7 @@ public class BodyHeat : MonoBehaviour
 
     void sweatfunc()
     {
-        SweatRate = ((exercise.HeatWork / SweatPower)); //this is HOW MANY MLs ARE NEEDED
+        SweatRate = ((exercise.HeatWork / SweatPower)); //this is HOW MANY MLs ARE NEEDED A SECOND
         if((SweatRate * 3600) > MaxSweatRate)
         {
             SweatRate = MaxSweatRate;
@@ -119,7 +123,7 @@ public class BodyHeat : MonoBehaviour
             CoolPower *= 0.8f;
         }
                 
-        BodyWater -= (SweatRate / 360); //divide by 3600 for seconds, and times by 10, making 360
+        BodyWater -= (SweatRate * 10); //this is calculated every ten seconds, so *10
     }
 
     void waterdrinkfunc(float waterdrink)  //how much water they have drunk before the test, defaults to a litre
