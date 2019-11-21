@@ -12,6 +12,9 @@ public class UIHiding : MonoBehaviour
     public GameObject PAPanel;
     public GameObject CAPanel;
     public GameObject MAPanel;
+    public GameObject SliderPanel;
+    public GameObject GenderPanel;
+    public GameObject RacePanel;
 
     public Image WhiteM;
     public Image BlackM;
@@ -19,6 +22,8 @@ public class UIHiding : MonoBehaviour
     public Image WhiteF;
     public Image BlackF;
     public Image AsianF;
+
+   
 
     // Start is called before the first frame update
     void Start()
@@ -39,15 +44,6 @@ public class UIHiding : MonoBehaviour
             MAPanel.gameObject.SetActive(false);
         }
 
-        if (WhiteM && BlackM && AsianM && WhiteF && BlackF && AsianF != false)
-        {
-            WhiteM.gameObject.SetActive(false);
-            BlackM.gameObject.SetActive(false);
-            AsianM.gameObject.SetActive(false);
-            WhiteF.gameObject.SetActive(false);
-            BlackF.gameObject.SetActive(false);
-            AsianF.gameObject.SetActive(false);
-        }
     }
 
     // Update is called once per frame

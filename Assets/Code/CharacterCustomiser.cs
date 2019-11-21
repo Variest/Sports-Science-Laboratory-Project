@@ -3,210 +3,210 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterCustomiser : MonoBehaviour
+public class CharacterCustomiser : UIHiding
 {
-        public bool gender = false; //false for female, true for male
-        public int race = 0; //0 = white, 1 = black, 2 = asian
-        public float age = 16f;
-        public float height = 0.0f; //PLEASE PUT THIS IN CENTIMETRES
-        public float weight = 0.0f;
-        //Class Variables
-        bool swimwear = false;
-        bool gasMarkOn = false;
+    public bool gender = false; //false for female, true for male
+    public int race = 0; //0 = white, 1 = black, 2 = asian
+    public float age = 16f;
+    public float height = 0.0f; //PLEASE PUT THIS IN CENTIMETRES
+    public float weight = 0.0f; //kg
+    //Class Variables
+    //bool swimwear = false;
+    //bool gasMarkOn = false;
 
     public Button ChangeAvatar;
-    public Toggle GenderM;
-    public Toggle GenderF;
-    public Toggle RaceW;
-    public Toggle RaceB;
-    public Toggle RaceA;
+    public Button GenderM;
+    public Button GenderF;
+    public Button RaceW;
+    public Button RaceB;
+    public Button RaceA;
     public Slider Age;
     public Slider Height;
     public Slider Weight;
-    public Toggle Swim;
-    public Toggle GasMask;
+    public Text HeightT;
+    public Text WeightT;
+    public Text AgeT;
+
+    public Button Confirm;
     // Start is called before the first frame update
     void Start()
-    {  
+    {
         //Declares and sets the buttons and toggles
-        Button btn = ChangeAvatar.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
 
-        Toggle maleToggle = GenderM.GetComponent<Toggle>();
-        maleToggle.onValueChanged.AddListener(OnClickTask);
+        SliderPanel.gameObject.SetActive(false);
+        GenderPanel.gameObject.SetActive(true);
+        RacePanel.gameObject.SetActive(true);
 
-        Toggle femaleToggle = GenderF.GetComponent<Toggle>();
-        femaleToggle.onValueChanged.AddListener(OnClickTask);
+        Button maleButton = GenderM.GetComponent<Button>();
+        maleButton.onClick.AddListener(MaleChanger);
 
-        Toggle whiteToggle = RaceW.GetComponent<Toggle>();
-        whiteToggle.onValueChanged.AddListener(OnClickRaceTask);
+        Button femaleButton = GenderF.GetComponent<Button>();
+        femaleButton.onClick.AddListener(FemaleChanger);
 
-        Toggle blackToggle = RaceB.GetComponent<Toggle>();
-        blackToggle.onValueChanged.AddListener(OnClickRaceTask);
+        Button whiteButton = RaceW.GetComponent<Button>();
+        whiteButton.onClick.AddListener(WhiteRaceChanger);
 
-        Toggle asianToggle = RaceA.GetComponent<Toggle>();
-        asianToggle.onValueChanged.AddListener(OnClickRaceTask);
+        Button blackButton = RaceB.GetComponent<Button>();
+        blackButton.onClick.AddListener(BlackRaceChanger);
+
+        Button asianButton = RaceA.GetComponent<Button>();
+        asianButton.onClick.AddListener(AsianRaceChanger);
+
+        Button confirm = Confirm.GetComponent<Button>();
+        confirm.onClick.AddListener(SliderToggle);
+
+        if (WhiteM || BlackM || AsianM || WhiteF || BlackF || AsianF != false)
+        {
+            WhiteM.gameObject.SetActive(false);
+            BlackM.gameObject.SetActive(false);
+            AsianM.gameObject.SetActive(false);
+            WhiteF.gameObject.SetActive(false);
+            BlackF.gameObject.SetActive(false);
+            AsianF.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
-    void Update(){}
-
-    void OnClickTask(bool sex)
+    void Update()
     {
-        if (GenderM.isOn == true)
-        {
-            sex = true;
-        }
-        else if (GenderF.isOn == true)
-        {
-            sex = false;
-        }
-
-        gender = sex;
+        age = Age.value;
+        height = Height.value;
+        weight = Weight.value;
+        AgeT.text = Age.value.ToString();
+        HeightT.text = Height.value.ToString();
+        WeightT.text = Weight.value.ToString();
     }
 
-    void OnClickRaceTask(bool Ethnicity)
+    void SliderToggle()
     {
-        if (RaceW.isOn == true)
+        SliderPanel.gameObject.SetActive(true);
+        GenderPanel.gameObject.SetActive(false);
+        RacePanel.gameObject.SetActive(false);
+    }
+
+    void MaleChanger()
+    {
+        if (WhiteM && BlackM && AsianM && WhiteF && BlackF && AsianF != false)
         {
-            race = 0;
+            WhiteM.gameObject.SetActive(false);
+            BlackM.gameObject.SetActive(false);
+            AsianM.gameObject.SetActive(false);
+            WhiteF.gameObject.SetActive(false);
+            BlackF.gameObject.SetActive(false);
+            AsianF.gameObject.SetActive(false);
         }
-        else if (RaceB.isOn == true)
+        gender = true;
+        switch (race)
         {
-            race = 1;
-        }
-        else if (RaceA.isOn == true)
-        {
-            race = 2;
+            case 0:
+                WhiteM.gameObject.SetActive(true);
+                break;
+            case 1:
+                BlackM.gameObject.SetActive(true);
+                break;
+            case 2:
+                AsianM.gameObject.SetActive(true);
+                break;
+            default:
+                break;
         }
     }
 
-    void TaskOnClick()
-    {//What happens when the button is clicked
-
-        if(GenderM.isOn == false && GenderF.isOn == false)
+    void FemaleChanger()
+    {
+        if (WhiteM && BlackM && AsianM && WhiteF && BlackF && AsianF != false)
         {
-            Debug.Log("Please enter in all the details of your test subject.");
+            WhiteM.gameObject.SetActive(false);
+            BlackM.gameObject.SetActive(false);
+            AsianM.gameObject.SetActive(false);
+            WhiteF.gameObject.SetActive(false);
+            BlackF.gameObject.SetActive(false);
+            AsianF.gameObject.SetActive(false);
         }
-        else
+        gender = false;
+        switch (race)
         {
-
-            age = Age.value;
-            height = Height.value;
-            weight = Weight.value;
-            if (GasMask.isOn == true)
-            {
-                gasMarkOn = true;
-            }
-
-            if (Swim.isOn == true)
-            {
-                swimwear = true;
-            }
-
-            if(gender == false)//compares gender and then runs a switch to determine avatar type.
-            {
-                switch (race)
-                {
-                    case 0:
-                        Debug.Log("White Female");
-                        Debug.Log(age);
-                        Debug.Log(height);
-                        Debug.Log(weight);
-                        if(swimwear == true)
-                        {
-                        Debug.Log("Swimwear is being worn");
-                        }
-                        if (gasMarkOn == true)
-                        {
-                            Debug.Log("Gas Mask is being worn");
-                        }
-
-                        break;
-                    case 1:
-                        Debug.Log("Black Female");
-                        Debug.Log(age);
-                        Debug.Log(height);
-                        Debug.Log(weight);
-                        if (swimwear == true)
-                        {
-                            Debug.Log("Swimwear is being worn");
-                        }
-                        if (gasMarkOn == true)
-                        {
-                            Debug.Log("Gas Mask is being worn");
-                        }
-                        break;
-                    case 2:
-                        Debug.Log("Asian Female");
-                        Debug.Log(age);
-                        Debug.Log(height);
-                        Debug.Log(weight);
-                        if (swimwear == true)
-                        {
-                            Debug.Log("Swimwear is being worn");
-                        }
-                        if (gasMarkOn == true)
-                        {
-                            Debug.Log("Gas Mask is being worn");
-                        }
-                        break;
-                    default:
-                        break;
-               }
-            }
-            else
-            {
-                switch (race)
-                {
-                     case 0:
-                        Debug.Log("White Male");
-                        Debug.Log(age);
-                        Debug.Log(height);
-                        Debug.Log(weight);
-                        if (swimwear == true)
-                        {
-                            Debug.Log("Swimwear is being worn");
-                        }
-                        if (gasMarkOn == true)
-                        {
-                            Debug.Log("Gas Mask is being worn");
-                        }
-                        break;
-                     case 1:
-                        Debug.Log("Black Male");
-                        Debug.Log(age);
-                        Debug.Log(height);
-                        Debug.Log(weight);
-                        if (swimwear == true)
-                        {
-                            Debug.Log("Swimwear is being worn");
-                        }
-                        if (gasMarkOn == true)
-                        {
-                            Debug.Log("Gas Mask is being worn");
-                        }
-                        break;
-                     case 2:
-                        Debug.Log("Asian Male");
-                        Debug.Log(age);
-                        Debug.Log(height);
-                        Debug.Log(weight);
-                        if (swimwear == true)
-                        {
-                            Debug.Log("Swimwear is being worn");
-                        }
-                        if (gasMarkOn == true)
-                        {
-                            Debug.Log("Gas Mask is being worn");
-                        }
-                        break;
-                     default:
-                        break;
-                }
-            }
-
+            case 0:
+                WhiteF.gameObject.SetActive(true);
+                break;
+            case 1:
+                BlackF.gameObject.SetActive(true);
+                break;
+            case 2:
+                AsianF.gameObject.SetActive(true);
+                break;
+            default:
+                break;
         }
-        
+    }
+
+    void WhiteRaceChanger()
+    {
+        if (WhiteM && BlackM && AsianM && WhiteF && BlackF && AsianF != false)
+        {
+            WhiteM.gameObject.SetActive(false);
+            BlackM.gameObject.SetActive(false);
+            AsianM.gameObject.SetActive(false);
+            WhiteF.gameObject.SetActive(false);
+            BlackF.gameObject.SetActive(false);
+            AsianF.gameObject.SetActive(false);
+        }
+        race = 0;
+        switch (gender)
+        {
+            case false:
+                WhiteF.gameObject.SetActive(true);
+                break;
+            case true:
+                WhiteM.gameObject.SetActive(true);
+                break;
+        }
+    }
+
+    void BlackRaceChanger()
+    {
+        if (WhiteM && BlackM && AsianM && WhiteF && BlackF && AsianF != false)
+        {
+            WhiteM.gameObject.SetActive(false);
+            BlackM.gameObject.SetActive(false);
+            AsianM.gameObject.SetActive(false);
+            WhiteF.gameObject.SetActive(false);
+            BlackF.gameObject.SetActive(false);
+            AsianF.gameObject.SetActive(false);
+        }
+        race = 1;
+        switch (gender)
+        {
+            case false:
+                BlackF.gameObject.SetActive(true);
+                break;
+            case true:
+                BlackM.gameObject.SetActive(true);
+                break;
+        }
+    }
+
+    void AsianRaceChanger()
+    {
+        if (WhiteM && BlackM && AsianM && WhiteF && BlackF && AsianF != false)
+        {
+            WhiteM.gameObject.SetActive(false);
+            BlackM.gameObject.SetActive(false);
+            AsianM.gameObject.SetActive(false);
+            WhiteF.gameObject.SetActive(false);
+            BlackF.gameObject.SetActive(false);
+            AsianF.gameObject.SetActive(false);
+        }
+        race = 2;
+        switch (gender)
+        {
+            case false:
+                AsianF.gameObject.SetActive(true);
+                break;
+            case true:
+                AsianM.gameObject.SetActive(true);
+                break;
+        }
     }
 }
+    
