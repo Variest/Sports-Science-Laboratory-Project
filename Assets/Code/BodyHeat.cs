@@ -15,6 +15,7 @@ public class BodyHeat : MonoBehaviour
     public float CoolPower;
     public float humidity = 30; //percent
     public float HeatGain;
+    public float metabolism = 85; //HUMAN METABOLISM TAKES 85W POWER CONSTANTLY
 
     Module exercise; //use heatwork and workdone
     WaterVapourConversion heat; //gastemp is what you want!
@@ -89,12 +90,12 @@ public class BodyHeat : MonoBehaviour
 
     void bodyheatfunc()
     {
-        HeatGain = exercise.HeatWork - CoolPower;
+        HeatGain = (exercise.HeatWork + metabolism) - CoolPower;
     }
 
     void sweatfunc()
     {
-        SweatRate = ((exercise.HeatWork / SweatPower)); //this is HOW MANY MLs ARE NEEDED A SECOND
+        SweatRate = ((exercise.HeatWork + metabolism)/ SweatPower); //this is HOW MANY MLs ARE NEEDED A SECOND
         if((SweatRate * 3600) > MaxSweatRate)
         {
             SweatRate = MaxSweatRate;

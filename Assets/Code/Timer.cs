@@ -43,6 +43,7 @@ public class Timer : MonoBehaviour
             mini.Restart();
             exercise.RPMfunction((exercise.RPM + increase));
             recalculateCARDIO = true;
+
         } //MINI TIMER - TIMES BETWEEN EACH INCREASE IN INTENSITY
                
         if(main.IsRunning && main.ElapsedMilliseconds == (limit*1000))
