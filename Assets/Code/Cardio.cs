@@ -5,38 +5,43 @@ using UnityEngine;
 public class Cardio : MonoBehaviour
 {
     //IMPORTANT INTEGERS
-    public float Bla; //blood lactate -				    
-    public float BlaT; //blood lactate threshold -      85% of max heart rate or 75% of VO2Max
-    public float BPd; //diastolic blood pressure -		INPUT 
-    public float BPs; //systolic blood pressure -		measured, we have a DECENT way of measuring it;
+    //I = INPUT, M = MODELLED, CA = CALCULATED CONSTANTLY CB = CALCULATED ONCE
+    public float Bla; //I/M! blood lactate -			what the fuck?
+    public float BlaT; //CB blood lactate threshold -   85% of max heart rate or 75% of VO2Max
+    public float BPd; //I diastolic blood pressure -	INPUT 
+    public float BPs; //I/M systolic blood pressure -	INPUT, and we have a DECENT way of modelling it;
                                                         //MEN - (0.346*W + 135.76)
                                                         //WOMEN - (0.103*W + 155.72)
-    public float MAP; //mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
-    public float HR; //heart rate -					    measured, but we have a decent way of calculating it;
+    public float MAP; //CA mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
+    public float HR; //M heart rate -					   measured, but we have a decent way of calculating it;
                                                         //MEN - 4.7 BPM/10W
                                                         //WOMEN - 7.1 BPM/10W
-    public float HRmax; //heart rate maximum =			(220-age)
-    public float OP; //oxygen pulse =					VO2/HR
+    public float HRmax; //CB heart rate maximum =		(220-age)
+    public float OP; //CA oxygen pulse =				VO2/HR
    
 
     //OTHER STUFF
-    public float CO; //cardiac output =				    SV*HR OR MAP/TPR
-    public float HRres; //heart rate reserve =		    HRmax-HRresting
-    public float BP; //mean blood pressure =			CO*TPR
-    public float SV; //stroke volume =					EDV-ESV
-    public float HRrest; //heart rate resting -	    	input
+    public float CO; //CA cardiac output =				SV*HR OR MAP/TPR
+    public float HRres; //CB heart rate reserve =		HRmax-HRresting
+    public float BP; //CA mean blood pressure =			CO*TPR
+    public float SV; //CA stroke volume =				EDV-ESV
+    public float HRrest; //I heart rate resting -	    input
 
     //LESS IMPORTANT
-    public float EF; //ejection fraction =				(SV/EDV)*100
-    public float EDV; //end diastolic volume -			measured - MIGHT BE INPUT? (changes a little bit) ABOUT 120 mm, INCREASES BY 18% AT MAXIMAL EXERCISE
-    public float ESV; //end systolic volume -			measured - MIGHT BE INPUT? (changes a little bit) ABOUT 40-50 mm, DECREASES BY 21% AT MAXIMAL EXERCISE
+    public float EF; //CA ejection fraction =			(SV/EDV)*100
+    public float EDV; //I/M end diastolic volume -		measured - MIGHT BE INPUT? (changes a little bit) ABOUT 120 mm, INCREASES BY 18% AT MAXIMAL EXERCISE
+    public float ESV; //I/M end systolic volume -		measured - MIGHT BE INPUT? (changes a little bit) ABOUT 40-50 mm, DECREASES BY 21% AT MAXIMAL EXERCISE
                                                         //okay so what these are is: EDV - volume of blood in heart at maximum succ, ESV - volume of blood in heart after it squeezed.
                                                         //during exercise the heart generally just gets bigger - minimum pressure doesn't change, but everything else goes futher in it's direction.
                                                         //end systolic volume/pressure changes the most, though - Volume goes down whilst pressure goes up (more squeeze). EDV goes up a bit, P no change.
-    public float SW; //stroke work =					SV*MAP
-    public float TPR; //total peripheral resistance =	MAP/CO
+    public float SW; //CA stroke work =					SV*MAP
+    public float TPR; //CA total peripheral resistance =	MAP/CO
 
-    public float HRtarg; //TESTING
+    public float HRtarg; //TESTING CB
+    public float BPsTarg; //TESTING CB
+    public float BPsBase; //TESTING I
+    public float EDVbase; //TESTING I
+    public float ESVbase; //TESTING I
 
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
@@ -48,6 +53,7 @@ public class Cardio : MonoBehaviour
     CharacterCustomiser character; //declares character script
     pvEquations vents; //declares vents script
     Module exercise; //declares bike script
+    Timer timer;
 
     public void Start()
     {
@@ -55,27 +61,73 @@ public class Cardio : MonoBehaviour
         character = GetComponent<CharacterCustomiser>();
         vents = GetComponent<pvEquations>();
         exercise = GetComponent<Module>();
+        timer = GetComponent<Timer>();
     }
 
-    public void Update() //IS THIS OK?
+    public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
     {
-        HR = Mathf.SmoothStep(0, HRtarg, HR); //TESTING
-        EDV *= (1 + (((HR / HRmax) / 100) * 0.18f)); //this tracks the change of blood volume as HR changes
-        ESV *= (1 - (((HR / HRmax) / 100) * 0.21f));        
+        //CALCULATION
+        if(timer.recalculate == true)
+        { 
+            //every time the work being done increases (when the timer mini resets)
+            //a lot of things need to be recalculated (HR, BPs) and some other stuff too
+            MathFunc();
+        };
+
+        EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
+        ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
+
+        //OUTPUT
+        if (HR >= HRmax)
+        {
+            HR = HRmax;
+            //DANGER! DANGER! - ANOTHER VISUAL THING
+        }
+
+        if (HR >= BlaT)
+        {
+            //IT'S STARTING TO HURT, Blood Lactate RISES EXPONENTIALLY - THIS IS A VISUAL THING
+        }
+
+        SVfunction(); //update everything else for relevant stuff
+        COfunction();
+        OPfunction();
+        MAPfunction();
+        EFfunction();
+        SWfunction();
+        TPRfunction();
+        BPfunction();
     }
 
+    public void MathFunc()
+    {
+        BPsTargfunction();
+        HRfunction();
+        Mathf.SmoothStep(HRrest, HRtarg, HR);
+        Mathf.SmoothStep(BPsBase, BPsTarg, HR);
+        //PROBLEM - SMOOTHSTEP MIGHT BE TOO FAST
+        //BUT SMOOTHDAMP, WHICH I CAN CONTROL THE TIME OF, IS TOO COMPLICATED
+        timer.recalculate = false;
+    }
+    
     //FUNCTIONS LEVEL 1
 
-    void BPsfunction()
+    public void BPsfunction(float BPsfunc) //USE THIS ONE FOR INPUT
+    {
+        BPs = BPsfunc;
+        BPsBase = BPsfunc;
+    }
+
+    void BPsTargfunction()
     {
         if (character.gender == true) //male
         {
-            BPs = (0.346f * exercise.WorkDone + 135.76f);
+            BPsTarg = (0.346f * exercise.WorkDone + BPsBase);
         }
 
         else if (character.gender == false) //female
         {
-            BPs = (0.103f * exercise.WorkDone + 155.72f);
+            BPsTarg = (0.103f * exercise.WorkDone + BPsBase);
         }
     }
 
@@ -100,17 +152,6 @@ public class Cardio : MonoBehaviour
         {
             HRtarg = (HRrest + (7.1f * exercise.WorkDone) / 10);
         }
-
-        if (HR >= HRmax)
-        {
-            HR = HRmax;
-            //DANGER! DANGER! - ANOTHER VISUAL THING
-        }
-
-        if (HR >= BlaT)
-        {
-            //IT'S STARTING TO HURT, BL RISES - THIS IS A VISUAL THING
-        }        
     }
 
     void MAPfunction()
@@ -170,12 +211,14 @@ public class Cardio : MonoBehaviour
     void EDVfunction(float EDVfunc)
     {
         EDV = EDVfunc; //INPUT, INCREASES BY UP TO 21%
+        EDVbase = EDVfunc;
         
     }
 
     void ESVfunction(float ESVfunc)
     {
         ESV = ESVfunc; //INPUT, DECREASES BY UP TO 18%
+        ESVbase = ESVfunc;
     }
 
     void SWfunction()
