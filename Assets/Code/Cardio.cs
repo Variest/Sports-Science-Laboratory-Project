@@ -75,23 +75,24 @@ public class Cardio : MonoBehaviour
             //a lot of things need to be recalculated (HR, BPs) and some other stuff too
             MathFunc();
         }
-
-        EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
-        ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
-
         //OUTPUT
 
         if (HR >= HRmax)
         {
             HR = HRmax;
             //DANGER! DANGER! - ANOTHER VISUAL THING
+            //MAKE IT SO THE SUBJECT CAN ONLY STAY AT THIS LEVEL FOR A CERTAIN AMOUNT OF TIME
         }
 
         if (HR >= BlaT)
         {
             //IT'S STARTING TO HURT, Blood Lactate RISES EXPONENTIALLY - THIS IS A VISUAL THING
+            //NORMAL BL is like 1-2, but it can go up to 25 during intense exercise, but this is a worst-case scenario
+            //normal people BL go up to like 10-15 before they give up. perhaps make this an option.
         }
 
+        EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
+        ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
         SVfunction(); //update everything else for relevant stuff
         COfunction();
         OPfunction();
