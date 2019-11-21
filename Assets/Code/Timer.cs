@@ -20,6 +20,8 @@ public class Timer : MonoBehaviour
     float tenseconds = 10000;
     public bool tensecond = false;
 
+    public bool tensecondCARDIO = false;
+
     Module exercise;
 
     // Start is called before the first frame update
@@ -57,6 +59,7 @@ public class Timer : MonoBehaviour
             counter++;
             moments.Restart();
             tensecond = true;
+            tensecondCARDIO = true;
 
         } //INDEPENDENT TIMER - EVERY TEN SECONDS
 

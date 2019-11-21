@@ -127,7 +127,7 @@ public class Module : MonoBehaviour
         switch (exerciseType)
         {
             case 1:
-            WorkDone = ((RPM / 60) * resistance); //watts are /s, rpm is /minute
+            WorkDone = ((RPM / 60) * (resistance * 10)); //watts are /s, rpm is /minute
                 break;
             case 2:
             MomentSpeed = ((speed * 1000) / 3600); //gets metres in a single second, then * by force
