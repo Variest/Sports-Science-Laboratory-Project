@@ -155,11 +155,11 @@ public class BodyHeat : MonoBehaviour
 
     void bodywaterfunc()
     {
-        if (customiser.gender == true)
+        if (customiser.gender == 1)
         {
             BodyWater = ((customiser.weight * 0.60f) * 1000); //in millilitres
         }
-        else
+        else if(customiser.gender == 0)
         {
             BodyWater = ((customiser.weight * 0.55f) * 1000);
         }
