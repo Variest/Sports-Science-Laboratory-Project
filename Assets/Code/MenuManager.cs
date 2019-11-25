@@ -11,20 +11,26 @@ public class MenuManager : MonoBehaviour
     public bool isPulmonaryModule;
     public bool isCardiovascularModule;
     public bool isMetabolicModule;
-    public bool isCustomModule;
-    public bool isChangeModule;
     public bool isBasic;
-    public bool isAdvanced;
+    public bool isVariables;
+    public bool isChangeModule;
+    public bool isBackMainMenu;
+    public bool isBackModules;
 
-    public char selectedModule;
-    public char selectedTemplate;
+    public static char selectedModule = ' ';
+    public static char selectedTemplate = ' ';
 
-    public GameObject TSPanel;
+    public GameObject TSPanel; 
     public GameObject MSPanel;
     public GameObject CPanel;
     public GameObject PAPanel;
     public GameObject CAPanel;
     public GameObject MAPanel;
+
+    public void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     public void GoToModuleSelection()
     {
@@ -46,11 +52,18 @@ public class MenuManager : MonoBehaviour
     {
         if (isQuit)
         {
-            Application.Quit();
+            if (Application.isEditor)
+            {
+                UnityEditor.EditorApplication.isPlaying = false;
+            }
+            else
+            {
+                Application.Quit();
+            }
         }
     }
 
-    public void GoToTemplateSelection()
+    public void GoToTemplateSelection1()
     {
         if (isPulmonaryModule)
         {
@@ -58,14 +71,20 @@ public class MenuManager : MonoBehaviour
             MSPanel.gameObject.SetActive(false);
             TSPanel.gameObject.SetActive(true);
         }
-        else
-            if (isCardiovascularModule)
+    }
+
+    public void GoToTemplateSelection2()
+    {
+        if (isCardiovascularModule)
         {
             selectedModule = 'C';
             MSPanel.gameObject.SetActive(false);
             TSPanel.gameObject.SetActive(true);
         }
-        else
+    }
+
+    public void GoToTemplateSelection3()
+    { 
             if (isMetabolicModule)
         {
             selectedModule = 'M';
@@ -76,43 +95,10 @@ public class MenuManager : MonoBehaviour
 
     public void GoToVariables()
     {
-        if(isCustomModule)
+        if(isVariables)
         {
+            Debug.Log(selectedModule);
             SceneManager.LoadScene("Variables Scene");
-            CPanel.gameObject.SetActive(true);
-            PAPanel.gameObject.SetActive(false);
-            CAPanel.gameObject.SetActive(false);
-            MAPanel.gameObject.SetActive(false);
-        }
-        else
-        if (isAdvanced)
-        {
-            selectedTemplate = 'A';
-            SceneManager.LoadScene("Variables Scene");
-
-            if (selectedModule == 'P')
-            {
-                CPanel.gameObject.SetActive(false);
-                PAPanel.gameObject.SetActive(true);
-                CAPanel.gameObject.SetActive(false);
-                MAPanel.gameObject.SetActive(false);
-            }
-            else
-                if (selectedModule == 'C')
-            {
-                CPanel.gameObject.SetActive(false);
-                PAPanel.gameObject.SetActive(false);
-                CAPanel.gameObject.SetActive(true);
-                MAPanel.gameObject.SetActive(false);
-            }
-            else
-                if (selectedModule == 'M')
-            {
-                CPanel.gameObject.SetActive(false);
-                PAPanel.gameObject.SetActive(false);
-                CAPanel.gameObject.SetActive(false);
-                MAPanel.gameObject.SetActive(true);
-            }
         }
     }
 
@@ -131,6 +117,40 @@ public class MenuManager : MonoBehaviour
         {
             MSPanel.gameObject.SetActive(true);
             TSPanel.gameObject.SetActive(false);
+        }
+    }
+
+    public void GoToBackMainMenu()
+    {
+        if (isBackMainMenu)
+        {
+            if (SceneManager.GetActiveScene().name == "Module Selection Scene")
+            {
+                if (TSPanel.activeSelf)
+                {
+                    MSPanel.gameObject.SetActive(true);
+                    TSPanel.gameObject.SetActive(false);
+                    selectedModule = ' ';
+                }
+                else
+                {
+                    SceneManager.LoadScene("Main Menu Scene");
+                }
+            }
+            else
+            {
+                SceneManager.LoadScene("Main Menu Scene");
+            }
+        }
+    }
+
+    public void GoToBackModules()
+    {
+        if (isBackModules)
+        {
+            SceneManager.LoadScene("Module Selection Scene");
+            selectedModule = ' ';
+            selectedTemplate = ' ';
         }
     }
 
