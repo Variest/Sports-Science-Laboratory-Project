@@ -42,6 +42,8 @@ public class BodyHeat : MonoBehaviour
             sweatfunc();
             bodyheatfunc();
             time.tensecond = false;
+
+            //EXPERIMENT WITH TURNING * 10 TO * 100 FOR INCREASED OUTPUT
         }
 
         if(BodyTemp >= 37.0f)
@@ -95,14 +97,14 @@ public class BodyHeat : MonoBehaviour
         HeatGain = (exercise.HeatWork + metabolism) - CoolPower;
         if (HeatGain > 0)
         {
-            BodyTemp += (((HeatGain / KCAL) / customiser.weight) * HeatCapacity * 10);
+            BodyTemp += (((HeatGain / KCAL) / customiser.weight) * (HeatCapacity * 10));
             //body temperature rise = how many KCAL's gained in heat energy/weight * HC coefficient (ten seconds)
         }
     }
 
     void sweatfunc()
     {
-        SweatRate = ((exercise.HeatWork + metabolism)/ SweatPower); //this is HOW MANY MLs ARE NEEDED A SECOND
+        SweatRate = ((exercise.HeatWork + metabolism) / SweatPower); //this is HOW MANY MLs ARE NEEDED A SECOND
         if((SweatRate * 3600) > MaxSweatRate)
         {
             SweatRate = MaxSweatRate;

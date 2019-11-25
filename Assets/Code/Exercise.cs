@@ -132,7 +132,7 @@ public class Module : MonoBehaviour
             case 2:
             MomentSpeed = ((speed * 1000) / 3600); //gets metres in a single second, then * by force
             WorkDone = (MomentSpeed * (customiser.weight / 3)); //THIS LINE SUCKS DICK, IT'S A COMPLETE GUESS               
-            switch(treadsetting)            
+            switch(treadsetting) //STILL INSIDE CASE 2, IS THE TREADMILL INCLINED OR DECLINED?  
             {
             case 0:
                 break;
@@ -145,6 +145,7 @@ public class Module : MonoBehaviour
             }    
                break;
         }
+
         BodyWork = (WorkDone / efficiency);
         HeatWork = (BodyWork - WorkDone);
 

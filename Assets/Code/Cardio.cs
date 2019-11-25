@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Cardio : MonoBehaviour
 {
     //IMPORTANT INTEGERS
     //I = INPUT, M = MODELLED, CA = CALCULATED CONSTANTLY CB = CALCULATED ONCE
-    public float Bla; //I/M! blood lactate -			what the fuck?
+    public float Bla = 1.0f; //I/M! blood lactate -			what the fuck?
+    public float BlaTarget;
     public float BlaT; //CB blood lactate threshold -   85% of max heart rate or 75% of VO2Max
     public float BPd; //I diastolic blood pressure -	INPUT 
     public float BPs; //I/M systolic blood pressure -	INPUT, and we have a DECENT way of modelling it;
@@ -84,14 +86,6 @@ public class Cardio : MonoBehaviour
             //MAKE IT SO THE SUBJECT CAN ONLY STAY AT THIS LEVEL FOR A CERTAIN AMOUNT OF TIME
         }
 
-        if (HR >= BlaT)
-        {
-            //CREATE AN EQUATION USING WORK RATE TO INCREASE BL
-            //IT'S STARTING TO HURT, Blood Lactate RISES EXPONENTIALLY - THIS IS A VISUAL THING
-            //NORMAL BL is like 1-2, but it can go up to 25 during intense exercise, but this is a worst-case scenario
-            //normal people BL go up to like 10-15 before they give up. perhaps make this an option.
-        }
-
         EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
         ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
 
@@ -109,13 +103,17 @@ public class Cardio : MonoBehaviour
     {
         BPsTargfunction();
         HRfunction();
-        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, 20);
+        BlaTargfunction();
+
+        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, timer.intervals);
+        BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocity, timer.intervals);
+        Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocity, timer.intervals);
         //HOW TO USE SMOOTHDAMP
-           //1 = START POSITION
-           //2 = FINISH
-           //3 = THIS IS THE WIERD ONE. JUST DO A 'PRIVATE FLOAT'
-           //4 - TIME IN SECONDS
-        BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocity, 20);
+        //1 = START POSITION
+        //2 = FINISH
+        //3 = THIS IS THE WIERD ONE. JUST DO A 'PRIVATE FLOAT'
+        //4 - TIME IN SECONDS
+
         timer.recalculateCARDIO = false;
     }
     
@@ -143,6 +141,11 @@ public class Cardio : MonoBehaviour
         {
             BPsTarg = (0.103f * exercise.BodyWork);
         }
+
+        if (BPsTarg < BPsBase)
+        {
+            BPsTarg = BPsBase;
+        }
     }
 
     public void BPdfunction(float BPdfunc)
@@ -153,13 +156,13 @@ public class Cardio : MonoBehaviour
 
     void HRfunction()
     {
-        if (character.gender == true)
+        if (character.gender == true) //male
         {
             HRtarg = (0.32f * exercise.BodyWork);
             //HEALTHY PEOPLE CAN BE -0.9 AND UNHEALTHY +0.9
         }
 
-        else if (character.gender == false)
+        else if (character.gender == false) // female
         {
             HRtarg = (0.43f * exercise.BodyWork);
             //+/- 0.15
@@ -203,10 +206,22 @@ public class Cardio : MonoBehaviour
         BlaT = (HRmax * 0.85f);
     }
 
-    public void Blafunction()
+    public void BlaTargfunction()
     {
-        Bla = 1.0f; //MODEL NEEDED
+        //MODEL NEEDED
         //OKAY TIME TO BS ONE
+        if (HR >= BlaT)
+        {
+            BlaTarget = Mathf.Pow((exercise.WorkDone / 90), 2);
+            //CREATE AN EQUATION USING WORK RATE TO INCREASE BL
+            //IT'S STARTING TO HURT, Blood Lactate RISES EXPONENTIALLY - THIS IS A VISUAL THING
+            //NORMAL BL is like 1-2, but it can go up to 25 during intense exercise, but this is a worst-case scenario
+            //normal people BL go up to like 10-15 before they give up. perhaps make this an option.
+        }
+        else
+        {
+            BlaTarget = Mathf.Pow((exercise.WorkDone / 130), 2) + 1.0f;
+        }
 
     }
 
