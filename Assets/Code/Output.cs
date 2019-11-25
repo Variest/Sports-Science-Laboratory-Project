@@ -17,6 +17,7 @@ public class Output : MonoBehaviour
     public string Bla;
     public string Heat;
     public string Water;
+    public string Exercise;
 
     // Start is called before the first frame update
     void Start()
@@ -91,6 +92,23 @@ public class Output : MonoBehaviour
                 break;
             case 4:
                 Water = "Water Dangerous"; //80%
+                break;
+        }
+
+        switch (exercise.exerciseType)
+        {
+
+            case 1:
+                Exercise = "Cycling";
+                break;
+            case 2:
+                Exercise = "Running";
+                break;
+            case 3:
+                Exercise = "Rowing";
+                break;
+            case 4:
+                Exercise = "Arm Ergonometer";
                 break;
         }
 
