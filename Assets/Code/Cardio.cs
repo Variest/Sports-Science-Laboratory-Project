@@ -47,6 +47,9 @@ public class Cardio : MonoBehaviour
 
     private float velocity = 0.0f;
 
+    public float BlaCond = 0;
+    public float HRCond = 0;
+
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
 
@@ -82,6 +85,7 @@ public class Cardio : MonoBehaviour
         if (HR >= HRmax)
         {
             HR = HRmax;
+            HRCond = 1;
             //DANGER! DANGER! - ANOTHER VISUAL THING
             //MAKE IT SO THE SUBJECT CAN ONLY STAY AT THIS LEVEL FOR A CERTAIN AMOUNT OF TIME
         }
@@ -94,12 +98,16 @@ public class Cardio : MonoBehaviour
                 {
                     if(Bla > 20)
                     {
+                        BlaCond = 4;
                         //kind of dangerous, subject might collapse
                     }
+                    BlaCond = 3;
                     //legs very tired, an unhealthy person would probably give up
                 }
+                BlaCond = 2;
                 //getting tired
             }
+            BlaCond = 1;
             //pretty okay, maybe a bit tired
         }
 

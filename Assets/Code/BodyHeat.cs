@@ -19,6 +19,9 @@ public class BodyHeat : MonoBehaviour
     public float HeatCapacity = 0.83f;
     public float KCAL = 4184; //4184 joules = 1KCAL
 
+    public float WaterCond = 0;
+    public float HeatCond = 0;
+
     Module exercise; //use heatwork and workdone
     WaterVapourConversion heat; //gastemp is what you want!
     Timer time;
@@ -55,15 +58,20 @@ public class BodyHeat : MonoBehaviour
                     if(BodyTemp >= 40.0f)
                     {
                         //DEAD
+                        HeatCond = 3;
                     }
                     //PROBABLY UNCONSCIOUS
                     MaxSweatRate = 4000;
+                    HeatCond = 2;
+
                 }
                 //WOOZY, EXTREMELY SWEATY
                 MaxSweatRate = 3000;
+                HeatCond = 1;
             }
             //SWEATY BOY
             MaxSweatRate = 1500;
+            HeatCond = 0;
         }
         
 
@@ -79,15 +87,19 @@ public class BodyHeat : MonoBehaviour
                     {
                         //DEAD
                         MaxSweatRate *= 0.5f;
+                        WaterCond = 4;
                     }
                     //DANGEROUSLY EXHAUSTED
                     MaxSweatRate *= 0.6f;
+                    WaterCond = 3;
                 }
                 //DIZZY, SERIOUSLY TIRED
                 MaxSweatRate *= 0.8f;
+                WaterCond = 2;
             }
             //A BIT TIRED
             MaxSweatRate *= 0.9f;
+            WaterCond = 1;
         }
         
     }
