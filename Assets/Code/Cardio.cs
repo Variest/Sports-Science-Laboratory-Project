@@ -86,6 +86,23 @@ public class Cardio : MonoBehaviour
             //MAKE IT SO THE SUBJECT CAN ONLY STAY AT THIS LEVEL FOR A CERTAIN AMOUNT OF TIME
         }
 
+        if (Bla > 5)
+        {
+            if (Bla > 10)
+            {
+                if(Bla > 15)
+                {
+                    if(Bla > 20)
+                    {
+                        //kind of dangerous, subject might collapse
+                    }
+                    //legs very tired, an unhealthy person would probably give up
+                }
+                //getting tired
+            }
+            //pretty okay, maybe a bit tired
+        }
+
         EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
         ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
 
@@ -277,7 +294,7 @@ public class Cardio : MonoBehaviour
     {
         TPR = (MAP / CO);
     }
-
+    
 
     Cardio(){}
 };

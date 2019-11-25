@@ -10,7 +10,7 @@ public class BodyHeat : MonoBehaviour
     public float WaterDrunk = 1000; //DEFAULTS TO 1 LITRE, which is a normal amount
     public float WaterPrcnt;
     public float SweatRate;
-    public float MaxSweatRate = 1000; //PER HOUR
+    public float MaxSweatRate = 1000; //PER HOUR (3600 seconds)
     public float SweatPower = 2400; //JOULES PER G (ML) OF SWEAT
     public float CoolPower;
     public float humidity = 30; //percent
@@ -78,13 +78,13 @@ public class BodyHeat : MonoBehaviour
                     if(WaterPrcnt <= 0.8)
                     {
                         //DEAD
-                        MaxSweatRate *= 0.2f;
+                        MaxSweatRate *= 0.5f;
                     }
                     //DANGEROUSLY EXHAUSTED
-                    MaxSweatRate *= 0.4f;
+                    MaxSweatRate *= 0.6f;
                 }
                 //DIZZY, SERIOUSLY TIRED
-                MaxSweatRate *= 0.7f;
+                MaxSweatRate *= 0.8f;
             }
             //A BIT TIRED
             MaxSweatRate *= 0.9f;
