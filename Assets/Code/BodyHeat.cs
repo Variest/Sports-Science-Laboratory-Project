@@ -10,7 +10,7 @@ public class BodyHeat : MonoBehaviour
     public float WaterDrunk = 1000; //DEFAULTS TO 1 LITRE, which is a normal amount
     public float WaterPrcnt;
     public float SweatRate;
-    public float MaxSweatRate = 1000; //PER HOUR
+    public float MaxSweatRate = 1000; //PER HOUR (3600 seconds)
     public float SweatPower = 2400; //JOULES PER G (ML) OF SWEAT
     public float CoolPower;
     public float humidity = 30; //percent
@@ -18,6 +18,9 @@ public class BodyHeat : MonoBehaviour
     public float metabolism = 85; //HUMAN METABOLISM TAKES 85W POWER CONSTANTLY
     public float HeatCapacity = 0.83f;
     public float KCAL = 4184; //4184 joules = 1KCAL
+
+    public float WaterCond = 0;
+    public float HeatCond = 0;
 
     Module exercise; //use heatwork and workdone
     WaterVapourConversion heat; //gastemp is what you want!
@@ -42,6 +45,8 @@ public class BodyHeat : MonoBehaviour
             sweatfunc();
             bodyheatfunc();
             time.tensecond = false;
+
+            //EXPERIMENT WITH TURNING * 10 TO * 100 FOR INCREASED OUTPUT
         }
 
         if(BodyTemp >= 37.0f)
@@ -53,15 +58,20 @@ public class BodyHeat : MonoBehaviour
                     if(BodyTemp >= 40.0f)
                     {
                         //DEAD
+                        HeatCond = 3;
                     }
                     //PROBABLY UNCONSCIOUS
                     MaxSweatRate = 4000;
+                    HeatCond = 2;
+
                 }
                 //WOOZY, EXTREMELY SWEATY
                 MaxSweatRate = 3000;
+                HeatCond = 1;
             }
             //SWEATY BOY
             MaxSweatRate = 1500;
+            HeatCond = 0;
         }
         
 
@@ -76,16 +86,20 @@ public class BodyHeat : MonoBehaviour
                     if(WaterPrcnt <= 0.8)
                     {
                         //DEAD
-                        MaxSweatRate *= 0.2f;
+                        MaxSweatRate *= 0.5f;
+                        WaterCond = 4;
                     }
                     //DANGEROUSLY EXHAUSTED
-                    MaxSweatRate *= 0.4f;
+                    MaxSweatRate *= 0.6f;
+                    WaterCond = 3;
                 }
                 //DIZZY, SERIOUSLY TIRED
-                MaxSweatRate *= 0.7f;
+                MaxSweatRate *= 0.8f;
+                WaterCond = 2;
             }
             //A BIT TIRED
             MaxSweatRate *= 0.9f;
+            WaterCond = 1;
         }
         
     }
@@ -95,14 +109,14 @@ public class BodyHeat : MonoBehaviour
         HeatGain = (exercise.HeatWork + metabolism) - CoolPower;
         if (HeatGain > 0)
         {
-            BodyTemp += (((HeatGain / KCAL) / customiser.weight) * HeatCapacity * 10);
+            BodyTemp += (((HeatGain / KCAL) / customiser.weight) * (HeatCapacity * 10));
             //body temperature rise = how many KCAL's gained in heat energy/weight * HC coefficient (ten seconds)
         }
     }
 
     void sweatfunc()
     {
-        SweatRate = ((exercise.HeatWork + metabolism)/ SweatPower); //this is HOW MANY MLs ARE NEEDED A SECOND
+        SweatRate = ((exercise.HeatWork + metabolism) / SweatPower); //this is HOW MANY MLs ARE NEEDED A SECOND
         if((SweatRate * 3600) > MaxSweatRate)
         {
             SweatRate = MaxSweatRate;

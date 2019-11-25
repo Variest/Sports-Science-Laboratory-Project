@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    float intervals = 0; //how long between each boost in intensity
-    float increase = 0; //increase RPM by how many (MAYBE CHANGE TO FLAT WORK DONE?)
+    public float intervals = 0; //how long between each boost in intensity
+    public float increase = 0; //increase RPM by how many (MAYBE CHANGE TO FLAT WORK DONE?)
     public float counter = 0; //how many ten second/s have passed
     public float timer; //time between each loop
     public float elapsed; //total time elapsed

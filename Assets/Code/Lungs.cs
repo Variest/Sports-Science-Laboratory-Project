@@ -75,6 +75,9 @@ public class Lung : MonoBehaviour
             TLC = 4.2f;
             VC = 3.2f;
         };
+
+        //MAYBE CHANGE THESE BASED ON THE EXERCISE TYPE?
+        //FOR EXAMPLE, YOU ARE HUNCHED OVER WHILST CYCLING, DECREASING LUNG CAPACITY
     }
 
     void FEV1function() //changes things based on character settings
