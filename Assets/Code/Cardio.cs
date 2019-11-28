@@ -86,6 +86,30 @@ public class Cardio : MonoBehaviour
             HR = HRmax;
         }
 
+        if (Bla > 5)
+        {
+            BlaCond = 1;
+            //pretty okay, maybe a bit tired
+
+            if (Bla > 10)
+            {
+                BlaCond = 2;
+                //getting tired
+
+                if (Bla > 15)
+                {
+                    BlaCond = 3;
+                    //legs very tired, an unhealthy person would probably give up
+
+                    if (Bla > 20)
+                    {
+                        BlaCond = 4;
+                        //becoming dangerous; subject should stop or risk last injury
+                    }
+                }
+            }
+        }
+
         EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
         ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
 
@@ -98,6 +122,8 @@ public class Cardio : MonoBehaviour
         TPRfunction();
         BPfunction();
     }
+
+    //COMPUTING FUNCTIONS
 
     public void MathFunc()
     {
@@ -181,7 +207,6 @@ public class Cardio : MonoBehaviour
         HR = HRrestfunc;
     }
 
-
     void HRmaxfunction()
     {
         HRmax = (220 - character.age);
@@ -205,7 +230,7 @@ public class Cardio : MonoBehaviour
     public void BlaTargfunction()
     {
         //MODEL NEEDED
-        //OKAY TIME TO BS ONE
+
         if (HR >= BlaT)
         {
             HRCond = 1;
@@ -219,30 +244,6 @@ public class Cardio : MonoBehaviour
             HRCond = 0;
             BlaTarget = (Mathf.Pow((exercise.WorkDone / 130), 2) + 1.0f + (timer.counter / 10));
         }
-
-        if (Bla > 5)
-        {
-            BlaCond = 1;
-            //pretty okay, maybe a bit tired
-
-            if (Bla > 10)
-            {
-                BlaCond = 2;
-                //getting tired
-
-                if(Bla > 15)
-                {
-                    BlaCond = 3;
-                    //legs very tired, an unhealthy person would probably give up
-
-                    if(Bla > 20)
-                    {
-                        BlaCond = 4;
-                        //becoming dangerous; subject should stop or risk last injury
-                    }
-                }
-            }
-        }
     }
 
     //FUNCTIONS LEVEL 2
@@ -251,7 +252,6 @@ public class Cardio : MonoBehaviour
     {
         CO = (SV * HR);
     }
-
 
     void BPfunction()
     {
@@ -297,6 +297,5 @@ public class Cardio : MonoBehaviour
         TPR = (MAP / CO);
     }
     
-
     Cardio(){}
 };

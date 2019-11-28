@@ -113,6 +113,5 @@ public class Output : MonoBehaviour
                 Exercise = "Arm Ergonometer";
                 break;
         }
-
     }
 }
