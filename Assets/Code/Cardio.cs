@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Cardio : MonoBehaviour
 {
     //IMPORTANT INTEGERS
     //I = INPUT, M = MODELLED, CA = CALCULATED CONSTANTLY CB = CALCULATED ONCE
-    public float Bla; //I/M! blood lactate -			what the fuck?
+    public float Bla = 1.0f; //I/M! blood lactate -	    SOMEWHAT appropriately modelled
+    public float BlaTarget;
     public float BlaT; //CB blood lactate threshold -   85% of max heart rate or 75% of VO2Max
     public float BPd; //I diastolic blood pressure -	INPUT 
     public float BPs; //I/M systolic blood pressure -	INPUT, and we have a DECENT way of modelling it;
@@ -35,13 +37,18 @@ public class Cardio : MonoBehaviour
                                                         //during exercise the heart generally just gets bigger - minimum pressure doesn't change, but everything else goes futher in it's direction.
                                                         //end systolic volume/pressure changes the most, though - Volume goes down whilst pressure goes up (more squeeze). EDV goes up a bit, P no change.
     public float SW; //CA stroke work =					SV*MAP
-    public float TPR; //CA total peripheral resistance =	MAP/CO
+    public float TPR; //CA total peripheral resistance = MAP/CO
 
     public float HRtarg; //TESTING CB
     public float BPsTarg; //TESTING CB
     public float BPsBase; //TESTING I
     public float EDVbase; //TESTING I
     public float ESVbase; //TESTING I
+
+    private float velocity = 0.0f; //FOR SMOOTHDAMP
+
+    public float BlaCond = 0; //OUTPUT
+    public float HRCond = 0; //OUTPUT
 
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
@@ -67,29 +74,46 @@ public class Cardio : MonoBehaviour
     public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
     {
         //CALCULATION
-        if(timer.recalculate == true)
-        { 
+        if(timer.recalculateCARDIO == true)
+        {
             //every time the work being done increases (when the timer mini resets)
             //a lot of things need to be recalculated (HR, BPs) and some other stuff too
             MathFunc();
-        };
+        }
+
+        if (HR >= HRmax)
+        {
+            HR = HRmax;
+        }
+
+        if (Bla > 5)
+        {
+            BlaCond = 1;
+            //pretty okay, maybe a bit tired
+
+            if (Bla > 10)
+            {
+                BlaCond = 2;
+                //getting tired
+
+                if (Bla > 15)
+                {
+                    BlaCond = 3;
+                    //legs very tired, an unhealthy person would probably give up
+
+                    if (Bla > 20)
+                    {
+                        BlaCond = 4;
+                        //becoming dangerous; subject should stop or risk last injury
+                    }
+                }
+            }
+        }
 
         EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
         ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
 
-        //OUTPUT
-        if (HR >= HRmax)
-        {
-            HR = HRmax;
-            //DANGER! DANGER! - ANOTHER VISUAL THING
-        }
-
-        if (HR >= BlaT)
-        {
-            //IT'S STARTING TO HURT, Blood Lactate RISES EXPONENTIALLY - THIS IS A VISUAL THING
-        }
-
-        SVfunction(); //update everything else for relevant stuff
+        SVfunction(); //update everything else for relevant stuff, the order is very important
         COfunction();
         OPfunction();
         MAPfunction();
@@ -99,17 +123,33 @@ public class Cardio : MonoBehaviour
         BPfunction();
     }
 
+    //COMPUTING FUNCTIONS
+
     public void MathFunc()
     {
         BPsTargfunction();
-        HRfunction();
-        Mathf.SmoothStep(HRrest, HRtarg, HR);
-        Mathf.SmoothStep(BPsBase, BPsTarg, HR);
-        //PROBLEM - SMOOTHSTEP MIGHT BE TOO FAST
-        //BUT SMOOTHDAMP, WHICH I CAN CONTROL THE TIME OF, IS TOO COMPLICATED
-        timer.recalculate = false;
+        HRtargfunction();
+        BlaTargfunction();
+
+        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, timer.intervals);
+        BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocity, timer.intervals);
+        Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocity, timer.intervals);
+
+        //HOW TO USE SMOOTHDAMP
+        //1 = START POSITION
+        //2 = FINISH
+        //3 = THIS IS THE WIERD ONE. JUST DO A 'PRIVATE FLOAT'
+        //4 - TIME IN SECONDS
+
+        timer.recalculateCARDIO = false;
     }
-    
+
+    public void CardioResetfunc()
+    {
+        HR = Mathf.SmoothDamp(HR, HRrest, ref velocity, 5);
+        BPs = Mathf.SmoothDamp(BPs, BPsBase, ref velocity, 5);
+    }
+
     //FUNCTIONS LEVEL 1
 
     public void BPsfunction(float BPsfunc) //USE THIS ONE FOR INPUT
@@ -120,38 +160,56 @@ public class Cardio : MonoBehaviour
 
     void BPsTargfunction()
     {
-        if (character.gender == true) //male
+        if (character.gender == 1) //male
         {
-            BPsTarg = (0.346f * exercise.WorkDone + BPsBase);
+            BPsTarg = (0.346f * exercise.BodyWork);
+        }
+        else if (character.gender == 0) //female
+        {
+            BPsTarg = (0.103f * exercise.BodyWork);
         }
 
-        else if (character.gender == false) //female
+        if (BPsTarg < BPsBase)
         {
-            BPsTarg = (0.103f * exercise.WorkDone + BPsBase);
+            BPsTarg = BPsBase;
         }
     }
 
-    void BPdfunction(float BPdfunc)
+    public void BPdfunction(float BPdfunc)
     {
         BPd = BPdfunc; //INPUT
     }
 
-    void Blafunction(float Blafunc)
+
+    void HRtargfunction()
     {
-        Bla = Blafunc; //MODEL NEEDED
+        if (character.gender == 1) //male
+        {
+            HRtarg = (0.32f * exercise.BodyWork);
+            //HEALTHY PEOPLE CAN BE -0.9 AND UNHEALTHY +0.9
+        }
+        else if (character.gender == 0) // female
+        {
+            HRtarg = (0.43f * exercise.BodyWork);
+            //+/- 0.15
+        }
+
+        //backup
+        if(HRtarg < HRrest)
+        {
+            HRtarg = (HRrest + (0.1f * exercise.BodyWork));
+        }
     }
 
-    void HRfunction()
+    public void HRrestfunction(float HRrestfunc)
     {
-        if (character.gender == true)
-        {
-            HRtarg = (HRrest + (4.7f * exercise.WorkDone) / 10);
-        }
+        HRrest = HRrestfunc; //INPUT
+        HR = HRrestfunc;
+    }
 
-        else if (character.gender == false)
-        {
-            HRtarg = (HRrest + (7.1f * exercise.WorkDone) / 10);
-        }
+    void HRmaxfunction()
+    {
+        HRmax = (220 - character.age);
     }
 
     void MAPfunction()
@@ -163,15 +221,29 @@ public class Cardio : MonoBehaviour
     {
         OP = (vents.VO2 / HR);
     }
-
-    void HRmaxfunction()
-    {
-        HRmax = (220 - character.age);
-    }
-
+    
     void BlaTfunction()
     {
         BlaT = (HRmax * 0.85f);
+    }
+
+    public void BlaTargfunction()
+    {
+        //MODEL NEEDED
+
+        if (HR >= BlaT)
+        {
+            HRCond = 1;
+            BlaTarget = (Mathf.Pow((exercise.WorkDone / 90), 2) + (timer.counter / 10));
+
+            //NORMAL BL is like 1-2, but it can go up to 25 during intense exercise, but this is a worst-case scenario
+            //normal people BL go up to like 10-15 before they give up. perhaps make this an option.
+        }
+        else
+        {
+            HRCond = 0;
+            BlaTarget = (Mathf.Pow((exercise.WorkDone / 130), 2) + 1.0f + (timer.counter / 10));
+        }
     }
 
     //FUNCTIONS LEVEL 2
@@ -179,11 +251,6 @@ public class Cardio : MonoBehaviour
     void COfunction()
     {
         CO = (SV * HR);
-    }
-
-    void HRrestfunction(float HRrestfunc)
-    {
-        HRrest = HRrestfunc; //INPUT
     }
 
     void BPfunction()
@@ -208,14 +275,13 @@ public class Cardio : MonoBehaviour
         EF = ((SV / EDV) * 100);
     }
 
-    void EDVfunction(float EDVfunc)
+    public void EDVfunction(float EDVfunc)
     {
         EDV = EDVfunc; //INPUT, INCREASES BY UP TO 21%
-        EDVbase = EDVfunc;
-        
+        EDVbase = EDVfunc;        
     }
 
-    void ESVfunction(float ESVfunc)
+    public void ESVfunction(float ESVfunc)
     {
         ESV = ESVfunc; //INPUT, DECREASES BY UP TO 18%
         ESVbase = ESVfunc;
@@ -230,7 +296,6 @@ public class Cardio : MonoBehaviour
     {
         TPR = (MAP / CO);
     }
-
-
+    
     Cardio(){}
 };
