@@ -10,6 +10,12 @@ public class ClickCalculateButton : MonoBehaviour {
     public GameObject answerPanel;
     public GameObject inputPanel;
     public Button hideButton;
+
+    private bool clicked;
+    private int counter = 1;
+    private float waitTime = 2.0f;
+    private float timer = 0.0f;
+
     // Use this for initialization
     void Start () {
         test = resultField.GetComponent<TestInput>();
@@ -19,10 +25,23 @@ public class ClickCalculateButton : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (counter > 1)
+        { 
+            timer += Time.deltaTime;
+
+            if (timer > waitTime)
+            {
+                StartCoroutine(processTask());
+                timer = timer - waitTime;
+            }
+        }
 	}
     void taskOnClick()
     {
+        if(counter == 1)
+        {
+            counter++;
+        }
         test.Calculate();
         if (answerPanel || inputPanel != false)
         {
@@ -39,6 +58,12 @@ public class ClickCalculateButton : MonoBehaviour {
             answerPanel.SetActive(false);
             inputPanel.SetActive(true);
         }
+    }
+
+    IEnumerator processTask()
+    {
+        yield return new WaitForSeconds(2);
+        test.Calculate();
     }
 }
 

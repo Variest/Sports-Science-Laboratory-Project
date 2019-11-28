@@ -48,7 +48,21 @@ public class TestInput : MonoBehaviour {
     void Start () {
         resultField = GetComponent<Text>();
         ventCalc = calcScripts.GetComponent<pvEquations>();
-	}
+        expiryTime.readOnly = true;
+        expiryRatio.readOnly = true;
+        VE.readOnly = true;
+        VI.readOnly = true;
+        VCO2.readOnly = true;
+        VO2.readOnly = true;
+        RER.readOnly = true;
+        RQ.readOnly = true;
+        Vecap.readOnly = true;
+        VeVO2.readOnly = true;
+        VeVCO2.readOnly = true;
+        EPOC.readOnly = true;
+        MET.readOnly = true;
+        VO2fr.readOnly = true;
+    }
 	
 	// Update is called once per frame
 	void Update () {
