@@ -45,10 +45,10 @@ public class Cardio : MonoBehaviour
     public float EDVbase; //TESTING I
     public float ESVbase; //TESTING I
 
-    private float velocity = 0.0f;
+    private float velocity = 0.0f; //FOR SMOOTHDAMP
 
-    public float BlaCond = 0;
-    public float HRCond = 0;
+    public float BlaCond = 0; //OUTPUT
+    public float HRCond = 0; //OUTPUT
 
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
@@ -84,8 +84,6 @@ public class Cardio : MonoBehaviour
         if (HR >= HRmax)
         {
             HR = HRmax;
-            //DANGER! DANGER! - ANOTHER VISUAL THING
-            //MAKE IT SO THE SUBJECT CAN ONLY STAY AT THIS LEVEL FOR A CERTAIN AMOUNT OF TIME
         }
 
         EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
@@ -216,16 +214,15 @@ public class Cardio : MonoBehaviour
         if (HR >= BlaT)
         {
             HRCond = 1;
-            BlaTarget = Mathf.Pow((exercise.WorkDone / 90), 2);
-            //CREATE AN EQUATION USING WORK RATE TO INCREASE BL
-            //IT'S STARTING TO HURT, Blood Lactate RISES EXPONENTIALLY - THIS IS A VISUAL THING
+            BlaTarget = (Mathf.Pow((exercise.WorkDone / 90), 2) + (timer.counter / 10));
+
             //NORMAL BL is like 1-2, but it can go up to 25 during intense exercise, but this is a worst-case scenario
             //normal people BL go up to like 10-15 before they give up. perhaps make this an option.
         }
         else
         {
-            BlaTarget = Mathf.Pow((exercise.WorkDone / 130), 2) + 1.0f;
             HRCond = 0;
+            BlaTarget = (Mathf.Pow((exercise.WorkDone / 130), 2) + 1.0f + (timer.counter / 10);
         }
 
         if (Bla > 5)

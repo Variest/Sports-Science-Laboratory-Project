@@ -48,8 +48,6 @@ public class BodyHeat : MonoBehaviour
             sweatfunc();
             bodyheatfunc();
             time.tensecond = false;
-
-            //EXPERIMENT WITH TURNING * 10 TO * 100 FOR INCREASED OUTPUT
         }    
     }
 
@@ -127,7 +125,7 @@ public class BodyHeat : MonoBehaviour
         }
                 
         BodyWater -= (SweatRate * 10); //this is calculated every ten seconds, so *10 
-        
+        //EXPERIMENT WITH TURNING * 10 TO * 100 FOR INCREASED OUTPUT
         //CHECKING BODYWATER NOW THAT IT IS DECREASED
 
         WaterPrcnt = (BodyWater / BodyWaterBase);
