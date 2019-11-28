@@ -43,11 +43,11 @@ public class BodyHeat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (time.tensecond)
+        if(time.tensecondHEAT)
         {
             sweatfunc();
             bodyheatfunc();
-            time.tensecond = false;
+            time.tensecondHEAT = false;
         }    
     }
 

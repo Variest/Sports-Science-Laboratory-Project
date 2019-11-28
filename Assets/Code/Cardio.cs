@@ -128,7 +128,7 @@ public class Cardio : MonoBehaviour
     public void MathFunc()
     {
         BPsTargfunction();
-        HRfunction();
+        HRtargfunction();
         BlaTargfunction();
 
         HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, timer.intervals);
@@ -181,7 +181,7 @@ public class Cardio : MonoBehaviour
     }
 
 
-    void HRfunction()
+    void HRtargfunction()
     {
         if (character.gender == 1) //male
         {

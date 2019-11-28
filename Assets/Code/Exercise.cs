@@ -148,7 +148,6 @@ public class Module : MonoBehaviour
 
         BodyWork = (WorkDone / efficiency);
         HeatWork = (BodyWork - WorkDone);
-
     }
 
     Module() { }

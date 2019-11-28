@@ -37,10 +37,7 @@ public class Lung : MonoBehaviour
     {
         PImaxfunction();
         PEmaxfunction();
-        setupfunction();
-        FEV1function();
-        FVCfunction();
-        FVRfunction();
+
         if(VC == 0)
         {
             setupfunction();
@@ -75,6 +72,10 @@ public class Lung : MonoBehaviour
             TLC = 4.2f;
             VC = 3.2f;
         };
+
+        FEV1function();
+        FVCfunction();
+        FVRfunction();
 
         //MAYBE CHANGE THESE BASED ON THE EXERCISE TYPE?
         //FOR EXAMPLE, YOU ARE HUNCHED OVER WHILST CYCLING, DECREASING LUNG CAPACITY
