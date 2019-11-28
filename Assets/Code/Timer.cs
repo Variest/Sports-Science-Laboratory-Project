@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
     public Stopwatch mini = new Stopwatch();
     public Stopwatch main = new Stopwatch();
     public Stopwatch moments = new Stopwatch();
-    float tenseconds = 10000;
+    float tenseconds = 10000f;
 
     Module exercise;
 
