@@ -15,8 +15,8 @@ public class Timer : MonoBehaviour
     float limit; //entire experiment runs for X seconds
     public bool recalculateCARDIO = true;
     public Stopwatch mini = new Stopwatch(); //revolves around the player's input
-    public Stopwatch main = new Stopwatch(); //measures entire time, and ends the test
-    public Stopwatch moments = new Stopwatch(); //every ten seconds, used for loops etc.
+    public Stopwatch main = new Stopwatch(); //measures entire time, and ends the test, also at the player's input
+    public Stopwatch moments = new Stopwatch(); //every ten seconds, used for loops etc. automated.
     float tenseconds = 10000;
     public bool tensecond = false;
 
@@ -41,14 +41,14 @@ public class Timer : MonoBehaviour
             moments.Start();
         }
 
-        if(mini.IsRunning && mini.ElapsedMilliseconds == (intervals*1000))
+        if(mini.IsRunning && (mini.ElapsedMilliseconds == (intervals*1000))) //intervals is probably measured in seconds
         {         
             mini.Restart();
             exercise.RPMfunction((exercise.RPM + increase));
             recalculateCARDIO = true;
         } //MINI TIMER - TIMES BETWEEN EACH INCREASE IN INTENSITY
                
-        if(main.IsRunning && main.ElapsedMilliseconds == (limit*1000))
+        if(main.IsRunning && (main.ElapsedMilliseconds == (limit*1000)))
         {
             main.Reset();
             mini.Reset();

@@ -138,7 +138,6 @@ public class Cardio : MonoBehaviour
         {
             BPsTarg = (0.346f * exercise.BodyWork);
         }
-
         else if (character.gender == 0) //female
         {
             BPsTarg = (0.103f * exercise.BodyWork);
@@ -163,7 +162,6 @@ public class Cardio : MonoBehaviour
             HRtarg = (0.32f * exercise.BodyWork);
             //HEALTHY PEOPLE CAN BE -0.9 AND UNHEALTHY +0.9
         }
-
         else if (character.gender == 0) // female
         {
             HRtarg = (0.43f * exercise.BodyWork);
@@ -219,7 +217,7 @@ public class Cardio : MonoBehaviour
         else
         {
             HRCond = 0;
-            BlaTarget = (Mathf.Pow((exercise.WorkDone / 130), 2) + 1.0f + (timer.counter / 10);
+            BlaTarget = (Mathf.Pow((exercise.WorkDone / 130), 2) + 1.0f + (timer.counter / 10));
         }
 
         if (Bla > 5)
@@ -240,7 +238,7 @@ public class Cardio : MonoBehaviour
                     if(Bla > 20)
                     {
                         BlaCond = 4;
-                        //kind of dangerous, subject might collapse
+                        //becoming dangerous; subject should stop or risk last injury
                     }
                 }
             }
@@ -280,8 +278,7 @@ public class Cardio : MonoBehaviour
     public void EDVfunction(float EDVfunc)
     {
         EDV = EDVfunc; //INPUT, INCREASES BY UP TO 21%
-        EDVbase = EDVfunc;
-        
+        EDVbase = EDVfunc;        
     }
 
     public void ESVfunction(float ESVfunc)
