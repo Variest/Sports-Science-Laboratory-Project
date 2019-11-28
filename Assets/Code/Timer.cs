@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour
     public float timer; //time between each loop
     public float elapsed; //total time elapsed
     float limit; //entire experiment runs for X seconds
+
     public bool recalculateCARDIO = true;
     public Stopwatch mini = new Stopwatch(); //revolves around the player's input
     public Stopwatch main = new Stopwatch(); //measures entire time, and ends the test, also at the player's input
