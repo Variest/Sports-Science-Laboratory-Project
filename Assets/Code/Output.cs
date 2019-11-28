@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Output : MonoBehaviour
 {
+    Output() { }
+
     Cardio cardio;
     //HEART RATE(0-1) AND BLOOD LACTATE(0-4)
     //PAINED FACE, AND TIRED LOOKING
@@ -34,10 +36,10 @@ public class Output : MonoBehaviour
         switch (cardio.HRCond)
         {
             case 0:
-                HR = "Heart Rate Normal"; //anything below max
+                HR = "Heart Rate Normal"; //anything below lactate threshhold
                 break;
             case 1:
-                HR = "Heart Rate High"; //max or above
+                HR = "Heart Rate High"; //LT or above
                 break;
         }
 

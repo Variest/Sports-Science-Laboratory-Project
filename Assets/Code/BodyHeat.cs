@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BodyHeat : MonoBehaviour
-{
+{ 
+    BodyHeat(){ }
+
+
     public float BodyTemp = 36.0f;
     public float BodyWaterBase;
     public float BodyWater;
@@ -65,11 +68,11 @@ public class BodyHeat : MonoBehaviour
                     HeatCond = 2;
 
                 }
-                //WOOZY, EXTREMELY SWEATY
+                //WOOZY, VERY SWEATY
                 MaxSweatRate = 3000;
                 HeatCond = 1;
             }
-            //SWEATY BOY
+            //GETTING TIRED/SWEATY
             MaxSweatRate = 1500;
             HeatCond = 0;
         }
@@ -97,7 +100,7 @@ public class BodyHeat : MonoBehaviour
                 MaxSweatRate *= 0.8f;
                 WaterCond = 2;
             }
-            //A BIT TIRED
+            //A BIT TIRED/THIRSTY
             MaxSweatRate *= 0.9f;
             WaterCond = 1;
         }

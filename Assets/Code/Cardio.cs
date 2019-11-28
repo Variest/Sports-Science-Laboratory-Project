@@ -7,7 +7,7 @@ public class Cardio : MonoBehaviour
 {
     //IMPORTANT INTEGERS
     //I = INPUT, M = MODELLED, CA = CALCULATED CONSTANTLY CB = CALCULATED ONCE
-    public float Bla = 1.0f; //I/M! blood lactate -			what the fuck?
+    public float Bla = 1.0f; //I/M! blood lactate -	    SOMEWHAT appropriately modelled
     public float BlaTarget;
     public float BlaT; //CB blood lactate threshold -   85% of max heart rate or 75% of VO2Max
     public float BPd; //I diastolic blood pressure -	INPUT 
@@ -85,7 +85,6 @@ public class Cardio : MonoBehaviour
         if (HR >= HRmax)
         {
             HR = HRmax;
-            HRCond = 1;
             //DANGER! DANGER! - ANOTHER VISUAL THING
             //MAKE IT SO THE SUBJECT CAN ONLY STAY AT THIS LEVEL FOR A CERTAIN AMOUNT OF TIME
         }
@@ -237,6 +236,7 @@ public class Cardio : MonoBehaviour
         //OKAY TIME TO BS ONE
         if (HR >= BlaT)
         {
+            HRCond = 1;
             BlaTarget = Mathf.Pow((exercise.WorkDone / 90), 2);
             //CREATE AN EQUATION USING WORK RATE TO INCREASE BL
             //IT'S STARTING TO HURT, Blood Lactate RISES EXPONENTIALLY - THIS IS A VISUAL THING
