@@ -91,23 +91,26 @@ public class Cardio : MonoBehaviour
 
         if (Bla > 5)
         {
+            BlaCond = 1;
+            //pretty okay, maybe a bit tired
+
             if (Bla > 10)
             {
+                BlaCond = 2;
+                //getting tired
+
                 if(Bla > 15)
                 {
+                    BlaCond = 3;
+                    //legs very tired, an unhealthy person would probably give up
+
                     if(Bla > 20)
                     {
                         BlaCond = 4;
                         //kind of dangerous, subject might collapse
                     }
-                    BlaCond = 3;
-                    //legs very tired, an unhealthy person would probably give up
                 }
-                BlaCond = 2;
-                //getting tired
             }
-            BlaCond = 1;
-            //pretty okay, maybe a bit tired
         }
 
         EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
@@ -246,6 +249,7 @@ public class Cardio : MonoBehaviour
         else
         {
             BlaTarget = Mathf.Pow((exercise.WorkDone / 130), 2) + 1.0f;
+            HRCond = 0;
         }
 
     }
