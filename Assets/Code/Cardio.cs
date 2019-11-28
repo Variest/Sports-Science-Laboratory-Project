@@ -117,18 +117,21 @@ public class Cardio : MonoBehaviour
 
         timer.recalculateCARDIO = false;
     }
-    
+
+    public void CardioResetfunc()
+    {
+        HR = Mathf.SmoothDamp(HR, HRrest, ref velocity, 5);
+        BPs = BPsBase;
+        EDV = EDVbase;
+        ESV = ESVbase;
+    }
+
     //FUNCTIONS LEVEL 1
 
     public void BPsfunction(float BPsfunc) //USE THIS ONE FOR INPUT
     {
         BPs = BPsfunc;
         BPsBase = BPsfunc;
-    }
-
-    public void BPsreset()
-    {
-        BPs = BPsBase;
     }
 
     void BPsTargfunction()
@@ -182,10 +185,6 @@ public class Cardio : MonoBehaviour
         HR = HRrestfunc;
     }
 
-    public void HRresetfunc()
-    {
-        HR = Mathf.SmoothDamp(HR, HRrest, ref velocity, 5);
-    }
 
     void HRmaxfunction()
     {
