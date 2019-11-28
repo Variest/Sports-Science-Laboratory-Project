@@ -54,7 +54,7 @@ public class Timer : MonoBehaviour
             mini.Reset();
         } //BIG TIMER - TIMES SINCE THE START OF THE 'EXPERIMENT' AND UNTIL THE END
 
-        if(moments.IsRunning && moments.ElapsedMilliseconds == tenseconds)
+        if(moments.IsRunning && (moments.ElapsedMilliseconds == tenseconds))
         {
             counter++;
             moments.Restart();
@@ -65,7 +65,6 @@ public class Timer : MonoBehaviour
 
         timer = (mini.ElapsedMilliseconds / 1000); //SECONDS
         elapsed = (main.ElapsedMilliseconds / 1000); //SECONDS
-
     }
 
     void intervalfunc(float intervalfunc)
