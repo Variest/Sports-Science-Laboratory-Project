@@ -160,11 +160,11 @@ public class Cardio : MonoBehaviour
 
     void BPsTargfunction()
     {
-        if (character.gender == 1) //male
+        if (character.gender == true) //male
         {
             BPsTarg = (0.346f * exercise.BodyWork);
         }
-        else if (character.gender == 0) //female
+        else if (character.gender == false) //female
         {
             BPsTarg = (0.103f * exercise.BodyWork);
         }
@@ -183,12 +183,12 @@ public class Cardio : MonoBehaviour
 
     void HRtargfunction()
     {
-        if (character.gender == 1) //male
+        if (character.gender == true) //male
         {
             HRtarg = (0.32f * exercise.BodyWork);
             //HEALTHY PEOPLE CAN BE -0.9 AND UNHEALTHY +0.9
         }
-        else if (character.gender == 0) // female
+        else if (character.gender == false) // female
         {
             HRtarg = (0.43f * exercise.BodyWork);
             //+/- 0.15
