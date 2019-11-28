@@ -7,7 +7,7 @@ public class Cardio : MonoBehaviour
 {
     //IMPORTANT INTEGERS
     //I = INPUT, M = MODELLED, CA = CALCULATED CONSTANTLY CB = CALCULATED ONCE
-    public float Bla = 1.0f; //I/M! blood lactate -			what the fuck?
+    public float Bla = 1.0f; //I/M! blood lactate -	    SOMEWHAT appropriately modelled
     public float BlaTarget;
     public float BlaT; //CB blood lactate threshold -   85% of max heart rate or 75% of VO2Max
     public float BPd; //I diastolic blood pressure -	INPUT 
@@ -37,7 +37,7 @@ public class Cardio : MonoBehaviour
                                                         //during exercise the heart generally just gets bigger - minimum pressure doesn't change, but everything else goes futher in it's direction.
                                                         //end systolic volume/pressure changes the most, though - Volume goes down whilst pressure goes up (more squeeze). EDV goes up a bit, P no change.
     public float SW; //CA stroke work =					SV*MAP
-    public float TPR; //CA total peripheral resistance =	MAP/CO
+    public float TPR; //CA total peripheral resistance = MAP/CO
 
     public float HRtarg; //TESTING CB
     public float BPsTarg; //TESTING CB
@@ -45,10 +45,10 @@ public class Cardio : MonoBehaviour
     public float EDVbase; //TESTING I
     public float ESVbase; //TESTING I
 
-    private float velocity = 0.0f;
+    private float velocity = 0.0f; //FOR SMOOTHDAMP
 
-    public float BlaCond = 0;
-    public float HRCond = 0;
+    public float BlaCond = 0; //OUTPUT
+    public float HRCond = 0; //OUTPUT
 
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
@@ -80,41 +80,40 @@ public class Cardio : MonoBehaviour
             //a lot of things need to be recalculated (HR, BPs) and some other stuff too
             MathFunc();
         }
-        //OUTPUT
 
         if (HR >= HRmax)
         {
             HR = HRmax;
-            HRCond = 1;
-            //DANGER! DANGER! - ANOTHER VISUAL THING
-            //MAKE IT SO THE SUBJECT CAN ONLY STAY AT THIS LEVEL FOR A CERTAIN AMOUNT OF TIME
         }
 
         if (Bla > 5)
         {
-            if (Bla > 10)
-            {
-                if(Bla > 15)
-                {
-                    if(Bla > 20)
-                    {
-                        BlaCond = 4;
-                        //kind of dangerous, subject might collapse
-                    }
-                    BlaCond = 3;
-                    //legs very tired, an unhealthy person would probably give up
-                }
-                BlaCond = 2;
-                //getting tired
-            }
             BlaCond = 1;
             //pretty okay, maybe a bit tired
+
+            if (Bla > 10)
+            {
+                BlaCond = 2;
+                //getting tired
+
+                if (Bla > 15)
+                {
+                    BlaCond = 3;
+                    //legs very tired, an unhealthy person would probably give up
+
+                    if (Bla > 20)
+                    {
+                        BlaCond = 4;
+                        //becoming dangerous; subject should stop or risk last injury
+                    }
+                }
+            }
         }
 
         EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
         ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
 
-        SVfunction(); //update everything else for relevant stuff
+        SVfunction(); //update everything else for relevant stuff, the order is very important
         COfunction();
         OPfunction();
         MAPfunction();
@@ -124,15 +123,18 @@ public class Cardio : MonoBehaviour
         BPfunction();
     }
 
+    //COMPUTING FUNCTIONS
+
     public void MathFunc()
     {
         BPsTargfunction();
-        HRfunction();
+        HRtargfunction();
         BlaTargfunction();
 
         HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, timer.intervals);
         BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocity, timer.intervals);
         Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocity, timer.intervals);
+
         //HOW TO USE SMOOTHDAMP
         //1 = START POSITION
         //2 = FINISH
@@ -141,7 +143,13 @@ public class Cardio : MonoBehaviour
 
         timer.recalculateCARDIO = false;
     }
-    
+
+    public void CardioResetfunc()
+    {
+        HR = Mathf.SmoothDamp(HR, HRrest, ref velocity, 5);
+        BPs = Mathf.SmoothDamp(BPs, BPsBase, ref velocity, 5);
+    }
+
     //FUNCTIONS LEVEL 1
 
     public void BPsfunction(float BPsfunc) //USE THIS ONE FOR INPUT
@@ -150,19 +158,13 @@ public class Cardio : MonoBehaviour
         BPsBase = BPsfunc;
     }
 
-    public void BPsreset()
-    {
-        BPs = BPsBase;
-    }
-
     void BPsTargfunction()
     {
-        if (character.gender == true) //male
+        if (character.gender == 1) //male
         {
             BPsTarg = (0.346f * exercise.BodyWork);
         }
-
-        else if (character.gender == false) //female
+        else if (character.gender == 0) //female
         {
             BPsTarg = (0.103f * exercise.BodyWork);
         }
@@ -179,15 +181,14 @@ public class Cardio : MonoBehaviour
     }
 
 
-    void HRfunction()
+    void HRtargfunction()
     {
-        if (character.gender == true) //male
+        if (character.gender == 1) //male
         {
             HRtarg = (0.32f * exercise.BodyWork);
             //HEALTHY PEOPLE CAN BE -0.9 AND UNHEALTHY +0.9
         }
-
-        else if (character.gender == false) // female
+        else if (character.gender == 0) // female
         {
             HRtarg = (0.43f * exercise.BodyWork);
             //+/- 0.15
@@ -204,11 +205,6 @@ public class Cardio : MonoBehaviour
     {
         HRrest = HRrestfunc; //INPUT
         HR = HRrestfunc;
-    }
-
-    public void HRresetfunc()
-    {
-        HR = Mathf.SmoothDamp(HR, HRrest, ref velocity, 5);
     }
 
     void HRmaxfunction()
@@ -234,20 +230,20 @@ public class Cardio : MonoBehaviour
     public void BlaTargfunction()
     {
         //MODEL NEEDED
-        //OKAY TIME TO BS ONE
+
         if (HR >= BlaT)
         {
-            BlaTarget = Mathf.Pow((exercise.WorkDone / 90), 2);
-            //CREATE AN EQUATION USING WORK RATE TO INCREASE BL
-            //IT'S STARTING TO HURT, Blood Lactate RISES EXPONENTIALLY - THIS IS A VISUAL THING
+            HRCond = 1;
+            BlaTarget = (Mathf.Pow((exercise.WorkDone / 90), 2) + (timer.counter / 10));
+
             //NORMAL BL is like 1-2, but it can go up to 25 during intense exercise, but this is a worst-case scenario
             //normal people BL go up to like 10-15 before they give up. perhaps make this an option.
         }
         else
         {
-            BlaTarget = Mathf.Pow((exercise.WorkDone / 130), 2) + 1.0f;
+            HRCond = 0;
+            BlaTarget = (Mathf.Pow((exercise.WorkDone / 130), 2) + 1.0f + (timer.counter / 10));
         }
-
     }
 
     //FUNCTIONS LEVEL 2
@@ -256,7 +252,6 @@ public class Cardio : MonoBehaviour
     {
         CO = (SV * HR);
     }
-
 
     void BPfunction()
     {
@@ -283,8 +278,7 @@ public class Cardio : MonoBehaviour
     public void EDVfunction(float EDVfunc)
     {
         EDV = EDVfunc; //INPUT, INCREASES BY UP TO 21%
-        EDVbase = EDVfunc;
-        
+        EDVbase = EDVfunc;        
     }
 
     public void ESVfunction(float ESVfunc)
@@ -303,6 +297,5 @@ public class Cardio : MonoBehaviour
         TPR = (MAP / CO);
     }
     
-
     Cardio(){}
 };

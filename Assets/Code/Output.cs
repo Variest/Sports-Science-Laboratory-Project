@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Output : MonoBehaviour
 {
+    Output() { }
+
     Cardio cardio;
     //HEART RATE(0-1) AND BLOOD LACTATE(0-4)
     //PAINED FACE, AND TIRED LOOKING
@@ -17,6 +19,7 @@ public class Output : MonoBehaviour
     public string Bla;
     public string Heat;
     public string Water;
+    public string Exercise;
 
     // Start is called before the first frame update
     void Start()
@@ -33,10 +36,10 @@ public class Output : MonoBehaviour
         switch (cardio.HRCond)
         {
             case 0:
-                HR = "Heart Rate Normal"; //anything below max
+                HR = "Heart Rate Normal"; //anything below lactate threshhold
                 break;
             case 1:
-                HR = "Heart Rate High"; //max or above
+                HR = "Heart Rate High"; //LT or above
                 break;
         }
 
@@ -62,37 +65,53 @@ public class Output : MonoBehaviour
         switch(heat.HeatCond)
         {
             case 0:
-                Heat = "Heat Normal"; //37 degrees
+                Heat = "Core Body Heat Normal"; //37 degrees
                 break;
             case 1:
-                Heat = "Heat Rising"; //38 degrees
+                Heat = "Core Body Heat Rising"; //38 degrees
                 break;
             case 2:
-                Heat = "Heat High"; //39 degrees
+                Heat = "Core Body Heat High"; //39 degrees
                 break;
             case 3:
-                Heat = "Heat Dangerous"; //40 degrees
+                Heat = "Core Body Heat Dangerous"; //40 degrees
                 break;
         }
 
         switch(heat.WaterCond)
         {
             case 0:
-                Water = "Water Normal"; //100% water percent+
+                Water = "Body Water Content Normal"; //100% water percent+
                 break;
             case 1:
-                Water = "Water Falling"; //97% about
+                Water = "Body Water Content Falling"; //97% about
                 break;
             case 2:
-                Water = "Water Moderate"; //93%
+                Water = "Body Water Content Moderate"; //93%
                 break;
             case 3:
-                Water = "Water Low"; //90%
+                Water = "Body Water Content Low"; //90%
                 break;
             case 4:
-                Water = "Water Dangerous"; //80%
+                Water = "Body Water Content Dangerous"; //80%
                 break;
         }
 
+        switch (exercise.exerciseType)
+        {
+
+            case 1:
+                Exercise = "Cycling";
+                break;
+            case 2:
+                Exercise = "Running";
+                break;
+            case 3:
+                Exercise = "Rowing";
+                break;
+            case 4:
+                Exercise = "Arm Ergonometer";
+                break;
+        }
     }
 }

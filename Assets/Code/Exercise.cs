@@ -37,16 +37,16 @@ public class Module : MonoBehaviour
     }
 
     void Update()
-    {    
+    {
         Workdonefunc();
     }
 
-    Module(float model)
+    void Modulefunc(float model)
     {
         switch (model) //switch based on what type of module theyre using
         {
-            case 1f: 
-                Model = "Treadmill"; 
+            case 1f:
+                Model = "Treadmill";
                 MaxSpeed = 24; //km/h
                 inclineMax = 25; //percent
                 declineMax = 3; //percent
@@ -74,20 +74,20 @@ public class Module : MonoBehaviour
                 WattMax = 3000;
                 RPMmax = 180;
                 LoadMax = 25;
-                exerciseType = 1;
+                exerciseType = 4;
                 efficiency = 0.15f;
                 break;
-            case 5f: 
+            case 5f:
                 Model = "Rower";
                 WattMax = 3000;
                 RPMmax = 100;
                 LoadMax = 30;
-                exerciseType = 1;
+                exerciseType = 3;
                 efficiency = 0.25f;
                 break;
         }
     }
-    
+
     //For bikes and rowing, running is entirely different
 
     void Resfunction(float Resfunc)
@@ -109,13 +109,13 @@ public class Module : MonoBehaviour
         };
     }
 
-    public void inclinefunc (float inclinefunc)
+    public void inclinefunc(float inclinefunc)
     {
-        if(treadsetting == 1)
+        if (treadsetting == 1)
         {
             incline = inclinefunc;
         }
-        else if(treadsetting == 2)
+        else if (treadsetting == 2)
         {
             decline = inclinefunc;
         }
@@ -127,29 +127,28 @@ public class Module : MonoBehaviour
         switch (exerciseType)
         {
             case 1:
-            WorkDone = ((RPM / 60) * (resistance * 10)); //watts are /s, rpm is /minute, *10 is for correction?
+                WorkDone = ((RPM / 60) * (resistance * 10)); //watts are /s, rpm is /minute, *10 is for correction?
                 break;
             case 2:
-            MomentSpeed = ((speed * 1000) / 3600); //gets metres in a single second, then * by force
-            WorkDone = (MomentSpeed * (customiser.weight / 3)); //THIS LINE SUCKS DICK, IT'S A COMPLETE GUESS               
-            switch(treadsetting) //STILL INSIDE CASE 2, IS THE TREADMILL INCLINED OR DECLINED?  
-            {
-            case 0:
+                MomentSpeed = ((speed * 1000) / 3600); //gets metres in a single second, then * by force
+                WorkDone = (MomentSpeed * (customiser.weight / 3)); //THIS LINE SUCKS DICK, IT'S A COMPLETE GUESS               
+                switch (treadsetting) //STILL INSIDE CASE 2, IS THE TREADMILL INCLINED OR DECLINED?  
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        WorkDone += ((MomentSpeed * incline) * customiser.weight);
+                        break;
+                    case 2:
+                        WorkDone -= ((MomentSpeed * decline) * customiser.weight);
+                        break;
+                }
                 break;
-            case 1:
-            WorkDone += ((MomentSpeed * incline) * customiser.weight);
-               break;
-            case 2:
-            WorkDone -= ((MomentSpeed * decline) * customiser.weight);
-               break;
-            }    
-               break;
         }
 
         BodyWork = (WorkDone / efficiency);
         HeatWork = (BodyWork - WorkDone);
-
     }
 
-
+    Module() { }
 };

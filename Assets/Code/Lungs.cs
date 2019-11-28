@@ -37,10 +37,7 @@ public class Lung : MonoBehaviour
     {
         PImaxfunction();
         PEmaxfunction();
-        setupfunction();
-        FEV1function();
-        FVCfunction();
-        FVRfunction();
+
         if(VC == 0)
         {
             setupfunction();
@@ -49,7 +46,7 @@ public class Lung : MonoBehaviour
 
     void setupfunction()
     {
-        if (character.gender == true) //M
+        if (character.gender == 1) //M
         {
             //litres
             ERV = 1.2f;
@@ -62,7 +59,7 @@ public class Lung : MonoBehaviour
             TLC = 6;
             VC = 4.8f;            
         }
-        else if (character.gender == false) //F
+        else if (character.gender == 0) //F
         {
             //litres
             ERV = 0.8f;
@@ -76,17 +73,21 @@ public class Lung : MonoBehaviour
             VC = 3.2f;
         };
 
+        FEV1function();
+        FVCfunction();
+        FVRfunction();
+
         //MAYBE CHANGE THESE BASED ON THE EXERCISE TYPE?
         //FOR EXAMPLE, YOU ARE HUNCHED OVER WHILST CYCLING, DECREASING LUNG CAPACITY
     }
 
     void FEV1function() //changes things based on character settings
     {
-        if(character.gender == true)
+        if(character.gender == 0)
         {
             FEV1 = ((0.043f * character.height) - (0.029f * character.age) - 2.49f);
         }
-        else if(character.gender == false)
+        else if(character.gender == 1)
         {
             FEV1 = ((0.0395f * character.height) - (0.025f * character.age) - 2.6f);
         };
@@ -103,11 +104,11 @@ public class Lung : MonoBehaviour
 
     void FVCfunction()
     {
-        if (character.gender == true)
+        if (character.gender == 0)
         {
             FVC = ((0.0576f * character.height) - (0.026f * character.age) - 4.34f);
         }
-        else if (character.gender == false)
+        else if (character.gender == 1)
         {
             FVC = ((0.0443f * character.height) - (0.026f * character.age) - 2.89f);
         };

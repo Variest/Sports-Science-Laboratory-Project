@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BodyHeat : MonoBehaviour
-{
+{ 
+    BodyHeat(){ }
+
+
     public float BodyTemp = 36.0f;
     public float BodyWaterBase;
     public float BodyWater;
@@ -40,68 +43,12 @@ public class BodyHeat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (time.tensecond)
+        if(time.tensecondHEAT)
         {
             sweatfunc();
             bodyheatfunc();
-            time.tensecond = false;
-
-            //EXPERIMENT WITH TURNING * 10 TO * 100 FOR INCREASED OUTPUT
-        }
-
-        if(BodyTemp >= 37.0f)
-        {          
-            if(BodyTemp >= 38.0f)
-            {
-                if(BodyTemp >= 39.0f)
-                {
-                    if(BodyTemp >= 40.0f)
-                    {
-                        //DEAD
-                        HeatCond = 3;
-                    }
-                    //PROBABLY UNCONSCIOUS
-                    MaxSweatRate = 4000;
-                    HeatCond = 2;
-
-                }
-                //WOOZY, EXTREMELY SWEATY
-                MaxSweatRate = 3000;
-                HeatCond = 1;
-            }
-            //SWEATY BOY
-            MaxSweatRate = 1500;
-            HeatCond = 0;
-        }
-        
-
-        WaterPrcnt = (BodyWater / BodyWaterBase);
-
-        if(WaterPrcnt <= 0.97f)
-        {
-            if(WaterPrcnt <= 0.93f)
-            {                
-                if(WaterPrcnt <= 0.9)
-                {                    
-                    if(WaterPrcnt <= 0.8)
-                    {
-                        //DEAD
-                        MaxSweatRate *= 0.5f;
-                        WaterCond = 4;
-                    }
-                    //DANGEROUSLY EXHAUSTED
-                    MaxSweatRate *= 0.6f;
-                    WaterCond = 3;
-                }
-                //DIZZY, SERIOUSLY TIRED
-                MaxSweatRate *= 0.8f;
-                WaterCond = 2;
-            }
-            //A BIT TIRED
-            MaxSweatRate *= 0.9f;
-            WaterCond = 1;
-        }
-        
+            time.tensecondHEAT = false;
+        }    
     }
 
     void bodyheatfunc()
@@ -111,6 +58,34 @@ public class BodyHeat : MonoBehaviour
         {
             BodyTemp += (((HeatGain / KCAL) / customiser.weight) * (HeatCapacity * 10));
             //body temperature rise = how many KCAL's gained in heat energy/weight * HC coefficient (ten seconds)
+            //if the temperature actually rises, check if it rose in a bad way
+
+            if (BodyTemp >= 37.0f)
+            {
+                //GETTING TIRED/SWEATY
+                MaxSweatRate = 1500;
+                HeatCond = 0;
+
+                if (BodyTemp >= 38.0f)
+                {
+                    //WOOZY, VERY SWEATY
+                    MaxSweatRate = 3000;
+                    HeatCond = 1;
+
+                    if (BodyTemp >= 39.0f)
+                    {
+                        //PROBABLY UNCONSCIOUS
+                        MaxSweatRate = 4000;
+                        HeatCond = 2;
+
+                        if (BodyTemp >= 40.0f)
+                        {
+                            //DEAD
+                            HeatCond = 3;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -126,26 +101,62 @@ public class BodyHeat : MonoBehaviour
 
         if (humidity >= 60)
         {
+            CoolPower *= 0.8f;
+
             if (humidity >= 70)
             {
+                CoolPower *= 0.5f;
+
                 if (humidity >= 80)
                 {
+                    CoolPower *= 0.3f;
+
                     if (humidity >= 90)
                     {
+                        CoolPower *= 0.2f;
+
                         if (humidity >= 100)
                         {
                             CoolPower *= 0.1f;
                         }
-                        CoolPower *= 0.2f;
                     }
-                    CoolPower *= 0.3f;
                 }
-                CoolPower *= 0.5f;
             }
-            CoolPower *= 0.8f;
         }
                 
-        BodyWater -= (SweatRate * 10); //this is calculated every ten seconds, so *10
+        BodyWater -= (SweatRate * 10); //this is calculated every ten seconds, so *10 
+        //EXPERIMENT WITH TURNING * 10 TO * 100 FOR INCREASED OUTPUT
+        //CHECKING BODYWATER NOW THAT IT IS DECREASED
+
+        WaterPrcnt = (BodyWater / BodyWaterBase);
+
+        if(WaterPrcnt <= 0.97f)
+        {   
+            //A BIT TIRED/THIRSTY
+            MaxSweatRate *= 0.9f;
+            WaterCond = 1;
+
+            if(WaterPrcnt <= 0.93f)
+            {  
+                //DIZZY, SERIOUSLY TIRED
+                MaxSweatRate *= 0.8f;
+                WaterCond = 2;   
+                
+                if(WaterPrcnt <= 0.9)
+                {   
+                    //DANGEROUSLY EXHAUSTED
+                    MaxSweatRate *= 0.6f;
+                    WaterCond = 3;   
+                    
+                    if(WaterPrcnt <= 0.8)
+                    {
+                        //DEAD
+                        MaxSweatRate *= 0.5f;
+                        WaterCond = 4;
+                    }
+                }
+            }
+        }    
     }
 
     void waterdrinkfunc(float waterdrink)  //how much water they have drunk before the test, defaults to a litre
@@ -155,11 +166,11 @@ public class BodyHeat : MonoBehaviour
 
     void bodywaterfunc()
     {
-        if (customiser.gender == true)
+        if (customiser.gender == 1)
         {
             BodyWater = ((customiser.weight * 0.60f) * 1000); //in millilitres
         }
-        else
+        else if(customiser.gender == 0)
         {
             BodyWater = ((customiser.weight * 0.55f) * 1000);
         }
