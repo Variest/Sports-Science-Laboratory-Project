@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
     public Stopwatch mini = new Stopwatch(); //revolves around the player's input
     public Stopwatch main = new Stopwatch(); //measures entire time, and ends the test, also at the player's input
     public Stopwatch moments = new Stopwatch(); //every ten seconds, used for loops etc. automated.
-    float tenseconds = 10000;
+    float tenseconds = 10000f;
     public float speed = 1;
     public bool speedup = false;
 
