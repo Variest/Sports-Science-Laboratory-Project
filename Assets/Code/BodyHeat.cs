@@ -60,30 +60,31 @@ public class BodyHeat : MonoBehaviour
         {
             BodyTemp += (((HeatGain / KCAL) / customiser.weight) * (HeatCapacity * 10));
             //body temperature rise = how many KCAL's gained in heat energy/weight * HC coefficient (ten seconds)
-        }
+            //if the temperature actually rises, check if it rose in a bad way
 
-        if (BodyTemp >= 37.0f)
-        {   
-            //GETTING TIRED/SWEATY
-            MaxSweatRate = 1500;
-            HeatCond = 0;  
-            
-            if(BodyTemp >= 38.0f)
-            {  
-                //WOOZY, VERY SWEATY
-                MaxSweatRate = 3000;
-                HeatCond = 1;
+            if (BodyTemp >= 37.0f)
+            {
+                //GETTING TIRED/SWEATY
+                MaxSweatRate = 1500;
+                HeatCond = 0;
 
-                if(BodyTemp >= 39.0f)
-                {   
-                    //PROBABLY UNCONSCIOUS
-                    MaxSweatRate = 4000;
-                    HeatCond = 2;
+                if (BodyTemp >= 38.0f)
+                {
+                    //WOOZY, VERY SWEATY
+                    MaxSweatRate = 3000;
+                    HeatCond = 1;
 
-                    if(BodyTemp >= 40.0f)
+                    if (BodyTemp >= 39.0f)
                     {
-                        //DEAD
-                        HeatCond = 3;
+                        //PROBABLY UNCONSCIOUS
+                        MaxSweatRate = 4000;
+                        HeatCond = 2;
+
+                        if (BodyTemp >= 40.0f)
+                        {
+                            //DEAD
+                            HeatCond = 3;
+                        }
                     }
                 }
             }

@@ -37,7 +37,7 @@ public class Cardio : MonoBehaviour
                                                         //during exercise the heart generally just gets bigger - minimum pressure doesn't change, but everything else goes futher in it's direction.
                                                         //end systolic volume/pressure changes the most, though - Volume goes down whilst pressure goes up (more squeeze). EDV goes up a bit, P no change.
     public float SW; //CA stroke work =					SV*MAP
-    public float TPR; //CA total peripheral resistance =	MAP/CO
+    public float TPR; //CA total peripheral resistance = MAP/CO
 
     public float HRtarg; //TESTING CB
     public float BPsTarg; //TESTING CB
@@ -80,7 +80,6 @@ public class Cardio : MonoBehaviour
             //a lot of things need to be recalculated (HR, BPs) and some other stuff too
             MathFunc();
         }
-        //OUTPUT
 
         if (HR >= HRmax)
         {
@@ -89,34 +88,10 @@ public class Cardio : MonoBehaviour
             //MAKE IT SO THE SUBJECT CAN ONLY STAY AT THIS LEVEL FOR A CERTAIN AMOUNT OF TIME
         }
 
-        if (Bla > 5)
-        {
-            BlaCond = 1;
-            //pretty okay, maybe a bit tired
-
-            if (Bla > 10)
-            {
-                BlaCond = 2;
-                //getting tired
-
-                if(Bla > 15)
-                {
-                    BlaCond = 3;
-                    //legs very tired, an unhealthy person would probably give up
-
-                    if(Bla > 20)
-                    {
-                        BlaCond = 4;
-                        //kind of dangerous, subject might collapse
-                    }
-                }
-            }
-        }
-
         EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
         ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
 
-        SVfunction(); //update everything else for relevant stuff
+        SVfunction(); //update everything else for relevant stuff, the order is very important
         COfunction();
         OPfunction();
         MAPfunction();
@@ -135,6 +110,7 @@ public class Cardio : MonoBehaviour
         HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, timer.intervals);
         BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocity, timer.intervals);
         Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocity, timer.intervals);
+
         //HOW TO USE SMOOTHDAMP
         //1 = START POSITION
         //2 = FINISH
@@ -252,6 +228,29 @@ public class Cardio : MonoBehaviour
             HRCond = 0;
         }
 
+        if (Bla > 5)
+        {
+            BlaCond = 1;
+            //pretty okay, maybe a bit tired
+
+            if (Bla > 10)
+            {
+                BlaCond = 2;
+                //getting tired
+
+                if(Bla > 15)
+                {
+                    BlaCond = 3;
+                    //legs very tired, an unhealthy person would probably give up
+
+                    if(Bla > 20)
+                    {
+                        BlaCond = 4;
+                        //kind of dangerous, subject might collapse
+                    }
+                }
+            }
+        }
     }
 
     //FUNCTIONS LEVEL 2
