@@ -121,9 +121,7 @@ public class Cardio : MonoBehaviour
     public void CardioResetfunc()
     {
         HR = Mathf.SmoothDamp(HR, HRrest, ref velocity, 5);
-        BPs = BPsBase;
-        EDV = EDVbase;
-        ESV = ESVbase;
+        BPs = Mathf.SmoothDamp(BPs, BPsBase, ref velocity, 5);
     }
 
     //FUNCTIONS LEVEL 1
