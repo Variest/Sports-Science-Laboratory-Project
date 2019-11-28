@@ -1010,6 +1010,7 @@ MonoBehaviour:
   isChangeModule: 1
   isBackMainMenu: 1
   isBackModules: 1
+  isModuleVariable: 0
   TSPanel: {fileID: 1279993277}
   MSPanel: {fileID: 659133150}
   CPanel: {fileID: 0}

@@ -26,7 +26,6 @@ public class UIHiding : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Module Selection Scene")
         {
-            //Module Selection Scene
             TSPanel.gameObject.SetActive(false);
             MSPanel.gameObject.SetActive(true);
         }

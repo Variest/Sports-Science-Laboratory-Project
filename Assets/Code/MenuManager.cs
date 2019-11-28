@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class MenuManager : MonoBehaviour
     public bool isChangeModule;
     public bool isBackMainMenu;
     public bool isBackModules;
+    public bool isModuleVariable;
 
     public static char selectedModule = ' ';
     public static char selectedTemplate = ' ';
@@ -97,7 +99,6 @@ public class MenuManager : MonoBehaviour
     {
         if(isVariables)
         {
-            Debug.Log(selectedModule);
             SceneManager.LoadScene("Variables Scene");
         }
     }
@@ -151,6 +152,17 @@ public class MenuManager : MonoBehaviour
             SceneManager.LoadScene("Module Selection Scene");
             selectedModule = ' ';
             selectedTemplate = ' ';
+
+            MSPanel.gameObject.SetActive(true);
+            TSPanel.gameObject.SetActive(false);
+        }
+    }
+
+    public void VariableSelect()
+    {
+        if (isModuleVariable)
+        {
+            
         }
     }
 
