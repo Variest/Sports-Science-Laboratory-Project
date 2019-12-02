@@ -104,7 +104,7 @@ public class Cardio : MonoBehaviour
                     if (Bla > 20)
                     {
                         BlaCond = 4;
-                        //becoming dangerous; subject should stop or risk last injury
+                        //becoming dangerous; subject should stop or risk lasting injury
                     }
                 }
             }
