@@ -924,6 +924,8 @@ MonoBehaviour:
   age: 16
   height: 0
   weight: 0
+  avatarHolder: {fileID: 1848665791}
+  avatar: {fileID: 0}
   ChangeAvatar: {fileID: 2010464846}
   GenderM: {fileID: 735280011}
   GenderF: {fileID: 1308036935}
@@ -3788,6 +3790,115 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804122868}
   m_CullTransparentMesh: 0
+--- !u!1 &1848665791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1848665793}
+  - component: {fileID: 1848665792}
+  m_Layer: 0
+  m_Name: Avatar_Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1848665792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848665791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ced0152cc272248a7510a766d4a635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gender: 0
+  race: 0
+  age: 16
+  height: 0
+  weight: 0
+  TI: 0
+  TE: 0
+  TITE: 0
+  breathTime: 0
+  FECO2: 0
+  FICO2: 0
+  FEO2: 0
+  FIO2: 0
+  veATPS: 0
+  veSTPD: 0
+  veBTPS: 0
+  VE: 0
+  VT: 0
+  MET: 0
+  VI: 0
+  VO2: 0
+  VO2maxAge: 0
+  VO2maxHeight: 0
+  VO2maxWeight: 0
+  VO2fr: 0
+  VCO2: 0
+  EPOC: 0
+  fr: 0
+  RER: 0
+  RQ: 0
+  Vecap: 0
+  VeVO2: 0
+  VeVCO2: 0
+  Ttot: 0
+  W: 0
+  EE: 0
+  FCres: 0
+  FCmax: 0
+  SpO2: 0
+  VO2fc: 0
+  petco2: 0
+  peto2: 0
+  fc: 0
+  Dyspnoea: 0
+  RPE: 0
+  Bla: 0
+  BPs: 0
+  BlaT: 0
+  SV: 0
+  MAP: 0
+  BPd: 0
+  CO: 0
+  FEV1: 0
+  FVC: 0
+  FEV1FVC: 0
+  PImax: 0
+  PEmax: 0
+  ERV: 0
+  FRC: 0
+  IC: 0
+  IRV: 0
+  PEF: 0
+  PIF: 0
+  RV: 0
+  TLC: 0
+  VC: 0
+--- !u!4 &1848665793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848665791}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 592.0671, y: 296.42407, z: -1505.875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1914182303
 GameObject:
   m_ObjectHideFlags: 0
