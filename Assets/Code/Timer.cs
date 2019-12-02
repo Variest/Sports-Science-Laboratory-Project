@@ -43,20 +43,20 @@ public class Timer : MonoBehaviour
         {
             //if all the correct integers are set, then GO
             //PERHAPS PUT A 'START' BUTTON INSTEAD OF CHECKING MINI?
-            Speed(); //DOUBLESPEED ONLY WORKS AT THE VERY START OF THE PROGRAM?
+
             main.Start();
             mini.Start();
             moments.Start();
         }
 
-        if(mini.IsRunning && ((mini.ElapsedMilliseconds) == (intervals*1000))) //intervals is probably measured in seconds
+        if(mini.IsRunning && ((mini.ElapsedMilliseconds) >= (intervals*1000))) //intervals is probably measured in seconds
         {         
             mini.Restart(); //restarts the timer
             exercise.RPMfunction((exercise.RPM + increase)); //increases the intensity at the user's input
             recalculateCARDIO = true; //sends signals to other sheets that they need to recalculate stuff
         } //MINI TIMER - TIMES BETWEEN EACH INCREASE IN INTENSITY
 
-        if(moments.IsRunning && ((moments.ElapsedMilliseconds) == tenseconds))
+        if(moments.IsRunning && ((moments.ElapsedMilliseconds) >= tenseconds))
         {
             counter++; //every ten seconds this increases, and can be used for certain models (blood lactate)
             moments.Restart(); //restarts
@@ -64,7 +64,7 @@ public class Timer : MonoBehaviour
             tensecondHEAT = true;
         } //INDEPENDENT TIMER - EVERY TEN SECONDS
 
-        if(main.IsRunning && ((main.ElapsedMilliseconds) == (limit*1000)))
+        if(main.IsRunning && ((main.ElapsedMilliseconds) >= (limit*1000)))
         {
             main.Reset(); //reset is unlike restart in that the timer does not begin again
             mini.Reset();
@@ -79,6 +79,7 @@ public class Timer : MonoBehaviour
     void Speed()
     {
         //HAVE A BUTTON THAT MAKES THIS TRUE, IT CYCLES BETWEEN DOUBLE SPEED AND NORMAL SPEED
+        //IT DOESNT AFFECT UPDATE()
         switch(speedup)
         {
             case 0:
@@ -90,7 +91,6 @@ public class Timer : MonoBehaviour
             case 2:
                 Time.timeScale = 2.0f; //DOUBLE SPEED
                 break;
-
             case 3:
                 Time.timeScale = 0.5f; //HALF-SPEED
                 break;

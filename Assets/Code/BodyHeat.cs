@@ -21,6 +21,7 @@ public class BodyHeat : MonoBehaviour
     public float metabolism = 85; //HUMAN METABOLISM TAKES 85W POWER CONSTANTLY
     public float HeatCapacity = 0.83f;
     public float KCAL = 4184; //4184 joules = 1KCAL
+    public float sweatreserves = 1.0f;
 
     public float WaterCond = 0;
     public float HeatCond = 0;
@@ -63,19 +64,19 @@ public class BodyHeat : MonoBehaviour
             if (BodyTemp >= 37.0f)
             {
                 //GETTING TIRED/SWEATY
-                MaxSweatRate = 1500;
+                MaxSweatRate = 1000;
                 HeatCond = 0;
 
                 if (BodyTemp >= 38.0f)
                 {
                     //WOOZY, VERY SWEATY
-                    MaxSweatRate = 3000;
+                    MaxSweatRate = 2000;
                     HeatCond = 1;
 
                     if (BodyTemp >= 39.0f)
                     {
                         //PROBABLY UNCONSCIOUS
-                        MaxSweatRate = 4000;
+                        MaxSweatRate = 3000;
                         HeatCond = 2;
 
                         if (BodyTemp >= 40.0f)
@@ -92,10 +93,12 @@ public class BodyHeat : MonoBehaviour
     void sweatfunc()
     {
         SweatRate = ((exercise.HeatWork + metabolism) / SweatPower); //this is HOW MANY MLs ARE NEEDED A SECOND
-        if((SweatRate * 3600) > MaxSweatRate)
+        if((SweatRate * 3600) > MaxSweatRate) //makes sure it isnt too much
         {
             SweatRate = MaxSweatRate;
         }
+
+        SweatRate *= sweatreserves; //sweatreserves is 'how much the body is able to sweat' - decreases with water content
 
         CoolPower = (SweatRate * SweatPower); //this is how much heat (in watts) is lost as sweat per second
 
@@ -133,25 +136,25 @@ public class BodyHeat : MonoBehaviour
         if(WaterPrcnt <= 0.97f)
         {   
             //A BIT TIRED/THIRSTY
-            MaxSweatRate *= 0.9f;
+            sweatreserves = 0.9f;
             WaterCond = 1;
 
             if(WaterPrcnt <= 0.93f)
             {  
                 //DIZZY, SERIOUSLY TIRED
-                MaxSweatRate *= 0.8f;
+                sweatreserves = 0.8f;
                 WaterCond = 2;   
                 
                 if(WaterPrcnt <= 0.9)
                 {   
                     //DANGEROUSLY EXHAUSTED
-                    MaxSweatRate *= 0.6f;
+                    sweatreserves = 0.6f;
                     WaterCond = 3;   
                     
                     if(WaterPrcnt <= 0.8)
                     {
                         //DEAD
-                        MaxSweatRate *= 0.5f;
+                        sweatreserves = 0.5f;
                         WaterCond = 4;
                     }
                 }

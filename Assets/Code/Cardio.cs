@@ -7,8 +7,8 @@ public class Cardio : MonoBehaviour
 {
     //IMPORTANT INTEGERS
     //I = INPUT, M = MODELLED, CA = CALCULATED CONSTANTLY CB = CALCULATED ONCE
-    public float Bla = 1.0f; //I/M! blood lactate -	    SOMEWHAT appropriately modelled
-    public float BlaTarget;
+    public float Bla = 1.0f; //CA/M blood lactate -	    SOMEWHAT appropriately modelled
+    public float BlaTarget; //CA                        approximation of blood lactate for the model
     public float BlaT; //CB blood lactate threshold -   85% of max heart rate or 75% of VO2Max
     public float BPd; //I diastolic blood pressure -	INPUT 
     public float BPs; //I/M systolic blood pressure -	INPUT, and we have a DECENT way of modelling it;
