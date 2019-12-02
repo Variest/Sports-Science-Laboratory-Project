@@ -12,18 +12,20 @@ public class Timer : MonoBehaviour
     public float counter = 0; //how many ten second/s have passed
     public float timer; //time between each loop
     public float elapsed; //total time elapsed
-    float limit; //entire experiment runs for X seconds
+    public float limit; //entire experiment runs for X seconds
 
-    public bool recalculateCARDIO = true;
     public Stopwatch mini = new Stopwatch(); //revolves around the player's input
     public Stopwatch main = new Stopwatch(); //measures entire time, and ends the test, also at the player's input
     public Stopwatch moments = new Stopwatch(); //every ten seconds, used for loops etc. automated.
-    float tenseconds = 10000f;
-    public float speedup = 1.0f;
-    public bool Begin = false; //use this when you get a button for it
 
+    float tenseconds = 10000f; //in milliseconds
+    public float speedup = 1.0f;
+
+    public bool Begin = false; //use this when you get a button for it
     public bool tensecondHEAT = false;
     public bool tensecondCARDIO = false;
+    public bool recalculateCARDIO = true;
+
     public float FPS; //for measuring the fps ofc
 
     Module exercise;
@@ -69,6 +71,7 @@ public class Timer : MonoBehaviour
             main.Reset(); //reset is unlike restart in that the timer does not begin again
             mini.Reset();
             moments.Reset();
+            counter = 0;
         } //BIG TIMER - TIMES SINCE THE START OF THE 'EXPERIMENT' AND UNTIL THE END
 
         timer = (mini.ElapsedMilliseconds / 1000); //SECONDS
