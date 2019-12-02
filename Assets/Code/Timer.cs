@@ -39,10 +39,10 @@ public class Timer : MonoBehaviour
     {
         Speed();
 
-        if ((intervals > 0) && (limit > 0) && (increase > 0) && (main.IsRunning == false))
+        if ((intervals > 0) && (limit > 0) && (increase > 0) && (Begin == true))
         {
             //if all the correct integers are set, then GO
-            //PERHAPS PUT A 'START' BUTTON INSTEAD OF CHECKING MINI?
+            //CREATE A BUTTON FOR BEGIN ASAP
 
             main.Start();
             mini.Start();
@@ -93,6 +93,9 @@ public class Timer : MonoBehaviour
                 break;
             case 3:
                 Time.timeScale = 0.5f; //HALF-SPEED
+                break;
+            case 4:
+                Time.timeScale = 4.0f; //SUPERFAST
                 break;
         }
   

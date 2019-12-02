@@ -6,23 +6,28 @@ public class BodyHeat : MonoBehaviour
 { 
     BodyHeat(){ }
 
-
-    public float BodyTemp = 36.0f;
+    //WATER
     public float BodyWaterBase;
     public float BodyWater;
     public float WaterDrunk = 1000; //DEFAULTS TO 1 LITRE, which is a normal amount
     public float WaterPrcnt;
+
+    //SWEAT
     public float SweatRate;
     public float MaxSweatRate = 1000; //PER HOUR (3600 seconds)
     public float SweatPower = 2400; //JOULES PER G (ML) OF SWEAT
+    public float sweatreserves = 1.0f;
     public float CoolPower;
+    
+    //HEAT
     public float humidity = 30; //percent
     public float HeatGain;
-    public float metabolism = 85; //HUMAN METABOLISM TAKES 85W POWER CONSTANTLY
     public float HeatCapacity = 0.83f;
     public float KCAL = 4184; //4184 joules = 1KCAL
-    public float sweatreserves = 1.0f;
+    public float metabolism = 85; //HUMAN METABOLISM TAKES 85W POWER CONSTANTLY
+    public float BodyTemp = 36.0f;
 
+    //OUTPUT
     public float WaterCond = 0;
     public float HeatCond = 0;
 
@@ -114,15 +119,10 @@ public class BodyHeat : MonoBehaviour
                 {
                     CoolPower *= 0.3f;
 
-                    if (humidity >= 90)
+                    if (humidity >= 100)
                     {
-                        CoolPower *= 0.2f;
-
-                        if (humidity >= 100)
-                        {
-                            CoolPower *= 0.1f;
-                        }
-                    }
+                        CoolPower *= 0.1f;
+                    }                    
                 }
             }
         }
@@ -171,11 +171,11 @@ public class BodyHeat : MonoBehaviour
     {
         if (customiser.gender == true)
         {
-            BodyWater = ((customiser.weight * 0.60f) * 1000); //in millilitres
+            BodyWater = ((customiser.weight * 0.60f) * 1000); //in millilitres - a man's body is 60% water
         }
         else if(customiser.gender == false)
         {
-            BodyWater = ((customiser.weight * 0.55f) * 1000);
+            BodyWater = ((customiser.weight * 0.55f) * 1000); //a woman's body is 55% water
         }
                 
         BodyWaterBase = BodyWater;

@@ -4,24 +4,29 @@ using UnityEngine;
 
 public class Module : MonoBehaviour
 {
-
+    //GENERAL INTS
     public float resistance;
     public float RPM;
-    public float RPMmax;
-    public float LoadMax;
-    public float WattMax;
-    public float inclineMax;
-    public float declineMax;
     public float efficiency;
     public float speed;
-    public float MaxSpeed;
     public string Model = null;
     public float exerciseType;
+
+    //FOR TREADMILLS
     public float treadsetting = 0;
     public float incline;
     public float decline;
     public float MomentSpeed;
 
+    //MAXES
+    public float RPMmax;
+    public float LoadMax;
+    public float WattMax;
+    public float inclineMax;
+    public float declineMax;
+    public float MaxSpeed;
+
+    //OUTP0UT
     public float WorkDone;
     public float BodyWork;
     public float HeatWork;
@@ -29,6 +34,7 @@ public class Module : MonoBehaviour
     Timer timer;
     WaterVapourConversion heat;
     CharacterCustomiser customiser;
+
     private void Start()
     {
         heat = GetComponent<WaterVapourConversion>();
@@ -48,8 +54,8 @@ public class Module : MonoBehaviour
             case 1f:
                 Model = "Treadmill";
                 MaxSpeed = 24; //km/h
-                inclineMax = 25; //percent
-                declineMax = 3; //percent
+                inclineMax = 0.25f; //percent
+                declineMax = 0.03f; //percent
                 exerciseType = 2;
                 efficiency = 0.05f;
                 break;
