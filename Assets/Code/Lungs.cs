@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Lung : MonoBehaviour
 {
-    public float FEV1 = 1.0f; //forced expired volume in the first second of exhalation
-    public float FVC = 1.0f; //maximum volume expired after exhalation
-    public float FVR; //ratio of the two
+    public float FEV1 = 1.0f;   //forced expired volume in the first second of exhalation
+    public float FVC = 1.0f;    //maximum volume expired after exhalation
+    public float FVR;           //ratio of the two
 
-    public float ERV; //expiratory reserve volume - maximum expiration at the end of tidal expiration
-    public float FRC; //functional residual capaciy - volume in lungers after tidal expiration
-    public float IC; //inspiratory capacity - maximum volume inspired following tidal expiration
-    public float IRV; //inspiratory reserve volume - maximum inspiration at the end of tidal inspiration
-    public float MVV; //maximal voluntary ventilation - measures ventilatory caspacity, requires deep breathing
-    public float PEF; //peak expiratory flow rate - maximum flow available
-    public float PEmax = 90; //peak expiratory mouth pressure - pressure in mouth during expiration
-    public float PIF; //peak inspiratory flow rate - maximum flow available - RARELY MEASURED?
-    public float PImax = 80; //peak inspiratory mouth pressure - pressure in mouth during inspiration
-    public float RV; //residual volume - volume in lungs after maximum expiration
-    public float TLC; //total lung capacity - volume in lungers after maximum inspiration
-    public float VC = 0; //vital capacity - the greatest amount of air that can be expired after a maximal inspiration
+    public float ERV;           //expiratory reserve volume - maximum expiration at the end of tidal expiration
+    public float FRC;           //functional residual capaciy - volume in lungers after tidal expiration
+    public float IC;            //inspiratory capacity - maximum volume inspired following tidal expiration
+    public float IRV;           //inspiratory reserve volume - maximum inspiration at the end of tidal inspiration
+    public float MVV;           //maximal voluntary ventilation - measures ventilatory caspacity, requires deep breathing
+    public float PEF;           //peak expiratory flow rate - maximum flow available
+    public float PEmax = 90;    //peak expiratory mouth pressure - pressure in mouth during expiration
+    public float PIF;           //peak inspiratory flow rate - maximum flow available - RARELY MEASURED?
+    public float PImax = 80;    //peak inspiratory mouth pressure - pressure in mouth during inspiration
+    public float RV;            //residual volume - volume in lungs after maximum expiration
+    public float TLC;           //total lung capacity - volume in lungers after maximum inspiration
+    public float VC = 0;        //vital capacity - the greatest amount of air that can be expired after a maximal inspiration
        
 
     CharacterCustomiser character;
