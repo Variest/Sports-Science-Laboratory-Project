@@ -2471,6 +2471,9 @@ MonoBehaviour:
   PAPanel: {fileID: 0}
   CAPanel: {fileID: 0}
   MAPanel: {fileID: 0}
+  SliderPanel: {fileID: 0}
+  GenderPanel: {fileID: 0}
+  RacePanel: {fileID: 0}
   WhiteM: {fileID: 0}
   BlackM: {fileID: 0}
   AsianM: {fileID: 0}
