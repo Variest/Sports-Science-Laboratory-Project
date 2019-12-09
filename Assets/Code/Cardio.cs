@@ -5,50 +5,43 @@ using UnityEngine;
 
 public class Cardio : MonoBehaviour
 {
-    //IMPORTANT INTEGERS
-    //I = INPUT, M = MODELLED, CA = CALCULATED CONSTANTLY CB = CALCULATED ONCE
-    public float Bla = 1.0f; //I/M! blood lactate -	    SOMEWHAT appropriately modelled
-    public float BlaTarget;
-    public float BlaT; //CB blood lactate threshold -   85% of max heart rate or 75% of VO2Max
-    public float BPd; //I diastolic blood pressure -	INPUT 
-    public float BPs; //I/M systolic blood pressure -	INPUT, and we have a DECENT way of modelling it;
-                                                        //MEN - (0.346*W + 135.76)
-                                                        //WOMEN - (0.103*W + 155.72)
+    //BASIC MODULE
+    public float Bla = 1.0f; //blood lactate 	        SOMEWHAT appropriately modelled
+    public float BlaT; //CB blood lactate threshold     85% of max heart rate or 75% of VO2Max
+    public float BPd; //I diastolic blood pressure  	INPUT 
+    public float BPs; //I/M systolic blood pressure 	INPUT, and we have a DECENT way of modelling it;
     public float MAP; //CA mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
-    public float HR; //M heart rate -					   measured, but we have a decent way of calculating it;
-                                                        //MEN - 4.7 BPM/10W
-                                                        //WOMEN - 7.1 BPM/10W
+    public float HR; //M heart rate -					measured, but we have a decent way of calculating it;
     public float HRmax; //CB heart rate maximum =		(220-age)
-    public float OP; //CA oxygen pulse =				VO2/HR
-   
+    public float OP; //CA oxygen pulse =				VO2/HR   
 
-    //OTHER STUFF
+    //MEDIUM MODULE
     public float CO; //CA cardiac output =				SV*HR OR MAP/TPR
     public float HRres; //CB heart rate reserve =		HRmax-HRresting
     public float BP; //CA mean blood pressure =			CO*TPR
     public float SV; //CA stroke volume =				EDV-ESV
     public float HRrest; //I heart rate resting -	    input
 
-    //LESS IMPORTANT
+    //ADVANCED MODULE
     public float EF; //CA ejection fraction =			(SV/EDV)*100
     public float EDV; //I/M end diastolic volume -		measured - MIGHT BE INPUT? (changes a little bit) ABOUT 120 mm, INCREASES BY 18% AT MAXIMAL EXERCISE
     public float ESV; //I/M end systolic volume -		measured - MIGHT BE INPUT? (changes a little bit) ABOUT 40-50 mm, DECREASES BY 21% AT MAXIMAL EXERCISE
-                                                        //okay so what these are is: EDV - volume of blood in heart at maximum succ, ESV - volume of blood in heart after it squeezed.
-                                                        //during exercise the heart generally just gets bigger - minimum pressure doesn't change, but everything else goes futher in it's direction.
-                                                        //end systolic volume/pressure changes the most, though - Volume goes down whilst pressure goes up (more squeeze). EDV goes up a bit, P no change.
-    public float SW; //CA stroke work =					SV*MAP
+     public float SW; //CA stroke work =				SV*MAP
     public float TPR; //CA total peripheral resistance = MAP/CO
 
-    public float HRtarg; //TESTING CB
-    public float BPsTarg; //TESTING CB
-    public float BPsBase; //TESTING I
-    public float EDVbase; //TESTING I
-    public float ESVbase; //TESTING I
+    //FOR MODELLING 
+    public float BlaTarget;
+    public float HRtarg;
+    public float BPsTarg;
+    public float BPsBase;
+    public float EDVbase;
+    public float ESVbase;
 
     private float velocity = 0.0f; //FOR SMOOTHDAMP
 
-    public float BlaCond = 0; //OUTPUT
-    public float HRCond = 0; //OUTPUT
+    //OUTPUT
+    public float BlaCond = 0;
+    public float HRCond = 0;
 
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
@@ -87,25 +80,25 @@ public class Cardio : MonoBehaviour
             HR = HRmax;
         }
 
-        if (Bla > 5)
+        if (Bla >= 5)
         {
             BlaCond = 1;
             //pretty okay, maybe a bit tired
 
-            if (Bla > 10)
+            if (Bla >= 10)
             {
                 BlaCond = 2;
                 //getting tired
 
-                if (Bla > 15)
+                if (Bla >= 15)
                 {
                     BlaCond = 3;
                     //legs very tired, an unhealthy person would probably give up
 
-                    if (Bla > 20)
+                    if (Bla >= 20)
                     {
                         BlaCond = 4;
-                        //becoming dangerous; subject should stop or risk last injury
+                        //becoming dangerous; subject should stop or risk lasting injury
                     }
                 }
             }
@@ -151,7 +144,7 @@ public class Cardio : MonoBehaviour
         BPs = Mathf.SmoothDamp(BPs, BPsBase, ref velocity, 5);
     }
 
-    //FUNCTIONS LEVEL 1
+    //FUNCTIONS LEVEL 1 - BASIC MODULE
 
     public void BPsfunction(float BPsfunc) //USE THIS ONE FOR INPUT
     {
@@ -180,7 +173,6 @@ public class Cardio : MonoBehaviour
     {
         BPd = BPdfunc; //INPUT
     }
-
 
     void HRtargfunction()
     {
@@ -230,8 +222,6 @@ public class Cardio : MonoBehaviour
 
     public void BlaTargfunction()
     {
-        //MODEL NEEDED
-
         if (HR >= BlaT)
         {
             HRCond = 1;
@@ -247,7 +237,7 @@ public class Cardio : MonoBehaviour
         }
     }
 
-    //FUNCTIONS LEVEL 2
+    //FUNCTIONS LEVEL 2 - MEDIUM MODULE
 
     void COfunction()
     {
@@ -269,7 +259,7 @@ public class Cardio : MonoBehaviour
         HRres = (HRmax - HRrest);
     }
 
-    //FUNCTIONS LEVEL 3
+    //FUNCTIONS LEVEL 3 - ADVANCED MODULE
 
     void EFfunction()
     {
