@@ -121,6 +121,56 @@ public class FinalCustomModule : MonoBehaviour
     public Toggle TLC_toggle; //46
     public Toggle VC_toggle; //47 AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH IT'S SO LONG AHHHHHHHHHHHHHHHHHHHHHHHH
 
+    //buttons for that stuff because the toggles have been killed
+    public Button RPE_button; //1
+    public Button Dyspnoea_button; //2
+    public Button EE_button; //3
+    public Button TE_button; //4
+    public Button TI_button; //5
+    public Button TToT_button; //6
+    public Button VT_button; //7
+    public Button fr_button; //8
+    public Button PETCO2_button; //9
+    public Button PETO2_button; //10
+    public Button VE_button; //11
+    public Button VO2_button; //12
+    public Button VCO2_button; //13
+    public Button RER_button; //14
+    public Button MET_button; //15
+    public Button VO2fr_button; //16
+    public Button SpO2_button; //17
+    public Button VEcap_button; //18
+    public Button VEVO2_button; //19
+    public Button VEVCO2_button; //20
+    public Button FIO2_button; //21
+    public Button FICO2_button; //22
+    public Button FEO2_button; //23
+    public Button FECO2_button; //24
+    public Button BPd_button; //25
+    public Button BPs_button; //26
+    public Button MAP_button; //27
+    public Button Bla_button; //28
+    public Button CO_button; //29
+    public Button Fcmax_button; //30
+    public Button Fcres_button; //31
+    public Button VO2fc_button; //32
+    public Button Sv_button; //33
+    public Button FEV1_button; //34
+    public Button FVC_button; //35
+    public Button FEV1FVC_button; //36
+    public Button PImax_button; //37 
+    public Button PEmax_button; //38
+    public Button ERV_button; //39
+    public Button FRC_button; //40
+    public Button IC_button; //41
+    public Button IRV_button; //42
+    //public Toggle VEcap_toggle; //vecap is on her list twice with different letters capitalised so big ?????? from me
+    public Button PIF_button; //43
+    public Button PEF_button; //44
+    public Button RV_button; //45
+    public Button TLC_button; //46
+    public Button VC_button; //47 AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH IT'S SO LONG AHHHHHHHHHHHHHHHHHHHHHHHH
+
 
     public CharacterAvatar avatar; //gets a reference to the character undergoing the module
 
@@ -539,29 +589,67 @@ public class FinalCustomModule : MonoBehaviour
     }
     private void Clicked_RPE_Toggle(bool Value)
     {
-        if (RPE_toggle.isOn)
+        //if (RPE_toggle.isOn)
+        //{
+            
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        if (filledBoxes[i] == false)
+        //        {
+        //            if (RPE_toggled == false)
+        //            {
+        //                Debug.Log("filledBoxes works");
+        //                BoxValue[i] = 1;
+        //                //textBoxes[i].text = "ve";
+        //                textBoxes[i].text = avatar.RPE.ToString();
+        //                filledBoxes[i] = true;
+        //                RPE_toggled = true;
+        //                RPE_toggle.isOn = true;
+        //                //this box will desplay the avatar's VE value 
+        //            }
+
+        //        }
+        //        else if (filledBoxes[i] == true & RPE_toggled == false)
+        //        {
+        //            RPE_toggle.isOn = false;
+        //        }
+        //    }
+
+
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        if (BoxValue[i] == 1)
+        //        {
+        //            filledBoxes[i] = false;
+        //            textBoxes[i].text = "";
+        //            BoxValue[i] = 0;
+        //            RPE_toggled = false;
+        //        }
+        //    }
+
+
+        //}
+        if (!RPE_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (RPE_toggled == false)
-                    {
-                        Debug.Log("filledBoxes works");
-                        BoxValue[i] = 1;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.RPE.ToString();
-                        filledBoxes[i] = true;
-                        RPE_toggled = true;
-                        RPE_toggle.isOn = true;
-                        //this box will desplay the avatar's VE value 
-                    }
+               
+                      Debug.Log("filledBoxes works");
+                      BoxValue[i] = 1;
+                      //textBoxes[i].text = "ve";
+                      textBoxes[i].text = avatar.RPE.ToString();
+                      filledBoxes[i] = true;
+                      RPE_toggled = true;
+                      // RPE_toggle.isOn = true;
+                      //this box will desplay the avatar's VE value 
+                    
 
-                }
-                else if (filledBoxes[i] == true & RPE_toggled == false)
-                {
-                    RPE_toggle.isOn = false;
                 }
             }
 
@@ -586,29 +674,67 @@ public class FinalCustomModule : MonoBehaviour
     }
     private void Clicked_Dys_Toggle(bool Value)
     {
-        if (Dyspnoea_toggle.isOn)
+        //if (Dyspnoea_toggle.isOn)
+        //{
+
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        if(filledBoxes[i] == false)
+        //        {
+        //            if (dyspnoea_toggled == false)
+        //            {
+        //                Debug.Log("filledBoxes works");
+        //                BoxValue[i] = 2;
+        //                //textBoxes[i].text = "ve";
+        //                textBoxes[i].text = avatar.Dyspnoea.ToString();
+        //                filledBoxes[i] = true;
+        //                dyspnoea_toggled = true;
+        //                Dyspnoea_toggle.isOn = true;
+        //                //this box will desplay the avatar's VE value 
+        //            }
+
+        //        }
+        //        else if (filledBoxes[i] == true & dyspnoea_toggled == false)
+        //        {
+        //            Dyspnoea_toggle.isOn = false;
+        //        }
+        //    }
+
+
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        if (BoxValue[i] == 2)
+        //        {
+        //            filledBoxes[i] = false;
+        //            textBoxes[i].text = "";
+        //            BoxValue[i] = 0;
+        //            dyspnoea_toggled = false;
+        //        }
+        //    }
+
+
+        //}
+        if (!dyspnoea_toggled) 
         {
 
             for (int i = 0; i < 10; i++)
             {
-                if(filledBoxes[i] == false)
+                if (filledBoxes[i] == false)
                 {
-                    if (dyspnoea_toggled == false)
-                    {
-                        Debug.Log("filledBoxes works");
-                        BoxValue[i] = 2;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.Dyspnoea.ToString();
-                        filledBoxes[i] = true;
-                        dyspnoea_toggled = true;
-                        Dyspnoea_toggle.isOn = true;
-                        //this box will desplay the avatar's VE value 
-                    }
 
-                }
-                else if (filledBoxes[i] == true & dyspnoea_toggled == false)
-                {
-                    Dyspnoea_toggle.isOn = false;
+                    Debug.Log("filledBoxes works");
+                    BoxValue[i] = 2;
+                    //textBoxes[i].text = "ve";
+                    textBoxes[i].text = avatar.Dyspnoea.ToString();
+                    filledBoxes[i] = true;
+                    dyspnoea_toggled = true;
+                    // RPE_toggle.isOn = true;
+                    //this box will desplay the avatar's VE value 
+
+
                 }
             }
 
@@ -618,12 +744,12 @@ public class FinalCustomModule : MonoBehaviour
         {
             for (int i = 0; i < 10; i++)
             {
-                if (BoxValue[i] == 2)
+                if (BoxValue[i] == 1)
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
                     BoxValue[i] = 0;
-                    dyspnoea_toggled = false;
+                    RPE_toggled = false;
                 }
             }
 
