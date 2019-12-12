@@ -116,6 +116,7 @@ public class MenuManager : MonoBehaviour
     {
         if (isChangeModule)
         {
+            selectedModule = ' ';
             MSPanel.gameObject.SetActive(true);
             TSPanel.gameObject.SetActive(false);
         }
