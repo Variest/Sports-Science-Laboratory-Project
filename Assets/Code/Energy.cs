@@ -116,7 +116,7 @@ public class Energy : MonoBehaviour
             case 0.99f:
                 CE = 5.035f;
                 break;
-            case 0.1f:
+            case 1.0f:
                 CE = 5.047f;
                 break;
         }

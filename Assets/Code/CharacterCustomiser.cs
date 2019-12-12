@@ -11,6 +11,9 @@ public class CharacterCustomiser : UIHiding
     public float age = 16f;
     public float height = 0.0f; //PLEASE PUT THIS IN CENTIMETRES
     public float weight = 0.0f; //kg
+
+    public GameObject avatarHolder; //won't let me just drag the avatar script in so will need a gameobject to get the component from.
+    public CharacterAvatar avatar; //the avatar that will store the values for the experiment
     //Class Variables
     //bool swimwear = false;
     //bool gasMarkOn = false;
@@ -38,6 +41,7 @@ public class CharacterCustomiser : UIHiding
         GenderPanel.gameObject.SetActive(true);
         RacePanel.gameObject.SetActive(true);
 
+        avatar = avatarHolder.GetComponent<CharacterAvatar>();
         Button maleButton = GenderM.GetComponent<Button>();
         maleButton.onClick.AddListener(MaleChanger);
 
@@ -70,12 +74,16 @@ public class CharacterCustomiser : UIHiding
     // Update is called once per frame
     void Update()
     {
-        age = Age.value;
-        height = Height.value;
-        weight = Weight.value;
+        avatar.age = Age.value; //sets the values within the avatar, since the equations are set to store variables there.
+        avatar.height = Height.value;
+        avatar.weight = Weight.value;
         AgeT.text = Age.value.ToString();
         HeightT.text = Height.value.ToString();
         WeightT.text = Weight.value.ToString();
+        //age = Age.value;
+        //height = Height.value;
+        //weight = Weight.value;
+
     }
 
     void SliderToggle()
@@ -97,6 +105,7 @@ public class CharacterCustomiser : UIHiding
             AsianF.gameObject.SetActive(false);
         }
         gender = true;
+        avatar.gender = 1; //avatar's gender is stored as an int, 0 for female 1 for male.
         switch (race)
         {
             case 0:
@@ -125,6 +134,7 @@ public class CharacterCustomiser : UIHiding
             AsianF.gameObject.SetActive(false);
         }
         gender = false;
+        avatar.gender = 0;
         switch (race)
         {
             case 0:
@@ -153,6 +163,7 @@ public class CharacterCustomiser : UIHiding
             AsianF.gameObject.SetActive(false);
         }
         race = 0;
+        avatar.race = 0;
         switch (gender)
         {
             case false:
@@ -176,6 +187,7 @@ public class CharacterCustomiser : UIHiding
             AsianF.gameObject.SetActive(false);
         }
         race = 1;
+        avatar.race = 1;
         switch (gender)
         {
             case false:
@@ -199,6 +211,7 @@ public class CharacterCustomiser : UIHiding
             AsianF.gameObject.SetActive(false);
         }
         race = 2;
+        avatar.race = 2;
         switch (gender)
         {
             case false:

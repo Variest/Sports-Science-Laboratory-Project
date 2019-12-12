@@ -14,16 +14,16 @@ public class CharacterAvatar : MonoBehaviour
     public float height = 0.0f;
     public float weight = 0.0f;
 
-    [Header("Sprite Rendering")]
-    public SpriteRenderer spriteRenderer;
-    public Sprite spriteWMale;
-    public Sprite spriteWFemale;
-    public Sprite spriteBMale;
-    public Sprite spriteBFemale;
-    public Sprite spriteAMale;
-    public Sprite spriteAFemale;
+    //[Header("Sprite Rendering")]
+    //public SpriteRenderer spriteRenderer;
+    //public Sprite spriteWMale;
+    //public Sprite spriteWFemale;
+    //public Sprite spriteBMale;
+    //public Sprite spriteBFemale;
+    //public Sprite spriteAMale;
+    //public Sprite spriteAFemale;
 
-    [Space(10)]
+    //[Space(10)]
     [Space(10)]
     [Header("Pulmonary Elements")]
     //values used for inspiration and expiration of air
@@ -112,7 +112,7 @@ public class CharacterAvatar : MonoBehaviour
     public float VC; //vital capacity - the greatest amount of air that can be expired after a maximal inspiration
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+       // spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame

@@ -74,6 +74,56 @@ public class cardiocustommodule : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //for (int i = 0; i < 10; i++)
+        //{
+        //    if (filledBoxes[i] != false)
+        //    {
+        //        switch (BoxValue[i])
+        //        {
+        //            case 1:
+        //                textBoxes[i].text = avatar.fc.ToString();
+        //                break;
+        //            case 2:
+        //                textBoxes[i].text = avatar.VO2fc.ToString();
+        //                break;
+        //            case 3:
+        //                textBoxes[i].text = avatar.MAP.ToString();
+        //                break;
+        //            case 4:
+        //                textBoxes[i].text = avatar.FCmax.ToString();
+        //                break;
+        //            case 5:
+        //                textBoxes[i].text = avatar.Bla.ToString();
+        //                break;
+        //            case 6:
+        //                textBoxes[i].text = avatar.CO.ToString();
+        //                break;
+        //            case 7:
+        //                textBoxes[i].text = avatar.BPd.ToString();
+        //                break;
+        //            case 8:
+        //                textBoxes[i].text = avatar.BPs.ToString();
+        //                break;
+        //            case 9:
+        //                textBoxes[i].text = avatar.SV.ToString();
+        //                break;
+        //            case 10:
+        //                textBoxes[i].text = avatar.FCres.ToString();
+        //                break;
+        //            case 11:
+        //                textBoxes[i].text = avatar.SpO2.ToString();
+        //                break;
+
+
+        //        }
+        //    }
+        //}
+    
+}
+
+    public void ManualUpdate()
+    {
+        //can be called by the timer any time it wants to update the values in the boxes
         for (int i = 0; i < 10; i++)
         {
             if (filledBoxes[i] != false)
@@ -118,8 +168,7 @@ public class cardiocustommodule : MonoBehaviour
                 }
             }
         }
-    
-}
+    }
     private void ClickedfcToggle(bool Value)
     {
         if (Toggle_fc.isOn)

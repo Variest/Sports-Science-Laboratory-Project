@@ -72,6 +72,30 @@ public class pvEquations : MonoBehaviour
     [Space(10)]
     [Header("Work Rate")]
     public float W; //work rate
+
+    public void CalculateAll()
+    {
+        ExpireTime();
+        InspireExpireRatio();
+        CalcVE();
+        CalcVeATPS(5,5);
+        CalcVeSTPD(1, 1, 1); //will fill in real values later 
+        CalcVeBTPS(1, 1, 1);
+        calcVI();
+        calcVCO2();
+        OxygenConsumption();
+        respiratoryExRatio();
+        respiratoryQuotient();
+        VentCapacity(avatar.FEV1);
+        VentEquivOxygen();
+        VentEquivCO2();
+        calcEPOC(1, 1);
+        calcMET(avatar.weight);
+        OxygenBreath();
+        VO2MaxAge();
+        VO2MaxHeight();
+        VO2MaxWeight();
+    }
     public float ExpireTime()
     {
         //used to calculate the value for Expiratory time, or TE
@@ -96,6 +120,7 @@ public class pvEquations : MonoBehaviour
     }
     public float CalcVeATPS(float vol, float t)
     {
+        //time is relevant here, will use the timer value
         avatar.veATPS = (vol / t) * 60;
         return avatar.veATPS;
     }

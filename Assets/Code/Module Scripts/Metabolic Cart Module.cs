@@ -47,6 +47,17 @@ public class MetabolicCartModule : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //rbox1.text = avatar.VE.ToString();
+        //rbox2.text = avatar.VO2.ToString();
+        //rbox3.text = avatar.VT.ToString();
+        //rbox4.text = avatar.VCO2.ToString();
+        //rbox5.text = avatar.fr.ToString();
+        //rbox6.text = avatar.MET.ToString();
+        //rbox7.text = avatar.fc.ToString();
+        //rbox8.text = avatar.RER.ToString();
+    }
+    public void ManualUpdate()
+    {
         rbox1.text = avatar.VE.ToString();
         rbox2.text = avatar.VO2.ToString();
         rbox3.text = avatar.VT.ToString();
