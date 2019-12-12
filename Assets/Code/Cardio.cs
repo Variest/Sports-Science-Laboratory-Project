@@ -106,6 +106,7 @@ public class Cardio : MonoBehaviour
         EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
         ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
 
+
         SVfunction(); //update everything else for relevant stuff, the order is very important
         COfunction();
         OPfunction();
@@ -124,7 +125,7 @@ public class Cardio : MonoBehaviour
         HRtargfunction();
         BlaTargfunction();
 
-        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, timer.intervals);
+        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, timer.intervals); //MAYBE NOT THE INTERVAL? INTERVAL COULD BE VERY LONG
         BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocity, timer.intervals);
         Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocity, timer.intervals);
 
