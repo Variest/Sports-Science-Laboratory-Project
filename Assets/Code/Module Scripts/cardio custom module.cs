@@ -10,6 +10,7 @@ public class cardiocustommodule : MonoBehaviour
     
 
     public Text[] textBoxes = new Text[10];
+    public Text[] nameBoxes = new Text[10];
     /*
      * fc
      * vo2fc
@@ -35,6 +36,18 @@ public class cardiocustommodule : MonoBehaviour
     public Toggle Toggle_fcres; //10
     public Toggle Toggle_SpO2; //11
 
+    public Button fc_button; //1
+    public Button vo2fc_button; //2
+    public Button MAP_button;; //3
+    public Button fcmax_button; //4
+    public Button bla_button; //5
+    public Button CO_button; //6
+    public Button BPd_button; //7
+    public Button BPs_button; //8
+    public Button SV_button; //9
+    public Button fcres_button; //10
+    public Button SpO2_button; //11
+
     public GameObject avatarHolder; //gameobject that will have the avatar script within it
     public CharacterAvatar avatar; //gets a reference to the character undergoing the module
 
@@ -57,17 +70,18 @@ public class cardiocustommodule : MonoBehaviour
     {
         avatar = avatarHolder.GetComponent<CharacterAvatar>();
         //add listening events to each one of the toggle boxes 
-        Toggle_fc.onValueChanged.AddListener((Value) => { ClickedfcToggle(Value); });
-        Toggle_vo2fc.onValueChanged.AddListener((Value) => { Clickedvo2fcToggle(Value); });
-        Toggle_MAP.onValueChanged.AddListener((Value) => { ClickedMAPToggle(Value); });
-        Toggle_fcmax.onValueChanged.AddListener((Value) => { ClickedfcmaxToggle(Value); });
-        Toggle_bla.onValueChanged.AddListener((Value) => { ClickedblaToggle(Value); });
-        Toggle_CO.onValueChanged.AddListener((Value) => { ClickedCOToggle(Value); });
-        Toggle_BPd.onValueChanged.AddListener((Value) => { ClickedBPdToggle(Value); });
-        Toggle_BPs.onValueChanged.AddListener((Value) => { ClickedBPsToggle(Value); });
-        Toggle_SV.onValueChanged.AddListener((Value) => { ClickedSVToggle(Value); });
-        Toggle_fcres.onValueChanged.AddListener((Value) => { ClickedfcresToggle(Value); });
-        Toggle_SpO2.onValueChanged.AddListener((Value) => { ClickedSPO2Toggle(Value); });
+        fc_button.onClick.AddListener(ClickedfcToggle);
+        vo2fc_button.onClick.AddListener(Clickedvo2fcToggle);
+        MAP_button.onClick.AddListener(ClickedMAPToggle);
+        fcmax_button.onClick.AddListener(ClickedfcmaxToggle);
+        bla_button.onClick.AddListener(ClickedblaToggle);
+        CO_button.onClick.AddListener(ClickedCOToggle);
+        BPd_button.onClick.AddListener(ClickedBPdToggle);
+        BPs_button.onClick.AddListener(ClickedBPsToggle);
+        SV_button.onClick.AddListener(ClickedSVToggle);
+        fcres_button.onClick.AddListener(ClickedfcresToggle);
+        SpO2_button.onClick.AddListener(ClickedSPO2Toggle);
+   
 
     }
 
@@ -171,29 +185,27 @@ public class cardiocustommodule : MonoBehaviour
     }
     private void ClickedfcToggle(bool Value)
     {
-        if (Toggle_fc.isOn)
+        if (!fc_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (fc_toggled == false)
+                    if (!fc_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 1;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.fc.ToString();
+                        nameBoxes[i].text = "fc ";
                         filledBoxes[i] = true;
                         fc_toggled = true;
-                        Toggle_fc.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & fc_toggled == false)
-                {
-                    Toggle_fc.isOn = false;
+
+
                 }
             }
 
@@ -207,6 +219,7 @@ public class cardiocustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i].text = "";
                     BoxValue[i] = 0;
                     fc_toggled = false;
                 }
@@ -219,29 +232,27 @@ public class cardiocustommodule : MonoBehaviour
 
     private void Clickedvo2fcToggle(bool Value)
     {
-        if (Toggle_vo2fc.isOn)
+        if (!vo2fc_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (vo2fc_toggled == false)
+                    if (!vo2fc_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 2;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.VO2fc.ToString();
+
+                        textBoxes[i].text = avatar.vo2fc.ToString();
+                        nameBoxes[i].text = "vo2fc ";
                         filledBoxes[i] = true;
                         vo2fc_toggled = true;
-                        Toggle_vo2fc.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & vo2fc_toggled == false)
-                {
-                    Toggle_vo2fc.isOn = false;
+
+
                 }
             }
 
@@ -255,6 +266,7 @@ public class cardiocustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i].text = "";
                     BoxValue[i] = 0;
                     vo2fc_toggled = false;
                 }
@@ -266,29 +278,27 @@ public class cardiocustommodule : MonoBehaviour
     }
     private void ClickedMAPToggle(bool Value)
     {
-        if (Toggle_MAP.isOn)
+        if (!MAP_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (MAP_toggled == false)
+                    if (!MAP_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 3;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.MAP.ToString();
+                        nameBoxes[i].text = "MAP ";
                         filledBoxes[i] = true;
                         MAP_toggled = true;
-                        Toggle_MAP.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & MAP_toggled == false)
-                {
-                    Toggle_MAP.isOn = false;
+
+
                 }
             }
 
@@ -302,6 +312,7 @@ public class cardiocustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i].text = "";
                     BoxValue[i] = 0;
                     MAP_toggled = false;
                 }
@@ -313,29 +324,27 @@ public class cardiocustommodule : MonoBehaviour
     }
     private void ClickedfcmaxToggle(bool Value)
     {
-        if (Toggle_fcmax.isOn)
+        if (!fcmax_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (fcmax_toggled == false)
+                    if (!fcmax_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 4;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.FCmax.ToString();
+
+                        textBoxes[i].text = avatar.fcmax.ToString();
+                        nameBoxes[i].text = "fcmax ";
                         filledBoxes[i] = true;
-                        fcmax_toggled = true;
-                        Toggle_fcmax.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        fc_toggled = true;
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & fcmax_toggled == false)
-                {
-                    Toggle_fcmax.isOn = false;
+
+
                 }
             }
 
@@ -349,6 +358,7 @@ public class cardiocustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i].text = "";
                     BoxValue[i] = 0;
                     fcmax_toggled = false;
                 }
@@ -360,29 +370,27 @@ public class cardiocustommodule : MonoBehaviour
     }
     private void ClickedblaToggle(bool Value)
     {
-        if (Toggle_bla.isOn)
+        if (!bla_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (bla_toggled == false)
+                    if (!bla_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 5;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.Bla.ToString();
+
+                        textBoxes[i].text = avatar.bla.ToString();
+                        nameBoxes[i].text = "bla ";
                         filledBoxes[i] = true;
                         bla_toggled = true;
-                        Toggle_bla.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & bla_toggled == false)
-                {
-                    Toggle_bla.isOn = false;
+
+
                 }
             }
 
@@ -396,6 +404,7 @@ public class cardiocustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i].text = "";
                     BoxValue[i] = 0;
                     bla_toggled = false;
                 }
@@ -407,29 +416,27 @@ public class cardiocustommodule : MonoBehaviour
     }
     private void ClickedCOToggle(bool Value)
     {
-        if (Toggle_CO.isOn)
+        if (!CO_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (CO_toggled == false)
+                    if (!CO_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 6;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.CO.ToString();
+                        nameBoxes[i].text = "CO ";
                         filledBoxes[i] = true;
                         CO_toggled = true;
-                        Toggle_CO.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & CO_toggled == false)
-                {
-                    Toggle_CO.isOn = false;
+
+
                 }
             }
 
@@ -443,6 +450,7 @@ public class cardiocustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i].text = "";
                     BoxValue[i] = 0;
                     CO_toggled = false;
                 }
@@ -454,29 +462,27 @@ public class cardiocustommodule : MonoBehaviour
     }
     private void ClickedBPdToggle(bool Value)
     {
-        if (Toggle_BPd.isOn)
+        if (!BPd_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (BPd_toggled == false)
+                    if (!BPd_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 7;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.BPd.ToString();
+                        nameBoxes[i].text = "BPd ";
                         filledBoxes[i] = true;
                         BPd_toggled = true;
-                        Toggle_BPd.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & BPd_toggled == false)
-                {
-                    Toggle_BPd.isOn = false;
+
+
                 }
             }
 
@@ -490,6 +496,7 @@ public class cardiocustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i].text = "";
                     BoxValue[i] = 0;
                     BPd_toggled = false;
                 }
@@ -501,29 +508,27 @@ public class cardiocustommodule : MonoBehaviour
     }
     private void ClickedBPsToggle(bool Value)
     {
-        if (Toggle_BPs.isOn)
+        if (!BPs_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (BPs_toggled == false)
+                    if (!BPs_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 8;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.BPs.ToString();
+                        nameBoxes[i].text = "BPs ";
                         filledBoxes[i] = true;
                         BPs_toggled = true;
-                        Toggle_BPs.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & BPs_toggled == false)
-                {
-                    Toggle_BPs.isOn = false;
+
+
                 }
             }
 
@@ -537,6 +542,7 @@ public class cardiocustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i].text = "";
                     BoxValue[i] = 0;
                     BPs_toggled = false;
                 }
@@ -548,29 +554,27 @@ public class cardiocustommodule : MonoBehaviour
     }
     private void ClickedSVToggle(bool Value)
     {
-        if (Toggle_SV.isOn)
+        if (!SV_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (SV_toggled == false)
+                    if (!SV_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 9;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.SV.ToString();
+                        nameBoxes[i].text = "SV ";
                         filledBoxes[i] = true;
                         SV_toggled = true;
-                        Toggle_SV.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & SV_toggled == false)
-                {
-                    Toggle_SV.isOn = false;
+
+
                 }
             }
 
@@ -584,6 +588,7 @@ public class cardiocustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i].text = "";
                     BoxValue[i] = 0;
                     SV_toggled = false;
                 }
@@ -595,29 +600,27 @@ public class cardiocustommodule : MonoBehaviour
     }
     private void ClickedfcresToggle(bool Value)
     {
-        if (Toggle_fcres.isOn)
+        if (!fcres_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (fcres_toggled == false)
+                    if (!fcres_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 10;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.FCres.ToString();
+
+                        textBoxes[i].text = avatar.fcres.ToString();
+                        nameBoxes[i].text = "fcres ";
                         filledBoxes[i] = true;
                         fcres_toggled = true;
-                        Toggle_fcres.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & fcres_toggled == false)
-                {
-                    Toggle_fcres.isOn = false;
+
+
                 }
             }
 
@@ -631,6 +634,7 @@ public class cardiocustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i].text = "";
                     BoxValue[i] = 0;
                     fcres_toggled = false;
                 }
@@ -642,29 +646,27 @@ public class cardiocustommodule : MonoBehaviour
     }
     private void ClickedSPO2Toggle(bool Value)
     {
-        if (Toggle_SpO2.isOn)
+        if (!SpO2_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (SpO2_toggled == false)
+                    if (!SpO2_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 11;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.SpO2.ToString();
+
+                        textBoxes[i].text = avatar.SPO2.ToString();
+                        nameBoxes[i].text = "SPO2 ";
                         filledBoxes[i] = true;
                         SpO2_toggled = true;
-                        Toggle_SpO2.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & SpO2_toggled == false)
-                {
-                    Toggle_SpO2.isOn = false;
+
+
                 }
             }
 
@@ -678,6 +680,7 @@ public class cardiocustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i].text = "";
                     BoxValue[i] = 0;
                     SpO2_toggled = false;
                 }

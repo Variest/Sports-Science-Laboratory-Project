@@ -26,7 +26,7 @@ public class VariableButtonColour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(GetComponent<UnityEngine.UI.Image>().color);
+        //Debug.Log(GetComponent<UnityEngine.UI.Image>().color);
         if (GetComponent<UnityEngine.UI.Image>().color != Color.white || GetComponent<UnityEngine.UI.Image>().color != Color.grey)
         {
             GetComponent<UnityEngine.UI.Image>().color = Color.white;

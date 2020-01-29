@@ -6,7 +6,7 @@ public class pvEquations : MonoBehaviour
 {
 
     [Header("Character")]
-    //will probably have a lot of these pulmonary variables within the character eventually, this is just a basic thing for now so that i can test some stuff
+   
     CharacterAvatar avatar;
     [Space(10)]
     [Header("Values used for inspiration and expiration of air")]
@@ -79,7 +79,7 @@ public class pvEquations : MonoBehaviour
         InspireExpireRatio();
         CalcVE();
         CalcVeATPS(5,5);
-        CalcVeSTPD(1, 1, 1); //will fill in real values later 
+        CalcVeSTPD(1, 1, 1); 
         CalcVeBTPS(1, 1, 1);
         calcVI();
         calcVCO2();
@@ -172,7 +172,7 @@ public class pvEquations : MonoBehaviour
     {
         avatar.Vecap = FEV1 * 35;
         return avatar.Vecap;
-        //the sheet says "FEV1 * 40 or FEV1 * 35" so I don't know which one she wants us to use here????????????
+       
         //apparently there is no set variable that changes whether we use 40 or 35, however 35 is apparently the more common number to use and as such shall be the one we use
     }
     public float VentEquivOxygen()

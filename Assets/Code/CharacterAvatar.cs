@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterAvatar : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     //stores all the variables for the person: will be the thing that gets updated as the program runs in the end version
 
     [Header("Base elements")] //basic elements for character creation, will change how the character looks on screen as well as the variables used in some of the equations
@@ -14,14 +14,7 @@ public class CharacterAvatar : MonoBehaviour
     public float height = 0.0f;
     public float weight = 0.0f;
 
-    //[Header("Sprite Rendering")]
-    //public SpriteRenderer spriteRenderer;
-    //public Sprite spriteWMale;
-    //public Sprite spriteWFemale;
-    //public Sprite spriteBMale;
-    //public Sprite spriteBFemale;
-    //public Sprite spriteAMale;
-    //public Sprite spriteAFemale;
+
 
     //[Space(10)]
     [Space(10)]
@@ -73,7 +66,7 @@ public class CharacterAvatar : MonoBehaviour
     //work rate
     public float W; //work rate
 
-    [Header("Other shit IDK")]
+    [Header("Not categorised")]
     public float EE;
     public float FCres;
     public float FCmax;
