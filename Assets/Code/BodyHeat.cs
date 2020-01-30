@@ -101,8 +101,11 @@ public class BodyHeat : MonoBehaviour
 
     void airtempfunc()
     {
-        heatDiff = (heat.gasTemp - BodyTemp);
-        AirHeat = ((exercise.HeatWork * 0.15f) + (heatDiff * AirHC));
+        if (heat.gasTemp > 0)
+        {
+            heatDiff = (heat.gasTemp - BodyTemp);
+            AirHeat = ((exercise.HeatWork * 0.15f) + (heatDiff * AirHC));
+        }
     }
 
     void sweatfunc()
