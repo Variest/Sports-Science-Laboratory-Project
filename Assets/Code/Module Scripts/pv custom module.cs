@@ -90,6 +90,65 @@ public class pvcustommodule : MonoBehaviour
         
     }
 
+    public void ManualUpdate()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            if (filledBoxes[i] != false)
+            {
+                switch (BoxValue[i])
+                {
+                    case 1:
+                        textBoxes[i].text = avatar.FVC.ToString();
+                        break;
+                    case 2:
+                        textBoxes[i].text = avatar.FEV1.ToString();
+                        break;
+                    case 3:
+                        textBoxes[i].text = avatar.FEV1FVC.ToString();
+                        break;
+                    case 4:
+                        textBoxes[i].text = avatar.PEF.ToString();
+                        break;
+                    case 5:
+                        textBoxes[i].text = avatar.PIF.ToString();
+                        break;
+                    case 6:
+                        textBoxes[i].text = avatar.PImax.ToString();
+                        break;
+                    case 7:
+                        textBoxes[i].text = avatar.PEmax.ToString();
+                        break;
+                    case 8:
+                        textBoxes[i].text = avatar.Vecap.ToString();
+                        break;
+                    case 9:
+                        textBoxes[i].text = avatar.ERV.ToString();
+                        break;
+                    case 10:
+                        textBoxes[i].text = avatar.FRC.ToString();
+                        break;
+                    case 11:
+                        textBoxes[i].text = avatar.IC.ToString();
+                        break;
+                    case 12:
+                        textBoxes[i].text = avatar.IRV.ToString();
+                        break;
+                    case 13:
+                        textBoxes[i].text = avatar.RV.ToString();
+                        break;
+                    case 14:
+                        textBoxes[i].text = avatar.TLC.ToString();
+                        break;
+                    case 15:
+                        textBoxes[i].text = avatar.VC.ToString();
+                        break;
+
+
+                }
+            }
+        }
+    }
     private void ClickedFVCToggle(bool Value)
     {
         if (Toggle_FVC.isOn)

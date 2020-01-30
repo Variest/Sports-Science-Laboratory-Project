@@ -140,12 +140,92 @@ public class CustomModuleTester : MonoBehaviour
     void Update()
     {
         //will probably update the values for each box here using a case statement inside a for loop? 
-        Debug.Log(BoxValue[0]);
-        for(int i = 0; i < 10; i++)
+        //Debug.Log(BoxValue[0]);
+        //for(int i = 0; i < 10; i++)
+        //{
+        //    if(filledBoxes[i] != false)
+        //    {
+        //        switch(BoxValue[i])
+        //        {
+        //            case 1:
+        //                textBoxes[i].text = avatar.VE.ToString();
+        //                break;
+        //            case 2:
+        //                textBoxes[i].text = avatar.VT.ToString();
+        //                break;
+        //            case 3:
+        //                textBoxes[i].text = avatar.VO2.ToString();
+        //                break;
+        //            case 4:
+        //                textBoxes[i].text = avatar.VCO2.ToString();
+        //                break;
+        //            case 5:
+        //                textBoxes[i].text = avatar.fr.ToString();
+        //                break;
+        //            case 6:
+        //                textBoxes[i].text = avatar.MET.ToString();
+        //                break;
+        //            case 7:
+        //                textBoxes[i].text = avatar.fc.ToString(); 
+        //                break;
+        //            case 8:
+        //                textBoxes[i].text = avatar.RER.ToString();
+        //                break;
+        //            case 9:
+        //                textBoxes[i].text = avatar.VeVO2.ToString();
+        //                break;
+        //            case 10:
+        //                textBoxes[i].text = avatar.VeVCO2.ToString();
+        //                break;
+        //            case 11:
+        //                textBoxes[i].text = avatar.petco2.ToString(); 
+        //                break;
+        //            case 12:
+        //                textBoxes[i].text = avatar.petco2.ToString();
+        //                break;
+        //            case 13:
+        //                textBoxes[i].text = avatar.TE.ToString();
+        //                break;
+        //            case 14:
+        //                textBoxes[i].text = avatar.TI.ToString();
+        //                break;
+        //            case 15:
+        //                textBoxes[i].text = avatar.TITE.ToString();
+        //                break;
+        //            case 16:
+        //                textBoxes[i].text = avatar.Ttot.ToString();
+        //                break;
+        //            case 17:
+        //                textBoxes[i].text = avatar.VO2fr.ToString();
+        //                break;
+        //            case 18:
+        //                textBoxes[i].text = avatar.VO2fc.ToString(); 
+        //                break;
+        //            case 19:
+        //                textBoxes[i].text = avatar.SpO2.ToString(); 
+        //                break;
+        //            case 20:
+        //                textBoxes[i].text = avatar.FCmax.ToString(); 
+        //                break;
+        //            case 21:
+        //                textBoxes[i].text = avatar.FCres.ToString(); 
+        //                break;
+        //            case 22:
+        //                textBoxes[i].text = avatar.EE.ToString(); 
+        //                break;
+
+        //        }
+        //    }
+        //}
+    }
+
+    public void ManualUpdate()
+    {
+        for (int i = 0; i < 10; i++)
         {
-            if(filledBoxes[i] != false)
+            if (filledBoxes[i] != false)
             {
-                switch(BoxValue[i])
+                switch (BoxValue[i])
                 {
                     case 1:
                         textBoxes[i].text = avatar.VE.ToString();
@@ -166,7 +246,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxes[i].text = avatar.MET.ToString();
                         break;
                     case 7:
-                        textBoxes[i].text = avatar.fc.ToString(); 
+                        textBoxes[i].text = avatar.fc.ToString();
                         break;
                     case 8:
                         textBoxes[i].text = avatar.RER.ToString();
@@ -178,7 +258,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxes[i].text = avatar.VeVCO2.ToString();
                         break;
                     case 11:
-                        textBoxes[i].text = avatar.petco2.ToString(); 
+                        textBoxes[i].text = avatar.petco2.ToString();
                         break;
                     case 12:
                         textBoxes[i].text = avatar.petco2.ToString();
@@ -199,26 +279,25 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxes[i].text = avatar.VO2fr.ToString();
                         break;
                     case 18:
-                        textBoxes[i].text = avatar.VO2fc.ToString(); 
+                        textBoxes[i].text = avatar.VO2fc.ToString();
                         break;
                     case 19:
-                        textBoxes[i].text = avatar.SpO2.ToString(); 
+                        textBoxes[i].text = avatar.SpO2.ToString();
                         break;
                     case 20:
-                        textBoxes[i].text = avatar.FCmax.ToString(); 
+                        textBoxes[i].text = avatar.FCmax.ToString();
                         break;
                     case 21:
-                        textBoxes[i].text = avatar.FCres.ToString(); 
+                        textBoxes[i].text = avatar.FCres.ToString();
                         break;
                     case 22:
-                        textBoxes[i].text = avatar.EE.ToString(); 
+                        textBoxes[i].text = avatar.EE.ToString();
                         break;
 
                 }
             }
         }
     }
-
     private void ClickedVEToggle(bool Value)
     {
         if(ToggleVE.isOn)

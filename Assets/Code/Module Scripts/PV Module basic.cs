@@ -35,11 +35,21 @@ public class PVModulebasic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //rbox1.text = avatar.FVC.ToString();
+        //rbox2.text = avatar.FEV1.ToString();
+        //rbox3.text = avatar.FEV1FVC.ToString();
+        //rbox4.text = avatar.PEF.ToString();
+        //rbox5.text = avatar.PIF.ToString();
+        //rbox6.text = avatar.Vecap.ToString();
+    }
+    public void ManualUpdate()
+    {
         rbox1.text = avatar.FVC.ToString();
         rbox2.text = avatar.FEV1.ToString();
         rbox3.text = avatar.FEV1FVC.ToString();
         rbox4.text = avatar.PEF.ToString();
         rbox5.text = avatar.PIF.ToString();
         rbox6.text = avatar.Vecap.ToString();
+
     }
 }

@@ -33,10 +33,17 @@ public class cardiomodulebasic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //rbox1.text = avatar.fc.ToString();
+        //rbox2.text = avatar.VO2fc.ToString();
+        //rbox3.text = avatar.MAP.ToString();
+        //rbox4.text = avatar.FCmax.ToString();
+      
+    }
+    public void ManualUpdate()
+    {
         rbox1.text = avatar.fc.ToString();
         rbox2.text = avatar.VO2fc.ToString();
         rbox3.text = avatar.MAP.ToString();
         rbox4.text = avatar.FCmax.ToString();
-      
     }
 }
