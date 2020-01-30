@@ -127,9 +127,9 @@ public class Cardio : MonoBehaviour
         HRtargfunction();
         BlaTargfunction();
 
-        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, timer.intervals); //MAYBE NOT THE INTERVAL? INTERVAL COULD BE VERY LONG
-        BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocity, timer.intervals);
-        Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocity, timer.intervals);
+        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, timer.intervals/2); //MAYBE NOT THE INTERVAL? INTERVAL COULD BE VERY LONG
+        BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocity, timer.intervals/2);
+        Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocity, timer.intervals/2);
 
         //HOW TO USE SMOOTHDAMP
         //1 = START POSITION

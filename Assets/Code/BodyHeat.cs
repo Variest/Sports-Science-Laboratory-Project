@@ -26,6 +26,7 @@ public class BodyHeat : MonoBehaviour
     public float KCAL = 4184; //4184 joules = 1KCAL
     public float metabolism = 85; //HUMAN METABOLISM TAKES 85W POWER CONSTANTLY
     public float BodyTemp = 36.0f;
+
     public float heatDiff = 0;
     public float AirHC = 1.005f;
     public float AirHeat = 0;
