@@ -43,6 +43,8 @@ public class Cardio : MonoBehaviour
     public float BlaCond = 0;
     public float HRCond = 0;
 
+    //EXTRA
+    public float health = 0;
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
 
@@ -178,12 +180,12 @@ public class Cardio : MonoBehaviour
     {
         if (character.gender == true) //male
         {
-            HRtarg = (0.32f * exercise.BodyWork);
+            HRtarg = ((0.32f * exercise.BodyWork) + (health * 0.9f));
             //HEALTHY PEOPLE CAN BE -0.9 AND UNHEALTHY +0.9
         }
         else if (character.gender == false) // female
         {
-            HRtarg = (0.43f * exercise.BodyWork);
+            HRtarg = ((0.43f * exercise.BodyWork) + (health * 0.15f));
             //+/- 0.15
         }
 
@@ -286,6 +288,33 @@ public class Cardio : MonoBehaviour
     void TPRfunction()
     {
         TPR = (MAP / CO);
+    }
+
+    void healthfunction(int healthiness)
+    {
+        switch(healthiness)
+        {
+            case 1:
+                //NORMAL PERSON
+                health = 0;
+                break;
+            case 2:
+                //VERY UNHEALTHY
+                health = -1;
+                break;
+            case 3:
+                //MILDLY UNHEALTHY
+                health = -0.5f;
+                break;
+            case 4:
+                //VERY HEALTHY
+                health = 1;
+                break;
+            case 5:
+                //QUITE HEALTHY
+                health = 0.5f;
+                break;
+        }
     }
     
     Cardio(){}

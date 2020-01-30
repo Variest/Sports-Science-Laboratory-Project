@@ -51,14 +51,14 @@ public class Timer : MonoBehaviour
             moments.Start();
         }
 
-        if(mini.IsRunning && ((mini.ElapsedMilliseconds) >= (intervals*1000))) //intervals is probably measured in seconds
+        if(mini.IsRunning && (mini.ElapsedMilliseconds >= (intervals*1000))) //intervals is probably measured in seconds
         {         
             mini.Restart(); //restarts the timer
             exercise.RPMfunction((exercise.RPM + increase)); //increases the intensity at the user's input
             recalculateCARDIO = true; //sends signals to other sheets that they need to recalculate stuff
         } //MINI TIMER - TIMES BETWEEN EACH INCREASE IN INTENSITY
 
-        if(moments.IsRunning && ((moments.ElapsedMilliseconds) >= tenseconds))
+        if(moments.IsRunning && (moments.ElapsedMilliseconds >= tenseconds))
         {
             counter++; //every ten seconds this increases, and can be used for certain models (blood lactate)
             moments.Restart(); //restarts
@@ -66,7 +66,7 @@ public class Timer : MonoBehaviour
             tensecondHEAT = true;
         } //INDEPENDENT TIMER - EVERY TEN SECONDS
 
-        if(main.IsRunning && ((main.ElapsedMilliseconds) >= (limit*1000)))
+        if(main.IsRunning && (main.ElapsedMilliseconds >= (limit*1000)))
         {
             main.Reset(); //reset is unlike restart in that the timer does not begin again
             mini.Reset();

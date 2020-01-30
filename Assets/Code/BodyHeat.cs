@@ -26,6 +26,9 @@ public class BodyHeat : MonoBehaviour
     public float KCAL = 4184; //4184 joules = 1KCAL
     public float metabolism = 85; //HUMAN METABOLISM TAKES 85W POWER CONSTANTLY
     public float BodyTemp = 36.0f;
+    public float heatDiff = 0;
+    public float AirHC = 1.005f;
+    public float AirHeat = 0;
 
     //OUTPUT
     public float WaterCond = 0;
@@ -49,9 +52,10 @@ public class BodyHeat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(time.tensecondHEAT)
+        if(time.tensecondHEAT == true)
         {
             sweatfunc();
+            airtempfunc();
             bodyheatfunc();
             time.tensecondHEAT = false;
         }    
@@ -59,7 +63,7 @@ public class BodyHeat : MonoBehaviour
 
     void bodyheatfunc()
     {
-        HeatGain = (exercise.HeatWork + metabolism) - CoolPower;
+        HeatGain = ((exercise.HeatWork + metabolism) - CoolPower + AirHeat);
         if (HeatGain > 0)
         {
             BodyTemp += (((HeatGain / KCAL) / customiser.weight) * (HeatCapacity * 10));
@@ -95,9 +99,15 @@ public class BodyHeat : MonoBehaviour
         }
     }
 
+    void airtempfunc()
+    {
+        heatDiff = (heat.gasTemp - BodyTemp);
+        AirHeat = ((exercise.HeatWork * 0.15f) + (heatDiff * AirHC));
+    }
+
     void sweatfunc()
     {
-        SweatRate = ((exercise.HeatWork + metabolism) / SweatPower); //this is HOW MANY MLs ARE NEEDED A SECOND
+        SweatRate = (((exercise.HeatWork*0.85f) + metabolism) / SweatPower); //this is HOW MANY MLs ARE NEEDED A SECOND
         if((SweatRate * 3600) > MaxSweatRate) //makes sure it isnt too much
         {
             SweatRate = MaxSweatRate;
