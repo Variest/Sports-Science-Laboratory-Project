@@ -120,10 +120,18 @@ public class Module : MonoBehaviour
         if (treadsetting == 1)
         {
             incline = inclinefunc;
+            if (incline > inclineMax)
+            {
+                incline = inclineMax;
+            }
         }
         else if (treadsetting == 2)
         {
-            decline = inclinefunc;
+            decline = -inclinefunc;
+            if (decline < declineMax)
+            {
+                decline = declineMax;
+            }
         }
     }
 
@@ -133,7 +141,7 @@ public class Module : MonoBehaviour
         switch (exerciseType)
         {
             case 1:
-                WorkDone = ((RPM / 60) * (resistance * 10)); //watts are /s, rpm is /minute, *10 is for correction?
+                WorkDone = ((RPM / 60) * (resistance * 10)); //watts are /s, rpm is /minute, *10 is for correction
                 break;
             case 2:
                 MomentSpeed = ((speed * 1000) / 3600); //gets metres in a single second, then * by force
