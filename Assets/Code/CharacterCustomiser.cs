@@ -36,7 +36,7 @@ public class CharacterCustomiser : UIHiding
     void Start()
     {
         //Declares and sets the buttons and toggles
-
+        avatarHolder = GameObject.FindGameObjectWithTag("Avatar_Holder");
         SliderPanel.gameObject.SetActive(false);
         GenderPanel.gameObject.SetActive(true);
         RacePanel.gameObject.SetActive(true);

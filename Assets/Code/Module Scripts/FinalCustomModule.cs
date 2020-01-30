@@ -9,7 +9,7 @@ public class FinalCustomModule : MonoBehaviour
 
 
     public Text[] textBoxes = new Text[10];
-    public Text[] nameBoxes = new Text[10];
+    public string[] nameBoxes = new string[10];
 
 
 
@@ -120,7 +120,7 @@ public class FinalCustomModule : MonoBehaviour
     void Start()
     {
 
-
+        avatar = GetComponent<CharacterAvatar>();
         //add listening events to each one of the toggle boxes 
         RPE_button.onClick.AddListener(Clicked_RPE_Toggle);
         Dyspnoea_button.onClick.AddListener(Clicked_Dys_Toggle);
@@ -345,7 +345,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 1;
                      
                         textBoxes[i].text = avatar.RPE.ToString();
-                        nameBoxes[i].text = "RPE ";
+                        nameBoxes[i] = "RPE ";
                         filledBoxes[i] = true;
                         RPE_toggled = true;
                         
@@ -367,7 +367,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     RPE_toggled = false;
                 }
@@ -393,7 +393,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 2;
                    
                         textBoxes[i].text = avatar.Dyspnoea.ToString();
-                        nameBoxes[i].text = "Dyspnoea ";
+                        nameBoxes[i] = "Dyspnoea ";
                         filledBoxes[i] = true;
                         dyspnoea_toggled = true;
                       
@@ -415,7 +415,7 @@ public class FinalCustomModule : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
                     BoxValue[i] = 0;
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     dyspnoea_toggled = false;
                 }
             }
@@ -439,7 +439,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 3;
                        
                         textBoxes[i].text = avatar.EE.ToString();
-                        nameBoxes[i].text = "EE ";
+                        nameBoxes[i] = "EE ";
                         filledBoxes[i] = true;
                         EE_toggled = true;
                      
@@ -460,7 +460,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     EE_toggled = false;
                 }
@@ -486,7 +486,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 4;
                      
                         textBoxes[i].text = avatar.TE.ToString();
-                        nameBoxes[i].text = "TE ";
+                        nameBoxes[i] = "TE ";
                         filledBoxes[i] = true;
                         TE_toggled = true;
                        
@@ -507,7 +507,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TE_toggled = false;
                 }
@@ -533,7 +533,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 5;
                       
                         textBoxes[i].text = avatar.TI.ToString();
-                        nameBoxes[i].text = "TI ";
+                        nameBoxes[i] = "TI ";
                         filledBoxes[i] = true;
                         TI_toggled = true;
                        
@@ -554,7 +554,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TI_toggled = false;
                 }
@@ -580,7 +580,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 6;
                        
                         textBoxes[i].text = avatar.Ttot.ToString();
-                        nameBoxes[i].text = "TToT ";
+                        nameBoxes[i] = "TToT ";
                         filledBoxes[i] = true;
                         TToT_toggled = true;
                       
@@ -601,7 +601,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TToT_toggled = false;
                 }
@@ -627,7 +627,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 7;
 
                         textBoxes[i].text = avatar.VT.ToString();
-                        nameBoxes[i].text = "VT ";
+                        nameBoxes[i] = "VT ";
                         filledBoxes[i] = true;
                         VT_toggled = true;
                     
@@ -647,7 +647,7 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 7)
                 {
                     filledBoxes[i] = false;
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     textBoxes[i].text = "";
                     BoxValue[i] = 0;
                     VT_toggled = false;
@@ -673,7 +673,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 8;
                        
                         textBoxes[i].text = avatar.fr.ToString();
-                        nameBoxes[i].text = "fr ";
+                        nameBoxes[i] = "fr ";
                         filledBoxes[i] = true;
                         fr_toggled = true;
                        
@@ -694,7 +694,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     fr_toggled = false;
                 }
@@ -720,7 +720,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 9;
                       
                         textBoxes[i].text = avatar.petco2.ToString();
-                        nameBoxes[i].text = "petco2 ";
+                        nameBoxes[i] = "petco2 ";
                         filledBoxes[i] = true;
                         PETCO2_toggled = true;
                        
@@ -741,7 +741,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PETCO2_toggled = false;
                 }
@@ -766,7 +766,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 10;
                       
                         textBoxes[i].text = avatar.peto2.ToString();
-                        nameBoxes[i].text = "peto2 ";
+                        nameBoxes[i] = "peto2 ";
                         filledBoxes[i] = true;
                         PETO2_toggled = true;
                        
@@ -787,7 +787,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PETO2_toggled = false;
                 }
@@ -813,7 +813,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 11;
                        
                         textBoxes[i].text = avatar.VE.ToString();
-                        nameBoxes[i].text = "VE ";
+                        nameBoxes[i] = "VE ";
                         filledBoxes[i] = true;
                         VE_toggled = true;
                       
@@ -834,7 +834,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VE_toggled = false;
                 }
@@ -859,7 +859,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 12;
                         
                         textBoxes[i].text = avatar.VO2.ToString();
-                        nameBoxes[i].text = "VO2 ";
+                        nameBoxes[i] = "VO2 ";
                         filledBoxes[i] = true;
                         VO2_toggled = true;
                   
@@ -880,7 +880,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VO2_toggled = false;
                 }
@@ -906,7 +906,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 13;
                      
                         textBoxes[i].text = avatar.VCO2.ToString();
-                        nameBoxes[i].text = "VCO2 ";
+                        nameBoxes[i] = "VCO2 ";
                         filledBoxes[i] = true;
                         VCO2_toggled = true;
                       
@@ -927,7 +927,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VCO2_toggled = false;
                 }
@@ -953,7 +953,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 14;
                       
                         textBoxes[i].text = avatar.RER.ToString();
-                        nameBoxes[i].text = "RER ";
+                        nameBoxes[i] = "RER ";
                         filledBoxes[i] = true;
                         RER_toggled = true;
                       
@@ -974,7 +974,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     RER_toggled = false;
                 }
@@ -999,7 +999,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 15;
                      
                         textBoxes[i].text = avatar.MET.ToString();
-                        nameBoxes[i].text = "MET ";
+                        nameBoxes[i] = "MET ";
                         filledBoxes[i] = true;
                         MET_toggled = true;
                       
@@ -1020,7 +1020,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     MET_toggled = false;
                 }
@@ -1045,7 +1045,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 16;
                   
                         textBoxes[i].text = avatar.VO2fr.ToString();
-                        nameBoxes[i].text = "VO2fr ";
+                        nameBoxes[i] = "VO2fr ";
                         filledBoxes[i] = true;
                         VO2fr_toggled = true;
                        
@@ -1066,7 +1066,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VO2fr_toggled = false;
                 }
@@ -1091,7 +1091,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 17;
                      
                         textBoxes[i].text = avatar.SpO2.ToString();
-                        nameBoxes[i].text = "SpO2 ";
+                        nameBoxes[i] = "SpO2 ";
                         filledBoxes[i] = true;
                         SpO2_toggled = true;
                    
@@ -1112,7 +1112,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     SpO2_toggled = false;
                 }
@@ -1137,7 +1137,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 18;
                  
                         textBoxes[i].text = avatar.Vecap.ToString();
-                        nameBoxes[i].text = "VEcap ";
+                        nameBoxes[i] = "VEcap ";
                         filledBoxes[i] = true;
                         VEcap_toggled = true;
                       
@@ -1158,7 +1158,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VEcap_toggled = false;
                 }
@@ -1183,7 +1183,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 19;
                  
                         textBoxes[i].text = avatar.VeVO2.ToString();
-                        nameBoxes[i].text = "VeVO2 ";
+                        nameBoxes[i] = "VeVO2 ";
                         filledBoxes[i] = true;
                         VEVO2_toggled = true;
                       
@@ -1204,7 +1204,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VEVO2_toggled = false;
                 }
@@ -1229,7 +1229,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 20;
                       
                         textBoxes[i].text = avatar.VeVCO2.ToString();
-                        nameBoxes[i].text = "VEVCO2 ";
+                        nameBoxes[i] = "VEVCO2 ";
                         filledBoxes[i] = true;
                         VEVCO2_toggled = true;
                      
@@ -1250,7 +1250,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VEVCO2_toggled = false;
                 }
@@ -1275,7 +1275,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 21;
                       
                         textBoxes[i].text = avatar.FIO2.ToString();
-                        nameBoxes[i].text = "FIO2 ";
+                        nameBoxes[i] = "FIO2 ";
                         filledBoxes[i] = true;
                         FIO2_toggled = true;
                      
@@ -1296,7 +1296,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FIO2_toggled = false;
                 }
@@ -1321,7 +1321,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 22;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.FICO2.ToString();
-                        nameBoxes[i].text = "FICO2 ";
+                        nameBoxes[i] = "FICO2 ";
                         filledBoxes[i] = true;
                         FICO2_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -1343,7 +1343,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FICO2_toggled = false;
                 }
@@ -1368,7 +1368,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 23;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.FEO2.ToString();
-                        nameBoxes[i].text = "FEO2 ";
+                        nameBoxes[i] = "FEO2 ";
                         filledBoxes[i] = true;
                         FEO2_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -1390,7 +1390,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEO2_toggled = false;
                 }
@@ -1415,7 +1415,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 24;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.FECO2.ToString();
-                        nameBoxes[i].text = "FECO2 ";
+                        nameBoxes[i] = "FECO2 ";
                         filledBoxes[i] = true;
                         FECO2_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -1437,7 +1437,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FECO2_toggled = false;
                 }
@@ -1462,7 +1462,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 25;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.BPd.ToString();
-                        nameBoxes[i].text = "BPd ";
+                        nameBoxes[i] = "BPd ";
                         filledBoxes[i] = true;
                         BPd_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -1484,7 +1484,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     BPd_toggled = false;
                 }
@@ -1509,7 +1509,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 26;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.BPs.ToString();
-                        nameBoxes[i].text = "BPs ";
+                        nameBoxes[i] = "BPs ";
                         filledBoxes[i] = true;
                         BPs_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -1532,7 +1532,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     BPs_toggled = false;
                 }
@@ -1557,7 +1557,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 27;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.MAP.ToString();
-                        nameBoxes[i].text = "MAP ";
+                        nameBoxes[i] = "MAP ";
                         filledBoxes[i] = true;
                         MAP_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -1579,7 +1579,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     MAP_toggled = false;
                 }
@@ -1605,7 +1605,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 28;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.Bla.ToString();
-                        nameBoxes[i].text = "Bla ";
+                        nameBoxes[i] = "Bla ";
                         filledBoxes[i] = true;
                         Bla_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -1627,7 +1627,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     Bla_toggled = false;
                 }
@@ -1652,7 +1652,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 29;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.CO.ToString();
-                        nameBoxes[i].text = "CO ";
+                        nameBoxes[i] = "CO ";
                         filledBoxes[i] = true;
                         CO_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -1675,7 +1675,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     CO_toggled = false;
                 }
@@ -1700,7 +1700,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 30;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.FCmax.ToString();
-                        nameBoxes[i].text = "FCmax ";
+                        nameBoxes[i] = "FCmax ";
                         filledBoxes[i] = true;
                         Fcmax_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -1722,7 +1722,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     Fcmax_toggled = false;
                 }
@@ -1747,7 +1747,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 31;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.FCres.ToString();
-                        nameBoxes[i].text = "FCres ";
+                        nameBoxes[i] = "FCres ";
                         filledBoxes[i] = true;
                         Fcres_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -1769,7 +1769,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     Fcres_toggled = false;
                 }
@@ -1795,7 +1795,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 32;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.VO2fc.ToString();
-                        nameBoxes[i].text = "VO2fc ";
+                        nameBoxes[i] = "VO2fc ";
                         filledBoxes[i] = true;
                         VO2fc_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -1817,7 +1817,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VO2fc_toggled = false;
                 }
@@ -1842,7 +1842,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 33;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.SV.ToString();
-                        nameBoxes[i].text = "SV ";
+                        nameBoxes[i] = "SV ";
                         filledBoxes[i] = true;
                         Sv_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -1864,7 +1864,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     Sv_toggled = false;
                 }
@@ -1889,7 +1889,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 34;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.FEV1.ToString();
-                        nameBoxes[i].text = "FEV1 ";
+                        nameBoxes[i] = "FEV1 ";
                         filledBoxes[i] = true;
                         FEV1_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -1911,7 +1911,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEV1_toggled = false;
                 }
@@ -1936,7 +1936,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 35;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.FVC.ToString();
-                        nameBoxes[i].text = "FVC ";
+                        nameBoxes[i] = "FVC ";
                         filledBoxes[i] = true;
                         FVC_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -1958,7 +1958,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FVC_toggled = false;
                 }
@@ -1983,7 +1983,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 36;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.FEV1FVC.ToString();
-                        nameBoxes[i].text = "FEV1FVC ";
+                        nameBoxes[i] = "FEV1FVC ";
                         filledBoxes[i] = true;
                         FEV1FVC_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -2005,7 +2005,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEV1FVC_toggled = false;
                 }
@@ -2030,7 +2030,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 37;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.PImax.ToString();
-                        nameBoxes[i].text = "PImax ";
+                        nameBoxes[i] = "PImax ";
                         filledBoxes[i] = true;
                         PImax_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -2052,7 +2052,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PImax_toggled = false;
                 }
@@ -2077,7 +2077,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 38;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.PEmax.ToString();
-                        nameBoxes[i].text = "PEmax ";
+                        nameBoxes[i] = "PEmax ";
                         filledBoxes[i] = true;
                         PEmax_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -2099,7 +2099,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PEmax_toggled = false;
                 }
@@ -2124,7 +2124,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 39;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.ERV.ToString();
-                        nameBoxes[i].text = "ERV ";
+                        nameBoxes[i] = "ERV ";
                         filledBoxes[i] = true;
                         ERV_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -2146,7 +2146,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     ERV_toggled = false;
                 }
@@ -2171,7 +2171,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 40;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.FRC.ToString();
-                        nameBoxes[i].text = "FRC ";
+                        nameBoxes[i] = "FRC ";
                         filledBoxes[i] = true;
                         FRC_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -2193,7 +2193,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FRC_toggled = false;
                 }
@@ -2218,7 +2218,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 41;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.IC.ToString();
-                        nameBoxes[i].text = "IC ";
+                        nameBoxes[i] = "IC ";
                         filledBoxes[i] = true;
                         IC_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -2240,7 +2240,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     IC_toggled = false;
                 }
@@ -2265,7 +2265,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 42;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.IRV.ToString();
-                        nameBoxes[i].text = "IRV ";
+                        nameBoxes[i] = "IRV ";
                         filledBoxes[i] = true;
                         IRV_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -2288,7 +2288,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     IRV_toggled = false;
                 }
@@ -2313,7 +2313,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 43;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.PIF.ToString();
-                        nameBoxes[i].text = "PIF ";
+                        nameBoxes[i] = "PIF ";
                         filledBoxes[i] = true;
                         PIF_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -2335,7 +2335,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PIF_toggled = false;
                 }
@@ -2360,7 +2360,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 44;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.PEF.ToString();
-                        nameBoxes[i].text = "PEF ";
+                        nameBoxes[i] = "PEF ";
                         filledBoxes[i] = true;
                         PEF_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -2382,7 +2382,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PEF_toggled = false;
                 }
@@ -2407,7 +2407,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 45;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.RV.ToString();
-                        nameBoxes[i].text = "RV ";
+                        nameBoxes[i] = "RV ";
                         filledBoxes[i] = true;
                         RV_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -2429,7 +2429,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     RV_toggled = false;
                 }
@@ -2454,7 +2454,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 46;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.TLC.ToString();
-                        nameBoxes[i].text = "TLC ";
+                        nameBoxes[i] = "TLC ";
                         filledBoxes[i] = true;
                         TLC_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -2476,7 +2476,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TLC_toggled = false;
                 }
@@ -2501,7 +2501,7 @@ public class FinalCustomModule : MonoBehaviour
                         BoxValue[i] = 47;
                         //textBoxes[i].text = "ve";
                         textBoxes[i].text = avatar.VC.ToString();
-                        nameBoxes[i].text = "VC ";
+                        nameBoxes[i] = "VC ";
                         filledBoxes[i] = true;
                         VC_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -2523,7 +2523,7 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
-                    nameBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VC_toggled = false;
                 }
