@@ -25,6 +25,7 @@ public class Timer : MonoBehaviour
     public bool tensecondHEAT = false;
     public bool tensecondCARDIO = false;
     public bool recalculateCARDIO = true;
+    public bool tensecondLUNG = false;
 
     public float FPS; //for measuring the fps ofc
 
@@ -64,6 +65,7 @@ public class Timer : MonoBehaviour
             moments.Restart(); //restarts
             tensecondCARDIO = true; //sends signals
             tensecondHEAT = true;
+            tensecondLUNG = true;
         } //INDEPENDENT TIMER - EVERY TEN SECONDS
 
         if(main.IsRunning && (main.ElapsedMilliseconds >= (limit*1000)))

@@ -80,7 +80,7 @@ public class Module : MonoBehaviour
                 WattMax = 3000;
                 RPMmax = 180;
                 LoadMax = 25;
-                exerciseType = 4;
+                exerciseType = 1;
                 efficiency = 0.15f;
                 break;
             case 5f:
@@ -88,7 +88,7 @@ public class Module : MonoBehaviour
                 WattMax = 3000;
                 RPMmax = 100;
                 LoadMax = 30;
-                exerciseType = 3;
+                exerciseType = 1;
                 efficiency = 0.25f;
                 break;
         }

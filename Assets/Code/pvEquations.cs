@@ -33,7 +33,7 @@ public class pvEquations : MonoBehaviour
     public float veBTPS; //minute ventilation in a BTPS environment
     public float VE;
 
-    public float VT; //tidal volume
+    public float VT; //tidal volume - USE 'VT' FROM 'LUNGS' INSTEAD
 
     public float MET; //metabolic equivalents
     //STPD relates to standard temperature and pressure, dry. (0c, 760 mmHg)
@@ -71,7 +71,28 @@ public class pvEquations : MonoBehaviour
 
     [Space(10)]
     [Header("Work Rate")]
-    public float W; //work rate
+    public float W; //USE 'BODYWORK' FROM 'EXERCISE' INSTEAD
+
+    CharacterCustomiser character;
+    Cardio cardio;
+    Module Exercise;
+    Timer Timer;
+    Lung Lungs;
+    // Start is called before the first frame update
+    public void Start()
+    {
+        character = GetComponent<CharacterCustomiser>();
+        cardio = GetComponent<Cardio>();
+        Exercise = GetComponent<Module>();
+        Timer = GetComponent<Timer>();
+        Lungs = GetComponent<Lung>();
+    }
+
+    public void Update()
+    {
+        
+    }
+
     public float ExpireTime()
     {
         //used to calculate the value for Expiratory time, or TE
@@ -91,7 +112,7 @@ public class pvEquations : MonoBehaviour
     }
     public float CalcVE()
     {
-        avatar.VE = avatar.VT * avatar.fr;
+        avatar.VE = Lungs.VT * avatar.fr;
         return avatar.VE;
     }
     public float CalcVeATPS(float vol, float t)
