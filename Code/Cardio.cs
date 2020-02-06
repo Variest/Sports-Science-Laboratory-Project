@@ -2,207 +2,92 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Cardiovascular Functions.cpp : This file contains the 'main' function. Program execution begins and ends there.
 
 public class Cardio : MonoBehaviour
 {
-    //BASIC MODULE
-    public float Bla = 1.0f; //blood lactate 	        SOMEWHAT appropriately modelled
-    public float BlaT; //CB blood lactate threshold     85% of max heart rate or 75% of VO2Max
-    public float BPd; //I diastolic blood pressure  	INPUT 
-    public float BPs; //I/M systolic blood pressure 	INPUT, and we have a DECENT way of modelling it;
-    public float MAP; //CA mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
-    public float HR; //M heart rate -					measured, but we have a decent way of calculating it;
-    public float HRmax; //CB heart rate maximum =		(220-age)
-    public float OP; //CA oxygen pulse =				VO2/HR   
+    //IMPORTANT INTEGERS
+    float Bla; //blood lactate -				measured - we're on to something
+    float BPd; //diastolic blood pressure -		PROBABLY INPUT - this tends not to change too much with exercise
+    float HR; //heart rate -					measured, but we have a decent way of calculating it;
+                                                //MEN - 4.7 BPM/10W
+                                                //WOMEN - 7.1 BPM/10W
+    float HRmax; //heart rate maximum =			(220-age)
+    float MAP; //mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
+    float OP; //oxygen pulse =					VO2/HR
+    float BPs; //systolic blood pressure -		measured, we have a DECENT way of measuring it;
+                                                //MEN - (0.346*W + 135.76)
+                                                //WOMEN - (0.103*W + 155.72)
 
-    //MEDIUM MODULE
-    public float CO; //CA cardiac output =				SV*HR OR MAP/TPR
-    public float HRres; //CB heart rate reserve =		HRmax-HRresting
-    public float BP; //CA mean blood pressure =			CO*TPR
-    public float SV; //CA stroke volume =				EDV-ESV
-    public float HRrest; //I heart rate resting -	    input
+    //OTHER STUFF
+    float CO; //cardiac output =				SV*HR OR MAP/TPR
+    float BG; //glucose -						measured - ???? (dont need this anyway tbh)
+    float HRres; //heart rate reserve =		    HRmax-HRresting
+    float BP; //mean blood pressure =			CO*TPR
+    float SV; //stroke volume =					EDV-ESV
+    float HRrest; //heart rate resting -		input
 
-    //ADVANCED MODULE
-    public float EF; //CA ejection fraction =			(SV/EDV)*100
-    public float EDV; //I/M end diastolic volume -		measured - MIGHT BE INPUT? (changes a little bit) ABOUT 120 mm, INCREASES BY 18% AT MAXIMAL EXERCISE
-    public float ESV; //I/M end systolic volume -		measured - MIGHT BE INPUT? (changes a little bit) ABOUT 40-50 mm, DECREASES BY 21% AT MAXIMAL EXERCISE
-     public float SW; //CA stroke work =				SV*MAP
-    public float TPR; //CA total peripheral resistance = MAP/CO
-
-    //FOR MODELLING 
-    public float BlaTarget;
-    public float HRtarg;
-    public float BPsTarg;
-    public float BPsBase;
-    public float EDVbase;
-    public float ESVbase;
-
-    private float velocity = 0.0f; //FOR SMOOTHDAMP
-
-    //OUTPUT
-    public float BlaCond = 0;
-    public float HRCond = 0;
-
+    //LESS IMPORTANT
+    float EF; //ejection fraction =				(SV/EDV)*100
+    float EDV; //end diastolic volume -			measured - MIGHT BE INPUT? (changes a little bit)
+    float ESV; //end systolic volume -			measured - MIGHT BE INPUT? (changes a little bit)
+    float SW; //stroke work =					SV*MAP
+    float TPR; //total peripheral resistance =	MAP/CO
+   
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
 
-    //CARDIOVASCULAR MODULES
-    //basic: Heart Rate (FC/HR), Oxygen Pulse (OP), Mean Arterial Pressure (MAP), Max Heart Rate (HRMax)
-    //advanced: above + Blood Lactate (Bla), Cardiac Output (CO), Blood Pressure (Bpd, Bps), Stroke Volume (SV), Heart Rate Reserve (HRres), SPO2 (complicated thing from PVEquations)
+    CharacterCustomiser character;//declares character script
+    Pulmonaryvents vents;//declares vents script
+    Bike bike;// declares bike script
+    //VO2 and AGE/GENDER and Wattage
 
-    //CharacterCustomiser character; //declares character script
-    CharacterAvatar character;
-    pvEquations vents; //declares vents script
-    Module exercise; //declares bike script
-    Timer timer;
+ 
 
     public void Start()
-    {
-        //sets scripts to variables to allow them to be connected.
-        character = GetComponent<CharacterAvatar>();
-        vents = GetComponent<pvEquations>();
-        exercise = GetComponent<Module>();
-        timer = GetComponent<Timer>();
+    {//sets scripts to variables to allow them to be connected.
+    character = GetComponent<CharacterCustomiser>();
+    vents = GetComponent<Pulmonaryvents>();
+    bike = GetComponent<Bike>();  
+
     }
 
-    public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
+    //FUNCTIONS LEVEL 1
+
+    void BPsfunction()
     {
-        //CALCULATION
-        if(timer.recalculateCARDIO == true)
+        if(character.gender == true)
         {
-            //every time the work being done increases (when the timer mini resets)
-            //a lot of things need to be recalculated (HR, BPs) and some other stuff too
-            MathFunc();
+            BPs = (0.346f * bike.wattage + 135.76f);
         }
 
-        if (HR >= HRmax)
+        else if(character.gender == false)
         {
-            HR = HRmax;
-        }
-
-        if (Bla >= 5)
-        {
-            BlaCond = 1;
-            //pretty okay, maybe a bit tired
-
-            if (Bla >= 10)
-            {
-                BlaCond = 2;
-                //getting tired
-
-                if (Bla >= 15)
-                {
-                    BlaCond = 3;
-                    //legs very tired, an unhealthy person would probably give up
-
-                    if (Bla >= 20)
-                    {
-                        BlaCond = 4;
-                        //becoming dangerous; subject should stop or risk lasting injury
-                    }
-                }
-            }
-        }
-
-        EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
-        ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
-
-        SVfunction(); //update everything else for relevant stuff, the order is very important
-        COfunction();
-        OPfunction();
-        MAPfunction();
-        EFfunction();
-        SWfunction();
-        TPRfunction();
-        BPfunction();
-    }
-
-    //COMPUTING FUNCTIONS
-
-    public void MathFunc()
-    {
-        BPsTargfunction();
-        HRtargfunction();
-        BlaTargfunction();
-
-        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, timer.intervals);
-        BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocity, timer.intervals);
-        Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocity, timer.intervals);
-
-        //HOW TO USE SMOOTHDAMP
-        //1 = START POSITION
-        //2 = FINISH
-        //3 = THIS IS THE WIERD ONE. JUST DO A 'PRIVATE FLOAT'
-        //4 - TIME IN SECONDS
-
-        timer.recalculateCARDIO = false;
-    }
-
-    public void CardioResetfunc()
-    {
-        HR = Mathf.SmoothDamp(HR, HRrest, ref velocity, 5);
-        BPs = Mathf.SmoothDamp(BPs, BPsBase, ref velocity, 5);
-    }
-
-    //FUNCTIONS LEVEL 1 - BASIC MODULE
-
-    public void BPsfunction(float BPsfunc) //USE THIS ONE FOR INPUT
-    {
-        BPs = BPsfunc;
-        BPsBase = BPsfunc;
-    }
-
-    void BPsTargfunction()
-    {
-        if (character.gender == 1) //male
-        {
-            BPsTarg = (0.346f * exercise.BodyWork);
-        }
-        else if (character.gender == 0) //female
-        {
-            BPsTarg = (0.103f * exercise.BodyWork);
-        }
-
-        if (BPsTarg < BPsBase)
-        {
-            BPsTarg = BPsBase;
+            BPs = (0.103f * bike.wattage + 155.72f);
         }
     }
 
-    public void BPdfunction(float BPdfunc)
+    void BPdfunction(float BPdfunc)
     {
-        BPd = BPdfunc; //INPUT
+        BPd = BPdfunc;
     }
 
-    void HRtargfunction()
+    void BLafunction(float Blafunc)
     {
-        if (character.gender == 1) //male
-        {
-            HRtarg = (0.32f * exercise.BodyWork);
-            //HEALTHY PEOPLE CAN BE -0.9 AND UNHEALTHY +0.9
-        }
-        else if (character.gender == 0) // female
-        {
-            HRtarg = (0.43f * exercise.BodyWork);
-            //+/- 0.15
-        }
-
-        //backup
-        if(HRtarg < HRrest)
-        {
-            HRtarg = (HRrest + (0.1f * exercise.BodyWork));
-        }
+        Bla = Blafunc;
     }
 
-    public void HRrestfunction(float HRrestfunc)
+    void HRfunction()
     {
-        HRrest = HRrestfunc; //INPUT
-        HR = HRrestfunc;
-    }
+        if(character.gender == true)
+        {
+            HR = (4.7f * bike.wattage) / 10;
+        }
 
-    void HRmaxfunction()
-    {
-        HRmax = (220 - character.age);
+        else if(character.gender == false)
+        {
+            HR = (7.1f * bike.wattage) / 10;
+        }
     }
 
     void MAPfunction()
@@ -214,34 +99,27 @@ public class Cardio : MonoBehaviour
     {
         OP = (vents.VO2 / HR);
     }
-    
-    void BlaTfunction()
+
+    void HRmaxfunction()
     {
-        BlaT = (HRmax * 0.85f);
+        HRmax = (220 - character.age);
     }
 
-    public void BlaTargfunction()
-    {
-        if (HR >= BlaT)
-        {
-            HRCond = 1;
-            BlaTarget = (Mathf.Pow((exercise.WorkDone / 90), 2) + (timer.counter / 10));
-
-            //NORMAL BL is like 1-2, but it can go up to 25 during intense exercise, but this is a worst-case scenario
-            //normal people BL go up to like 10-15 before they give up. perhaps make this an option.
-        }
-        else
-        {
-            HRCond = 0;
-            BlaTarget = (Mathf.Pow((exercise.WorkDone / 130), 2) + 1.0f + (timer.counter / 10));
-        }
-    }
-
-    //FUNCTIONS LEVEL 2 - MEDIUM MODULE
+    //FUNCTIONS LEVEL 2
 
     void COfunction()
     {
         CO = (SV * HR);
+    }
+
+    void BGfunction(float BGfunc)
+    {
+        BG = BGfunc;
+    }
+
+    void HRrestfunction(float HRrestfunc)
+    {
+        HRrest = HRrestfunc;
     }
 
     void BPfunction()
@@ -259,23 +137,21 @@ public class Cardio : MonoBehaviour
         HRres = (HRmax - HRrest);
     }
 
-    //FUNCTIONS LEVEL 3 - ADVANCED MODULE
+    //FUNCTIONS LEVEL 3
 
     void EFfunction()
     {
         EF = ((SV / EDV) * 100);
     }
 
-    public void EDVfunction(float EDVfunc)
+    void EDVfunction(float EDVfunc)
     {
-        EDV = EDVfunc; //INPUT, INCREASES BY UP TO 21%
-        EDVbase = EDVfunc;        
+        EDV = EDVfunc;
     }
 
-    public void ESVfunction(float ESVfunc)
+    void ESVfunction(float ESVfunc)
     {
-        ESV = ESVfunc; //INPUT, DECREASES BY UP TO 18%
-        ESVbase = ESVfunc;
+        ESV = ESVfunc;
     }
 
     void SWfunction()
@@ -287,6 +163,6 @@ public class Cardio : MonoBehaviour
     {
         TPR = (MAP / CO);
     }
-    
-    Cardio(){}
+
+    Cardio() { }
 };
