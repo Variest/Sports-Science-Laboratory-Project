@@ -1331,6 +1331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1675852406}
+  - component: {fileID: 1675852407}
   - component: {fileID: 1675852405}
   - component: {fileID: 1675852404}
   - component: {fileID: 1675852403}
@@ -1422,7 +1423,7 @@ MonoBehaviour:
   Fcmax_button: {fileID: 0}
   Fcres_button: {fileID: 0}
   EE_button: {fileID: 0}
-  avatarHolder: {fileID: 0}
+  avatarHolder: {fileID: 1675852399}
   avatar: {fileID: 0}
   filledBoxes: 00000000000000000000
   BoxValue: 
@@ -1497,7 +1498,7 @@ MonoBehaviour:
   RV_button: {fileID: 0}
   TLC_button: {fileID: 0}
   VC_button: {fileID: 0}
-  avatarHolder: {fileID: 0}
+  avatarHolder: {fileID: 1675852399}
   avatar: {fileID: 0}
   filledBoxes: 00000000000000000000
   BoxValue: 
@@ -1745,6 +1746,7 @@ MonoBehaviour:
   MetCart_ON: 0
   PV_ON: 0
   Cardio_ON: 0
+  Advanced_ON: 0
 --- !u!114 &1675852405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1837,6 +1839,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1675852407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675852399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a396284f2fbde214fab5724a69207ed9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2043131410
 GameObject:
   m_ObjectHideFlags: 0
