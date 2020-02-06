@@ -8,14 +8,14 @@ public class WaterVapourConversion : MonoBehaviour
     public float gasTemp = 0;
     // Start is called before the first frame update
 
-    void WVfunc(float WVfunc)
+    void gastempfunc(float gasfunc)
     {
-        waterVapour = WVfunc;
-        gastempfunc();
+        gasTemp = gasfunc;
+        WVfunc();
     }
 
-    // Update is called once per frame
-    void gastempfunc()
+    //this is called after the gas temperature is set, and changes the vapour in the air
+    void WVfunc()
     {
         switch (gasTemp)
         {

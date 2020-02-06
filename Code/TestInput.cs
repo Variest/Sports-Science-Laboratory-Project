@@ -23,6 +23,21 @@ public class TestInput : MonoBehaviour {
     public InputField consEPOCbox;
     public InputField FEV1box;
     public Text resultField;
+    //answer fields below
+    public InputField expiryTime;
+    public InputField expiryRatio;
+    public InputField VE;
+    public InputField VI;
+    public InputField VCO2;
+    public InputField VO2;
+    public InputField RER;
+    public InputField RQ;
+    public InputField Vecap;
+    public InputField VeVO2;
+    public InputField VeVCO2;
+    public InputField EPOC;
+    public InputField MET;
+    public InputField VO2fr;
 
     public Dropdown tempChoser; // drop down list currently used to experiment with having the program take in different functions
 
@@ -47,8 +62,9 @@ public class TestInput : MonoBehaviour {
         //float temp3 = float.Parse(box3.text);
         //float answer = temp1 + temp2 + temp3;
         //resultField.text = answer.ToString();
-        /*
+       
         functionChosen = tempChoser.value;
+        /*
         switch(functionChosen)
         {
             case (0):
@@ -84,28 +100,45 @@ public class TestInput : MonoBehaviour {
         float tempTime = float.Parse(timeTbox.text);
         float tempVolume = float.Parse(volTbox.text);
         //debugging for the actual equations and shit idk
-        Debug.Log("expire time = " + ventCalc.ExpireTime());
-        Debug.Log("Inpire / expire ratio = " + ventCalc.InspireExpireRatio());
-        Debug.Log("VE = " + ventCalc.CalcVE());
-        Debug.Log("VE(ATPS) = " + ventCalc.CalcVeATPS(tempVolume, tempTime));
-        Debug.Log("VE(STPD) = " + ventCalc.CalcVeSTPD(tempPb, tempPH2O, tempExpTemperature));
-        Debug.Log("VE(BTPS) = " + ventCalc.CalcVeBTPS(tempPb, tempPH2O, tempExpTemperature));
-        Debug.Log("VI = " + ventCalc.calcVI());
-        Debug.Log("VCO2 = " + ventCalc.calcVCO2());
-        Debug.Log("VO2 = " + ventCalc.OxygenConsumption());
-        Debug.Log("RER = " + ventCalc.respiratoryExRatio());
-        Debug.Log("RQ = " + ventCalc.respiratoryQuotient());
-        Debug.Log("Vecap = " + ventCalc.VentCapacity(tempFEV));
-        Debug.Log("VeVO2 = " + ventCalc.VentEquivOxygen());
-        Debug.Log("VeVCO2 = " + ventCalc.VentEquivCO2());
-        Debug.Log("EPOC = " + ventCalc.calcEPOC(tempEPOCduration, tempEPOCconsume));
-        Debug.Log("MET = " + ventCalc.calcMET(tempWeight));
-        Debug.Log("VO2fr = " + ventCalc.OxygenBreath());
-    }
-}
+        switch (functionChosen)
+        {
+            case (0):
+                Debug.Log("VE(ATPS) = " + ventCalc.CalcVeATPS(tempVolume, tempTime));
+                ventCalc.CalcVeSTPD(tempPb, tempPH2O, tempExpTemperature);
+                ventCalc.CalcVeBTPS(tempPb, tempPH2O, tempExpTemperature);
 
-enum ChosenFunction
-{
-    monday,
-    tuesday 
+                break;
+            case (1):
+                ventCalc.CalcVeATPS(tempVolume, tempTime);
+
+                Debug.Log("VE(STPD) = " + ventCalc.CalcVeSTPD(tempPb, tempPH2O, tempExpTemperature));
+                ventCalc.CalcVeBTPS(tempPb, tempPH2O, tempExpTemperature);
+                break;
+            case (2):
+                ventCalc.CalcVeATPS(tempVolume, tempTime);
+                ventCalc.CalcVeSTPD(tempPb, tempPH2O, tempExpTemperature);
+                Debug.Log("VE(BTPS) = " + ventCalc.CalcVeBTPS(tempPb, tempPH2O, tempExpTemperature));
+                break;
+        }
+        //Runs the calculate function for respective Value and changes it to a string to display it in a textbox
+        expiryTime.text = ventCalc.ExpireTime().ToString();        
+        expiryRatio.text = ventCalc.InspireExpireRatio().ToString();
+        VE.text = ventCalc.CalcVE().ToString();
+
+        //Debug.Log("VE(ATPS) = " + ventCalc.CalcVeATPS(tempVolume, tempTime));
+        //Debug.Log("VE(STPD) = " + ventCalc.CalcVeSTPD(tempPb, tempPH2O, tempExpTemperature));
+        // Debug.Log("VE(BTPS) = " + ventCalc.CalcVeBTPS(tempPb, tempPH2O, tempExpTemperature));
+
+        VI.text = ventCalc.calcVI().ToString();
+        VCO2.text = ventCalc.ExpireTime().ToString();
+        VO2.text = ventCalc.OxygenConsumption().ToString();
+        RER.text = ventCalc.respiratoryExRatio().ToString();
+        RQ.text = ventCalc.respiratoryQuotient().ToString();
+        Vecap.text = ventCalc.VentCapacity(tempFEV).ToString();
+        VeVO2.text = ventCalc.VentEquivOxygen().ToString();
+        VeVCO2.text = ventCalc.VentEquivCO2().ToString();
+        EPOC.text = ventCalc.calcEPOC(tempEPOCduration, tempEPOCconsume).ToString();
+        MET.text = ventCalc.calcMET(tempWeight).ToString();
+        VO2fr.text = ventCalc.OxygenBreath().ToString();
+    }
 }
