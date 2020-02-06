@@ -1322,6 +1322,521 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1675852399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1675852406}
+  - component: {fileID: 1675852405}
+  - component: {fileID: 1675852404}
+  - component: {fileID: 1675852403}
+  - component: {fileID: 1675852402}
+  - component: {fileID: 1675852401}
+  - component: {fileID: 1675852400}
+  m_Layer: 0
+  m_Name: Avatar_Holder
+  m_TagString: Avatar_Holder
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1675852400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675852399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5bafb54a40b1f4eb199ba37bc7f4c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBoxes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  nameBoxes:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  ToggleVE: {fileID: 0}
+  ToggleVT: {fileID: 0}
+  ToggleVO2: {fileID: 0}
+  ToggleVCO2: {fileID: 0}
+  ToggleFr: {fileID: 0}
+  ToggleMET: {fileID: 0}
+  ToggleFc: {fileID: 0}
+  ToggleRER: {fileID: 0}
+  ToggleVEVO2: {fileID: 0}
+  ToggleVEVCO2: {fileID: 0}
+  TogglePETCO2: {fileID: 0}
+  TogglePETO2: {fileID: 0}
+  ToggleTE: {fileID: 0}
+  ToggleTI: {fileID: 0}
+  ToggleTITE: {fileID: 0}
+  ToggleTToT: {fileID: 0}
+  ToggleVO2FR: {fileID: 0}
+  ToggleVO2FC: {fileID: 0}
+  ToggleSpO2: {fileID: 0}
+  ToggleFcmax: {fileID: 0}
+  ToggleFcres: {fileID: 0}
+  ToggleEE: {fileID: 0}
+  VE_button: {fileID: 0}
+  VT_button: {fileID: 0}
+  VO2_button: {fileID: 0}
+  VCO2_button: {fileID: 0}
+  FR_button: {fileID: 0}
+  MET_button: {fileID: 0}
+  Fc_button: {fileID: 0}
+  RER_button: {fileID: 0}
+  VEVO2_button: {fileID: 0}
+  VEVCO2_button: {fileID: 0}
+  PETCO2_button: {fileID: 0}
+  PETO2_button: {fileID: 0}
+  TE_button: {fileID: 0}
+  TI_button: {fileID: 0}
+  TITE_button: {fileID: 0}
+  TToT_button: {fileID: 0}
+  VO2FR_button: {fileID: 0}
+  VO2FC_button: {fileID: 0}
+  SpO2_button: {fileID: 0}
+  Fcmax_button: {fileID: 0}
+  Fcres_button: {fileID: 0}
+  EE_button: {fileID: 0}
+  avatarHolder: {fileID: 0}
+  avatar: {fileID: 0}
+  filledBoxes: 00000000000000000000
+  BoxValue: 
+  VEtoggled: 0
+  VTtoggled: 0
+  VO2toggled: 0
+  VCO2toggled: 0
+  frToggled: 0
+  METtoggled: 0
+  FCtoggled: 0
+  RERtoggled: 0
+  VEVO2toggled: 0
+  VEVCO2toggled: 0
+  PETCO2toggled: 0
+  PETO2toggled: 0
+  TEtoggled: 0
+  TItoggled: 0
+  TITEtoggled: 0
+  TToTtoggled: 0
+  VO2FRtoggled: 0
+  VO2FCtoggled: 0
+  SpO2toggled: 0
+  FcMAXtoggled: 0
+  FcREStoggled: 0
+  EEtoggled: 0
+--- !u!114 &1675852401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675852399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4283f6a6e0c7dc4c86dd94c260a913b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBoxes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  nameBoxes:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  FVC_button: {fileID: 0}
+  FEV1_button: {fileID: 0}
+  FEV1FVC_button: {fileID: 0}
+  PEF_button: {fileID: 0}
+  PIF_button: {fileID: 0}
+  PImax_button: {fileID: 0}
+  PEmax_button: {fileID: 0}
+  VECap_button: {fileID: 0}
+  ERV_button: {fileID: 0}
+  FRC_button: {fileID: 0}
+  IC_button: {fileID: 0}
+  IRV_button: {fileID: 0}
+  RV_button: {fileID: 0}
+  TLC_button: {fileID: 0}
+  VC_button: {fileID: 0}
+  avatarHolder: {fileID: 0}
+  avatar: {fileID: 0}
+  filledBoxes: 00000000000000000000
+  BoxValue: 
+  FVC_toggled: 0
+  FEV1_toggled: 0
+  FEV1FVC_toggled: 0
+  PEF_toggled: 0
+  PIF_toggled: 0
+  PImax_toggled: 0
+  PEmax_toggled: 0
+  VECap_toggled: 0
+  ERV_toggled: 0
+  FRC_toggled: 0
+  IC_toggled: 0
+  IRV_toggled: 0
+  RV_toggled: 0
+  TLC_toggled: 0
+  VC_toggled: 0
+--- !u!114 &1675852402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675852399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ceeb2b34913f143975ef9d32ec74c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBoxes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  nameBoxes:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  RPE_button: {fileID: 0}
+  Dyspnoea_button: {fileID: 0}
+  EE_button: {fileID: 0}
+  TE_button: {fileID: 0}
+  TI_button: {fileID: 0}
+  TToT_button: {fileID: 0}
+  VT_button: {fileID: 0}
+  fr_button: {fileID: 0}
+  PETCO2_button: {fileID: 0}
+  PETO2_button: {fileID: 0}
+  VE_button: {fileID: 0}
+  VO2_button: {fileID: 0}
+  VCO2_button: {fileID: 0}
+  RER_button: {fileID: 0}
+  MET_button: {fileID: 0}
+  VO2fr_button: {fileID: 0}
+  SpO2_button: {fileID: 0}
+  VEcap_button: {fileID: 0}
+  VEVO2_button: {fileID: 0}
+  VEVCO2_button: {fileID: 0}
+  FIO2_button: {fileID: 0}
+  FICO2_button: {fileID: 0}
+  FEO2_button: {fileID: 0}
+  FECO2_button: {fileID: 0}
+  BPd_button: {fileID: 0}
+  BPs_button: {fileID: 0}
+  MAP_button: {fileID: 0}
+  Bla_button: {fileID: 0}
+  CO_button: {fileID: 0}
+  Fcmax_button: {fileID: 0}
+  Fcres_button: {fileID: 0}
+  VO2fc_button: {fileID: 0}
+  Sv_button: {fileID: 0}
+  FEV1_button: {fileID: 0}
+  FVC_button: {fileID: 0}
+  FEV1FVC_button: {fileID: 0}
+  PImax_button: {fileID: 0}
+  PEmax_button: {fileID: 0}
+  ERV_button: {fileID: 0}
+  FRC_button: {fileID: 0}
+  IC_button: {fileID: 0}
+  IRV_button: {fileID: 0}
+  PIF_button: {fileID: 0}
+  PEF_button: {fileID: 0}
+  RV_button: {fileID: 0}
+  TLC_button: {fileID: 0}
+  VC_button: {fileID: 0}
+  avatar: {fileID: 0}
+  filledBoxes: 00000000000000000000
+  BoxValue: 
+  RPE_toggled: 0
+  dyspnoea_toggled: 0
+  EE_toggled: 0
+  TE_toggled: 0
+  TI_toggled: 0
+  TToT_toggled: 0
+  VT_toggled: 0
+  fr_toggled: 0
+  PETCO2_toggled: 0
+  PETO2_toggled: 0
+  VE_toggled: 0
+  VO2_toggled: 0
+  VCO2_toggled: 0
+  RER_toggled: 0
+  MET_toggled: 0
+  VO2fr_toggled: 0
+  SpO2_toggled: 0
+  VEcap_toggled: 0
+  VEVO2_toggled: 0
+  VEVCO2_toggled: 0
+  FIO2_toggled: 0
+  FICO2_toggled: 0
+  FEO2_toggled: 0
+  FECO2_toggled: 0
+  BPd_toggled: 0
+  BPs_toggled: 0
+  MAP_toggled: 0
+  Bla_toggled: 0
+  CO_toggled: 0
+  Fcmax_toggled: 0
+  Fcres_toggled: 0
+  VO2fc_toggled: 0
+  Sv_toggled: 0
+  FEV1_toggled: 0
+  FVC_toggled: 0
+  FEV1FVC_toggled: 0
+  PImax_toggled: 0
+  PEmax_toggled: 0
+  ERV_toggled: 0
+  FRC_toggled: 0
+  IC_toggled: 0
+  IRV_toggled: 0
+  PIF_toggled: 0
+  PEF_toggled: 0
+  RV_toggled: 0
+  TLC_toggled: 0
+  VC_toggled: 0
+--- !u!114 &1675852403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675852399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea60e0c29165ea4e98803159dd239ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBoxes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  nameBoxes:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  fc_button: {fileID: 0}
+  vo2fc_button: {fileID: 0}
+  MAP_button: {fileID: 0}
+  fcmax_button: {fileID: 0}
+  bla_button: {fileID: 0}
+  CO_button: {fileID: 0}
+  BPd_button: {fileID: 0}
+  BPs_button: {fileID: 0}
+  SV_button: {fileID: 0}
+  fcres_button: {fileID: 0}
+  SpO2_button: {fileID: 0}
+  avatar: {fileID: 0}
+  filledBoxes: 00000000000000000000
+  BoxValue: 
+  fc_toggled: 0
+  vo2fc_toggled: 0
+  MAP_toggled: 0
+  fcmax_toggled: 0
+  bla_toggled: 0
+  CO_toggled: 0
+  BPd_toggled: 0
+  BPs_toggled: 0
+  SV_toggled: 0
+  fcres_toggled: 0
+  SpO2_toggled: 0
+--- !u!114 &1675852404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675852399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54b1cf1857ec9554daf2bb8c0258a4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avatar: {fileID: 0}
+  textBoxes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  nameBoxes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Custom_ON: 0
+  MetCart_ON: 0
+  PV_ON: 0
+  Cardio_ON: 0
+--- !u!114 &1675852405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675852399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ced0152cc272248a7510a766d4a635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gender: 0
+  race: 0
+  age: 16
+  height: 0
+  weight: 0
+  TI: 0
+  TE: 0
+  TITE: 0
+  breathTime: 0
+  FECO2: 0
+  FICO2: 0
+  FEO2: 0
+  FIO2: 0
+  veATPS: 0
+  veSTPD: 0
+  veBTPS: 0
+  VE: 0
+  VT: 0
+  MET: 0
+  VI: 0
+  VO2: 0
+  VO2maxAge: 0
+  VO2maxHeight: 0
+  VO2maxWeight: 0
+  VO2fr: 0
+  VCO2: 0
+  EPOC: 0
+  fr: 0
+  RER: 0
+  RQ: 0
+  Vecap: 0
+  VeVO2: 0
+  VeVCO2: 0
+  Ttot: 0
+  W: 0
+  EE: 0
+  FCres: 0
+  FCmax: 0
+  SpO2: 0
+  VO2fc: 0
+  petco2: 0
+  peto2: 0
+  fc: 0
+  Dyspnoea: 0
+  RPE: 0
+  Bla: 0
+  BPs: 0
+  BlaT: 0
+  SV: 0
+  MAP: 0
+  BPd: 0
+  CO: 0
+  FEV1: 0
+  FVC: 0
+  FEV1FVC: 0
+  PImax: 0
+  PEmax: 0
+  ERV: 0
+  FRC: 0
+  IC: 0
+  IRV: 0
+  PEF: 0
+  PIF: 0
+  RV: 0
+  TLC: 0
+  VC: 0
+--- !u!4 &1675852406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675852399}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 457.7935, y: 242.23482, z: -70.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2043131410
 GameObject:
   m_ObjectHideFlags: 0
