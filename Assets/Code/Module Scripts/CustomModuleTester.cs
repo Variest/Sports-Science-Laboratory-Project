@@ -138,6 +138,12 @@ public class CustomModuleTester : MonoBehaviour
 
         avatar = avatarHolder.GetComponent<CharacterAvatar>();
         //add listening events to each one of the toggle boxes 
+        
+       
+    }
+
+    public void AttachButtons()
+    {
         VE_button.onClick.AddListener(ClickedVEToggle);
         VT_button.onClick.AddListener(ClickedVTToggle);
         VO2_button.onClick.AddListener(ClickedVO2Toggle);
@@ -160,9 +166,7 @@ public class CustomModuleTester : MonoBehaviour
         Fcmax_button.onClick.AddListener(ClickedFcmaxToggle);
         Fcres_button.onClick.AddListener(ClickedFcresToggle);
         EE_button.onClick.AddListener(ClickedEEToggle);
-       
     }
-
     // Update is called once per frame
     void Update()
     {

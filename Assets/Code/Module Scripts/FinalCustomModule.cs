@@ -122,6 +122,12 @@ public class FinalCustomModule : MonoBehaviour
 
         avatar = GetComponent<CharacterAvatar>();
         //add listening events to each one of the toggle boxes 
+        
+        
+    }
+
+    public void AttachButtons()
+    {
         RPE_button.onClick.AddListener(Clicked_RPE_Toggle);
         Dyspnoea_button.onClick.AddListener(Clicked_Dys_Toggle);
         EE_button.onClick.AddListener(Clicked_EE_Toggle);
@@ -169,9 +175,7 @@ public class FinalCustomModule : MonoBehaviour
         RV_button.onClick.AddListener(Clicked_RV_Toggle);
         TLC_button.onClick.AddListener(Clicked_TLC_Toggle);
         VC_button.onClick.AddListener(Clicked_VC_Toggle);
-        
     }
-
     void Update()
     {
 

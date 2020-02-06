@@ -71,6 +71,16 @@ public class pvcustommodule : MonoBehaviour
     {
         avatar = avatarHolder.GetComponent<CharacterAvatar>();
         //add listening events to each one of the toggle boxes 
+       
+       
+
+    }
+
+    public void AttachButtons()
+    {
+        //get the buttons from the UI 
+
+        //add the onlick events to the buttons
         FVC_button.onClick.AddListener(ClickedFVCToggle);
         FEV1_button.onClick.AddListener(ClickedFEV1Toggle);
         FEV1FVC_button.onClick.AddListener(ClickedFEV1FVCToggle);
@@ -86,10 +96,7 @@ public class pvcustommodule : MonoBehaviour
         RV_button.onClick.AddListener(ClickedRVToggle);
         TLC_button.onClick.AddListener(ClickedTLCToggle);
         VC_button.onClick.AddListener(ClickedVCToggle);
-       
-
     }
-
     // Update is called once per frame
     void Update()
     {

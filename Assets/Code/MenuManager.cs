@@ -22,6 +22,9 @@ public class MenuManager : MonoBehaviour
     public static char selectedModule = ' ';
     public static char selectedTemplate = ' ';
 
+    GameObject avatarHolder; //the object that holds the avatar value within it
+    Custom_Module_To_New_Scene moduleChanger; //the code that allows the module values to be transferred between scenes
+
     public GameObject TSPanel; 
     public GameObject MSPanel;
     public GameObject CPanel;
@@ -32,6 +35,8 @@ public class MenuManager : MonoBehaviour
     public void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        avatarHolder = GameObject.FindGameObjectWithTag("Avatar_Holder"); //gets a reference for the persistent game object representing the avatar
+        moduleChanger = avatarHolder.GetComponent<Custom_Module_To_New_Scene>(); //gets the persistent module changing code
     }
 
     public void GoToModuleSelection()
@@ -70,6 +75,7 @@ public class MenuManager : MonoBehaviour
         if (isPulmonaryModule)
         {
             selectedModule = 'P';
+            moduleChanger.PV_ON = true;
             MSPanel.gameObject.SetActive(false);
             TSPanel.gameObject.SetActive(true);
         }
@@ -80,6 +86,7 @@ public class MenuManager : MonoBehaviour
         if (isCardiovascularModule)
         {
             selectedModule = 'C';
+            moduleChanger.Cardio_ON = true;
             MSPanel.gameObject.SetActive(false);
             TSPanel.gameObject.SetActive(true);
         }
@@ -90,6 +97,7 @@ public class MenuManager : MonoBehaviour
             if (isMetabolicModule)
         {
             selectedModule = 'M';
+            moduleChanger.MetCart_ON = true;
             MSPanel.gameObject.SetActive(false);
             TSPanel.gameObject.SetActive(true);
         }

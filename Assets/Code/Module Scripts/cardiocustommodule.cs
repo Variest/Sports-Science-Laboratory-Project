@@ -60,6 +60,13 @@ public class cardiocustommodule : MonoBehaviour
     {
         avatar = GetComponent<CharacterAvatar>();
         //add listening events to each one of the toggle boxes 
+        
+   
+
+    }
+
+    public void AttachButtons()
+    {
         fc_button.onClick.AddListener(ClickedfcToggle);
         vo2fc_button.onClick.AddListener(Clickedvo2fcToggle);
         MAP_button.onClick.AddListener(ClickedMAPToggle);
@@ -71,10 +78,7 @@ public class cardiocustommodule : MonoBehaviour
         SV_button.onClick.AddListener(ClickedSVToggle);
         fcres_button.onClick.AddListener(ClickedfcresToggle);
         SpO2_button.onClick.AddListener(ClickedSPO2Toggle);
-   
-
     }
-
     // Update is called once per frame
     void Update()
     {

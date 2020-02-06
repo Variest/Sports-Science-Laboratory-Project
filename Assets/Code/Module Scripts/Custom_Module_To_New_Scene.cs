@@ -19,6 +19,7 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     public bool MetCart_ON;
     public bool PV_ON;
     public bool Cardio_ON;
+    public bool Advanced_ON;
     void Start()
     {
         custom_module = GetComponent<FinalCustomModule>();
@@ -33,19 +34,19 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Custom_ON)
+        if(Custom_ON && Advanced_ON)
         {
             CustomUpdate();
         }
-        if (MetCart_ON)
+        if (MetCart_ON && Advanced_ON)
         {
             MetCartUpdate();
         }
-        if (PV_ON)
+        if (PV_ON && Advanced_ON)
         {
             PvUpdate();
         }
-        if (Cardio_ON)
+        if (Cardio_ON && Advanced_ON)
         {
             CardioUpdate();
         }
@@ -399,6 +400,26 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
             MetCart_ON = false;
             PV_ON = false;
             Cardio_ON = false;
-}
+        }
+    }
+
+    void ButtonAssign()
+    {
+        if (Custom_ON && Advanced_ON)
+        {
+           custom_module.AttachButtons();
+        }
+        if (MetCart_ON && Advanced_ON)
+        {
+            MetCart_module.AttachButtons();
+        }
+        if (PV_ON && Advanced_ON)
+        {
+           Pv_module.AttachButtons();
+        }
+        if (Cardio_ON && Advanced_ON)
+        {
+            Cardio_Module.AttachButtons();
+        }
     }
 }
