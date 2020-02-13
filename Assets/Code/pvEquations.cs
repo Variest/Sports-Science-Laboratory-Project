@@ -124,6 +124,12 @@ public class pvEquations : MonoBehaviour
         return avatar.TITE;
     }
 
+    public float BreathTime()
+    {
+        avatar.breathTime = (avatar.fr / 60);
+        return avatar.breathTime;
+    }
+
                                     //FRAC. CONC. FUNCTIONS
 
 
@@ -234,7 +240,6 @@ public class pvEquations : MonoBehaviour
     }
 
                                         //ET PP FUNCTIONS
-
 
 
 
