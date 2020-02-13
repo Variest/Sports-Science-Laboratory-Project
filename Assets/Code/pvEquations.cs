@@ -79,7 +79,7 @@ public class pvEquations : MonoBehaviour
 
     public float W; //USE 'BODYWORK' FROM 'EXERCISE' INSTEAD
 
-    CharacterCustomiser character;
+    CharacterCustomiser Character;
     Cardio cardio;
     Module Exercise;
     Timer Timer;
@@ -88,11 +88,12 @@ public class pvEquations : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        character = GetComponent<CharacterCustomiser>();
+        Character = GetComponent<CharacterCustomiser>();
         cardio = GetComponent<Cardio>();
         Exercise = GetComponent<Module>();
         Timer = GetComponent<Timer>();
         Lungs = GetComponent<Lung>();
+        avatar = GetComponent<CharacterAvatar>();
     }
 
     public void Update()
@@ -203,6 +204,13 @@ public class pvEquations : MonoBehaviour
         return avatar.MET;
 
     }
+
+    public float BreathFreq()
+    {
+        avatar.fr = (10 + (40 * (cardio.HR / cardio.HRmax)));
+        return avatar.fr;
+    }
+
     public float OxygenBreath()
     {
         avatar.VO2fr = avatar.VO2 / avatar.fr;
@@ -221,8 +229,6 @@ public class pvEquations : MonoBehaviour
            avatar.VO2maxAge = (50.02f - (0.394f * avatar.age));
         }
         return avatar.VO2maxAge;
-
-
     }
 
     public float VO2MaxHeight()

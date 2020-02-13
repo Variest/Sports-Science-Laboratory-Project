@@ -52,7 +52,7 @@ public class Cardio : MonoBehaviour
     //basic: Heart Rate (FC/HR), Oxygen Pulse (OP), Mean Arterial Pressure (MAP), Max Heart Rate (HRMax)
     //advanced: above + Blood Lactate (Bla), Cardiac Output (CO), Blood Pressure (Bpd, Bps), Stroke Volume (SV), Heart Rate Reserve (HRres), SPO2 (complicated thing from PVEquations)
 
-    CharacterCustomiser character; //declares character script
+    CharacterAvatar character; //declares character script
     pvEquations vents; //declares vents script
     Module exercise; //declares bike script
     Timer timer;
@@ -60,7 +60,7 @@ public class Cardio : MonoBehaviour
     public void Start()
     {
         //sets scripts to variables to allow them to be connected.
-        character = GetComponent<CharacterCustomiser>();
+        character = GetComponent<CharacterAvatar>();
         vents = GetComponent<pvEquations>();
         exercise = GetComponent<Module>();
         timer = GetComponent<Timer>();
@@ -156,11 +156,11 @@ public class Cardio : MonoBehaviour
 
     void BPsTargfunction()
     {
-        if (character.gender == true) //male
+        if (character.gender == 1) //male
         {
             BPsTarg = (0.346f * exercise.BodyWork);
         }
-        else if (character.gender == false) //female
+        else if (character.gender == 0) //female
         {
             BPsTarg = (0.103f * exercise.BodyWork);
         }
@@ -178,12 +178,12 @@ public class Cardio : MonoBehaviour
 
     void HRtargfunction()
     {
-        if (character.gender == true) //male
+        if (character.gender == 1) //male
         {
             HRtarg = ((0.32f * exercise.BodyWork) + (health * 0.9f));
             //HEALTHY PEOPLE CAN BE -0.9 AND UNHEALTHY +0.9
         }
-        else if (character.gender == false) // female
+        else if (character.gender == 0) // female
         {
             HRtarg = ((0.43f * exercise.BodyWork) + (health * 0.15f));
             //+/- 0.15

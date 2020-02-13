@@ -38,7 +38,7 @@ public class BodyHeat : MonoBehaviour
     Module exercise; //use heatwork and workdone
     WaterVapourConversion heat; //gastemp is what you want!
     Timer time;
-    CharacterCustomiser customiser;
+    CharacterAvatar customiser;
 
 
     // Start is called before the first frame update
@@ -47,7 +47,7 @@ public class BodyHeat : MonoBehaviour
         heat = GetComponent<WaterVapourConversion>();
         exercise = GetComponent<Module>();
         time = GetComponent<Timer>();
-        customiser = GetComponent<CharacterCustomiser>();
+        customiser = GetComponent<CharacterAvatar>();
     }
 
     // Update is called once per frame
@@ -183,11 +183,11 @@ public class BodyHeat : MonoBehaviour
 
     void bodywaterfunc()
     {
-        if (customiser.gender == true)
+        if (customiser.gender == 1)
         {
             BodyWater = ((customiser.weight * 0.60f) * 1000); //in millilitres - a man's body is 60% water
         }
-        else if(customiser.gender == false)
+        else if(customiser.gender == 0)
         {
             BodyWater = ((customiser.weight * 0.55f) * 1000); //a woman's body is 55% water
         }
