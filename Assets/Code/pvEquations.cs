@@ -8,32 +8,33 @@ public class pvEquations : MonoBehaviour
     [Header("Character")]
     //will probably have a lot of these pulmonary variables within the character eventually, this is just a basic thing for now so that i can test some stuff
     CharacterAvatar avatar;
+
     [Space(10)]
     [Header("Values used for inspiration and expiration of air")]
+
     public float TI; //inspiratory time
     public float TE; //expiratory time
     public float TITE; //result for TI/TE
-    public float breathTime; //total breath time
+    public float breathTime; //total breath time - SAME AS TTOT?
 
 
     [Space(10)]
     [Header("Fractional Concentrations")]
+
     public float FECO2; //fractional concentration of expired carbon dioxide
     public float FICO2; //fractional concentration of inspired carbon dioxide 
     public float FEO2; //fractional concentration of expired oxygen
     public float FIO2; //fractional concentration of inspired oxygen
 
     [Space(10)]
-
     [Header("Minute Ventilation")]
-
 
     public float veATPS; //minute ventilation in an ATPS environment
     public float veSTPD; //minute ventilation in an STPD environment
     public float veBTPS; //minute ventilation in a BTPS environment
     public float VE;
 
-    public float VT; //tidal volume - USE 'VT' FROM 'LUNGS' INSTEAD
+    public float VT; //tidal volume - USING 'VT' FROM 'LUNGS' INSTEAD
 
     public float MET; //metabolic equivalents
     //STPD relates to standard temperature and pressure, dry. (0c, 760 mmHg)
@@ -51,6 +52,7 @@ public class pvEquations : MonoBehaviour
     public float VO2fr; //oxygen breath value
     public float VCO2; //carbon dioxide output
     public float EPOC; //excess post-exercise oxygen consumption
+
     [Space(10)]
     [Header("End-Tidal Partial Pressures")]
 
@@ -59,18 +61,22 @@ public class pvEquations : MonoBehaviour
 
     [Space(10)]
     [Header("Respiratory variables")]
+
     public float fr; //respiratory rate
     public float RER; //respiratory exchange ratio
     public float RQ; //respiratory quotient
+
     [Space(10)]
     [Header("Ventilatory variables")]
+
     public float Vecap; //ventilatory capacity
     public float VeVO2; //ventilatory equivalent for oxygen
     public float VeVCO2; //ventilatory equivalent for carbon dioxide
-    public float Ttot; //total breath time
+    public float Ttot; //total breath time - SAME AS BREATHTIME?
 
     [Space(10)]
     [Header("Work Rate")]
+
     public float W; //USE 'BODYWORK' FROM 'EXERCISE' INSTEAD
 
     CharacterCustomiser character;
@@ -78,6 +84,7 @@ public class pvEquations : MonoBehaviour
     Module Exercise;
     Timer Timer;
     Lung Lungs;
+
     // Start is called before the first frame update
     public void Start()
     {
