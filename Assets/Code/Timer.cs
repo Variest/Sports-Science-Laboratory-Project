@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
 {
     public float intervals = 0; //how long between each boost in intensity
     public float increase = 0; //increase RPM by how many (MAYBE CHANGE TO FLAT WORK DONE?)
-    public float counter = 0; //how many ten second/s have passed
+    public int counter = 0; //how many ten second/s have passed
     public float timer; //time between each loop
     public float elapsed; //total time elapsed
     public float limit; //entire experiment runs for X seconds
@@ -26,14 +26,17 @@ public class Timer : MonoBehaviour
     public bool tensecondCARDIO = false;
     public bool recalculateCARDIO = true;
     public bool tensecondLUNG = false;
+    public bool tensecondGRAPH = false;
 
     public float FPS; //for measuring the fps ofc
 
     Module exercise;
+    GraphScript graph;
 
     // Start is called before the first frame update
     void Start()
-    {     
+    {
+        graph = GetComponent<GraphScript>();
         exercise = GetComponent<Module>();
     }
 
@@ -62,10 +65,12 @@ public class Timer : MonoBehaviour
         if(moments.IsRunning && (moments.ElapsedMilliseconds >= tenseconds))
         {
             counter++; //every ten seconds this increases, and can be used for certain models (blood lactate)
+            graph.graphcounter++;
             moments.Restart(); //restarts
             tensecondCARDIO = true; //sends signals
             tensecondHEAT = true;
             tensecondLUNG = true;
+            tensecondGRAPH = true;
         } //INDEPENDENT TIMER - EVERY TEN SECONDS
 
         if(main.IsRunning && (main.ElapsedMilliseconds >= (limit*1000)))
