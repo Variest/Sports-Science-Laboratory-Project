@@ -295,23 +295,23 @@ public class Cardio : MonoBehaviour
         switch(healthiness)
         {
             case 1:
-                //NORMAL PERSON
+                //NORMAL PERSON, +0
                 health = 0;
                 break;
             case 2:
-                //VERY UNHEALTHY
+                //VERY UNHEALTHY -9
                 health = -1;
                 break;
             case 3:
-                //MILDLY UNHEALTHY
+                //MILDLY UNHEALTHY -4
                 health = -0.5f;
                 break;
             case 4:
-                //VERY HEALTHY
+                //VERY HEALTHY +9
                 health = 1;
                 break;
             case 5:
-                //QUITE HEALTHY
+                //QUITE HEALTHY +4
                 health = 0.5f;
                 break;
         }

@@ -10,7 +10,7 @@ public class pvEquations : MonoBehaviour
     CharacterAvatar avatar;
 
     [Space(10)]
-    [Header("Values used for inspiration and expiration of air")]
+    [Header("Values used for inspiration and expiration of air")] //ALMOST DEALT WITH
 
     public float TI; //inspiratory time
     public float TE; //expiratory time
@@ -19,7 +19,7 @@ public class pvEquations : MonoBehaviour
 
 
     [Space(10)]
-    [Header("Fractional Concentrations")]
+    [Header("Fractional Concentrations")] //ALMOST DEALT WITH
 
     public float FECO2; //fractional concentration of expired carbon dioxide
     public float FICO2; //fractional concentration of inspired carbon dioxide 
@@ -29,7 +29,7 @@ public class pvEquations : MonoBehaviour
     //FECO - 2.5-4.0, FEO - 16-18,
 
     [Space(10)]
-    [Header("Minute Ventilation")]
+    [Header("Minute Ventilation")] //DEALT WITH
 
     public float veATPS; //minute ventilation in an ATPS environment
     public float veSTPD; //minute ventilation in an STPD environment
@@ -44,7 +44,7 @@ public class pvEquations : MonoBehaviour
     //ATPS relates to ambient temperature and pressure, saturated with water
 
     [Space(10)]
-    [Header("Oxygen Consumption")]
+    [Header("Oxygen Consumption")] //FUCK
 
     public float VI; //used to calculate some stuff idk
     public float VO2; //value for oxygen consumption
@@ -56,20 +56,20 @@ public class pvEquations : MonoBehaviour
     public float EPOC; //excess post-exercise oxygen consumption
 
     [Space(10)]
-    [Header("End-Tidal Partial Pressures")]
+    [Header("End-Tidal Partial Pressures")] //DUNNO
 
     public float PETCO2; //end-tidal carbon dioxide partial pressure
     public float PETO2; //end-tidal oxygen partial pressure
 
     [Space(10)]
-    [Header("Respiratory variables")]
+    [Header("Respiratory variables")] //DEALT WITH
 
     public float fr; //respiratory rate
     public float RER; //respiratory exchange ratio
     public float RQ; //respiratory quotient
 
     [Space(10)]
-    [Header("Ventilatory variables")]
+    [Header("Ventilatory variables")] //NOPE
 
     public float Vecap; //ventilatory capacity
     public float VeVO2; //ventilatory equivalent for oxygen
