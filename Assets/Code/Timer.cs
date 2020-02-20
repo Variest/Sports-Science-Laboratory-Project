@@ -1,10 +1,10 @@
+
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Diagnostics;
 using System.Threading;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
@@ -14,7 +14,6 @@ public class Timer : MonoBehaviour
     public float timer; //time between each loop
     public float elapsed; //total time elapsed
     public float limit; //entire experiment runs for X seconds
-    public float StopwatchCounter = 0;
 
     public Stopwatch mini = new Stopwatch(); //revolves around the player's input
     public Stopwatch main = new Stopwatch(); //measures entire time, and ends the test, also at the player's input
@@ -30,15 +29,12 @@ public class Timer : MonoBehaviour
 
     public float FPS; //for measuring the fps ofc
 
-    
-
     Module exercise;
 
     // Start is called before the first frame update
     void Start()
     {     
         exercise = GetComponent<Module>();
-        
     }
 
     // Update is called once per frame
@@ -124,3 +120,4 @@ public class Timer : MonoBehaviour
         limit = limitfunc;
     }
 }
+
