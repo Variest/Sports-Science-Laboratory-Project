@@ -1,3 +1,4 @@
+
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine.UI;
 public class TestInput : MonoBehaviour {
 
     pvEquations ventCalc;
+    public float StopwatchCounter = 0;
     public InputField FEO2box;
     public InputField FECO2box;
     public InputField FIO2box;
@@ -39,22 +41,62 @@ public class TestInput : MonoBehaviour {
     public InputField MET;
     public InputField VO2fr;
 
+    public float testtime =0;
     public Dropdown tempChoser; // drop down list currently used to experiment with having the program take in different functions
 
     public GameObject calcScripts;
+
+    public Text Stopwatch;
+    public Button playPause;
+    public Button reset;
+    private bool play = true;
 
     public int functionChosen; //int value depending on which function you are trying to find the answer to
     // Use this for initialization
     void Start () {
         resultField = GetComponent<Text>();
         ventCalc = calcScripts.GetComponent<pvEquations>();
-	}
+        expiryTime.readOnly = true;
+        expiryRatio.readOnly = true;
+        VE.readOnly = true;
+        VI.readOnly = true;
+        VCO2.readOnly = true;
+        VO2.readOnly = true;
+        RER.readOnly = true;
+        RQ.readOnly = true;
+        Vecap.readOnly = true;
+        VeVO2.readOnly = true;
+        VeVCO2.readOnly = true;
+        EPOC.readOnly = true;
+        MET.readOnly = true;
+        VO2fr.readOnly = true;
+        Stopwatch.GetComponent<Text>();
+        playPause.onClick.AddListener(PlayPause);
+        reset.onClick.AddListener(Reset);
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
-       
-	}
+        if(play == true)
+        {
+            testtime += Time.deltaTime;//constantly updates testtime based off of runtime.
+            Stopwatch.text = testtime.ToString("0.00");
+            Debug.Log("help");
+        }
+        
+
+    }
+
+    void PlayPause()
+    {
+        play ^= true;
+    }
+
+    void Reset()
+    {
+        testtime = 0;
+    }
     public void Calculate()
     {
         //float temp1 = float.Parse(box1.text);
@@ -142,3 +184,4 @@ public class TestInput : MonoBehaviour {
         VO2fr.text = ventCalc.OxygenBreath().ToString();
     }
 }
+
