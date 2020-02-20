@@ -9,10 +9,10 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     public CharacterAvatar avatar;
     public Text[] textBoxes = new Text[10];
     public Text[] nameBoxes = new Text[10];
-    FinalCustomModule custom_module;
-    CustomModuleTester MetCart_module;
-    pvcustommodule Pv_module;
-    cardiocustommodule Cardio_Module;
+    public FinalCustomModule custom_module;
+    public CustomModuleTester MetCart_module;
+    public pvcustommodule Pv_module;
+    public cardiocustommodule Cardio_Module;
 
     //booleans to determine which of the modules is being used.
     public bool Custom_ON;

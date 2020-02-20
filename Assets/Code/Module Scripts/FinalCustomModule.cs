@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 public class FinalCustomModule : MonoBehaviour
 {
-  
-   
 
 
+
+    public string[] textBoxContent = new string[10];
     public Text[] textBoxes = new Text[10];
     public string[] nameBoxes = new string[10];
 
@@ -122,8 +122,11 @@ public class FinalCustomModule : MonoBehaviour
 
         avatar = GetComponent<CharacterAvatar>();
         //add listening events to each one of the toggle boxes 
-        
-        
+
+        for (int i = 0; i < 10; i++)
+        {
+            BoxValue.Add(0);
+        }
     }
 
     public void AttachButtons()
@@ -347,8 +350,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 1;
-                     
-                        textBoxes[i].text = avatar.RPE.ToString();
+                        textBoxContent[i] = avatar.RPE.ToString();
+                        //textBoxes[i].text = avatar.RPE.ToString();
                         nameBoxes[i] = "RPE ";
                         filledBoxes[i] = true;
                         RPE_toggled = true;
@@ -370,7 +373,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 1)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    ////textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     RPE_toggled = false;
@@ -395,8 +399,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 2;
-                   
-                        textBoxes[i].text = avatar.Dyspnoea.ToString();
+                        textBoxContent[i] = avatar.Dyspnoea.ToString();
+                        //textBoxes[i].text = avatar.Dyspnoea.ToString();
                         nameBoxes[i] = "Dyspnoea ";
                         filledBoxes[i] = true;
                         dyspnoea_toggled = true;
@@ -417,7 +421,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 2)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     BoxValue[i] = 0;
                     nameBoxes[i] = "";
                     dyspnoea_toggled = false;
@@ -441,8 +446,8 @@ public class FinalCustomModule : MonoBehaviour
                     if (!EE_toggled)
                     {
                         BoxValue[i] = 3;
-                       
-                        textBoxes[i].text = avatar.EE.ToString();
+                        textBoxContent[i] = avatar.EE.ToString();
+                        //textBoxes[i].text = avatar.EE.ToString();
                         nameBoxes[i] = "EE ";
                         filledBoxes[i] = true;
                         EE_toggled = true;
@@ -463,7 +468,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 3)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    //textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     EE_toggled = false;
@@ -488,8 +494,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 4;
-                     
-                        textBoxes[i].text = avatar.TE.ToString();
+                        textBoxContent[i] = avatar.TE.ToString();
+                        //textBoxes[i].text = avatar.TE.ToString();
                         nameBoxes[i] = "TE ";
                         filledBoxes[i] = true;
                         TE_toggled = true;
@@ -510,7 +516,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 4)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TE_toggled = false;
@@ -535,8 +542,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 5;
-                      
-                        textBoxes[i].text = avatar.TI.ToString();
+                        textBoxContent[i] = avatar.TI.ToString();
+                        //textBoxes[i].text = avatar.TI.ToString();
                         nameBoxes[i] = "TI ";
                         filledBoxes[i] = true;
                         TI_toggled = true;
@@ -557,7 +564,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 5)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TI_toggled = false;
@@ -582,8 +590,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 6;
-                       
-                        textBoxes[i].text = avatar.Ttot.ToString();
+                        textBoxContent[i] = avatar.Ttot.ToString();
+                        //textBoxes[i].text = avatar.Ttot.ToString();
                         nameBoxes[i] = "TToT ";
                         filledBoxes[i] = true;
                         TToT_toggled = true;
@@ -604,7 +612,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 6)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TToT_toggled = false;
@@ -629,8 +638,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 7;
-
-                        textBoxes[i].text = avatar.VT.ToString();
+                        textBoxContent[i] = avatar.VT.ToString();
+                        //textBoxes[i].text = avatar.VT.ToString();
                         nameBoxes[i] = "VT ";
                         filledBoxes[i] = true;
                         VT_toggled = true;
@@ -652,7 +661,8 @@ public class FinalCustomModule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     nameBoxes[i] = "";
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     BoxValue[i] = 0;
                     VT_toggled = false;
                 }
@@ -675,8 +685,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 8;
-                       
-                        textBoxes[i].text = avatar.fr.ToString();
+                        textBoxContent[i] = avatar.fr.ToString();
+                        //textBoxes[i].text = avatar.fr.ToString();
                         nameBoxes[i] = "fr ";
                         filledBoxes[i] = true;
                         fr_toggled = true;
@@ -697,7 +707,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 8)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    //textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     fr_toggled = false;
@@ -722,8 +733,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 9;
-                      
-                        textBoxes[i].text = avatar.petco2.ToString();
+                        textBoxContent[i] = avatar.petco2.ToString();
+                       // textBoxes[i].text = avatar.petco2.ToString();
                         nameBoxes[i] = "petco2 ";
                         filledBoxes[i] = true;
                         PETCO2_toggled = true;
@@ -744,7 +755,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 9)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PETCO2_toggled = false;
@@ -768,8 +780,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 10;
-                      
-                        textBoxes[i].text = avatar.peto2.ToString();
+                        textBoxContent[i] = avatar.peto2.ToString();
+                        //textBoxes[i].text = avatar.peto2.ToString();
                         nameBoxes[i] = "peto2 ";
                         filledBoxes[i] = true;
                         PETO2_toggled = true;
@@ -790,7 +802,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 10)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PETO2_toggled = false;
@@ -815,8 +828,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 11;
-                       
-                        textBoxes[i].text = avatar.VE.ToString();
+                        textBoxContent[i] = avatar.VE.ToString();
+                        //textBoxes[i].text = avatar.VE.ToString();
                         nameBoxes[i] = "VE ";
                         filledBoxes[i] = true;
                         VE_toggled = true;
@@ -837,7 +850,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 11)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VE_toggled = false;
@@ -861,8 +875,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 12;
-                        
-                        textBoxes[i].text = avatar.VO2.ToString();
+                        textBoxContent[i] = avatar.VO2.ToString();
+                        //textBoxes[i].text = avatar.VO2.ToString();
                         nameBoxes[i] = "VO2 ";
                         filledBoxes[i] = true;
                         VO2_toggled = true;
@@ -883,7 +897,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 12)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VO2_toggled = false;
@@ -908,8 +923,9 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 13;
-                     
-                        textBoxes[i].text = avatar.VCO2.ToString();
+                        textBoxContent[i] = avatar.VCO2.ToString();
+
+                        //textBoxes[i].text = avatar.VCO2.ToString();
                         nameBoxes[i] = "VCO2 ";
                         filledBoxes[i] = true;
                         VCO2_toggled = true;
@@ -930,7 +946,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 13)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VCO2_toggled = false;
@@ -955,8 +972,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 14;
-                      
-                        textBoxes[i].text = avatar.RER.ToString();
+                        textBoxContent[i] = avatar.RER.ToString();
+                        //textBoxes[i].text = avatar.RER.ToString();
                         nameBoxes[i] = "RER ";
                         filledBoxes[i] = true;
                         RER_toggled = true;
@@ -977,7 +994,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 14)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     RER_toggled = false;
@@ -1001,8 +1019,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 15;
-                     
-                        textBoxes[i].text = avatar.MET.ToString();
+                        textBoxContent[i] = avatar.MET.ToString();
+                        //textBoxes[i].text = avatar.MET.ToString();
                         nameBoxes[i] = "MET ";
                         filledBoxes[i] = true;
                         MET_toggled = true;
@@ -1023,7 +1041,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 15)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     MET_toggled = false;
@@ -1047,8 +1066,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 16;
-                  
-                        textBoxes[i].text = avatar.VO2fr.ToString();
+                        textBoxContent[i] = avatar.VO2fr.ToString();
+                        //textBoxes[i].text = avatar.VO2fr.ToString();
                         nameBoxes[i] = "VO2fr ";
                         filledBoxes[i] = true;
                         VO2fr_toggled = true;
@@ -1069,7 +1088,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 16)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VO2fr_toggled = false;
@@ -1093,8 +1113,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 17;
-                     
-                        textBoxes[i].text = avatar.SpO2.ToString();
+                        textBoxContent[i] = avatar.SpO2.ToString();
+                        //textBoxes[i].text = avatar.SpO2.ToString();
                         nameBoxes[i] = "SpO2 ";
                         filledBoxes[i] = true;
                         SpO2_toggled = true;
@@ -1115,7 +1135,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 17)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     SpO2_toggled = false;
@@ -1139,8 +1160,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 18;
-                 
-                        textBoxes[i].text = avatar.Vecap.ToString();
+                        textBoxContent[i] = avatar.Vecap.ToString();
+                        //textBoxes[i].text = avatar.Vecap.ToString();
                         nameBoxes[i] = "VEcap ";
                         filledBoxes[i] = true;
                         VEcap_toggled = true;
@@ -1161,7 +1182,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 18)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VEcap_toggled = false;
@@ -1185,8 +1207,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 19;
-                 
-                        textBoxes[i].text = avatar.VeVO2.ToString();
+                        textBoxContent[i] = avatar.VeVO2.ToString();
+                        //textBoxes[i].text = avatar.VeVO2.ToString();
                         nameBoxes[i] = "VeVO2 ";
                         filledBoxes[i] = true;
                         VEVO2_toggled = true;
@@ -1207,7 +1229,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 19)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VEVO2_toggled = false;
@@ -1231,8 +1254,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 20;
-                      
-                        textBoxes[i].text = avatar.VeVCO2.ToString();
+                        textBoxContent[i] = avatar.VeVCO2.ToString();
+                        //textBoxes[i].text = avatar.VeVCO2.ToString();
                         nameBoxes[i] = "VEVCO2 ";
                         filledBoxes[i] = true;
                         VEVCO2_toggled = true;
@@ -1253,7 +1276,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 20)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VEVCO2_toggled = false;
@@ -1277,8 +1301,8 @@ public class FinalCustomModule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 21;
-                      
-                        textBoxes[i].text = avatar.FIO2.ToString();
+                        textBoxContent[i] = avatar.FIO2.ToString();
+                        //textBoxes[i].text = avatar.FIO2.ToString();
                         nameBoxes[i] = "FIO2 ";
                         filledBoxes[i] = true;
                         FIO2_toggled = true;
@@ -1299,7 +1323,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 21)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FIO2_toggled = false;
@@ -1324,7 +1349,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 22;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.FICO2.ToString();
+                        textBoxContent[i] = avatar.FICO2.ToString();
+                        //textBoxes[i].text = avatar.FICO2.ToString();
                         nameBoxes[i] = "FICO2 ";
                         filledBoxes[i] = true;
                         FICO2_toggled = true;
@@ -1346,7 +1372,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 22)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FICO2_toggled = false;
@@ -1371,7 +1398,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 23;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.FEO2.ToString();
+                        textBoxContent[i] = avatar.FEO2.ToString();
+                        //textBoxes[i].text = avatar.FEO2.ToString();
                         nameBoxes[i] = "FEO2 ";
                         filledBoxes[i] = true;
                         FEO2_toggled = true;
@@ -1393,7 +1421,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 23)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEO2_toggled = false;
@@ -1418,7 +1447,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 24;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.FECO2.ToString();
+                        textBoxContent[i] = avatar.FECO2.ToString();
+                        //textBoxes[i].text = avatar.FECO2.ToString();
                         nameBoxes[i] = "FECO2 ";
                         filledBoxes[i] = true;
                         FECO2_toggled = true;
@@ -1440,7 +1470,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 24)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FECO2_toggled = false;
@@ -1465,7 +1496,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 25;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.BPd.ToString();
+                        textBoxContent[i] = avatar.BPd.ToString();
+                        //textBoxes[i].text = avatar.BPd.ToString();
                         nameBoxes[i] = "BPd ";
                         filledBoxes[i] = true;
                         BPd_toggled = true;
@@ -1487,7 +1519,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 25)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     BPd_toggled = false;
@@ -1512,7 +1545,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 26;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.BPs.ToString();
+                        textBoxContent[i] = avatar.BPs.ToString();
+                        //textBoxes[i].text = avatar.BPs.ToString();
                         nameBoxes[i] = "BPs ";
                         filledBoxes[i] = true;
                         BPs_toggled = true;
@@ -1535,7 +1569,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 26)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     BPs_toggled = false;
@@ -1560,7 +1595,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 27;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.MAP.ToString();
+                        textBoxContent[i] = avatar.MAP.ToString();
+                        //textBoxes[i].text = avatar.MAP.ToString();
                         nameBoxes[i] = "MAP ";
                         filledBoxes[i] = true;
                         MAP_toggled = true;
@@ -1582,7 +1618,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 27)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     MAP_toggled = false;
@@ -1608,7 +1645,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 28;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.Bla.ToString();
+                        textBoxContent[i] = avatar.Bla.ToString();
+                        //textBoxes[i].text = avatar.Bla.ToString();
                         nameBoxes[i] = "Bla ";
                         filledBoxes[i] = true;
                         Bla_toggled = true;
@@ -1630,7 +1668,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 28)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     Bla_toggled = false;
@@ -1655,7 +1694,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 29;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.CO.ToString();
+                        textBoxContent[i] = avatar.CO.ToString();
+                        //textBoxes[i].text = avatar.CO.ToString();
                         nameBoxes[i] = "CO ";
                         filledBoxes[i] = true;
                         CO_toggled = true;
@@ -1678,7 +1718,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 29)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     CO_toggled = false;
@@ -1703,7 +1744,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 30;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.FCmax.ToString();
+                        textBoxContent[i] = avatar.FCmax.ToString();
+                        //textBoxes[i].text = avatar.FCmax.ToString();
                         nameBoxes[i] = "FCmax ";
                         filledBoxes[i] = true;
                         Fcmax_toggled = true;
@@ -1725,7 +1767,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 30)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     Fcmax_toggled = false;
@@ -1750,7 +1793,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 31;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.FCres.ToString();
+                        textBoxContent[i] = avatar.FCres.ToString();
+                        //textBoxes[i].text = avatar.FCres.ToString();
                         nameBoxes[i] = "FCres ";
                         filledBoxes[i] = true;
                         Fcres_toggled = true;
@@ -1772,7 +1816,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 31)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     Fcres_toggled = false;
@@ -1798,7 +1843,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 32;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.VO2fc.ToString();
+                        textBoxContent[i] = avatar.VO2fc.ToString();
+                        //textBoxes[i].text = avatar.VO2fc.ToString();
                         nameBoxes[i] = "VO2fc ";
                         filledBoxes[i] = true;
                         VO2fc_toggled = true;
@@ -1820,7 +1866,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 32)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VO2fc_toggled = false;
@@ -1845,7 +1892,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 33;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.SV.ToString();
+                        textBoxContent[i] = avatar.SV.ToString();
+                        //textBoxes[i].text = avatar.SV.ToString();
                         nameBoxes[i] = "SV ";
                         filledBoxes[i] = true;
                         Sv_toggled = true;
@@ -1867,7 +1915,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 33)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     Sv_toggled = false;
@@ -1892,7 +1941,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 34;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.FEV1.ToString();
+                        textBoxContent[i] = avatar.FEV1.ToString();
+                        //textBoxes[i].text = avatar.FEV1.ToString();
                         nameBoxes[i] = "FEV1 ";
                         filledBoxes[i] = true;
                         FEV1_toggled = true;
@@ -1914,7 +1964,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 34)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEV1_toggled = false;
@@ -1939,7 +1990,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 35;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.FVC.ToString();
+                        textBoxContent[i] = avatar.FVC.ToString();
+                       // textBoxes[i].text = avatar.FVC.ToString();
                         nameBoxes[i] = "FVC ";
                         filledBoxes[i] = true;
                         FVC_toggled = true;
@@ -1961,7 +2013,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 35)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FVC_toggled = false;
@@ -1986,7 +2039,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 36;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.FEV1FVC.ToString();
+                        textBoxContent[i] = avatar.FEV1FVC.ToString();
+                        //textBoxes[i].text = avatar.FEV1FVC.ToString();
                         nameBoxes[i] = "FEV1FVC ";
                         filledBoxes[i] = true;
                         FEV1FVC_toggled = true;
@@ -2008,7 +2062,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 36)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEV1FVC_toggled = false;
@@ -2033,7 +2088,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 37;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.PImax.ToString();
+                        textBoxContent[i] = avatar.PImax.ToString();
+                        //textBoxes[i].text = avatar.PImax.ToString();
                         nameBoxes[i] = "PImax ";
                         filledBoxes[i] = true;
                         PImax_toggled = true;
@@ -2055,7 +2111,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 37)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PImax_toggled = false;
@@ -2080,7 +2137,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 38;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.PEmax.ToString();
+                        textBoxContent[i] = avatar.PEmax.ToString();
+                        //textBoxes[i].text = avatar.PEmax.ToString();
                         nameBoxes[i] = "PEmax ";
                         filledBoxes[i] = true;
                         PEmax_toggled = true;
@@ -2102,7 +2160,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 38)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PEmax_toggled = false;
@@ -2127,7 +2186,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 39;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.ERV.ToString();
+                        textBoxContent[i] = avatar.ERV.ToString();
+                        //textBoxes[i].text = avatar.ERV.ToString();
                         nameBoxes[i] = "ERV ";
                         filledBoxes[i] = true;
                         ERV_toggled = true;
@@ -2149,7 +2209,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 39)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     ERV_toggled = false;
@@ -2174,7 +2235,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 40;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.FRC.ToString();
+                        textBoxContent[i] = avatar.FRC.ToString();
+                        //textBoxes[i].text = avatar.FRC.ToString();
                         nameBoxes[i] = "FRC ";
                         filledBoxes[i] = true;
                         FRC_toggled = true;
@@ -2196,7 +2258,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 40)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FRC_toggled = false;
@@ -2221,7 +2284,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 41;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.IC.ToString();
+                        textBoxContent[i] = avatar.IC.ToString();
+                        //textBoxes[i].text = avatar.IC.ToString();
                         nameBoxes[i] = "IC ";
                         filledBoxes[i] = true;
                         IC_toggled = true;
@@ -2243,7 +2307,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 41)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     IC_toggled = false;
@@ -2268,7 +2333,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 42;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.IRV.ToString();
+                        textBoxContent[i] = avatar.IRV.ToString();
+                        //textBoxes[i].text = avatar.IRV.ToString();
                         nameBoxes[i] = "IRV ";
                         filledBoxes[i] = true;
                         IRV_toggled = true;
@@ -2291,7 +2357,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 42)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     IRV_toggled = false;
@@ -2316,7 +2383,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 43;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.PIF.ToString();
+                        textBoxContent[i] = avatar.PIF.ToString();
+                        //textBoxes[i].text = avatar.PIF.ToString();
                         nameBoxes[i] = "PIF ";
                         filledBoxes[i] = true;
                         PIF_toggled = true;
@@ -2338,7 +2406,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 43)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PIF_toggled = false;
@@ -2363,7 +2432,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 44;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.PEF.ToString();
+                        textBoxContent[i] = avatar.PEF.ToString();
+                        //textBoxes[i].text = avatar.PEF.ToString();
                         nameBoxes[i] = "PEF ";
                         filledBoxes[i] = true;
                         PEF_toggled = true;
@@ -2385,7 +2455,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 44)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PEF_toggled = false;
@@ -2410,7 +2481,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 45;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.RV.ToString();
+                        textBoxContent[i] = avatar.RV.ToString();
+                        //textBoxes[i].text = avatar.RV.ToString();
                         nameBoxes[i] = "RV ";
                         filledBoxes[i] = true;
                         RV_toggled = true;
@@ -2432,7 +2504,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 45)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     RV_toggled = false;
@@ -2457,7 +2530,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 46;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.TLC.ToString();
+                        textBoxContent[i] = avatar.TLC.ToString();
+                        //textBoxes[i].text = avatar.TLC.ToString();
                         nameBoxes[i] = "TLC ";
                         filledBoxes[i] = true;
                         TLC_toggled = true;
@@ -2479,7 +2553,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 46)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TLC_toggled = false;
@@ -2504,7 +2579,8 @@ public class FinalCustomModule : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 47;
                         //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.VC.ToString();
+                        textBoxContent[i] = avatar.VC.ToString();
+                       // textBoxes[i].text = avatar.VC.ToString();
                         nameBoxes[i] = "VC ";
                         filledBoxes[i] = true;
                         VC_toggled = true;
@@ -2526,7 +2602,8 @@ public class FinalCustomModule : MonoBehaviour
                 if (BoxValue[i] == 47)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VC_toggled = false;

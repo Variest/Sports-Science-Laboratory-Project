@@ -52,31 +52,10 @@ public class CustomModuleTester : MonoBehaviour
 
     //public GameObject[] ResultBox = new GameObject[10]; //array holding each of the text elements that will display results on the screen
 
+    public string[] textBoxContent = new string[10];
     public Text[] textBoxes = new Text[10];
     public string[] nameBoxes = new string[10];
-    //these are the toggles that will be used to add each variable into the boxes
-    public Toggle ToggleVE; //1
-    public Toggle ToggleVT; //2
-    public Toggle ToggleVO2; //3
-    public Toggle ToggleVCO2; //4
-    public Toggle ToggleFr; //5
-    public Toggle ToggleMET; //6
-    public Toggle ToggleFc; //7
-    public Toggle ToggleRER; //8
-    public Toggle ToggleVEVO2; //9
-    public Toggle ToggleVEVCO2; //10
-    public Toggle TogglePETCO2; //11
-    public Toggle TogglePETO2; //12
-    public Toggle ToggleTE; //13
-    public Toggle ToggleTI; //14
-    public Toggle ToggleTITE; //15
-    public Toggle ToggleTToT; //16
-    public Toggle ToggleVO2FR; //17
-    public Toggle ToggleVO2FC; //18
-    public Toggle ToggleSpO2; //19
-    public Toggle ToggleFcmax; //20
-    public Toggle ToggleFcres; //21
-    public Toggle ToggleEE; //22
+   
 
     public Button VE_button;
     public Button VT_button;
@@ -138,8 +117,11 @@ public class CustomModuleTester : MonoBehaviour
 
         avatar = avatarHolder.GetComponent<CharacterAvatar>();
         //add listening events to each one of the toggle boxes 
-        
-       
+        for (int i = 0; i < 10; i++)
+        {
+            BoxValue.Add(0);
+        }
+
     }
 
     public void AttachButtons()
@@ -343,7 +325,8 @@ public class CustomModuleTester : MonoBehaviour
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 1;
 
-                        textBoxes[i].text = avatar.VE.ToString();
+                        textBoxContent[i] = avatar.VE.ToString();
+                        //textBoxes[i].text = avatar.VE.ToString();
                         nameBoxes[i] = "VE ";
                         filledBoxes[i] = true;
                         VEtoggled = true;
@@ -388,8 +371,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 2;
-
-                        textBoxes[i].text = avatar.VT.ToString();
+                        textBoxContent[i] = avatar.VT.ToString();
+                        //textBoxes[i].text = avatar.VT.ToString();
                         nameBoxes[i] = "VT ";
                         filledBoxes[i] = true;
                         VTtoggled = true;
@@ -433,8 +416,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 3;
-
-                        textBoxes[i].text = avatar.VO2.ToString();
+                        textBoxContent[i] = avatar.VO2.ToString();
+                        //textBoxes[i].text = avatar.VO2.ToString();
                         nameBoxes[i] = "VO2 ";
                         filledBoxes[i] = true;
                         VO2toggled = true;
@@ -478,8 +461,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 4;
-
-                        textBoxes[i].text = avatar.VCO2.ToString();
+                        textBoxContent[i] = avatar.VCO2.ToString();
+                        //textBoxes[i].text = avatar.VCO2.ToString();
                         nameBoxes[i] = "VCO2 ";
                         filledBoxes[i] = true;
                         VCO2toggled = true;
@@ -523,8 +506,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 5;
-
-                        textBoxes[i].text = avatar.fr.ToString();
+                        textBoxContent[i] = avatar.fr.ToString();
+                        //textBoxes[i].text = avatar.fr.ToString();
                         nameBoxes[i] = "fr ";
                         filledBoxes[i] = true;
                         frToggled = true;
@@ -568,8 +551,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 6;
-
-                        textBoxes[i].text = avatar.MET.ToString();
+                        textBoxContent[i] = avatar.MET.ToString();
+                        //textBoxes[i].text = avatar.MET.ToString();
                         nameBoxes[i] = "MET ";
                         filledBoxes[i] = true;
                         METtoggled = true;
@@ -613,8 +596,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 7;
-
-                        textBoxes[i].text = avatar.fc.ToString();
+                        textBoxContent[i] = avatar.fc.ToString();
+                        //textBoxes[i].text = avatar.fc.ToString();
                         nameBoxes[i] = "FC ";
                         filledBoxes[i] = true;
                         FCtoggled = true;
@@ -658,8 +641,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 8;
-
-                        textBoxes[i].text = avatar.RER.ToString();
+                        textBoxContent[i] = avatar.RER.ToString();
+                        //textBoxes[i].text = avatar.RER.ToString();
                         nameBoxes[i] = "RER ";
                         filledBoxes[i] = true;
                         RERtoggled = true;
@@ -703,8 +686,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 9;
-
-                        textBoxes[i].text = avatar.VeVO2.ToString();
+                        textBoxContent[i] = avatar.VeVO2.ToString();
+                        //textBoxes[i].text = avatar.VeVO2.ToString();
                         nameBoxes[i] = "VEVO2 ";
                         filledBoxes[i] = true;
                         VEVO2toggled = true;
@@ -748,8 +731,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 10;
-
-                        textBoxes[i].text = avatar.VeVCO2.ToString();
+                        textBoxContent[i] = avatar.VeVCO2.ToString();
+                       // textBoxes[i].text = avatar.VeVCO2.ToString();
                         nameBoxes[i] = "VEVCO2 ";
                         filledBoxes[i] = true;
                         VEVCO2toggled = true;
@@ -794,8 +777,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 11;
-
-                        textBoxes[i].text = avatar.petco2.ToString();
+                        textBoxContent[i] = avatar.petco2.ToString();
+                        //textBoxes[i].text = avatar.petco2.ToString();
                         nameBoxes[i] = "PETCO2 ";
                         filledBoxes[i] = true;
                         PETCO2toggled = true;
@@ -839,8 +822,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 12;
-
-                        textBoxes[i].text = avatar.peto2.ToString();
+                        textBoxContent[i] = avatar.peto2.ToString();
+                        //textBoxes[i].text = avatar.peto2.ToString();
                         nameBoxes[i] = "PETO2 ";
                         filledBoxes[i] = true;
                         PETO2toggled = true;
@@ -884,8 +867,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 13;
-
-                        textBoxes[i].text = avatar.TE.ToString();
+                        textBoxContent[i] = avatar.TE.ToString();
+                        //textBoxes[i].text = avatar.TE.ToString();
                         nameBoxes[i] = "TE ";
                         filledBoxes[i] = true;
                         TEtoggled = true;
@@ -929,8 +912,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 14;
-
-                        textBoxes[i].text = avatar.TI.ToString();
+                        textBoxContent[i] = avatar.TI.ToString();
+                        //textBoxes[i].text = avatar.TI.ToString();
                         nameBoxes[i] = "TI ";
                         filledBoxes[i] = true;
                         TItoggled = true;
@@ -974,8 +957,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 15;
-
-                        textBoxes[i].text = avatar.TITE.ToString();
+                        textBoxContent[i] = avatar.TITE.ToString();
+                        //textBoxes[i].text = avatar.TITE.ToString();
                         nameBoxes[i] = "TITE ";
                         filledBoxes[i] = true;
                         TITEtoggled = true;
@@ -1019,8 +1002,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 16;
-
-                        textBoxes[i].text = avatar.Ttot.ToString();
+                        textBoxContent[i] = avatar.Ttot.ToString();
+                        //textBoxes[i].text = avatar.Ttot.ToString();
                         nameBoxes[i] = "TToT ";
                         filledBoxes[i] = true;
                         TToTtoggled = true;
@@ -1064,8 +1047,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 17;
-
-                        textBoxes[i].text = avatar.VO2fr.ToString();
+                        textBoxContent[i] = avatar.VO2fr.ToString();
+                        //textBoxes[i].text = avatar.VO2fr.ToString();
                         nameBoxes[i] = "VO2FR ";
                         filledBoxes[i] = true;
                         VO2FRtoggled = true;
@@ -1109,8 +1092,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 18;
-
-                        textBoxes[i].text = avatar.VO2fc.ToString();
+                        textBoxContent[i] = avatar.VO2fc.ToString();
+                        //textBoxes[i].text = avatar.VO2fc.ToString();
                         nameBoxes[i] = "VO2FC ";
                         filledBoxes[i] = true;
                         VO2FCtoggled = true;
@@ -1154,8 +1137,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 19;
-
-                        textBoxes[i].text = avatar.SpO2.ToString();
+                        textBoxContent[i] = avatar.SpO2.ToString();
+                        //textBoxes[i].text = avatar.SpO2.ToString();
                         nameBoxes[i] = "SpO2 ";
                         filledBoxes[i] = true;
                         SpO2toggled = true;
@@ -1199,8 +1182,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 20;
-
-                        textBoxes[i].text = avatar.FCmax.ToString();
+                        textBoxContent[i] = avatar.FCmax.ToString();
+                        //textBoxes[i].text = avatar.FCmax.ToString();
                         nameBoxes[i] = "FCmax ";
                         filledBoxes[i] = true;
                         FcMAXtoggled = true;
@@ -1244,8 +1227,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 21;
-
-                        textBoxes[i].text = avatar.FCres.ToString();
+                        textBoxContent[i] = avatar.FCres.ToString();
+                       // textBoxes[i].text = avatar.FCres.ToString();
                         nameBoxes[i] = "FCres ";
                         filledBoxes[i] = true;
                         FcREStoggled = true;
@@ -1289,8 +1272,8 @@ public class CustomModuleTester : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 22;
-
-                        textBoxes[i].text = avatar.EE.ToString();
+                        textBoxContent[i] = avatar.EE.ToString();
+                        //textBoxes[i].text = avatar.EE.ToString();
                         nameBoxes[i] = "EE ";
                         filledBoxes[i] = true;
                         EEtoggled = true;
