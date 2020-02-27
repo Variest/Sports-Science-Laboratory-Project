@@ -107,16 +107,26 @@ public class MenuManager : MonoBehaviour
 
     public void GoToTemplateSelection3()
     { 
-            if (isMetabolicModule)
+        if (isMetabolicModule)
         {
             selectedModule = 'M';
             moduleChanger.MetCart_ON = true;
-            moduleChanger.Advanced_ON = true;
+            
             MSPanel.gameObject.SetActive(false);
             TSPanel.gameObject.SetActive(true);
         }
     }
 
+    public void SetBasic()
+    {
+        moduleChanger.Basic_ON = true;
+        SceneManager.LoadScene("Main Scene");
+    }
+    //public void SetAdvanced()
+    //{
+    //    moduleChanger.Advanced_ON = true;
+    //    SceneManager.LoadScene("MainScene");
+    //}
     public void GoToVariables()
     {
         if(isVariables)
@@ -125,6 +135,7 @@ public class MenuManager : MonoBehaviour
             {
                 moduleChanger.Custom_ON = true;
             }
+            moduleChanger.Advanced_ON = true;
             SceneManager.LoadScene("Variables Scene");
         }
     }

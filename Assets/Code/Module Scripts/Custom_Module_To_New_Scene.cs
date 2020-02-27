@@ -21,6 +21,7 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     public bool PV_ON;
     public bool Cardio_ON;
     public bool Advanced_ON;
+    public bool Basic_ON;
 
     public bool Update_ON = false; //used to stop crashes if the script tries to update too early
     void Start()
@@ -55,6 +56,19 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
             {
                 CardioUpdate();
             }
+            if(MetCart_ON && Basic_ON)
+            {
+                MetCartUpdateB();
+            }
+            if (PV_ON && Basic_ON)
+            {
+                PvUpdateB();
+            }
+            if (Cardio_ON && Basic_ON)
+            {
+                CardioUpdateB();
+            }
+
         }
   
     }
@@ -406,6 +420,55 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
                 }
             }
         }
+    }
+
+    void MetCartUpdateB()
+    {
+        nameBoxText[0] = "VE";
+        nameBoxText[1] = "VT";
+        nameBoxText[2] = "VO2";
+        nameBoxText[3] = "VCO2";
+        nameBoxText[4] = "fr";
+        nameBoxText[5] = "MET";
+        nameBoxText[6] = "fc";
+        nameBoxText[7] = "RER";
+        textBoxes[0].text = avatar.VE.ToString();
+        textBoxes[1].text = avatar.VT.ToString();
+        textBoxes[2].text = avatar.VO2.ToString();
+        textBoxes[3].text = avatar.VCO2.ToString();
+        textBoxes[4].text = avatar.fr.ToString();
+        textBoxes[5].text = avatar.MET.ToString();
+        textBoxes[6].text = avatar.fc.ToString();
+        textBoxes[7].text = avatar.RER.ToString();
+       
+    }
+    void PvUpdateB()
+    {
+        nameBoxText[0] = "FVC";
+        nameBoxText[1] = "FEV1";
+        nameBoxText[2] = "FEV1/FVC";
+        nameBoxText[3] = "PEF";
+        nameBoxText[4] = "PIF";
+        nameBoxText[5] = "VECap";
+        textBoxes[0].text = avatar.FVC.ToString();
+        textBoxes[1].text = avatar.FEV1.ToString();
+        textBoxes[2].text = avatar.FEV1FVC.ToString();
+        textBoxes[3].text = avatar.PEF.ToString();
+        textBoxes[4].text = avatar.PIF.ToString();
+        textBoxes[5].text = avatar.Vecap.ToString();
+     
+    }
+    void CardioUpdateB()
+    {
+        nameBoxText[0] = "fc";
+        nameBoxText[1] = "VO2/fc";
+        nameBoxText[2] = "MAP";
+        nameBoxText[3] = "fcmax";
+        textBoxes[0].text = avatar.fc.ToString();
+        textBoxes[1].text = avatar.VO2fc.ToString();
+        textBoxes[2].text = avatar.MAP.ToString();
+        textBoxes[3].text = avatar.FCmax.ToString();
+  
     }
     void ResetValues()
     {
