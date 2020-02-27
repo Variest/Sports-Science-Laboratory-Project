@@ -72,8 +72,9 @@ public class Cardio : MonoBehaviour
 
     public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
     {
+        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, 10);
         //CALCULATION
-        if(timer.resetCARDIO == true)
+        if (timer.resetCARDIO == true)
         {
             //every time the work being done increases (when the timer mini resets)
             //a lot of things need to be recalculated (HR, BPs) and some other stuff too
@@ -132,7 +133,7 @@ public class Cardio : MonoBehaviour
         HRtargfunction();
         BlaTargfunction();
 
-        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, 2); //MAYBE NOT THE INTERVAL? INTERVAL COULD BE VERY LONG
+        //HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, 2); //MAYBE NOT THE INTERVAL? INTERVAL COULD BE VERY LONG
         BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocity, 2);
         Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocity, 2);
 

@@ -31,16 +31,16 @@ public class GraphScriptHR : MonoBehaviour
         GraphContainer = transform.Find("GraphContainer").GetComponent<RectTransform>();
 
         //
-        character.gender = 1;
-        character.age = 20;
-        timer.intervals = 1;
-        timer.increase = 10;
-        timer.limit = 100000;
-        exercise.Module = 2;
-        exercise.RPM = 20;
-        exercise.resistance = 5;
+        //character.gender = 1;
+        //character.age = 20;
+        //timer.intervals = 10;
+        //timer.increase = 10;
+        //timer.limit = 100000;
+        //exercise.Module = 2;
+        //exercise.RPM = 20;
+        //exercise.resistance = 5;
         //
-}
+    }
 
     // Update is called once per frame
     void Update()
@@ -59,7 +59,7 @@ public class GraphScriptHR : MonoBehaviour
         }
     }
 
-    private GameObject CircleMaker(Vector2 Position)
+    public GameObject CircleMaker(Vector2 Position)
     {
         if(graphcounter == 10)
         {

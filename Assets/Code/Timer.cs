@@ -41,7 +41,7 @@ public class Timer : MonoBehaviour
         //if all the correct integers are set, then GO
         //CREATE A BUTTON FOR BEGIN ASAP
         //
-        intervals = 1;
+        intervals = 5;
         increase = 10;
         limit = 100000;
         //
@@ -56,9 +56,13 @@ public class Timer : MonoBehaviour
         Speed();
         if(mini.ElapsedMilliseconds >= (intervals*1000)) //intervals is probably measured in seconds
         {         
-            mini.Restart(); //restarts the timer
-            exercise.RPMfunction((exercise.RPM + increase)); //increases the intensity at the user's input
+            mini.Restart(); //restarts the timer 
             exercise.RPM += increase;
+            exercise.RPMfunction((exercise.RPM)); //increases the intensity at the user's input
+ 
+            resetCARDIO = true; //sends signals
+            resetHEAT = true;
+            resetLUNG = true;
         } //MINI TIMER - TIMES BETWEEN EACH INCREASE IN INTENSITY
 
         if((moments.ElapsedMilliseconds >= seconds))

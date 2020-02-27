@@ -44,7 +44,7 @@ public class Exercise : MonoBehaviour
 
         //
         Modulefunc(1);
-        RPM = 120;
+        RPM = 20;
         resistance = 5;
     }
 
