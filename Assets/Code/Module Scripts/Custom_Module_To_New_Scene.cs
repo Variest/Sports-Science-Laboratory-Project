@@ -218,9 +218,10 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     }
     void MetCartUpdate()
     {
-        nameBoxText = MetCart_module.nameBoxes;
+      
         for (int i = 0; i < 10; i++)
         {
+            nameBoxText[i] = MetCart_module.nameBoxes[i];
             if (MetCart_module.filledBoxes[i] != false)
             {
                 switch (MetCart_module.BoxValue[i])
@@ -298,9 +299,10 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     }
     void PvUpdate()
     {
-        nameBoxText = Pv_module.nameBoxes;
+      
         for (int i = 0; i < 10; i++)
         {
+            nameBoxText[i] = Pv_module.nameBoxes[i];
             if (Pv_module.filledBoxes[i] != false)
             {
                 switch (Pv_module.BoxValue[i])
@@ -358,9 +360,10 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     }
     void CardioUpdate()
     {
-        nameBoxText = Cardio_Module.nameBoxes;
+    
         for (int i = 0; i < 10; i++)
         {
+            nameBoxText[i] = Cardio_Module.nameBoxes[i];
             if (Cardio_Module.filledBoxes[i] != false)
             {
                 switch (Cardio_Module.BoxValue[i])

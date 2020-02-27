@@ -76,6 +76,7 @@ public class MenuManager : MonoBehaviour
         {
             selectedModule = 'P';
             moduleChanger.PV_ON = true;
+            moduleChanger.Advanced_ON = true;
             MSPanel.gameObject.SetActive(false);
             TSPanel.gameObject.SetActive(true);
         }
@@ -87,6 +88,7 @@ public class MenuManager : MonoBehaviour
         {
             selectedModule = 'C';
             moduleChanger.Cardio_ON = true;
+            moduleChanger.Advanced_ON = true;
             MSPanel.gameObject.SetActive(false);
             TSPanel.gameObject.SetActive(true);
         }
@@ -98,6 +100,7 @@ public class MenuManager : MonoBehaviour
         {
             selectedModule = 'M';
             moduleChanger.MetCart_ON = true;
+            moduleChanger.Advanced_ON = true;
             MSPanel.gameObject.SetActive(false);
             TSPanel.gameObject.SetActive(true);
         }
