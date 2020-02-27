@@ -107,6 +107,10 @@ public class MenuManager : MonoBehaviour
     {
         if(isVariables)
         {
+            if(selectedModule != 'C' && selectedModule != 'M' && selectedModule != 'P')
+            {
+                moduleChanger.Custom_ON = true;
+            }
             SceneManager.LoadScene("Variables Scene");
         }
     }

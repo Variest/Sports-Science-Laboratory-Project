@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 1719334}
   - component: {fileID: 1719333}
   m_Layer: 5
-  m_Name: TI text
+  m_Name: Box9 text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 41847511}
   - component: {fileID: 41847510}
   m_Layer: 5
-  m_Name: Expired Temperature text
+  m_Name: Box7 text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1021,7 +1021,7 @@ GameObject:
   - component: {fileID: 77728795}
   - component: {fileID: 77728794}
   m_Layer: 5
-  m_Name: FECO2 text
+  m_Name: Box2 text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1803,7 +1803,7 @@ GameObject:
   - component: {fileID: 152951480}
   - component: {fileID: 152951482}
   m_Layer: 5
-  m_Name: PH2O
+  m_Name: Box6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1949,7 +1949,7 @@ GameObject:
   - component: {fileID: 157083049}
   - component: {fileID: 157083051}
   m_Layer: 5
-  m_Name: Inpspiratory Time TI
+  m_Name: Box9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2466,7 +2466,7 @@ GameObject:
   - component: {fileID: 189007396}
   - component: {fileID: 189007395}
   m_Layer: 5
-  m_Name: FIO2
+  m_Name: Box3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2612,7 +2612,7 @@ GameObject:
   - component: {fileID: 224616923}
   - component: {fileID: 224616925}
   m_Layer: 5
-  m_Name: Respiratory Rate
+  m_Name: Box10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3861,7 +3861,7 @@ GameObject:
   - component: {fileID: 397284076}
   - component: {fileID: 397284078}
   m_Layer: 5
-  m_Name: TidalVolume
+  m_Name: Box8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4464,7 +4464,7 @@ GameObject:
   - component: {fileID: 516419440}
   - component: {fileID: 516419439}
   m_Layer: 5
-  m_Name: FEO2
+  m_Name: Box1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4693,7 +4693,7 @@ GameObject:
   - component: {fileID: 532729587}
   - component: {fileID: 532729589}
   m_Layer: 5
-  m_Name: Pb
+  m_Name: Box5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6144,7 +6144,7 @@ GameObject:
   - component: {fileID: 775569166}
   - component: {fileID: 775569168}
   m_Layer: 5
-  m_Name: FICO2
+  m_Name: Box4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7009,7 +7009,7 @@ GameObject:
   - component: {fileID: 865981613}
   - component: {fileID: 865981612}
   m_Layer: 5
-  m_Name: FECO2
+  m_Name: Box2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7828,7 +7828,7 @@ GameObject:
   - component: {fileID: 951604322}
   - component: {fileID: 951604321}
   m_Layer: 5
-  m_Name: pb text
+  m_Name: Box5 text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9639,7 +9639,7 @@ GameObject:
   - component: {fileID: 1069446695}
   - component: {fileID: 1069446694}
   m_Layer: 5
-  m_Name: PH2O text
+  m_Name: Box6 text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10122,23 +10122,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StopwatchCounter: 0
-  FEO2box: {fileID: 516419439}
-  FECO2box: {fileID: 865981612}
-  FIO2box: {fileID: 189007395}
-  FICO2box: {fileID: 775569168}
-  PBbox: {fileID: 532729589}
-  PH2Obox: {fileID: 152951482}
-  expTEMPbox: {fileID: 1673908895}
-  VTbox: {fileID: 397284078}
-  TIbox: {fileID: 157083051}
-  FRbox: {fileID: 224616925}
-  weightTbox: {fileID: 1336316269}
-  volTbox: {fileID: 963444979}
-  timeTbox: {fileID: 325175953}
-  durEPOCbox: {fileID: 1521795934}
+  inputFields:
+  - {fileID: 516419439}
+  - {fileID: 865981612}
+  - {fileID: 189007395}
+  - {fileID: 775569168}
+  - {fileID: 532729589}
+  - {fileID: 152951482}
+  - {fileID: 1673908895}
+  - {fileID: 397284078}
+  - {fileID: 157083051}
+  - {fileID: 224616925}
+  nameBoxes:
+  - {fileID: 2065881475}
+  - {fileID: 77728794}
+  - {fileID: 1382314945}
+  - {fileID: 1415962780}
+  - {fileID: 951604321}
+  - {fileID: 1069446694}
+  - {fileID: 41847510}
+  - {fileID: 1562221311}
+  - {fileID: 1719333}
+  - {fileID: 1565701281}
+  avatarHolder: {fileID: 0}
+  customModule: {fileID: 0}
   tbTimeTbox: {fileID: 612489455}
-  consEPOCbox: {fileID: 279303069}
-  FEV1box: {fileID: 1140891267}
   resultField: {fileID: 0}
   expiryTime: {fileID: 236263272}
   expiryRatio: {fileID: 1491920801}
@@ -12096,7 +12104,6 @@ MonoBehaviour:
   timer: 0
   elapsed: 0
   limit: 0
-  StopwatchCounter: 0
   speedup: 1
   Begin: 0
   tensecondHEAT: 0
@@ -12577,7 +12584,7 @@ GameObject:
   - component: {fileID: 1382314946}
   - component: {fileID: 1382314945}
   m_Layer: 5
-  m_Name: FIO2 text
+  m_Name: Box3 text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12893,7 +12900,7 @@ GameObject:
   - component: {fileID: 1415962781}
   - component: {fileID: 1415962780}
   m_Layer: 5
-  m_Name: FICO2 text
+  m_Name: Box4 text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14139,7 +14146,7 @@ GameObject:
   - component: {fileID: 1562221312}
   - component: {fileID: 1562221311}
   m_Layer: 5
-  m_Name: Tidal Volume
+  m_Name: Box8 Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14218,7 +14225,7 @@ GameObject:
   - component: {fileID: 1565701282}
   - component: {fileID: 1565701281}
   m_Layer: 5
-  m_Name: fr text
+  m_Name: Box10 text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15234,7 +15241,7 @@ GameObject:
   - component: {fileID: 1673908893}
   - component: {fileID: 1673908895}
   m_Layer: 5
-  m_Name: ExpiredTemperature
+  m_Name: Box7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17064,7 +17071,7 @@ GameObject:
   - component: {fileID: 2065881476}
   - component: {fileID: 2065881475}
   m_Layer: 5
-  m_Name: FEO2 text
+  m_Name: Box1 text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

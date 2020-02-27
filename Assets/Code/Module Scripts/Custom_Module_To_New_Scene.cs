@@ -7,8 +7,9 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     // Start is called before the first frame update
  
     public CharacterAvatar avatar;
-    public Text[] textBoxes = new Text[10];
+    public InputField[] textBoxes = new InputField[10];
     public Text[] nameBoxes = new Text[10];
+    public string[] nameBoxText = new string[10];
     public FinalCustomModule custom_module;
     public CustomModuleTester MetCart_module;
     public pvcustommodule Pv_module;
@@ -20,6 +21,8 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     public bool PV_ON;
     public bool Cardio_ON;
     public bool Advanced_ON;
+
+    public bool Update_ON = false; //used to stop crashes if the script tries to update too early
     void Start()
     {
         custom_module = GetComponent<FinalCustomModule>();
@@ -34,28 +37,36 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Custom_ON && Advanced_ON)
+        if(Update_ON)
         {
-            CustomUpdate();
+            if (Custom_ON)
+            {
+                CustomUpdate();
+            }
+            if (MetCart_ON && Advanced_ON)
+            {
+                MetCartUpdate();
+            }
+            if (PV_ON && Advanced_ON)
+            {
+                PvUpdate();
+            }
+            if (Cardio_ON && Advanced_ON)
+            {
+                CardioUpdate();
+            }
         }
-        if (MetCart_ON && Advanced_ON)
-        {
-            MetCartUpdate();
-        }
-        if (PV_ON && Advanced_ON)
-        {
-            PvUpdate();
-        }
-        if (Cardio_ON && Advanced_ON)
-        {
-            CardioUpdate();
-        }
+  
     }
 
     void CustomUpdate()
     {
+        
         for (int i = 0; i < 10; i++)
         {
+            //Debug.Log("anime");
+           
+            nameBoxText[i] = custom_module.nameBoxes[i];
             if (custom_module.filledBoxes[i] != false)
             {
                 switch (custom_module.BoxValue[i])
@@ -93,7 +104,7 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
                     case 11:
                         textBoxes[i].text = avatar.VE.ToString();
                         break;
-                    case 12:
+                   case 12:
                         textBoxes[i].text = avatar.VO2.ToString();
                         break;
                     case 13:
@@ -207,6 +218,7 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     }
     void MetCartUpdate()
     {
+        nameBoxText = MetCart_module.nameBoxes;
         for (int i = 0; i < 10; i++)
         {
             if (MetCart_module.filledBoxes[i] != false)
@@ -286,6 +298,7 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     }
     void PvUpdate()
     {
+        nameBoxText = Pv_module.nameBoxes;
         for (int i = 0; i < 10; i++)
         {
             if (Pv_module.filledBoxes[i] != false)
@@ -345,6 +358,7 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     }
     void CardioUpdate()
     {
+        nameBoxText = Cardio_Module.nameBoxes;
         for (int i = 0; i < 10; i++)
         {
             if (Cardio_Module.filledBoxes[i] != false)
