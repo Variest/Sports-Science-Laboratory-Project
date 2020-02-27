@@ -32,9 +32,20 @@ public class MenuManager : MonoBehaviour
     public GameObject CAPanel;
     public GameObject MAPanel;
 
+    public static MenuManager menuInstance;
+
     public void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        //if (menuInstance == null)
+        //{
+        //    menuInstance = this;
+        //}
+        //else
+        //{
+        //    DestroyObject(gameObject);
+
+        //}
         avatarHolder = GameObject.FindGameObjectWithTag("Avatar_Holder"); //gets a reference for the persistent game object representing the avatar
         moduleChanger = avatarHolder.GetComponent<Custom_Module_To_New_Scene>(); //gets the persistent module changing code
     }

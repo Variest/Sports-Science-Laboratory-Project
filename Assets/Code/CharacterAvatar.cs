@@ -103,6 +103,23 @@ public class CharacterAvatar : MonoBehaviour
     public float RV; //residual volume - volume in lungs after maximum expiration
     public float TLC; //total lung capacity - volume in lungers after maximum inspiration
     public float VC; //vital capacity - the greatest amount of air that can be expired after a maximal inspiration
+
+
+    public static CharacterAvatar avatarInstance;
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+
+        if (avatarInstance == null)
+        {
+            avatarInstance = this;
+        }
+        else
+        {
+            DestroyObject(gameObject);
+            
+        }
+    }
     void Start()
     {
        // spriteRenderer = GetComponent<SpriteRenderer>();
