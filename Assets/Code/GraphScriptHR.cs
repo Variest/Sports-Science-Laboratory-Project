@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GraphScript : MonoBehaviour
+public class GraphScriptHR : MonoBehaviour
 {
     private RectTransform GraphContainer;
     [SerializeField] private Sprite CircleSprite;
     public GameObject[] circles;
     public RectTransform[] transforms;
+    public GameObject[] movement;
     public int graphcounter = 0;
     public int graphcountermovement = 0;
-
     Cardio cardio;
     BodyHeat heat;
     Timer timer;
-    Module exercise;
+    Exercise exercise;
     CharacterAvatar character;
 
     // Start is called before the first frame update
@@ -24,60 +24,66 @@ public class GraphScript : MonoBehaviour
         cardio = GetComponent<Cardio>();
         heat = GetComponent<BodyHeat>();
         timer = GetComponent<Timer>();
-        exercise = GetComponent<Module>();
+        exercise = GetComponent<Exercise>();
         character = GetComponent<CharacterAvatar>();
         circles = new GameObject[10];
         transforms = new RectTransform[10];
         GraphContainer = transform.Find("GraphContainer").GetComponent<RectTransform>();
-    }
+
+        //
+        character.gender = 1;
+        character.age = 20;
+        timer.intervals = 1;
+        timer.increase = 10;
+        timer.limit = 100000;
+        exercise.Module = 2;
+        exercise.RPM = 20;
+        exercise.resistance = 5;
+        //
+}
 
     // Update is called once per frame
     void Update()
     {
-        if(timer.tensecondGRAPH == true)
+        if(timer.resetGRAPHHR == true)
         {
             GraphMaker(cardio.HR, cardio.HRmax);
-            timer.tensecondGRAPH = false;
+            timer.resetGRAPHHR = false;
+            //CircleMaker(new Vector2(200, 200));
+            graphcounter++;
         }
 
-        for(int i = 0; i >= 10; i++)
+        for(int i = 0; i <= 10; i++)
         {
-            transforms[i].Translate((-5 * Time.deltaTime), 0, 0);
+            circles[i].transform.Translate((-8 * Time.deltaTime), 0, 0);
         }
     }
 
-    private GameObject CircleMaker(Vector2 position)
+    private GameObject CircleMaker(Vector2 Position)
     {
-        GameObject gameObject = new GameObject("Circle", typeof(Image));
-        gameObject.transform.SetParent(GraphContainer, false);
-        gameObject.GetComponent<Image>().sprite.CircleSprite;
-        RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = position;
-        rectTransform.sizeDelta = new Vector2(11, 11);
-        rectTransform.anchorMin = new Vector2(0, 0);
-        rectTransform.anchorMax = new Vector2(0, 0);
-        transforms[graphcounter] = rectTransform;
-        circles[graphcounter] = gameObject;
-        return gameObject;
+        if(graphcounter == 10)
+        {
+            graphcounter = 0;
+        }
+        Destroy(circles[graphcounter]);
+        circles[graphcounter] = new GameObject("Circle", typeof(Image));
+        circles[graphcounter].transform.SetParent(GraphContainer, false);
+        circles[graphcounter].GetComponent<Image>().sprite = CircleSprite;
+        transforms[graphcounter] = circles[graphcounter].GetComponent<RectTransform>();
+        transforms[graphcounter].anchoredPosition = Position;
+        transforms[graphcounter].sizeDelta = new Vector2(11, 11);
+        transforms[graphcounter].anchorMin = new Vector2(0, 0);
+        transforms[graphcounter].anchorMax = new Vector2(0, 0);
+        return circles[graphcounter];
+
     }
 
     private void GraphMaker(float input, float inputmax)
     {
         float graphHeight = GraphContainer.sizeDelta.y;
-        if(graphcounter >= 10)
-        {
-            graphcounter = 0;
-
-        }
-        graphcountermovement++;
-        if (graphcountermovement >= 10)
-        {
-            graphcountermovement = 10;
-        }
-        float xSize = 50f;
-        float xPosition = graphcountermovement * xSize;
-        float yPosition = (input / inputmax) * graphHeight;
-        GameObject circleObject = CircleMaker(new Vector2(xPosition, yPosition));
+        float xPosition = 390;
+        float yPosition = ((input / inputmax) * graphHeight);
+        CircleMaker(new Vector2(xPosition, yPosition));
     }
 
     private void DotConnector(Vector2 dotposA, Vector2 dotposB)

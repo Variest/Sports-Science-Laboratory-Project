@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Module : MonoBehaviour
+public class Exercise : MonoBehaviour
 {
     //GENERAL INTS
     public float resistance;
@@ -11,6 +11,7 @@ public class Module : MonoBehaviour
     public float speed;
     public string Model = null;
     public float exerciseType;
+    public int Module;
 
     //FOR TREADMILLS
     public float treadsetting = 0;
@@ -33,13 +34,18 @@ public class Module : MonoBehaviour
 
     Timer timer;
     WaterVapourConversion heat;
-    CharacterCustomiser customiser;
+    CharacterAvatar customiser;
 
     private void Start()
     {
         heat = GetComponent<WaterVapourConversion>();
         timer = GetComponent<Timer>();
-        customiser = GetComponent<CharacterCustomiser>();
+        customiser = GetComponent<CharacterAvatar>();
+
+        //
+        Modulefunc(1);
+        RPM = 120;
+        resistance = 5;
     }
 
     void Update()
@@ -163,6 +169,4 @@ public class Module : MonoBehaviour
         BodyWork = (WorkDone / efficiency);
         HeatWork = (BodyWork - WorkDone);
     }
-
-    Module() { }
 };

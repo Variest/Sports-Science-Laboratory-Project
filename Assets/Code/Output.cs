@@ -13,7 +13,7 @@ public class Output : MonoBehaviour
     //HEAT(0-3) AND WATER CONTENT (0-4)
     //HOT AND SWEATY AND THIRSTY
     Timer timer;
-    Module exercise;
+    Exercise exercise;
 
     public string HR;
     public string Bla;
@@ -27,7 +27,7 @@ public class Output : MonoBehaviour
         cardio = GetComponent<Cardio>();
         heat = GetComponent<BodyHeat>();
         timer = GetComponent<Timer>();
-        exercise = GetComponent<Module>();
+        exercise = GetComponent<Exercise>();
     }
 
     // Update is called once per frame

@@ -18,62 +18,60 @@ public class Timer : MonoBehaviour
     public Stopwatch main = new Stopwatch(); //measures entire time, and ends the test, also at the player's input
     public Stopwatch moments = new Stopwatch(); //every ten seconds, used for loops etc. automated.
 
-    float tenseconds = 10000f; //in milliseconds
+    float seconds = 5000f; //in milliseconds
     public float speedup = 1.0f;
 
     public bool Begin = false; //use this when you get a button for it
-    public bool tensecondHEAT = false;
-    public bool tensecondCARDIO = false;
-    public bool recalculateCARDIO = true;
-    public bool tensecondLUNG = false;
-    public bool tensecondGRAPH = false;
+    public bool resetHEAT = true;
+    public bool resetCARDIO = true;
+    public bool recalcCARDIO = true;
+    public bool resetLUNG = true;
+    public bool resetGRAPHHR = true;
 
     public float FPS; //for measuring the fps ofc
 
-    Module exercise;
-    GraphScript graph;
+    Exercise exercise;
+    GraphScriptHR graph;
 
     // Start is called before the first frame update
     void Start()
     {
-        graph = GetComponent<GraphScript>();
-        exercise = GetComponent<Module>();
+        graph = GetComponent<GraphScriptHR>();
+        exercise = GetComponent<Exercise>();
+        //if all the correct integers are set, then GO
+        //CREATE A BUTTON FOR BEGIN ASAP
+        //
+        intervals = 1;
+        increase = 10;
+        limit = 100000;
+        //
+        main.Start();
+        mini.Start();
+        moments.Start();
     }
 
     // Update is called once per frame
     void Update()
     {
         Speed();
-
-        if ((intervals > 0) && (limit > 0) && (increase > 0) && (Begin == true))
-        {
-            //if all the correct integers are set, then GO
-            //CREATE A BUTTON FOR BEGIN ASAP
-
-            main.Start();
-            mini.Start();
-            moments.Start();
-        }
-
-        if(mini.IsRunning && (mini.ElapsedMilliseconds >= (intervals*1000))) //intervals is probably measured in seconds
+        if(mini.ElapsedMilliseconds >= (intervals*1000)) //intervals is probably measured in seconds
         {         
             mini.Restart(); //restarts the timer
             exercise.RPMfunction((exercise.RPM + increase)); //increases the intensity at the user's input
-            recalculateCARDIO = true; //sends signals to other sheets that they need to recalculate stuff
+            exercise.RPM += increase;
         } //MINI TIMER - TIMES BETWEEN EACH INCREASE IN INTENSITY
 
-        if(moments.IsRunning && (moments.ElapsedMilliseconds >= tenseconds))
+        if((moments.ElapsedMilliseconds >= seconds))
         {
             counter++; //every ten seconds this increases, and can be used for certain models (blood lactate)
-            graph.graphcounter++;
             moments.Restart(); //restarts
-            tensecondCARDIO = true; //sends signals
-            tensecondHEAT = true;
-            tensecondLUNG = true;
-            tensecondGRAPH = true;
+            resetCARDIO = true; //sends signals
+            resetHEAT = true;
+            resetLUNG = true;
+            resetGRAPHHR = true;
         } //INDEPENDENT TIMER - EVERY TEN SECONDS
 
-        if(main.IsRunning && (main.ElapsedMilliseconds >= (limit*1000)))
+        if(main.ElapsedMilliseconds >= (limit*1000))
         {
             main.Reset(); //reset is unlike restart in that the timer does not begin again
             mini.Reset();

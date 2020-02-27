@@ -83,7 +83,7 @@ public class pvEquations : MonoBehaviour
 
     CharacterCustomiser Character;
     Cardio cardio;
-    Module Exercise;
+    Exercise Exercise;
     Timer Timer;
     Lung Lungs;
 
@@ -92,7 +92,7 @@ public class pvEquations : MonoBehaviour
     {
         Character = GetComponent<CharacterCustomiser>();
         cardio = GetComponent<Cardio>();
-        Exercise = GetComponent<Module>();
+        Exercise = GetComponent<Exercise>();
         Timer = GetComponent<Timer>();
         Lungs = GetComponent<Lung>();
         avatar = GetComponent<CharacterAvatar>();

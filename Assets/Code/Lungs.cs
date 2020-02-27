@@ -32,7 +32,7 @@ public class Lung : MonoBehaviour
     CharacterAvatar character;
     pvEquations vents;
     Cardio cardio;
-    Module exercise;
+    Exercise exercise;
     Timer timer;
     // Start is called before the first frame update
     public void Start()
@@ -40,7 +40,7 @@ public class Lung : MonoBehaviour
         character = GetComponent<CharacterAvatar>();
         vents = GetComponent<pvEquations>();
         cardio = GetComponent<Cardio>();
-        exercise = GetComponent<Module>();
+        exercise = GetComponent<Exercise>();
         timer = GetComponent<Timer>();
     }
 
@@ -54,10 +54,10 @@ public class Lung : MonoBehaviour
             setupfunction();
         }
 
-        if (timer.tensecondLUNG == true)
+        if (timer.resetLUNG == true)
         {
             lungupdate();
-            timer.tensecondLUNG = false;
+            timer.resetLUNG = false;
         }
     }
 

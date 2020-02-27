@@ -54,7 +54,7 @@ public class Cardio : MonoBehaviour
 
     CharacterAvatar character; //declares character script
     pvEquations vents; //declares vents script
-    Module exercise; //declares bike script
+    Exercise exercise; //declares bike script
     Timer timer;
 
     public void Start()
@@ -62,18 +62,23 @@ public class Cardio : MonoBehaviour
         //sets scripts to variables to allow them to be connected.
         character = GetComponent<CharacterAvatar>();
         vents = GetComponent<pvEquations>();
-        exercise = GetComponent<Module>();
+        exercise = GetComponent<Exercise>();
         timer = GetComponent<Timer>();
+
+        //
+        HRmax = 220;
+        HRrestfunction(80);
     }
 
     public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
     {
         //CALCULATION
-        if(timer.recalculateCARDIO == true)
+        if(timer.resetCARDIO == true)
         {
             //every time the work being done increases (when the timer mini resets)
             //a lot of things need to be recalculated (HR, BPs) and some other stuff too
             MathFunc();
+            timer.resetCARDIO = false;
         }
 
         if (HR >= HRmax)
@@ -127,23 +132,21 @@ public class Cardio : MonoBehaviour
         HRtargfunction();
         BlaTargfunction();
 
-        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, timer.intervals/2); //MAYBE NOT THE INTERVAL? INTERVAL COULD BE VERY LONG
-        BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocity, timer.intervals/2);
-        Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocity, timer.intervals/2);
+        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, 2); //MAYBE NOT THE INTERVAL? INTERVAL COULD BE VERY LONG
+        BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocity, 2);
+        Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocity, 2);
 
         //HOW TO USE SMOOTHDAMP
         //1 = START POSITION
         //2 = FINISH
         //3 = THIS IS THE WIERD ONE. JUST DO A 'PRIVATE FLOAT'
         //4 - TIME IN SECONDS
-
-        timer.recalculateCARDIO = false;
     }
 
     public void CardioResetfunc()
     {
-        HR = Mathf.SmoothDamp(HR, HRrest, ref velocity, 5);
-        BPs = Mathf.SmoothDamp(BPs, BPsBase, ref velocity, 5);
+        HR = Mathf.SmoothDamp(HR, HRrest, ref velocity, 10);
+        BPs = Mathf.SmoothDamp(BPs, BPsBase, ref velocity, 10);
     }
 
     //FUNCTIONS LEVEL 1 - BASIC MODULE

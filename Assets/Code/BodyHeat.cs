@@ -35,7 +35,7 @@ public class BodyHeat : MonoBehaviour
     public float WaterCond = 0;
     public float HeatCond = 0;
 
-    Module exercise; //use heatwork and workdone
+    Exercise exercise; //use heatwork and workdone
     WaterVapourConversion heat; //gastemp is what you want!
     Timer time;
     CharacterAvatar customiser;
@@ -45,7 +45,7 @@ public class BodyHeat : MonoBehaviour
     void Start()
     {
         heat = GetComponent<WaterVapourConversion>();
-        exercise = GetComponent<Module>();
+        exercise = GetComponent<Exercise>();
         time = GetComponent<Timer>();
         customiser = GetComponent<CharacterAvatar>();
     }
@@ -53,12 +53,12 @@ public class BodyHeat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(time.tensecondHEAT == true)
+        if(time.resetHEAT == true)
         {
             sweatfunc();
             airtempfunc();
             bodyheatfunc();
-            time.tensecondHEAT = false;
+            time.resetHEAT = false;
         }    
     }
 
