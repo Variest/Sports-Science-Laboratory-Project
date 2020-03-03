@@ -67,7 +67,7 @@ public class Timer : MonoBehaviour
 
         if((moments.ElapsedMilliseconds >= seconds))
         {
-            counter++; //every ten seconds this increases, and can be used for certain models (blood lactate)
+            counter++; //every X seconds this increases, and can be used for certain models (blood lactate)
             moments.Restart(); //restarts
             resetCARDIO = true; //sends signals
             resetHEAT = true;

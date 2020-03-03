@@ -68,11 +68,14 @@ public class Cardio : MonoBehaviour
         //
         HRmax = 220;
         HRrestfunction(80);
+        BlaTfunction();
     }
 
     public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
     {
         HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, 10);
+        BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocity, 10);
+        Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocity, 10);
         //CALCULATION
         if (timer.resetCARDIO == true)
         {
@@ -114,15 +117,6 @@ public class Cardio : MonoBehaviour
         EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
         ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
 
-
-        SVfunction(); //update everything else for relevant stuff, the order is very important
-        COfunction();
-        OPfunction();
-        MAPfunction();
-        EFfunction();
-        SWfunction();
-        TPRfunction();
-        BPfunction();
     }
 
     //COMPUTING FUNCTIONS
@@ -134,14 +128,22 @@ public class Cardio : MonoBehaviour
         BlaTargfunction();
 
         //HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, 2); //MAYBE NOT THE INTERVAL? INTERVAL COULD BE VERY LONG
-        BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocity, 2);
-        Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocity, 2);
+
 
         //HOW TO USE SMOOTHDAMP
         //1 = START POSITION
         //2 = FINISH
         //3 = THIS IS THE WIERD ONE. JUST DO A 'PRIVATE FLOAT'
         //4 - TIME IN SECONDS
+
+        SVfunction(); //update everything else for relevant stuff, the order is very important
+        COfunction();
+        OPfunction();
+        MAPfunction();
+        EFfunction();
+        SWfunction();
+        TPRfunction();
+        BPfunction();
     }
 
     public void CardioResetfunc()

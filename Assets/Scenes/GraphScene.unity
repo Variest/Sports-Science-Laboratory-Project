@@ -470,6 +470,8 @@ GameObject:
   - component: {fileID: 975919263}
   - component: {fileID: 975919264}
   - component: {fileID: 975919265}
+  - component: {fileID: 975919267}
+  - component: {fileID: 975919266}
   m_Layer: 5
   m_Name: GraphWindow
   m_TagString: Untagged
@@ -742,6 +744,51 @@ MonoBehaviour:
   RV: 0
   TLC: 0
   VC: 0
+--- !u!114 &975919266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975919258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 523558d2c6208ec419bfdb3c09623a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gasTemp: 0
+--- !u!114 &975919267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975919258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f0201bce25825d4c95015bf493a3c19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BodyWaterBase: 0
+  BodyWater: 0
+  WaterDrunk: 1000
+  WaterPrcnt: 0
+  SweatRate: 0
+  MaxSweatRate: 1000
+  SweatPower: 2400
+  sweatreserves: 1
+  CoolPower: 0
+  humidity: 30
+  HeatGain: 0
+  HeatCapacity: 0.83
+  KCAL: 4184
+  metabolism: 85
+  BodyTemp: 36
+  heatDiff: 0
+  AirHC: 1.005
+  AirHeat: 0
+  WaterCond: 0
+  HeatCond: 0
 --- !u!1 &2004743329
 GameObject:
   m_ObjectHideFlags: 0

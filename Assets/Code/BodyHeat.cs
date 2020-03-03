@@ -48,6 +48,7 @@ public class BodyHeat : MonoBehaviour
         exercise = GetComponent<Exercise>();
         time = GetComponent<Timer>();
         customiser = GetComponent<CharacterAvatar>();
+        bodywaterfunc();
     }
 
     // Update is called once per frame

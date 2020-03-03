@@ -47,15 +47,15 @@ public class GraphScriptHR : MonoBehaviour
     {
         if(timer.resetGRAPHHR == true)
         {
-            GraphMaker(cardio.HR, cardio.HRmax);
             timer.resetGRAPHHR = false;
             //CircleMaker(new Vector2(200, 200));
+            GraphMaker(cardio.HR, cardio.HRmax);
             graphcounter++;
         }
 
-        for(int i = 0; i <= 10; i++)
+        for(int i = 0; i <= 9; i++)
         {
-            circles[i].transform.Translate((-8 * Time.deltaTime), 0, 0);
+            circles[i].transform.Translate((-10 * Time.deltaTime), 0, 0);
         }
     }
 
