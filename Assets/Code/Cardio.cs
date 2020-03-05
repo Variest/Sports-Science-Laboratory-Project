@@ -241,7 +241,7 @@ public class Cardio : MonoBehaviour
         else
         {
             HRCond = 0;
-            BlaTarget = (Mathf.Pow((exercise.WorkDone / 130), 2) + 1.0f + (timer.counter / 10));
+            BlaTarget = (Mathf.Pow((exercise.WorkDone / 180), 2) + 1.0f + (timer.counter / 10));
         }
     }
 

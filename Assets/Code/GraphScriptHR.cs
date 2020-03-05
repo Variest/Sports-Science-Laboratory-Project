@@ -17,6 +17,8 @@ public class GraphScriptHR : MonoBehaviour
     Timer timer;
     Exercise exercise;
     CharacterAvatar character;
+    public float InputMax;
+    public string Variable;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +42,9 @@ public class GraphScriptHR : MonoBehaviour
         //exercise.RPM = 20;
         //exercise.resistance = 5;
         //
+
+        GraphMaker(cardio.HR, cardio.HRmax, "Heart Rate");
+        graphcounter++;
     }
 
     // Update is called once per frame
@@ -48,8 +53,7 @@ public class GraphScriptHR : MonoBehaviour
         if(timer.resetGRAPHHR == true)
         {
             timer.resetGRAPHHR = false;
-            //CircleMaker(new Vector2(200, 200));
-            GraphMaker(cardio.HR, cardio.HRmax);
+            GraphMaker(cardio.HR, cardio.HRmax, "Heart Rate");
             graphcounter++;
         }
 
@@ -78,12 +82,14 @@ public class GraphScriptHR : MonoBehaviour
 
     }
 
-    private void GraphMaker(float input, float inputmax)
+    private void GraphMaker(float input, float inputmax, string variable)
     {
         float graphHeight = GraphContainer.sizeDelta.y;
         float xPosition = 390;
         float yPosition = ((input / inputmax) * graphHeight);
         CircleMaker(new Vector2(xPosition, yPosition));
+        InputMax = inputmax;
+        Variable = variable;
     }
 
     private void DotConnector(Vector2 dotposA, Vector2 dotposB)
