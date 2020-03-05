@@ -59,7 +59,16 @@ public class GraphScriptHR : MonoBehaviour
 
         for(int i = 0; i <= 9; i++)
         {
-            circles[i].transform.Translate((-10 * Time.deltaTime), 0, 0);
+            circles[i].transform.Translate((-8 * Time.deltaTime), 0, 0);
+            //switch(circles[i].transform.position.x)
+            //{
+            //    case -38:
+            //    circles[i].SetActive(false);
+            //        break;
+            //    default:
+            //        circles[i].SetActive(true);
+            //        break;
+            //}
         }
     }
 
