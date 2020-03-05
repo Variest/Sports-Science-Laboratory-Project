@@ -9,6 +9,11 @@ public class TextBox : MonoBehaviour
     Output output;
     string Max;
     string Var;
+    string bwc;
+    string cbh;
+    string bla;
+    string hr;
+    string et;
     public Text Variable;
     public Text MAX;
     public Text BWC;
@@ -29,13 +34,14 @@ public class TextBox : MonoBehaviour
     {
         Max = Graph.InputMax.ToString();
         Var = Graph.Variable;
+        hr = output.HR;
 
         Variable.text = Var;
         MAX.text = Max;
         BWC.text = output.Water;
         CBH.text = output.Heat;
         Bla.text = output.Bla;
-        HR.text = output.HR;
+        HR.text = hr;
         ET.text = output.Exercise;
     }
 }
