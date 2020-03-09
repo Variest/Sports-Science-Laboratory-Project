@@ -169,16 +169,19 @@ public class MenuManager : MonoBehaviour
                 {
                     MSPanel.gameObject.SetActive(true);
                     TSPanel.gameObject.SetActive(false);
+                    moduleChanger.ResetModuleValues();
                     selectedModule = ' ';
                 }
                 else
                 {
                     SceneManager.LoadScene("Main Menu Scene");
+                    moduleChanger.ResetModuleValues();
                 }
             }
             else
             {
                 SceneManager.LoadScene("Main Menu Scene");
+                moduleChanger.ResetModuleValues();
             }
         }
     }

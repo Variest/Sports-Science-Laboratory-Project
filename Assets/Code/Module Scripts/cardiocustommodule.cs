@@ -769,4 +769,27 @@ public class cardiocustommodule : MonoBehaviour
         }
 
     }
+
+    public void ResetAllValues() //reset every value in order to start from a clean state
+    {
+        for(int i = 0; i < 10; i++)
+        {
+            filledBoxes[i] = false;
+            textBoxContent[i] = "";
+            nameBoxes[i] = "";
+            BoxValue[i] = 0;
+
+        }
+        fc_toggled = false; //stops every single box from being filled by a single variable each time
+        vo2fc_toggled = false;
+        MAP_toggled = false;
+        fcmax_toggled = false;
+        bla_toggled = false;
+        CO_toggled = false;
+        BPd_toggled = false;
+        BPs_toggled = false;
+        SV_toggled = false;
+        fcres_toggled = false;
+        SpO2_toggled = false;
+    }
 }

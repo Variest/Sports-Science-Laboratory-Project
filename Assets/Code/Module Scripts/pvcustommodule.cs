@@ -890,4 +890,33 @@ public class pvcustommodule : MonoBehaviour
         }
 
     }
+    public void ResetAllValues() //reset every value in order to start from a clean state
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            filledBoxes[i] = false;
+            textBoxContent[i] = "";
+            nameBoxes[i] = "";
+            BoxValue[i] = 0;
+
+        }
+        FVC_toggled = false; //stops every single box from being filled by a single variable each time
+        FEV1FVC_toggled = false;
+        PEF_toggled = false;
+        PIF_toggled = false;
+        PImax_toggled = false;
+        PEmax_toggled = false;
+        VECap_toggled = false;
+        ERV_toggled = false;
+        FRC_toggled = false;
+        IC_toggled = false;
+        IRV_toggled = false;
+        RV_toggled = false;
+        TLC_toggled = false;
+        VC_toggled = false;
+
+
+
+
+    }
 }

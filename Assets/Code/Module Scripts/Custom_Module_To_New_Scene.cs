@@ -561,7 +561,7 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
    
   
     }
-    void ResetValues()
+    public void ResetValues()
     {
        
         for (int i = 0; i < 10; i++)
@@ -573,8 +573,23 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
             PV_ON = false;
             Cardio_ON = false;
         }
+        Pv_module.ResetAllValues();
+        Cardio_Module.ResetAllValues();
+        MetCart_module.ResetAllValues();
+        custom_module.ResetAllValues();
     }
 
+    public void ResetModuleValues()
+    {
+        Custom_ON = false;
+        MetCart_ON = false;
+        PV_ON = false;
+        Cardio_ON = false;
+        Pv_module.ResetAllValues();
+        Cardio_Module.ResetAllValues();
+        MetCart_module.ResetAllValues();
+        custom_module.ResetAllValues();
+    }
     void ButtonAssign()
     {
         if (Custom_ON && Advanced_ON)

@@ -2689,4 +2689,76 @@ public class FinalCustomModule : MonoBehaviour
         }
 
     }
+    public void ResetAllValues() //reset every value in order to start from a clean state
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            filledBoxes[i] = false;
+            textBoxContent[i] = "";
+            nameBoxes[i] = "";
+            BoxValue[i] = 0;
+
+        }
+        RPE_toggled = false; //stops every single box from being filled by a single variable each time
+        dyspnoea_toggled = false;
+        EE_toggled = false;
+        TE_toggled = false;
+        TI_toggled = false;
+        TToT_toggled = false;
+        VT_toggled = false;
+        fr_toggled = false;
+        PETCO2_toggled = false;
+        PETO2_toggled = false;
+        VE_toggled = false;
+        VO2_toggled = false;
+        VCO2_toggled = false;
+        RER_toggled = false;
+        MET_toggled = false; //stops every single box from being filled by a single variable each time
+        TToT_toggled = false;
+        VO2fr_toggled = false;
+        SpO2_toggled = false;
+        VEcap_toggled = false;
+        VEVO2_toggled = false;
+        VEVCO2_toggled = false;
+        FIO2_toggled = false;
+        FICO2_toggled = false;
+        FEO2_toggled = false;
+        FECO2_toggled = false;
+        BPd_toggled = false;
+        BPs_toggled = false;
+        MAP_toggled = false;
+        Bla_toggled = false;
+        CO_toggled = false;
+        Fcmax_toggled = false;
+        Fcres_toggled = false;
+        VO2fc_toggled = false;
+        Sv_toggled = false;
+        FEV1_toggled = false;
+        FVC_toggled = false;
+        FEV1FVC_toggled = false;
+        PImax_toggled = false;
+        PEmax_toggled = false;
+        ERV_toggled = false;
+        FRC_toggled = false;
+        IC_toggled = false;
+        IRV_toggled = false;
+        PIF_toggled = false;
+        PEF_toggled = false;
+        RV_toggled = false;
+        TLC_toggled = false;
+        VC_toggled = false;
+
+    }
+
+
+
+    
+    //public bool FRC_toggled;
+    //public bool IC_toggled;
+    //public bool IRV_toggled;
+    //public bool PIF_toggled;
+    //public bool PEF_toggled;
+    //public bool RV_toggled;
+    //public bool TLC_toggled;
+    //public bool VC_toggled;
 }
