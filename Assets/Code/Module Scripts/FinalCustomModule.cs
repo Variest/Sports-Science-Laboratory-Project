@@ -524,7 +524,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TE_toggled = false;
-                    TE_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+                    TE_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -866,7 +866,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VE_toggled = false;
-                    VE_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+                    VE_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -1110,7 +1110,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VO2fr_toggled = false;
-                    VO2fr_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+                    VO2fr_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -1350,7 +1350,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FIO2_toggled = false;
-                    FIO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+                    FIO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 

@@ -348,7 +348,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 1)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VE_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -396,7 +396,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 2)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VT_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -443,7 +443,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 3)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -490,7 +490,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 4)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -537,7 +537,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 5)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     frToggled = false;
@@ -584,7 +584,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 6)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     METtoggled = false;
@@ -630,7 +630,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 7)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FCtoggled = false;
@@ -676,7 +676,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 8)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     RERtoggled = false;
@@ -722,7 +722,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 9)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VEVO2toggled = false;
@@ -768,7 +768,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 10)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VEVCO2toggled = false;
@@ -814,7 +814,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 11)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PETCO2toggled = false;
@@ -860,7 +860,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 12)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PETO2toggled = false;
@@ -906,7 +906,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 13)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TEtoggled = false;
@@ -952,7 +952,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 14)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TItoggled = false;
@@ -998,7 +998,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 15)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TITEtoggled = false;
@@ -1044,7 +1044,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 16)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TToTtoggled = false;
@@ -1090,7 +1090,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 17)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VO2FRtoggled = false;
@@ -1136,7 +1136,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 18)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VO2FCtoggled = false;
@@ -1182,7 +1182,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 19)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     SpO2toggled = false;
@@ -1229,7 +1229,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 20)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FcMAXtoggled = false;
@@ -1276,7 +1276,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 21)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FcREStoggled = false;
@@ -1322,7 +1322,7 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 22)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     EEtoggled = false;

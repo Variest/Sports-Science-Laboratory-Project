@@ -256,7 +256,7 @@ public class pvcustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEV1_toggled = false;
-                    FEV1_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+                    FEV1_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
