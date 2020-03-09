@@ -76,6 +76,7 @@ public class Cardio : MonoBehaviour
         character.gender = 1;
         character.weight = 50;
         character.age = 20;
+        //
     }
 
     public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING

@@ -40,11 +40,13 @@ public class Timer : MonoBehaviour
         exercise = GetComponent<Exercise>();
         //if all the correct integers are set, then GO
         //CREATE A BUTTON FOR BEGIN ASAP
+
         //
         intervals = 5;
         increase = 10;
         limit = 100000;
         //
+
         main.Start();
         mini.Start();
         moments.Start();

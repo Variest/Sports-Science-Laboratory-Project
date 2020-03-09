@@ -46,6 +46,7 @@ public class Exercise : MonoBehaviour
         Modulefunc(2);
         RPM = 20;
         resistance = 5;
+        //
     }
 
     void Update()
