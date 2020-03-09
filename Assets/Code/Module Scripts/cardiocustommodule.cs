@@ -82,6 +82,61 @@ public class cardiocustommodule : MonoBehaviour
         SV_button.onClick.AddListener(ClickedSVToggle);
         fcres_button.onClick.AddListener(ClickedfcresToggle);
         SpO2_button.onClick.AddListener(ClickedSPO2Toggle);
+        if (fc_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || fc_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
+        {
+            fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            Debug.Log(fc_button.GetComponent<UnityEngine.UI.Image>().color);
+        }
+        if (vo2fc_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || vo2fc_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
+        {
+            vo2fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            Debug.Log(vo2fc_button.GetComponent<UnityEngine.UI.Image>().color);
+        }
+        if (MAP_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || MAP_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
+        {
+            MAP_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            Debug.Log(MAP_button.GetComponent<UnityEngine.UI.Image>().color);
+        }
+        if (fcmax_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || fcmax_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
+        {
+            fcmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            Debug.Log(fcmax_button.GetComponent<UnityEngine.UI.Image>().color);
+        }
+        if (bla_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || bla_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
+        {
+            bla_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            Debug.Log(bla_button.GetComponent<UnityEngine.UI.Image>().color);
+        }
+        if (CO_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || CO_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
+        {
+            CO_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            Debug.Log(CO_button.GetComponent<UnityEngine.UI.Image>().color);
+        }
+        if (BPd_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || BPd_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
+        {
+            BPd_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            Debug.Log(BPd_button.GetComponent<UnityEngine.UI.Image>().color);
+        }
+        if (BPs_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || BPs_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
+        {
+            BPs_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            Debug.Log(BPs_button.GetComponent<UnityEngine.UI.Image>().color);
+        }
+        if (SV_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || SV_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
+        {
+            SV_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            Debug.Log(SV_button.GetComponent<UnityEngine.UI.Image>().color);
+        }
+        if (fcres_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || fcres_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
+        {
+            fcres_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            Debug.Log(fcres_button.GetComponent<UnityEngine.UI.Image>().color);
+        }
+        if (SpO2_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || SpO2_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
+        {
+            SpO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            Debug.Log(SpO2_button.GetComponent<UnityEngine.UI.Image>().color);
+        }
     }
     // Update is called once per frame
     void Update()
@@ -200,6 +255,7 @@ public class cardiocustommodule : MonoBehaviour
                         nameBoxes[i] = "fc ";
                         filledBoxes[i] = true;
                         fc_toggled = true;
+                        fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
 
                     }
 
@@ -221,6 +277,7 @@ public class cardiocustommodule : MonoBehaviour
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
+                    fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     fc_toggled = false;
                 }
             }
@@ -248,6 +305,7 @@ public class cardiocustommodule : MonoBehaviour
                         nameBoxes[i] = "vo2fc ";
                         filledBoxes[i] = true;
                         vo2fc_toggled = true;
+                        vo2fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
 
                     }
 
@@ -270,6 +328,7 @@ public class cardiocustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     vo2fc_toggled = false;
+                    vo2fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -295,7 +354,7 @@ public class cardiocustommodule : MonoBehaviour
                         nameBoxes[i] = "MAP ";
                         filledBoxes[i] = true;
                         MAP_toggled = true;
-
+                        MAP_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -317,6 +376,7 @@ public class cardiocustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     MAP_toggled = false;
+                    MAP_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -342,6 +402,7 @@ public class cardiocustommodule : MonoBehaviour
                         nameBoxes[i] = "fcmax ";
                         filledBoxes[i] = true;
                         fcmax_toggled = true;
+                        fcmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
 
                     }
 
@@ -364,6 +425,7 @@ public class cardiocustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     fcmax_toggled = false;
+                    fcmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -389,7 +451,7 @@ public class cardiocustommodule : MonoBehaviour
                         nameBoxes[i] = "bla ";
                         filledBoxes[i] = true;
                         bla_toggled = true;
-
+                        bla_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -411,6 +473,7 @@ public class cardiocustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     bla_toggled = false;
+                    bla_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -436,7 +499,7 @@ public class cardiocustommodule : MonoBehaviour
                         nameBoxes[i] = "CO ";
                         filledBoxes[i] = true;
                         CO_toggled = true;
-
+                        CO_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -458,6 +521,7 @@ public class cardiocustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     CO_toggled = false;
+                    CO_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -483,7 +547,7 @@ public class cardiocustommodule : MonoBehaviour
                         nameBoxes[i] = "BPd ";
                         filledBoxes[i] = true;
                         BPd_toggled = true;
-
+                        BPd_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -505,6 +569,7 @@ public class cardiocustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     BPd_toggled = false;
+                    BPd_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -530,7 +595,7 @@ public class cardiocustommodule : MonoBehaviour
                         nameBoxes[i] = "BPs ";
                         filledBoxes[i] = true;
                         BPs_toggled = true;
-
+                        BPs_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -552,6 +617,7 @@ public class cardiocustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     BPs_toggled = false;
+                    BPs_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -577,7 +643,7 @@ public class cardiocustommodule : MonoBehaviour
                         nameBoxes[i] = "SV ";
                         filledBoxes[i] = true;
                         SV_toggled = true;
-
+                        SV_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -599,6 +665,7 @@ public class cardiocustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     SV_toggled = false;
+                    SV_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -624,7 +691,7 @@ public class cardiocustommodule : MonoBehaviour
                         nameBoxes[i] = "fcres ";
                         filledBoxes[i] = true;
                         fcres_toggled = true;
-
+                        fcres_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -646,6 +713,7 @@ public class cardiocustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     fcres_toggled = false;
+                    fcres_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -671,7 +739,7 @@ public class cardiocustommodule : MonoBehaviour
                         nameBoxes[i] = "SPO2 ";
                         filledBoxes[i] = true;
                         SpO2_toggled = true;
-
+                        SpO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -692,6 +760,7 @@ public class cardiocustommodule : MonoBehaviour
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
+                    SpO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     SpO2_toggled = false;
                 }
             }

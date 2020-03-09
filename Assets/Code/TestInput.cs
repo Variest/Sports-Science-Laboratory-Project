@@ -60,7 +60,7 @@ public class TestInput : MonoBehaviour {
     public Text Stopwatch;
     public Button playPause;
     public Button reset;
-    private bool play = true;
+    private bool play = false;
 
     public int functionChosen; //int value depending on which function you are trying to find the answer to
     // Use this for initialization
@@ -102,6 +102,7 @@ public class TestInput : MonoBehaviour {
         if(play == true)
         {
             testtime += Time.deltaTime;//constantly updates testtime based off of runtime.
+            customModule.timeElapsed = testtime;
             Stopwatch.text = testtime.ToString("0.00");
            // Debug.Log("help");
         }
@@ -116,6 +117,7 @@ public class TestInput : MonoBehaviour {
     void PlayPause()
     {
         play ^= true;
+        customModule.Timer_ON ^= true;
         for(int i = 0; i < 10; i++)
         {
             inputFields[i].readOnly ^= true;

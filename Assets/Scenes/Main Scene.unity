@@ -9719,7 +9719,7 @@ GameObject:
   - component: {fileID: 1083980103}
   m_Layer: 5
   m_Name: Selected Module Title Text
-  m_TagString: Untagged
+  m_TagString: Module_Text_Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10085,7 +10085,7 @@ GameObject:
   - component: {fileID: 1131542319}
   m_Layer: 5
   m_Name: ResultField
-  m_TagString: Untagged
+  m_TagString: Result_Field
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17599,6 +17599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0899e9cd136cfb8499801d5576565c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  avatar: {fileID: 0}
   TI: 0
   TE: 0
   TITE: 0

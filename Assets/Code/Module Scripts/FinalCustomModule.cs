@@ -355,7 +355,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "RPE ";
                         filledBoxes[i] = true;
                         RPE_toggled = true;
-                        
+                        RPE_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -378,6 +378,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     RPE_toggled = false;
+                    RPE_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -404,7 +405,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "Dyspnoea ";
                         filledBoxes[i] = true;
                         dyspnoea_toggled = true;
-                      
+                        Dyspnoea_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
                
 
@@ -426,6 +427,7 @@ public class FinalCustomModule : MonoBehaviour
                     BoxValue[i] = 0;
                     nameBoxes[i] = "";
                     dyspnoea_toggled = false;
+                    Dyspnoea_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -451,7 +453,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "EE ";
                         filledBoxes[i] = true;
                         EE_toggled = true;
-                     
+                        EE_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
              
@@ -473,6 +475,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     EE_toggled = false;
+                    EE_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -499,7 +502,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "TE ";
                         filledBoxes[i] = true;
                         TE_toggled = true;
-                       
+                        TE_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -521,6 +524,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TE_toggled = false;
+                    TE_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                 }
             }
 
@@ -547,7 +551,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "TI ";
                         filledBoxes[i] = true;
                         TI_toggled = true;
-                       
+                        TI_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -569,6 +573,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TI_toggled = false;
+                    TI_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -595,7 +600,8 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "TToT ";
                         filledBoxes[i] = true;
                         TToT_toggled = true;
-                      
+                        TToT_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+
                     }
 
 
@@ -617,6 +623,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TToT_toggled = false;
+                    TToT_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -643,7 +650,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "VT ";
                         filledBoxes[i] = true;
                         VT_toggled = true;
-                    
+                        VT_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -665,6 +672,7 @@ public class FinalCustomModule : MonoBehaviour
                     //textBoxes[i].text = "";
                     BoxValue[i] = 0;
                     VT_toggled = false;
+                    VT_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -690,7 +698,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "fr ";
                         filledBoxes[i] = true;
                         fr_toggled = true;
-                       
+                        fr_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -712,6 +720,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     fr_toggled = false;
+                    fr_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -738,7 +747,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "petco2 ";
                         filledBoxes[i] = true;
                         PETCO2_toggled = true;
-                       
+                        PETCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -760,6 +769,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PETCO2_toggled = false;
+                    PETCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -785,7 +795,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "peto2 ";
                         filledBoxes[i] = true;
                         PETO2_toggled = true;
-                       
+                        PETO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -807,6 +817,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PETO2_toggled = false;
+                    PETO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -833,7 +844,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "VE ";
                         filledBoxes[i] = true;
                         VE_toggled = true;
-                      
+                        VE_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -855,6 +866,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VE_toggled = false;
+                    VE_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                 }
             }
 
@@ -880,7 +892,8 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "VO2 ";
                         filledBoxes[i] = true;
                         VO2_toggled = true;
-                  
+                        VO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+
                     }
 
 
@@ -902,6 +915,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VO2_toggled = false;
+                    VO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -929,7 +943,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "VCO2 ";
                         filledBoxes[i] = true;
                         VCO2_toggled = true;
-                      
+                        VCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -951,6 +965,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VCO2_toggled = false;
+                    VCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -977,7 +992,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "RER ";
                         filledBoxes[i] = true;
                         RER_toggled = true;
-                      
+                        RER_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -999,6 +1014,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     RER_toggled = false;
+                    RER_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -1024,7 +1040,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "MET ";
                         filledBoxes[i] = true;
                         MET_toggled = true;
-                      
+                        MET_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -1046,6 +1062,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     MET_toggled = false;
+                    MET_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -1071,7 +1088,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "VO2fr ";
                         filledBoxes[i] = true;
                         VO2fr_toggled = true;
-                       
+                        VO2fr_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -1093,6 +1110,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VO2fr_toggled = false;
+                    VO2fr_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                 }
             }
 
@@ -1118,7 +1136,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "SpO2 ";
                         filledBoxes[i] = true;
                         SpO2_toggled = true;
-                   
+                        SpO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
 
                     }
 
@@ -1140,6 +1158,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     SpO2_toggled = false;
+                    SpO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -1165,7 +1184,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "VEcap ";
                         filledBoxes[i] = true;
                         VEcap_toggled = true;
-                      
+                        VEcap_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -1187,6 +1206,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VEcap_toggled = false;
+                    VEcap_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -1212,7 +1232,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "VeVO2 ";
                         filledBoxes[i] = true;
                         VEVO2_toggled = true;
-                      
+                        VEVO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -1234,6 +1254,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VEVO2_toggled = false;
+                    VEVO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -1259,7 +1280,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "VEVCO2 ";
                         filledBoxes[i] = true;
                         VEVCO2_toggled = true;
-                     
+                        VEVCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -1281,6 +1302,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VEVCO2_toggled = false;
+                    VEVCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -1306,7 +1328,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "FIO2 ";
                         filledBoxes[i] = true;
                         FIO2_toggled = true;
-                     
+                        FIO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -1328,6 +1350,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FIO2_toggled = false;
+                    FIO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                 }
             }
 
@@ -1353,6 +1376,7 @@ public class FinalCustomModule : MonoBehaviour
                         //textBoxes[i].text = avatar.FICO2.ToString();
                         nameBoxes[i] = "FICO2 ";
                         filledBoxes[i] = true;
+                        FICO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         FICO2_toggled = true;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
@@ -1377,6 +1401,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FICO2_toggled = false;
+                    FICO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -1402,6 +1427,7 @@ public class FinalCustomModule : MonoBehaviour
                         //textBoxes[i].text = avatar.FEO2.ToString();
                         nameBoxes[i] = "FEO2 ";
                         filledBoxes[i] = true;
+                        FEO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         FEO2_toggled = true;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
@@ -1426,6 +1452,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEO2_toggled = false;
+                    FEO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -1452,6 +1479,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "FECO2 ";
                         filledBoxes[i] = true;
                         FECO2_toggled = true;
+                        FECO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -1475,6 +1503,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FECO2_toggled = false;
+                    FECO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -1500,6 +1529,7 @@ public class FinalCustomModule : MonoBehaviour
                         //textBoxes[i].text = avatar.BPd.ToString();
                         nameBoxes[i] = "BPd ";
                         filledBoxes[i] = true;
+                        BPd_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         BPd_toggled = true;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
@@ -1523,6 +1553,7 @@ public class FinalCustomModule : MonoBehaviour
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
+                    BPd_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     BPd_toggled = false;
                 }
             }
@@ -1550,6 +1581,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "BPs ";
                         filledBoxes[i] = true;
                         BPs_toggled = true;
+                        BPs_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -1573,6 +1605,7 @@ public class FinalCustomModule : MonoBehaviour
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
+                    BPs_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     BPs_toggled = false;
                 }
             }
@@ -1600,6 +1633,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "MAP ";
                         filledBoxes[i] = true;
                         MAP_toggled = true;
+                        MAP_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -1623,6 +1657,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     MAP_toggled = false;
+                    MAP_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -1650,6 +1685,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "Bla ";
                         filledBoxes[i] = true;
                         Bla_toggled = true;
+                        Bla_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -1673,6 +1709,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     Bla_toggled = false;
+                    Bla_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -1699,6 +1736,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "CO ";
                         filledBoxes[i] = true;
                         CO_toggled = true;
+                        CO_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
 
@@ -1722,6 +1760,7 @@ public class FinalCustomModule : MonoBehaviour
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
+                    CO_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     CO_toggled = false;
                 }
             }
@@ -1749,6 +1788,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "FCmax ";
                         filledBoxes[i] = true;
                         Fcmax_toggled = true;
+                        Fcmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -1771,6 +1811,7 @@ public class FinalCustomModule : MonoBehaviour
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
+                    Fcmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     Fcmax_toggled = false;
                 }
             }
@@ -1798,6 +1839,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "FCres ";
                         filledBoxes[i] = true;
                         Fcres_toggled = true;
+                        Fcres_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -1820,6 +1862,7 @@ public class FinalCustomModule : MonoBehaviour
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
+                    Fcres_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     Fcres_toggled = false;
                 }
             }
@@ -1848,6 +1891,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "VO2fc ";
                         filledBoxes[i] = true;
                         VO2fc_toggled = true;
+                        VO2fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -1870,6 +1914,7 @@ public class FinalCustomModule : MonoBehaviour
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
+                    VO2fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     VO2fc_toggled = false;
                 }
             }
@@ -1897,6 +1942,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "SV ";
                         filledBoxes[i] = true;
                         Sv_toggled = true;
+                        Sv_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -1919,6 +1965,7 @@ public class FinalCustomModule : MonoBehaviour
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
+                    Sv_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     Sv_toggled = false;
                 }
             }
@@ -1946,6 +1993,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "FEV1 ";
                         filledBoxes[i] = true;
                         FEV1_toggled = true;
+                        FEV1_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -1969,6 +2017,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEV1_toggled = false;
+                    FEV1_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -1995,6 +2044,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "FVC ";
                         filledBoxes[i] = true;
                         FVC_toggled = true;
+                        FVC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -2018,6 +2068,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FVC_toggled = false;
+                    FVC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -2044,6 +2095,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "FEV1FVC ";
                         filledBoxes[i] = true;
                         FEV1FVC_toggled = true;
+                        FEV1FVC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -2067,6 +2119,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEV1FVC_toggled = false;
+                    FEV1FVC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -2093,6 +2146,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "PImax ";
                         filledBoxes[i] = true;
                         PImax_toggled = true;
+                        PImax_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -2116,6 +2170,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PImax_toggled = false;
+                    PImax_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -2142,6 +2197,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "PEmax ";
                         filledBoxes[i] = true;
                         PEmax_toggled = true;
+                        PEmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -2165,6 +2221,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PEmax_toggled = false;
+                    PEmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -2191,6 +2248,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "ERV ";
                         filledBoxes[i] = true;
                         ERV_toggled = true;
+                        ERV_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -2213,6 +2271,7 @@ public class FinalCustomModule : MonoBehaviour
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
+                    ERV_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     ERV_toggled = false;
                 }
             }
@@ -2240,6 +2299,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "FRC ";
                         filledBoxes[i] = true;
                         FRC_toggled = true;
+                        FRC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -2263,6 +2323,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FRC_toggled = false;
+                    FRC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -2289,6 +2350,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "IC ";
                         filledBoxes[i] = true;
                         IC_toggled = true;
+                        IC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -2311,6 +2373,7 @@ public class FinalCustomModule : MonoBehaviour
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
+                    IC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     IC_toggled = false;
                 }
             }
@@ -2338,6 +2401,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "IRV ";
                         filledBoxes[i] = true;
                         IRV_toggled = true;
+                        IRV_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
 
@@ -2362,6 +2426,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     IRV_toggled = false;
+                    IRV_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -2388,6 +2453,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "PIF ";
                         filledBoxes[i] = true;
                         PIF_toggled = true;
+                        PIF_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -2410,6 +2476,7 @@ public class FinalCustomModule : MonoBehaviour
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
+                    PIF_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     PIF_toggled = false;
                 }
             }
@@ -2437,6 +2504,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "PEF ";
                         filledBoxes[i] = true;
                         PEF_toggled = true;
+                        PEF_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -2459,6 +2527,7 @@ public class FinalCustomModule : MonoBehaviour
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
+                    PEF_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     PEF_toggled = false;
                 }
             }
@@ -2486,6 +2555,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "RV ";
                         filledBoxes[i] = true;
                         RV_toggled = true;
+                        RV_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -2509,6 +2579,7 @@ public class FinalCustomModule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     RV_toggled = false;
+                    RV_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -2535,6 +2606,7 @@ public class FinalCustomModule : MonoBehaviour
                         nameBoxes[i] = "TLC ";
                         filledBoxes[i] = true;
                         TLC_toggled = true;
+                        TLC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         // RPE_toggle.isOn = true;
                         //this box will desplay the avatar's VE value 
                     }
@@ -2557,6 +2629,7 @@ public class FinalCustomModule : MonoBehaviour
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
+                    TLC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     TLC_toggled = false;
                 }
             }
@@ -2582,6 +2655,7 @@ public class FinalCustomModule : MonoBehaviour
                         textBoxContent[i] = avatar.VC.ToString();
                        // textBoxes[i].text = avatar.VC.ToString();
                         nameBoxes[i] = "VC ";
+                        VC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         filledBoxes[i] = true;
                         VC_toggled = true;
                         // RPE_toggle.isOn = true;
@@ -2606,6 +2680,7 @@ public class FinalCustomModule : MonoBehaviour
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
+                    VC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     VC_toggled = false;
                 }
             }

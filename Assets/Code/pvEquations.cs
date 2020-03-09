@@ -7,7 +7,7 @@ public class pvEquations : MonoBehaviour
 
     [Header("Character")]
    
-    CharacterAvatar avatar;
+    public CharacterAvatar avatar;
     [Space(10)]
     [Header("Values used for inspiration and expiration of air")]
     public float TI; //inspiratory time
@@ -73,6 +73,10 @@ public class pvEquations : MonoBehaviour
     [Header("Work Rate")]
     public float W; //work rate
 
+    public void Start()
+    {
+        avatar = GetComponent<CharacterAvatar>();
+    }
     public void CalculateAll()
     {
         ExpireTime();

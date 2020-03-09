@@ -185,6 +185,7 @@ public class pvcustommodule : MonoBehaviour
                         nameBoxes[i] = "FVC ";
                         filledBoxes[i] = true;
                         FVC_toggled = true;
+                        FVC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
 
                     }
 
@@ -207,6 +208,7 @@ public class pvcustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FVC_toggled = false;
+                    FVC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -232,7 +234,7 @@ public class pvcustommodule : MonoBehaviour
                         nameBoxes[i] = "FEV1 ";
                         filledBoxes[i] = true;
                         FEV1_toggled = true;
-
+                        FEV1_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -254,6 +256,7 @@ public class pvcustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEV1_toggled = false;
+                    FEV1_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                 }
             }
 
@@ -279,7 +282,7 @@ public class pvcustommodule : MonoBehaviour
                         nameBoxes[i] = "FEV1FVC ";
                         filledBoxes[i] = true;
                         FEV1FVC_toggled = true;
-
+                        FEV1FVC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -301,6 +304,7 @@ public class pvcustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEV1FVC_toggled = false;
+                    FEV1FVC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -326,6 +330,7 @@ public class pvcustommodule : MonoBehaviour
                         nameBoxes[i] = "PEF ";
                         filledBoxes[i] = true;
                         PEF_toggled = true;
+                        PEF_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
 
                     }
 
@@ -348,6 +353,7 @@ public class pvcustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PEF_toggled = false;
+                    PEF_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -373,7 +379,7 @@ public class pvcustommodule : MonoBehaviour
                         nameBoxes[i] = "PIF ";
                         filledBoxes[i] = true;
                         PIF_toggled = true;
-
+                        PIF_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -395,6 +401,7 @@ public class pvcustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PIF_toggled = false;
+                    PIF_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -420,7 +427,7 @@ public class pvcustommodule : MonoBehaviour
                         nameBoxes[i] = "PImax ";
                         filledBoxes[i] = true;
                         PImax_toggled = true;
-
+                        PImax_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -442,6 +449,7 @@ public class pvcustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PImax_toggled = false;
+                    PImax_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -467,6 +475,7 @@ public class pvcustommodule : MonoBehaviour
                         nameBoxes[i] = "PEmax ";
                         filledBoxes[i] = true;
                         PEmax_toggled = true;
+                        PEmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
 
                     }
 
@@ -489,6 +498,7 @@ public class pvcustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PEmax_toggled = false;
+                    PEmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -514,7 +524,7 @@ public class pvcustommodule : MonoBehaviour
                         nameBoxes[i] = "VEcap ";
                         filledBoxes[i] = true;
                         VECap_toggled = true;
-
+                        VECap_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -536,6 +546,7 @@ public class pvcustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VECap_toggled = false;
+                    VECap_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -561,7 +572,7 @@ public class pvcustommodule : MonoBehaviour
                         nameBoxes[i] = "ERV ";
                         filledBoxes[i] = true;
                         ERV_toggled = true;
-
+                        ERV_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -583,6 +594,7 @@ public class pvcustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     ERV_toggled = false;
+                    ERV_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -608,7 +620,7 @@ public class pvcustommodule : MonoBehaviour
                         nameBoxes[i] = "FRC ";
                         filledBoxes[i] = true;
                         FRC_toggled = true;
-
+                        FRC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -630,6 +642,7 @@ public class pvcustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FRC_toggled = false;
+                    FRC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -655,7 +668,7 @@ public class pvcustommodule : MonoBehaviour
                         nameBoxes[i] = "IC";
                         filledBoxes[i] = true;
                         IC_toggled = true;
-
+                        IC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -677,6 +690,7 @@ public class pvcustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     IC_toggled = false;
+                    IC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -702,7 +716,7 @@ public class pvcustommodule : MonoBehaviour
                         nameBoxes[i] = "IRV ";
                         filledBoxes[i] = true;
                         IRV_toggled = true;
-
+                        IRV_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -724,6 +738,7 @@ public class pvcustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     IRV_toggled = false;
+                    IRV_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -749,7 +764,7 @@ public class pvcustommodule : MonoBehaviour
                         nameBoxes[i] = "RV ";
                         filledBoxes[i] = true;
                         RV_toggled = true;
-
+                        RV_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -771,6 +786,7 @@ public class pvcustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     RV_toggled = false;
+                    RV_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -796,7 +812,7 @@ public class pvcustommodule : MonoBehaviour
                         nameBoxes[i] = "TLC ";
                         filledBoxes[i] = true;
                         TLC_toggled = true;
-
+                        TLC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -818,6 +834,7 @@ public class pvcustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TLC_toggled = false;
+                    TLC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -843,7 +860,7 @@ public class pvcustommodule : MonoBehaviour
                         nameBoxes[i] = "VC ";
                         filledBoxes[i] = true;
                         VC_toggled = true;
-
+                        VC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -865,6 +882,7 @@ public class pvcustommodule : MonoBehaviour
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VC_toggled = false;
+                    VC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
