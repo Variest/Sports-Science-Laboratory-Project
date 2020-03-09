@@ -42,9 +42,6 @@ public class GraphScriptHR : MonoBehaviour
         //exercise.RPM = 20;
         //exercise.resistance = 5;
         //
-
-        GraphMaker(cardio.HR, cardio.HRmax, "Heart Rate");
-        graphcounter++;
     }
 
     // Update is called once per frame
@@ -54,6 +51,7 @@ public class GraphScriptHR : MonoBehaviour
         {
             timer.resetGRAPHHR = false;
             GraphMaker(cardio.HR, cardio.HRmax, "Heart Rate");
+            //GraphMaker(cardio.Bla, 30, "Blood Lactate");
             graphcounter++;
         }
 
@@ -82,7 +80,7 @@ public class GraphScriptHR : MonoBehaviour
 
     }
 
-    private void GraphMaker(float input, float inputmax, string variable)
+    public void GraphMaker(float input, float inputmax, string variable)
     {
         float graphHeight = GraphContainer.sizeDelta.y;
         float xPosition = 390;

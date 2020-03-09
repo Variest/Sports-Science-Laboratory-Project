@@ -7,13 +7,13 @@ public class TextBox : MonoBehaviour
 {
     GraphScriptHR Graph;
     Output output;
-    string Max;
-    string Var;
-    string bwc;
-    string cbh;
-    string bla;
-    string hr;
-    string et;
+    public string Max;
+    public string Var;
+    public string bwc;
+    public string cbh;
+    public string bla;
+    public string hr;
+    public string et;
     public Text Variable;
     public Text MAX;
     public Text BWC;
@@ -23,25 +23,25 @@ public class TextBox : MonoBehaviour
     public Text ET;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         Graph = GetComponent<GraphScriptHR>();
         output = GetComponent<Output>();
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         Max = Graph.InputMax.ToString();
         Var = Graph.Variable;
-        hr = output.HR;
+        bla = output.Bla;
 
         Variable.text = Var;
         MAX.text = Max;
         BWC.text = output.Water;
         CBH.text = output.Heat;
-        Bla.text = output.Bla;
-        HR.text = hr;
         ET.text = output.Exercise;
+        Bla.text = bla;
+        HR.text = output.HR;
     }
 }

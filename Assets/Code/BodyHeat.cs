@@ -184,15 +184,15 @@ public class BodyHeat : MonoBehaviour
 
     void bodywaterfunc()
     {
-        if (customiser.gender == 1)
+        switch (customiser.gender)
         {
-            BodyWater = ((customiser.weight * 0.60f) * 1000); //in millilitres - a man's body is 60% water
-        }
-        else if(customiser.gender == 0)
-        {
-            BodyWater = ((customiser.weight * 0.55f) * 1000); //a woman's body is 55% water
-        }
-                
+            case 1:
+                BodyWater = ((customiser.weight * 0.60f) * 1000); //in millilitres - a man's body is 60% water
+                break;
+            case 0:
+                BodyWater = ((customiser.weight * 0.55f) * 1000); //a woman's body is 55% water
+                break;
+    }
         BodyWaterBase = BodyWater;
         BodyWater += WaterDrunk;
     }

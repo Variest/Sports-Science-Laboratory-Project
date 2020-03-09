@@ -6,7 +6,7 @@ using UnityEngine;
 public class Cardio : MonoBehaviour
 {
     //BASIC MODULE
-    public float Bla = 1.0f; //blood lactate 	        SOMEWHAT appropriately modelled
+    public float Bla = 0.0f; //blood lactate 	        SOMEWHAT appropriately modelled
     public float BlaT; //CB blood lactate threshold     85% of max heart rate or 75% of VO2Max
     public float BPd; //I diastolic blood pressure  	INPUT 
     public float BPs; //I/M systolic blood pressure 	INPUT, and we have a DECENT way of modelling it;
@@ -30,18 +30,20 @@ public class Cardio : MonoBehaviour
     public float TPR; //CA total peripheral resistance = MAP/CO
 
     //FOR MODELLING 
-    public float BlaTarget;
-    public float HRtarg;
-    public float BPsTarg;
+    public float BlaTarget = 0.0f;
+    public float HRtarg = 0.0f;
+    public float BPsTarg = 0.0f;
     public float BPsBase;
     public float EDVbase;
     public float ESVbase;
 
-    private float velocity = 0.0f; //FOR SMOOTHDAMP
+    private float velocityBla = 0.0f; //FOR SMOOTHDAMP
+    private float velocityHR = 0.0f; //FOR SMOOTHDAMP
+    private float velocityBps = 0.0f; //FOR SMOOTHDAMP
 
     //OUTPUT
-    public float BlaCond = 0;
-    public float HRCond = 0;
+    public float BlaCond;
+    public float HRCond;
 
     //EXTRA
     public float health = 0;
@@ -56,6 +58,7 @@ public class Cardio : MonoBehaviour
     pvEquations vents; //declares vents script
     Exercise exercise; //declares bike script
     Timer timer;
+    GraphScriptHR graph;
 
     public void Start()
     {
@@ -64,18 +67,23 @@ public class Cardio : MonoBehaviour
         vents = GetComponent<pvEquations>();
         exercise = GetComponent<Exercise>();
         timer = GetComponent<Timer>();
+        graph = GetComponent<GraphScriptHR>();
 
         //
         HRmax = 220;
         HRrestfunction(80);
         BlaTfunction();
+        character.gender = 1;
+        character.weight = 50;
+        character.age = 20;
     }
 
     public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
     {
-        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, 10);
-        BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocity, 10);
-        Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocity, 10);
+        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocityHR, timer.intervals);
+        BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocityBps, timer.intervals);
+        Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocityBla, timer.intervals);
+   
         //CALCULATION
         if (timer.resetCARDIO == true)
         {
@@ -144,12 +152,14 @@ public class Cardio : MonoBehaviour
         SWfunction();
         TPRfunction();
         BPfunction();
+        HRmaxfunction();
+        HRresfunction();
     }
 
     public void CardioResetfunc()
     {
-        HR = Mathf.SmoothDamp(HR, HRrest, ref velocity, 10);
-        BPs = Mathf.SmoothDamp(BPs, BPsBase, ref velocity, 10);
+        HR = Mathf.SmoothDamp(HR, HRrest, ref velocityHR, 10);
+        BPs = Mathf.SmoothDamp(BPs, BPsBase, ref velocityBps, 10);
     }
 
     //FUNCTIONS LEVEL 1 - BASIC MODULE
@@ -184,17 +194,17 @@ public class Cardio : MonoBehaviour
 
     void HRtargfunction()
     {
-        if (character.gender == 1) //male
+        switch (character.gender)
         {
-            HRtarg = ((0.32f * exercise.BodyWork) + (health * 0.9f));
-            //HEALTHY PEOPLE CAN BE -0.9 AND UNHEALTHY +0.9
+            case 1:
+                HRtarg = ((0.32f * exercise.BodyWork) + (health * 0.9f));
+                //HEALTHY PEOPLE CAN BE -0.9 AND UNHEALTHY +0.9
+                break;
+            case 0:
+                HRtarg = ((0.43f * exercise.BodyWork) + (health * 0.15f));
+                //+/- 0.15
+                break;
         }
-        else if (character.gender == 0) // female
-        {
-            HRtarg = ((0.43f * exercise.BodyWork) + (health * 0.15f));
-            //+/- 0.15
-        }
-
         //backup
         if(HRtarg < HRrest)
         {
@@ -205,7 +215,6 @@ public class Cardio : MonoBehaviour
     public void HRrestfunction(float HRrestfunc)
     {
         HRrest = HRrestfunc; //INPUT
-        HR = HRrestfunc;
     }
 
     void HRmaxfunction()
@@ -230,19 +239,21 @@ public class Cardio : MonoBehaviour
 
     public void BlaTargfunction()
     {
-        if (HR >= BlaT)
+        if(HR < BlaT)
+        {
+            HRCond = 0;
+            BlaTarget = (Mathf.Pow((exercise.WorkDone/50), 2));
+
+        }
+        else if (HR >= BlaT)
         {
             HRCond = 1;
-            BlaTarget = (Mathf.Pow((exercise.WorkDone / 90), 2) + (timer.counter / 10));
+            BlaTarget = (Mathf.Pow((exercise.WorkDone / 25), 2));
 
             //NORMAL BL is like 1-2, but it can go up to 25 during intense exercise, but this is a worst-case scenario
             //normal people BL go up to like 10-15 before they give up. perhaps make this an option.
         }
-        else
-        {
-            HRCond = 0;
-            BlaTarget = (Mathf.Pow((exercise.WorkDone / 180), 2) + 1.0f + (timer.counter / 10));
-        }
+
     }
 
     //FUNCTIONS LEVEL 2 - MEDIUM MODULE
