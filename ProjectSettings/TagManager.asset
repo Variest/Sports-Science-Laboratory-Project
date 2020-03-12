@@ -22,7 +22,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Circles
   - 
   - 
   - 
@@ -41,4 +41,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Circles
+    uniqueID: 1029291293
     locked: 0

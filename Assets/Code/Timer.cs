@@ -27,6 +27,7 @@ public class Timer : MonoBehaviour
     public bool recalcCARDIO = true;
     public bool resetLUNG = true;
     public bool resetGRAPHHR = true;
+    public bool resetGRAPHLUNG = true;
 
     public float FPS; //for measuring the fps ofc
 
@@ -75,6 +76,7 @@ public class Timer : MonoBehaviour
             resetHEAT = true;
             resetLUNG = true;
             resetGRAPHHR = true;
+            resetGRAPHLUNG = true;
         } //INDEPENDENT TIMER - EVERY TEN SECONDS
 
         if(main.ElapsedMilliseconds >= (limit*1000))
