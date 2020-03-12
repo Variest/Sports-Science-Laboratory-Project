@@ -96,7 +96,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -277,6 +276,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 30
@@ -394,6 +395,7 @@ GameObject:
   - component: {fileID: 371032203}
   - component: {fileID: 371032202}
   - component: {fileID: 371032201}
+  - component: {fileID: 371032204}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -465,7 +467,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 928917321}
-        m_MethodName: GoToQuit
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -475,6 +477,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &371032202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,6 +497,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -511,6 +517,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371032199}
   m_CullTransparentMesh: 0
+--- !u!114 &371032204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371032199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35d43bcac7fedd4699a87a01f7217cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToAssign: 7
 --- !u!1 &606080682
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,6 +585,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 50
@@ -643,6 +664,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
@@ -720,6 +743,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
@@ -754,7 +779,7 @@ GameObject:
   - component: {fileID: 928917321}
   m_Layer: 0
   m_Name: MenuManager
-  m_TagString: Untagged
+  m_TagString: Menu_Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -774,15 +799,17 @@ MonoBehaviour:
   isStartLab: 1
   isAvatarCustomise: 1
   isQuit: 1
-  isPulmonaryModule: 0
-  isCardiovascularModule: 0
-  isMetabolicModule: 0
-  isBasic: 0
-  isVariables: 0
-  isChangeModule: 0
-  isBackMainMenu: 0
-  isBackModules: 0
-  isModuleVariable: 0
+  isPulmonaryModule: 1
+  isCardiovascularModule: 1
+  isMetabolicModule: 1
+  isBasic: 1
+  isVariables: 1
+  isChangeModule: 1
+  isBackMainMenu: 1
+  isBackModules: 1
+  isModuleVariable: 1
+  avatarHolder: {fileID: 0}
+  moduleChanger: {fileID: 0}
   TSPanel: {fileID: 0}
   MSPanel: {fileID: 0}
   CPanel: {fileID: 0}
@@ -858,6 +885,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
@@ -935,6 +964,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -965,6 +996,7 @@ GameObject:
   - component: {fileID: 1231706169}
   - component: {fileID: 1231706168}
   - component: {fileID: 1231706167}
+  - component: {fileID: 1231706170}
   m_Layer: 5
   m_Name: Start Lab Button
   m_TagString: Untagged
@@ -1036,7 +1068,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 928917321}
-        m_MethodName: GoToModuleSelection
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1046,6 +1078,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1231706168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1064,6 +1098,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -1082,6 +1118,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231706165}
   m_CullTransparentMesh: 0
+--- !u!114 &1231706170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231706165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35d43bcac7fedd4699a87a01f7217cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToAssign: 11
 --- !u!1 &1303462847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,6 +1187,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -1215,6 +1266,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -1394,28 +1447,28 @@ MonoBehaviour:
   avatar: {fileID: 0}
   filledBoxes: 00000000000000000000
   BoxValue: 
-  VEtoggled: 0
-  VTtoggled: 0
-  VO2toggled: 0
-  VCO2toggled: 0
-  frToggled: 0
-  METtoggled: 0
-  FCtoggled: 0
-  RERtoggled: 0
-  VEVO2toggled: 0
-  VEVCO2toggled: 0
-  PETCO2toggled: 0
-  PETO2toggled: 0
-  TEtoggled: 0
-  TItoggled: 0
-  TITEtoggled: 0
-  TToTtoggled: 0
-  VO2FRtoggled: 0
-  VO2FCtoggled: 0
-  SpO2toggled: 0
-  FcMAXtoggled: 0
-  FcREStoggled: 0
-  EEtoggled: 0
+  VE_toggled: 0
+  VT_toggled: 0
+  VO2_toggled: 0
+  VCO2_toggled: 0
+  fr_toggled: 0
+  MET_toggled: 0
+  FC_toggled: 0
+  RER_toggled: 0
+  VEVO2_toggled: 0
+  VEVCO2_toggled: 0
+  PETCO2_toggled: 0
+  PETO2_toggled: 0
+  TE_toggled: 0
+  TI_toggled: 0
+  TITE_toggled: 0
+  TToT_toggled: 0
+  VO2FR_toggled: 0
+  VO2FC_toggled: 0
+  SpO2_toggled: 0
+  FcMAX_toggled: 0
+  FcRES_toggled: 0
+  EE_toggled: 0
 --- !u!114 &1675852401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1753,11 +1806,14 @@ MonoBehaviour:
   - 
   - 
   - 
+  moduleTextObject: {fileID: 0}
+  moduleNameText: {fileID: 0}
   custom_module: {fileID: 0}
   MetCart_module: {fileID: 0}
   Pv_module: {fileID: 0}
   Cardio_Module: {fileID: 0}
   testEquations: {fileID: 0}
+  timeElapsed: 0
   Custom_ON: 0
   MetCart_ON: 0
   PV_ON: 0
@@ -1927,6 +1983,7 @@ GameObject:
   - component: {fileID: 2043131414}
   - component: {fileID: 2043131413}
   - component: {fileID: 2043131412}
+  - component: {fileID: 2043131415}
   m_Layer: 5
   m_Name: Avatar Customisation Button
   m_TagString: Untagged
@@ -1998,7 +2055,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 928917321}
-        m_MethodName: GoToAvatarCustomisation
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2008,6 +2065,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &2043131413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2026,6 +2085,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -2044,3 +2105,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043131410}
   m_CullTransparentMesh: 0
+--- !u!114 &2043131415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043131410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35d43bcac7fedd4699a87a01f7217cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToAssign: 12

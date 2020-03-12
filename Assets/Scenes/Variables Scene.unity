@@ -5051,6 +5051,7 @@ GameObject:
   - component: {fileID: 453414974}
   - component: {fileID: 453414973}
   - component: {fileID: 453414972}
+  - component: {fileID: 453414975}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -5122,7 +5123,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1560551171}
-        m_MethodName: GoToQuit
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5172,6 +5173,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453414970}
   m_CullTransparentMesh: 0
+--- !u!114 &453414975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453414970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35d43bcac7fedd4699a87a01f7217cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToAssign: 7
 --- !u!1 &462230836
 GameObject:
   m_ObjectHideFlags: 0
@@ -5981,6 +5995,7 @@ GameObject:
   - component: {fileID: 530171406}
   - component: {fileID: 530171405}
   - component: {fileID: 530171404}
+  - component: {fileID: 530171407}
   m_Layer: 5
   m_Name: Confirm Variables Button
   m_TagString: Untagged
@@ -6102,6 +6117,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530171402}
   m_CullTransparentMesh: 0
+--- !u!114 &530171407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530171402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35d43bcac7fedd4699a87a01f7217cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToAssign: 10
 --- !u!1 &539278032
 GameObject:
   m_ObjectHideFlags: 0
@@ -9443,6 +9471,7 @@ GameObject:
   - component: {fileID: 797473561}
   - component: {fileID: 797473560}
   - component: {fileID: 797473559}
+  - component: {fileID: 797473562}
   m_Layer: 5
   m_Name: Menu Button
   m_TagString: Untagged
@@ -9514,7 +9543,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1560551171}
-        m_MethodName: GoToBackMainMenu
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9564,6 +9593,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797473557}
   m_CullTransparentMesh: 0
+--- !u!114 &797473562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797473557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35d43bcac7fedd4699a87a01f7217cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToAssign: 8
 --- !u!1 &801747567
 GameObject:
   m_ObjectHideFlags: 0
@@ -14243,6 +14285,7 @@ GameObject:
   - component: {fileID: 1103384926}
   - component: {fileID: 1103384925}
   - component: {fileID: 1103384924}
+  - component: {fileID: 1103384927}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -14314,7 +14357,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1560551171}
-        m_MethodName: GoToBackModules
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14364,6 +14407,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103384922}
   m_CullTransparentMesh: 0
+--- !u!114 &1103384927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103384922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35d43bcac7fedd4699a87a01f7217cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventToAssign: 9
 --- !u!1 &1103530642
 GameObject:
   m_ObjectHideFlags: 0
@@ -20358,6 +20414,8 @@ MonoBehaviour:
   isBackMainMenu: 1
   isBackModules: 1
   isModuleVariable: 0
+  avatarHolder: {fileID: 0}
+  moduleChanger: {fileID: 0}
   TSPanel: {fileID: 0}
   MSPanel: {fileID: 0}
   CPanel: {fileID: 1145788027}

@@ -31,8 +31,10 @@ public class UIHiding : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Module Selection Scene")
         {
-            TSPanel.gameObject.SetActive(false);
-            MSPanel.gameObject.SetActive(true);
+            //TSPanel.gameObject.SetActive(false);
+            TSPanel.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+            //MSPanel.gameObject.SetActive(true);
+            MSPanel.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         }
         else
             if (SceneManager.GetActiveScene().name == "Variables Scene")
@@ -43,6 +45,11 @@ public class UIHiding : MonoBehaviour
                 PAPanel.gameObject.SetActive(false);
                 CAPanel.gameObject.SetActive(false);
                 MAPanel.gameObject.SetActive(false);
+
+                //CPanel.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+                //PAPanel.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+                //CAPanel.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+                //MAPanel.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
             }
             else
                 if (MenuManager.selectedModule == 'P')
