@@ -80,11 +80,11 @@ public class Lung : MonoBehaviour
                 EELV = (TLC * (0.5f + (0.1f * (cardio.HR / cardio.HRmax))));
                 break;
         }
-        IC = (TLC - EELV);
-        IRV = (TLC - EILV);
-        ERV = (EELV - BEELV);
-        VT = (EILV - EELV);
-        DH = EELV / BEELV; 
+        IC = (TLC - EELV); //INS. CAP
+        IRV = (TLC - EILV); //INS. RES VOL
+        ERV = (EELV - BEELV); //EXP. RES VOL
+        VT = (EILV - EELV); //TIDAL VOLUME
+        DH = EELV / BEELV;  //DYN. HYPINF.
     }
 
     void setupfunction()
@@ -101,7 +101,7 @@ public class Lung : MonoBehaviour
                 MVV = 160; //THIS COULD BE A VARIALBE
                 PEF = 600; //THIS COULD BE A VARIABLE
                 RV = 1.2f;
-                TLC = 6;
+                TLC = 6.0f;
                 VC = 4.8f;
                 BEELV = EELV;
                 BEILV = EILV;

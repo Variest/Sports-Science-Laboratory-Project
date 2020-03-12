@@ -26,7 +26,14 @@ public class GraphScriptLungs : MonoBehaviour
     public string Varer;
     public int counter;
     //
-    public Text TLC;
+    public Text TLCtxt;
+    public Text ICtxt;
+    public Text IRVtxt;
+    public Text ERVtxt;
+    public Text VTtxt;
+    public Text DHtxt;
+    public Text EILVtxt;
+    public Text EELVtxt;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +65,15 @@ public class GraphScriptLungs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        TLCtxt.text = lungGet.TLC.ToString();
+        ICtxt.text = lungGet.IC.ToString();
+        ERVtxt.text = lungGet.ERV.ToString();
+        IRVtxt.text = lungGet.IRV.ToString();
+        VTtxt.text = lungGet.VT.ToString();
+        DHtxt.text = lungGet.DH.ToString();
+        EELVtxt.text = lungGet.EELV.ToString();
+        EILVtxt.text = lungGet.EILV.ToString();
+
         if (timerGet.resetGRAPHLUNG == true)
         {
             timerGet.resetGRAPHLUNG = false;
@@ -73,11 +89,9 @@ public class GraphScriptLungs : MonoBehaviour
             circlesEELV[i].transform.Translate((-8 * Time.deltaTime), 0, 0);
             circlesEILV[i].transform.Translate((-8 * Time.deltaTime), 0, 0);
         }
-
-        TLC.text = lungGet.TLC.ToString();
     }
 
-    public void CircleMake(Vector2 Position, int input, int ELV)
+    public void CircleMake(Vector2 Position, int ELV)
     {
         switch (ELV)
         {
@@ -86,31 +100,31 @@ public class GraphScriptLungs : MonoBehaviour
                 {
                     graphcountEELV = 0;
                 }
-                Destroy(circlesEELV[input]);
-                Destroy(transformsEELV[input]);
-                circlesEELV[input] = new GameObject("Circle", typeof(Image));
-                circlesEELV[input].transform.SetParent(GraphContain, false);
-                circlesEELV[input].GetComponent<Image>().sprite = RedCirc;
-                transformsEELV[input] = circlesEELV[input].GetComponent<RectTransform>();
-                transformsEELV[input].anchoredPosition = Position;
-                transformsEELV[input].sizeDelta = new Vector2(11, 11);
-                transformsEELV[input].anchorMin = new Vector2(0, 0);
-                transformsEELV[input].anchorMax = new Vector2(0, 0);
+                Destroy(circlesEELV[graphcountEELV]);
+                Destroy(transformsEELV[graphcountEELV]);
+                circlesEELV[graphcountEELV] = new GameObject("Circle", typeof(Image));
+                circlesEELV[graphcountEELV].transform.SetParent(GraphContain, false);
+                circlesEELV[graphcountEELV].GetComponent<Image>().sprite = RedCirc;
+                transformsEELV[graphcountEELV] = circlesEELV[graphcountEELV].GetComponent<RectTransform>();
+                transformsEELV[graphcountEELV].anchoredPosition = Position;
+                transformsEELV[graphcountEELV].sizeDelta = new Vector2(11, 11);
+                transformsEELV[graphcountEELV].anchorMin = new Vector2(0, 0);
+                transformsEELV[graphcountEELV].anchorMax = new Vector2(0, 0);
                 break;
             case 0: //EILV    
                 if (graphcountEILV == 10)
                 {
                     graphcountEILV = 0;
                 }
-                Destroy(circlesEILV[input]);
-                circlesEILV[input] = new GameObject("Circle", typeof(Image));
-                circlesEILV[input].transform.SetParent(GraphContain, false);
-                circlesEILV[input].GetComponent<Image>().sprite = GreenCirc;
-                transformsEILV[input] = circlesEILV[input].GetComponent<RectTransform>();
-                transformsEILV[input].anchoredPosition = Position;
-                transformsEILV[input].sizeDelta = new Vector2(11, 11);
-                transformsEILV[input].anchorMin = new Vector2(0, 0);
-                transformsEILV[input].anchorMax = new Vector2(0, 0);
+                Destroy(circlesEILV[graphcountEILV]);
+                circlesEILV[graphcountEILV] = new GameObject("Circle", typeof(Image));
+                circlesEILV[graphcountEELV].transform.SetParent(GraphContain, false);
+                circlesEILV[graphcountEILV].GetComponent<Image>().sprite = GreenCirc;
+                transformsEILV[graphcountEILV] = circlesEILV[graphcountEILV].GetComponent<RectTransform>();
+                transformsEILV[graphcountEILV].anchoredPosition = Position;
+                transformsEILV[graphcountEILV].sizeDelta = new Vector2(11, 11);
+                transformsEILV[graphcountEILV].anchorMin = new Vector2(0, 0);
+                transformsEILV[graphcountEILV].anchorMax = new Vector2(0, 0);
                 break;
         }
     }
@@ -123,10 +137,10 @@ public class GraphScriptLungs : MonoBehaviour
         switch (ELV)
         {
             case 1: //EELV
-                CircleMake(new Vector2(xPosition, yPosition), graphcountEELV, ELV);
+                CircleMake(new Vector2(xPosition, yPosition), ELV);
                 break;
             case 0: //EILV
-                CircleMake(new Vector2(xPosition, yPosition), graphcountEILV, ELV);
+                CircleMake(new Vector2(xPosition, yPosition), ELV);
                 break;
         }
     }

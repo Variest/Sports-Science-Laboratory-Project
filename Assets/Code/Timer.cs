@@ -27,7 +27,7 @@ public class Timer : MonoBehaviour
     public bool recalcCARDIO = true;
     public bool resetLUNG = true;
     public bool resetGRAPHHR = true;
-    public bool resetGRAPHLUNG = true;
+    public bool resetGRAPHLUNG;
 
     public float FPS; //for measuring the fps ofc
 
