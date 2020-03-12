@@ -69,6 +69,40 @@ public class CharacterCustomiser : UIHiding
             BlackF.gameObject.SetActive(false);
             AsianF.gameObject.SetActive(false);
         }
+        if(avatar.gender == 0) //female
+        {
+            switch (avatar.race)
+            {
+                case (0)://white
+                    WhiteF.gameObject.SetActive(true);
+                    break;
+                case (1): //black
+                    BlackF.gameObject.SetActive(true);
+                    break;
+                case (2): //asian
+                    AsianF.gameObject.SetActive(true);
+                    break;
+
+            }
+
+        }
+        if (avatar.gender == 1) //male
+        {
+            switch (avatar.race)
+            {
+                case (0)://white
+                    WhiteM.gameObject.SetActive(true);
+                    break;
+                case (1): //black
+                    BlackM.gameObject.SetActive(true);
+                    break;
+                case (2): //asian
+                    AsianM.gameObject.SetActive(true);
+                    break;
+
+            }
+
+        }
     }
 
     // Update is called once per frame
@@ -106,7 +140,7 @@ public class CharacterCustomiser : UIHiding
         }
         gender = true;
         avatar.gender = 1; //avatar's gender is stored as an int, 0 for female 1 for male.
-        switch (race)
+        switch (avatar.race)
         {
             case 0:
                 WhiteM.gameObject.SetActive(true);
@@ -124,18 +158,24 @@ public class CharacterCustomiser : UIHiding
 
     void FemaleChanger()
     {
-        if (WhiteM && BlackM && AsianM && WhiteF && BlackF && AsianF != false)
-        {
-            WhiteM.gameObject.SetActive(false);
-            BlackM.gameObject.SetActive(false);
-            AsianM.gameObject.SetActive(false);
-            WhiteF.gameObject.SetActive(false);
-            BlackF.gameObject.SetActive(false);
-            AsianF.gameObject.SetActive(false);
-        }
+        //if (WhiteM && BlackM && AsianM && WhiteF && BlackF && AsianF != false)
+        //{
+        //    WhiteM.gameObject.SetActive(false);
+        //    BlackM.gameObject.SetActive(false);
+        //    AsianM.gameObject.SetActive(false);
+        //    WhiteF.gameObject.SetActive(false);
+        //    BlackF.gameObject.SetActive(false);
+        //    AsianF.gameObject.SetActive(false);
+        //}
+        WhiteM.gameObject.SetActive(false);
+        BlackM.gameObject.SetActive(false);
+        AsianM.gameObject.SetActive(false);
+        WhiteF.gameObject.SetActive(false);
+        BlackF.gameObject.SetActive(false);
+        AsianF.gameObject.SetActive(false);
         gender = false;
         avatar.gender = 0;
-        switch (race)
+        switch (avatar.race)
         {
             case 0:
                 WhiteF.gameObject.SetActive(true);
@@ -164,12 +204,12 @@ public class CharacterCustomiser : UIHiding
         }
         race = 0;
         avatar.race = 0;
-        switch (gender)
+        switch (avatar.gender)
         {
-            case false:
+            case 0:
                 WhiteF.gameObject.SetActive(true);
                 break;
-            case true:
+            case 1:
                 WhiteM.gameObject.SetActive(true);
                 break;
         }
@@ -188,12 +228,12 @@ public class CharacterCustomiser : UIHiding
         }
         race = 1;
         avatar.race = 1;
-        switch (gender)
+        switch (avatar.gender)
         {
-            case false:
+            case 0:
                 BlackF.gameObject.SetActive(true);
                 break;
-            case true:
+            case 1:
                 BlackM.gameObject.SetActive(true);
                 break;
         }
@@ -212,12 +252,12 @@ public class CharacterCustomiser : UIHiding
         }
         race = 2;
         avatar.race = 2;
-        switch (gender)
+        switch (avatar.gender)
         {
-            case false:
+            case 0:
                 AsianF.gameObject.SetActive(true);
                 break;
-            case true:
+            case 1:
                 AsianM.gameObject.SetActive(true);
                 break;
         }
