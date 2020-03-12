@@ -52,30 +52,35 @@ public class CustomModuleTester : MonoBehaviour
 
     //public GameObject[] ResultBox = new GameObject[10]; //array holding each of the text elements that will display results on the screen
 
+    public string[] textBoxContent = new string[10];
     public Text[] textBoxes = new Text[10];
-    //these are the toggles that will be used to add each variable into the boxes
-    public Toggle ToggleVE; //1
-    public Toggle ToggleVT; //2
-    public Toggle ToggleVO2; //3
-    public Toggle ToggleVCO2; //4
-    public Toggle ToggleFr; //5
-    public Toggle ToggleMET; //6
-    public Toggle ToggleFc; //7
-    public Toggle ToggleRER; //8
-    public Toggle ToggleVEVO2; //9
-    public Toggle ToggleVEVCO2; //10
-    public Toggle TogglePETCO2; //11
-    public Toggle TogglePETO2; //12
-    public Toggle ToggleTE; //13
-    public Toggle ToggleTI; //14
-    public Toggle ToggleTITE; //15
-    public Toggle ToggleTToT; //16
-    public Toggle ToggleVO2FR; //17
-    public Toggle ToggleVO2FC; //18
-    public Toggle ToggleSpO2; //19
-    public Toggle ToggleFcmax; //20
-    public Toggle ToggleFcres; //21
-    public Toggle ToggleEE; //22
+    public string[] nameBoxes = new string[10];
+   
+
+    public Button VE_button;
+    public Button VT_button;
+    public Button VO2_button;
+    public Button VCO2_button;
+    public Button FR_button;
+    public Button MET_button;
+    public Button Fc_button;
+    public Button RER_button;
+    public Button VEVO2_button;
+    public Button VEVCO2_button;
+    public Button PETCO2_button;
+    public Button PETO2_button;
+    public Button TE_button;
+    public Button TI_button;
+    public Button TITE_button;
+    public Button TToT_button;
+    public Button VO2FR_button;
+    public Button VO2FC_button;
+    public Button SpO2_button;
+    public Button Fcmax_button;
+    public Button Fcres_button;
+    public Button EE_button;
+
+
 
     public GameObject avatarHolder; //gameobject that will have the avatar script within it
     public CharacterAvatar avatar; //gets a reference to the character undergoing the module
@@ -84,68 +89,156 @@ public class CustomModuleTester : MonoBehaviour
 
     public List<int> BoxValue = new List<int>(); //a list that will contain an int relating to the equation that is active inside that box. 1-22
 
-    public bool VEtoggled; //stops every single box from being filled by a single variable each time
-    public bool VTtoggled;
-    public bool VO2toggled;
-    public bool VCO2toggled;
-    public bool frToggled;
-    public bool METtoggled;
-    public bool FCtoggled;
-    public bool RERtoggled;
-    public bool VEVO2toggled;
-    public bool VEVCO2toggled;
-    public bool PETCO2toggled;
-    public bool PETO2toggled;
-    public bool TEtoggled;
-    public bool TItoggled;
-    public bool TITEtoggled;
-    public bool TToTtoggled;
-    public bool VO2FRtoggled;
-    public bool VO2FCtoggled;
-    public bool SpO2toggled;
-    public bool FcMAXtoggled;
-    public bool FcREStoggled;
-    public bool EEtoggled;
+    public bool VE_toggled; //stops every single box from being filled by a single variable each time
+    public bool VT_toggled;
+    public bool VO2_toggled;
+    public bool VCO2_toggled;
+    public bool fr_toggled;
+    public bool MET_toggled;
+    public bool FC_toggled;
+    public bool RER_toggled;
+    public bool VEVO2_toggled;
+    public bool VEVCO2_toggled;
+    public bool PETCO2_toggled;
+    public bool PETO2_toggled;
+    public bool TE_toggled;
+    public bool TI_toggled;
+    public bool TITE_toggled;
+    public bool TToT_toggled;
+    public bool VO2FR_toggled;
+    public bool VO2FC_toggled;
+    public bool SpO2_toggled;
+    public bool FcMAX_toggled;
+    public bool FcRES_toggled;
+    public bool EE_toggled;
 
     void Start()
     {
 
         avatar = avatarHolder.GetComponent<CharacterAvatar>();
         //add listening events to each one of the toggle boxes 
-        ToggleVE.onValueChanged.AddListener((Value) => { ClickedVEToggle(Value); });
-        ToggleVT.onValueChanged.AddListener((Value) => { ClickedVTToggle(Value); });
-        ToggleVO2.onValueChanged.AddListener((Value) => { ClickedVO2Toggle(Value); });
-        ToggleVCO2.onValueChanged.AddListener((Value) => { ClickedVCO2Toggle(Value); });
-        ToggleFr.onValueChanged.AddListener((Value) => { ClickedFrToggle(Value); });
-        ToggleMET.onValueChanged.AddListener((Value) => { ClickedMETToggle(Value); });
-        ToggleFc.onValueChanged.AddListener((Value) => { ClickedFcToggle(Value); });
-        ToggleRER.onValueChanged.AddListener((Value) => { ClickedRERToggle(Value); });
-        ToggleVEVO2.onValueChanged.AddListener((Value) => { ClickedVEVO2Toggle(Value); });
-        ToggleVEVCO2.onValueChanged.AddListener((Value) => { ClickedVEVCO2Toggle(Value); });
-        TogglePETCO2.onValueChanged.AddListener((Value) => { ClickedPETCO2Toggle(Value); });
-        TogglePETO2.onValueChanged.AddListener((Value) => { ClickedPETO2Toggle(Value); });
-        ToggleTE.onValueChanged.AddListener((Value) => { ClickedTEToggle(Value); });
-        ToggleTI.onValueChanged.AddListener((Value) => { ClickedTIToggle(Value); });
-        ToggleTITE.onValueChanged.AddListener((Value) => { ClickedTITEToggle(Value); });
-        ToggleTToT.onValueChanged.AddListener((Value) => { ClickedTToTToggle(Value); });
-        ToggleVO2FR.onValueChanged.AddListener((Value) => { ClickedVO2FRToggle(Value); });
-        ToggleVO2FC.onValueChanged.AddListener((Value) => { ClickedVO2FCToggle(Value); });
-        ToggleSpO2.onValueChanged.AddListener((Value) => { ClickedSpO2Toggle(Value); });
-        ToggleFcmax.onValueChanged.AddListener((Value) => { ClickedFcmaxToggle(Value); });
-        ToggleFcres.onValueChanged.AddListener((Value) => { ClickedFcresToggle(Value); });
-        ToggleEE.onValueChanged.AddListener((Value) => { ClickedEEToggle(Value); });
+        for (int i = 0; i < 10; i++)
+        {
+            BoxValue.Add(0);
+        }
+
     }
 
+    public void AttachButtons()
+    {
+        VE_button.onClick.AddListener(ClickedVEToggle);
+        VT_button.onClick.AddListener(ClickedVTToggle);
+        VO2_button.onClick.AddListener(ClickedVO2Toggle);
+        VCO2_button.onClick.AddListener(ClickedVCO2Toggle);
+        FR_button.onClick.AddListener(ClickedFrToggle);
+        MET_button.onClick.AddListener(ClickedMETToggle);
+        Fc_button.onClick.AddListener(ClickedFcToggle);
+        RER_button.onClick.AddListener(ClickedRERToggle);
+        VEVO2_button.onClick.AddListener(ClickedVEVO2Toggle);
+        VEVCO2_button.onClick.AddListener(ClickedVEVCO2Toggle);
+        PETCO2_button.onClick.AddListener(ClickedPETCO2Toggle);
+        PETO2_button.onClick.AddListener(ClickedPETO2Toggle);
+        TE_button.onClick.AddListener(ClickedTEToggle);
+        TI_button.onClick.AddListener(ClickedTIToggle);
+        TITE_button.onClick.AddListener(ClickedTITEToggle);
+        TToT_button.onClick.AddListener(ClickedTToTToggle);
+        VO2FR_button.onClick.AddListener(ClickedVO2FRToggle);
+        VO2FC_button.onClick.AddListener(ClickedVO2FCToggle);
+        SpO2_button.onClick.AddListener(ClickedSpO2Toggle);
+        Fcmax_button.onClick.AddListener(ClickedFcmaxToggle);
+        Fcres_button.onClick.AddListener(ClickedFcresToggle);
+        EE_button.onClick.AddListener(ClickedEEToggle);
+    }
     // Update is called once per frame
     void Update()
     {
         //will probably update the values for each box here using a case statement inside a for loop? 
-        Debug.Log(BoxValue[0]);
-        for(int i = 0; i < 10; i++)
+        //Debug.Log(BoxValue[0]);
+        //for(int i = 0; i < 10; i++)
+        //{
+        //    if(filledBoxes[i] != false)
+        //    {
+        //        switch(BoxValue[i])
+        //        {
+        //            case 1:
+        //                textBoxes[i].text = avatar.VE.ToString();
+        //                break;
+        //            case 2:
+        //                textBoxes[i].text = avatar.VT.ToString();
+        //                break;
+        //            case 3:
+        //                textBoxes[i].text = avatar.VO2.ToString();
+        //                break;
+        //            case 4:
+        //                textBoxes[i].text = avatar.VCO2.ToString();
+        //                break;
+        //            case 5:
+        //                textBoxes[i].text = avatar.fr.ToString();
+        //                break;
+        //            case 6:
+        //                textBoxes[i].text = avatar.MET.ToString();
+        //                break;
+        //            case 7:
+        //                textBoxes[i].text = avatar.fc.ToString(); 
+        //                break;
+        //            case 8:
+        //                textBoxes[i].text = avatar.RER.ToString();
+        //                break;
+        //            case 9:
+        //                textBoxes[i].text = avatar.VeVO2.ToString();
+        //                break;
+        //            case 10:
+        //                textBoxes[i].text = avatar.VeVCO2.ToString();
+        //                break;
+        //            case 11:
+        //                textBoxes[i].text = avatar.petco2.ToString(); 
+        //                break;
+        //            case 12:
+        //                textBoxes[i].text = avatar.petco2.ToString();
+        //                break;
+        //            case 13:
+        //                textBoxes[i].text = avatar.TE.ToString();
+        //                break;
+        //            case 14:
+        //                textBoxes[i].text = avatar.TI.ToString();
+        //                break;
+        //            case 15:
+        //                textBoxes[i].text = avatar.TITE.ToString();
+        //                break;
+        //            case 16:
+        //                textBoxes[i].text = avatar.Ttot.ToString();
+        //                break;
+        //            case 17:
+        //                textBoxes[i].text = avatar.VO2fr.ToString();
+        //                break;
+        //            case 18:
+        //                textBoxes[i].text = avatar.VO2fc.ToString(); 
+        //                break;
+        //            case 19:
+        //                textBoxes[i].text = avatar.SpO2.ToString(); 
+        //                break;
+        //            case 20:
+        //                textBoxes[i].text = avatar.FCmax.ToString(); 
+        //                break;
+        //            case 21:
+        //                textBoxes[i].text = avatar.FCres.ToString(); 
+        //                break;
+        //            case 22:
+        //                textBoxes[i].text = avatar.EE.ToString(); 
+        //                break;
+
+        //        }
+        //    }
+        //}
+    }
+
+    public void ManualUpdate()
+    {
+        for (int i = 0; i < 10; i++)
         {
-            if(filledBoxes[i] != false)
+            if (filledBoxes[i] != false)
             {
-                switch(BoxValue[i])
+                switch (BoxValue[i])
                 {
                     case 1:
                         textBoxes[i].text = avatar.VE.ToString();
@@ -166,7 +259,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxes[i].text = avatar.MET.ToString();
                         break;
                     case 7:
-                        textBoxes[i].text = avatar.fc.ToString(); 
+                        textBoxes[i].text = avatar.fc.ToString();
                         break;
                     case 8:
                         textBoxes[i].text = avatar.RER.ToString();
@@ -178,7 +271,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxes[i].text = avatar.VeVCO2.ToString();
                         break;
                     case 11:
-                        textBoxes[i].text = avatar.petco2.ToString(); 
+                        textBoxes[i].text = avatar.petco2.ToString();
                         break;
                     case 12:
                         textBoxes[i].text = avatar.petco2.ToString();
@@ -199,55 +292,54 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxes[i].text = avatar.VO2fr.ToString();
                         break;
                     case 18:
-                        textBoxes[i].text = avatar.VO2fc.ToString(); 
+                        textBoxes[i].text = avatar.VO2fc.ToString();
                         break;
                     case 19:
-                        textBoxes[i].text = avatar.SpO2.ToString(); 
+                        textBoxes[i].text = avatar.SpO2.ToString();
                         break;
                     case 20:
-                        textBoxes[i].text = avatar.FCmax.ToString(); 
+                        textBoxes[i].text = avatar.FCmax.ToString();
                         break;
                     case 21:
-                        textBoxes[i].text = avatar.FCres.ToString(); 
+                        textBoxes[i].text = avatar.FCres.ToString();
                         break;
                     case 22:
-                        textBoxes[i].text = avatar.EE.ToString(); 
+                        textBoxes[i].text = avatar.EE.ToString();
                         break;
 
                 }
             }
         }
     }
-
-    private void ClickedVEToggle(bool Value)
+    private void ClickedVEToggle()
     {
-        if(ToggleVE.isOn)
+        if (!VE_toggled)
         {
-            
-                for (int i = 0; i < 10; i++)
+
+            for (int i = 0; i < 10; i++)
+            {
+                if (filledBoxes[i] == false)
                 {
-                    if (filledBoxes[i] == false)
+                    if (!VE_toggled)
                     {
-                        if(VEtoggled == false)
-                        {
-                            Debug.Log("filledBoxes works");
-                            BoxValue[i] = 1;
-                            //textBoxes[i].text = "ve";
-                            textBoxes[i].text = avatar.VE.ToString();
-                            filledBoxes[i] = true;
-                            VEtoggled = true;
-                            ToggleVE.isOn = true;
-                        //this box will desplay the avatar's VE value 
-                    }
+                        Debug.Log("filledBoxes works");
+                        BoxValue[i] = 1;
+
+                        textBoxContent[i] = avatar.VE.ToString();
+                        //textBoxes[i].text = avatar.VE.ToString();
+                        nameBoxes[i] = "VE ";
+                        filledBoxes[i] = true;
+                        VE_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+                        VE_toggled = true;
 
                     }
-                    else if(filledBoxes[i] == true & VEtoggled == false)
-                    {
-                       ToggleVE.isOn = false;
-                    }
+
+
+
                 }
-            
-         
+            }
+
+
         }
         else
         {
@@ -256,9 +348,11 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 1)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    VEtoggled = false;
+                    VE_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+                    VE_toggled = false;
                 }
             }
        
@@ -266,31 +360,30 @@ public class CustomModuleTester : MonoBehaviour
         }
         
     }
-    private void ClickedVTToggle(bool Value)
+    private void ClickedVTToggle()
     {
-        if (ToggleVT.isOn)
+        if (!VT_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (VTtoggled == false)
+                    if (!VT_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 2;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.VT.ToString();
+                        textBoxContent[i] = avatar.VT.ToString();
+                        //textBoxes[i].text = avatar.VT.ToString();
+                        nameBoxes[i] = "VT ";
                         filledBoxes[i] = true;
-                        VTtoggled = true;
-                        ToggleVT.isOn = false;
-                        //this box will desplay the avatar's VE value 
+                        VT_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+                        VT_toggled = true;
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & VTtoggled == false)
-                {
-                    ToggleVT.isOn = false;
+
+
                 }
             }
 
@@ -303,40 +396,41 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 2)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    VTtoggled = false;
+                    VT_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+                    VT_toggled = false;
                 }
             }
 
 
         }
     }
-    private void ClickedVO2Toggle(bool Value)
+    private void ClickedVO2Toggle()
     {
-        if (ToggleVO2.isOn)
+        if (!VO2_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (VO2toggled == false)
+                    if (!VO2_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 3;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.VO2.ToString();
+                        textBoxContent[i] = avatar.VO2.ToString();
+                        //textBoxes[i].text = avatar.VO2.ToString();
+                        nameBoxes[i] = "VO2 ";
                         filledBoxes[i] = true;
-                        VO2toggled = true;
-                        ToggleVO2.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        VO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+                        VO2_toggled = true;
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & VO2toggled == false)
-                {
-                    ToggleVO2.isOn = false;
+
+
                 }
             }
 
@@ -349,40 +443,41 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 3)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    VO2toggled = false;
+                    VO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+                    VO2_toggled = false;
                 }
             }
 
 
         }
     }
-    private void ClickedVCO2Toggle(bool Value)
+    private void ClickedVCO2Toggle()
     {
-        if (ToggleVCO2.isOn)
+        if (!VCO2_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (VCO2toggled == false)
+                    if (!VCO2_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 4;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.VCO2.ToString();
+                        textBoxContent[i] = avatar.VCO2.ToString();
+                        //textBoxes[i].text = avatar.VCO2.ToString();
+                        nameBoxes[i] = "VCO2 ";
                         filledBoxes[i] = true;
-                        VCO2toggled = true;
-                        ToggleVCO2.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        VCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+                        VCO2_toggled = true;
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & VCO2toggled == false)
-                {
-                    ToggleVCO2.isOn = false;
+
+
                 }
             }
 
@@ -395,40 +490,41 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 4)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    VCO2toggled = false;
+                    VCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+                    VCO2_toggled = false;
                 }
             }
 
 
         }
     }
-    private void ClickedFrToggle(bool Value)
+    private void ClickedFrToggle()
     {
-        if (ToggleFr.isOn)
+        if (!fr_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (frToggled == false)
+                    if (!fr_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 5;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.fr.ToString();
+                        textBoxContent[i] = avatar.fr.ToString();
+                        //textBoxes[i].text = avatar.fr.ToString();
+                        nameBoxes[i] = "fr ";
                         filledBoxes[i] = true;
-                        frToggled = true;
-                        ToggleFr.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        fr_toggled = true;
+                        FR_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+                       
                     }
 
-                }
-                else if (filledBoxes[i] == true & frToggled == false)
-                {
-                    ToggleFr.isOn = false;
+
+
                 }
             }
 
@@ -441,40 +537,41 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 5)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    frToggled = false;
+                    fr_toggled = false;
+                    FR_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
     }
-    private void ClickedMETToggle(bool Value)
+    private void ClickedMETToggle()
     {
-        if (ToggleMET.isOn)
+        if (!MET_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (METtoggled == false)
+                    if (!MET_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 6;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.MET.ToString();
+                        textBoxContent[i] = avatar.MET.ToString();
+                        //textBoxes[i].text = avatar.MET.ToString();
+                        nameBoxes[i] = "MET ";
                         filledBoxes[i] = true;
-                        METtoggled = true;
-                        ToggleMET.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        MET_toggled = true;
+                        MET_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & METtoggled == false)
-                {
-                    ToggleMET.isOn = false;
+
+
                 }
             }
 
@@ -487,40 +584,40 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 6)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    METtoggled = false;
+                    MET_toggled = false;
+                    MET_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
     }
-    private void ClickedFcToggle(bool Value)
+    private void ClickedFcToggle()
     {
-        if (ToggleFc.isOn)
+        if (!FC_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (FCtoggled == false)
+                    if (!FC_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 7;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.fc.ToString();
+                        textBoxContent[i] = avatar.fc.ToString();
+                        //textBoxes[i].text = avatar.fc.ToString();
+                        nameBoxes[i] = "FC ";
                         filledBoxes[i] = true;
-                        FCtoggled = true;
-                        ToggleFc.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        FC_toggled = true;
+                        Fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
-                }
-                else if (filledBoxes[i] == true & FCtoggled == false)
-                {
-                    ToggleFc.isOn = false;
+
+
                 }
             }
 
@@ -533,40 +630,40 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 7)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    FCtoggled = false;
+                    FC_toggled = false;
+                    Fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
     }
-    private void ClickedRERToggle(bool Value)
+    private void ClickedRERToggle()
     {
-        if (ToggleRER.isOn)
+        if (!RER_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (RERtoggled == false)
+                    if (!RER_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 8;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.RER.ToString();
+                        textBoxContent[i] = avatar.RER.ToString();
+                        //textBoxes[i].text = avatar.RER.ToString();
+                        nameBoxes[i] = "RER ";
                         filledBoxes[i] = true;
-                        RERtoggled = true;
-                        ToggleRER.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        RER_toggled = true;
+                        RER_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
-                }
-                else if (filledBoxes[i] == true & RERtoggled == false)
-                {
-                    ToggleRER.isOn = false;
+
+
                 }
             }
 
@@ -579,40 +676,40 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 8)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    RERtoggled = false;
+                    RER_toggled = false;
+                    RER_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
     }
-    private void ClickedVEVO2Toggle(bool Value)
+    private void ClickedVEVO2Toggle()
     {
-        if (ToggleVEVO2.isOn)
+        if (!VEVO2_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (VEVO2toggled == false)
+                    if (!VEVO2_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 9;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.VeVO2.ToString();
+                        textBoxContent[i] = avatar.VeVO2.ToString();
+                        //textBoxes[i].text = avatar.VeVO2.ToString();
+                        nameBoxes[i] = "VEVO2 ";
                         filledBoxes[i] = true;
-                        VEVO2toggled = true;
-                        ToggleVEVO2.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        VEVO2_toggled = true;
+                        VEVO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
-                }
-                else if (filledBoxes[i] == true & VEVO2toggled == false)
-                {
-                    ToggleVEVO2.isOn = false;
+
+
                 }
             }
 
@@ -625,40 +722,40 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 9)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    VEVO2toggled = false;
+                    VEVO2_toggled = false;
+                    VEVO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
     }
-    private void ClickedVEVCO2Toggle(bool Value)
+    private void ClickedVEVCO2Toggle()
     {
-        if (ToggleVEVCO2.isOn)
+        if (!VEVCO2_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (VEVCO2toggled == false)
+                    if (!VEVCO2_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 10;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.VeVCO2.ToString();
+                        textBoxContent[i] = avatar.VeVCO2.ToString();
+                       // textBoxes[i].text = avatar.VeVCO2.ToString();
+                        nameBoxes[i] = "VEVCO2 ";
                         filledBoxes[i] = true;
-                        VEVCO2toggled = true;
-                        ToggleVEVCO2.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        VEVCO2_toggled = true;
+                        VEVCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
-                }
-                else if (filledBoxes[i] == true & VEVCO2toggled == false)
-                {
-                    ToggleVEVCO2.isOn = false;
+
+
                 }
             }
 
@@ -671,41 +768,40 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 10)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    VEVCO2toggled = false;
-                    
+                    VEVCO2_toggled = false;
+                    VEVCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
     }
-    private void ClickedPETCO2Toggle(bool Value)
+    private void ClickedPETCO2Toggle()
     {
-        if (TogglePETCO2.isOn)
+        if (!PETCO2_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (PETCO2toggled == false)
+                    if (!PETCO2_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 11;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.petco2.ToString();
+                        textBoxContent[i] = avatar.petco2.ToString();
+                        //textBoxes[i].text = avatar.petco2.ToString();
+                        nameBoxes[i] = "PETCO2 ";
                         filledBoxes[i] = true;
-                        PETCO2toggled = true;
-                        TogglePETCO2.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        PETCO2_toggled = true;
+                        PETCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
-                }
-                else if (filledBoxes[i] == true & PETCO2toggled == false)
-                {
-                    TogglePETCO2.isOn = false;
+
+
                 }
             }
 
@@ -718,40 +814,40 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 11)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    PETCO2toggled = false;
+                    PETCO2_toggled = false;
+                    PETCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
     }
-    private void ClickedPETO2Toggle(bool Value)
+    private void ClickedPETO2Toggle()
     {
-        if (TogglePETO2.isOn)
+        if (!PETO2_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (PETO2toggled == false)
+                    if (!PETO2_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 12;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.peto2.ToString();
+                        textBoxContent[i] = avatar.peto2.ToString();
+                        //textBoxes[i].text = avatar.peto2.ToString();
+                        nameBoxes[i] = "PETO2 ";
                         filledBoxes[i] = true;
-                        PETO2toggled = true;
-                        TogglePETO2.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        PETO2_toggled = true;
+                        PETO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
-                }
-                else if (filledBoxes[i] == true & PETO2toggled == false)
-                {
-                    TogglePETO2.isOn = false;
+
+
                 }
             }
 
@@ -764,40 +860,40 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 12)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    PETO2toggled = false;
+                    PETO2_toggled = false;
+                    PETO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
     }
-    private void ClickedTEToggle(bool Value)
+    private void ClickedTEToggle()
     {
-        if (ToggleTE.isOn)
+        if (!TE_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (TEtoggled == false)
+                    if (!TE_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 13;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.TE.ToString();
+                        textBoxContent[i] = avatar.TE.ToString();
+                        //textBoxes[i].text = avatar.TE.ToString();
+                        nameBoxes[i] = "TE ";
                         filledBoxes[i] = true;
-                        TEtoggled = true;
-                        ToggleTE.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        TE_toggled = true;
+                        TE_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
-                }
-                else if (filledBoxes[i] == true & TEtoggled == false)
-                {
-                    ToggleTE.isOn = false;
+
+
                 }
             }
 
@@ -810,40 +906,40 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 13)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    TEtoggled = false;
+                    TE_toggled = false;
+                    TE_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
     }
-    private void ClickedTIToggle(bool Value)
+    private void ClickedTIToggle()
     {
-        if (ToggleTI.isOn)
+        if (!TI_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (TItoggled == false)
+                    if (!TI_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 14;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.TI.ToString();
+                        textBoxContent[i] = avatar.TI.ToString();
+                        //textBoxes[i].text = avatar.TI.ToString();
+                        nameBoxes[i] = "TI ";
                         filledBoxes[i] = true;
-                        TItoggled = true;
-                        ToggleTI.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        TI_toggled = true;
+                        TI_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
-                }
-                else if (filledBoxes[i] == true & TItoggled == false)
-                {
-                    ToggleTI.isOn = false;
+
+
                 }
             }
 
@@ -856,40 +952,40 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 14)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    TItoggled = false;
+                    TI_toggled = false;
+                    TI_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
     }
-    private void ClickedTITEToggle(bool Value)
+    private void ClickedTITEToggle()
     {
-        if (ToggleTITE.isOn)
+        if (!TITE_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (TITEtoggled == false)
+                    if (!TITE_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 15;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.TITE.ToString();
+                        textBoxContent[i] = avatar.TITE.ToString();
+                        //textBoxes[i].text = avatar.TITE.ToString();
+                        nameBoxes[i] = "TITE ";
                         filledBoxes[i] = true;
-                        TITEtoggled = true;
-                        ToggleTITE.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        TITE_toggled = true;
+                        TITE_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
-                }
-                else if (filledBoxes[i] == true & TITEtoggled == false)
-                {
-                    ToggleTITE.isOn = false;
+
+
                 }
             }
 
@@ -902,40 +998,40 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 15)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    TITEtoggled = false;
+                    TITE_toggled = false;
+                    TITE_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
     }
-    private void ClickedTToTToggle(bool Value)
+    private void ClickedTToTToggle()
     {
-        if (ToggleTToT.isOn)
+        if (!TToT_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (TToTtoggled == false)
+                    if (!TToT_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 16;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.Ttot.ToString();
+                        textBoxContent[i] = avatar.Ttot.ToString();
+                        //textBoxes[i].text = avatar.Ttot.ToString();
+                        nameBoxes[i] = "TToT ";
                         filledBoxes[i] = true;
-                        TToTtoggled = true;
-                        ToggleTToT.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        TToT_toggled = true;
+                        TToT_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
-                }
-                else if (filledBoxes[i] == true & TToTtoggled == false)
-                {
-                    ToggleTToT.isOn = false;
+
+
                 }
             }
 
@@ -948,40 +1044,40 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 16)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    TToTtoggled = false;
+                    TToT_toggled = false;
+                    TToT_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
     }
-    private void ClickedVO2FRToggle(bool Value)
+    private void ClickedVO2FRToggle()
     {
-        if (ToggleVO2FR.isOn)
+        if (!VO2FR_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (VO2FRtoggled == false)
+                    if (!VO2FR_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 17;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.VO2fr.ToString();
+                        textBoxContent[i] = avatar.VO2fr.ToString();
+                        //textBoxes[i].text = avatar.VO2fr.ToString();
+                        nameBoxes[i] = "VO2FR ";
                         filledBoxes[i] = true;
-                        VO2FRtoggled = true;
-                        ToggleVO2FR.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        VO2FR_toggled = true;
+                        VO2FR_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
-                }
-                else if (filledBoxes[i] == true & VO2FRtoggled == false)
-                {
-                    ToggleVO2FR.isOn = false;
+
+
                 }
             }
 
@@ -994,40 +1090,40 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 17)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    VO2FRtoggled = false;
+                    VO2FR_toggled = false;
+                    VO2FR_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
     }
-    private void ClickedVO2FCToggle(bool Value)
+    private void ClickedVO2FCToggle()
     {
-        if (ToggleVO2FC.isOn)
+        if (!VO2FC_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (VO2FCtoggled == false)
+                    if (!VO2FC_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 18;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.VO2fc.ToString();
+                        textBoxContent[i] = avatar.VO2fc.ToString();
+                        //textBoxes[i].text = avatar.VO2fc.ToString();
+                        nameBoxes[i] = "VO2FC ";
                         filledBoxes[i] = true;
-                        VO2FCtoggled = true;
-                        ToggleVO2FC.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        VO2FC_toggled = true;
+                        VO2FC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
-                }
-                else if (filledBoxes[i] == true & VO2FCtoggled == false)
-                {
-                    ToggleVO2FC.isOn = false;
+
+
                 }
             }
 
@@ -1040,40 +1136,40 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 18)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    VO2FCtoggled = false;
+                    VO2FC_toggled = false;
+                    VO2FC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
     }
-    private void ClickedSpO2Toggle(bool Value)
+    private void ClickedSpO2Toggle()
     {
-        if (ToggleSpO2.isOn)
+        if (!SpO2_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (SpO2toggled == false)
+                    if (!SpO2_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 19;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.SpO2.ToString();
+                        textBoxContent[i] = avatar.SpO2.ToString();
+                        //textBoxes[i].text = avatar.SpO2.ToString();
+                        nameBoxes[i] = "SpO2 ";
                         filledBoxes[i] = true;
-                        SpO2toggled = true;
-                        ToggleSpO2.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        SpO2_toggled = true;
+                        SpO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
-                }
-                else if (filledBoxes[i] == true & SpO2toggled == false)
-                {
-                    ToggleSpO2.isOn = false;
+
+
                 }
             }
 
@@ -1086,40 +1182,41 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 19)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    SpO2toggled = false;
+                    SpO2_toggled = false;
+                    SpO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
     }
-    private void ClickedFcmaxToggle(bool Value)
+    private void ClickedFcmaxToggle()
     {
-        if (ToggleFcmax.isOn)
+        if (!FcMAX_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (FcMAXtoggled == false)
+                    if (!FcMAX_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 20;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.FCmax.ToString();
+                        textBoxContent[i] = avatar.FCmax.ToString();
+                        //textBoxes[i].text = avatar.FCmax.ToString();
+                        nameBoxes[i] = "FCmax ";
                         filledBoxes[i] = true;
-                        FcMAXtoggled = true;
-                        ToggleFcmax.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        FcMAX_toggled = true;
+                        Fcmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+                        
                     }
 
-                }
-                else if (filledBoxes[i] == true & FcMAXtoggled == false)
-                {
-                    ToggleFcmax.isOn = false;
+
+
                 }
             }
 
@@ -1132,40 +1229,41 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 20)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    FcMAXtoggled = false;
+                    FcMAX_toggled = false;
+                    Fcmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
     }
-    private void ClickedFcresToggle(bool Value)
+    private void ClickedFcresToggle()
     {
-        if (ToggleFcres.isOn)
+        if (!FcRES_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (FcREStoggled == false)
+                    if (!FcRES_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 21;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.FCres.ToString();
+                        textBoxContent[i] = avatar.FCres.ToString();
+                       // textBoxes[i].text = avatar.FCres.ToString();
+                        nameBoxes[i] = "FCres ";
                         filledBoxes[i] = true;
-                        FcREStoggled = true;
-                        ToggleFcres.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        FcRES_toggled = true;
+                        Fcres_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+                       
                     }
 
-                }
-                else if (filledBoxes[i] == true & FcREStoggled == false)
-                {
-                    ToggleFcres.isOn = false;
+
+
                 }
             }
 
@@ -1178,40 +1276,40 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 21)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    FcREStoggled = false;
+                    FcRES_toggled = false;
+                    Fcres_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
     }
-    private void ClickedEEToggle(bool Value)
+    private void ClickedEEToggle()
     {
-        if (ToggleEE.isOn)
+        if (!EE_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (EEtoggled == false)
+                    if (!EE_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 22;
-                        //textBoxes[i].text = "ve";
-                        textBoxes[i].text = avatar.EE.ToString();
+                        textBoxContent[i] = avatar.EE.ToString();
+                        //textBoxes[i].text = avatar.EE.ToString();
+                        nameBoxes[i] = "EE ";
                         filledBoxes[i] = true;
-                        EEtoggled = true;
-                        ToggleEE.isOn = true; //stops the loop from turning the toggle box off
-                        //this box will desplay the avatar's VE value 
+                        EE_toggled = true;
+                        EE_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
-                }
-                else if (filledBoxes[i] == true & EEtoggled == false)
-                {
-                    ToggleEE.isOn = false;
+
+
                 }
             }
 
@@ -1224,9 +1322,11 @@ public class CustomModuleTester : MonoBehaviour
                 if (BoxValue[i] == 22)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
-                    EEtoggled = false;
+                    EE_toggled = false;
+                    EE_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -1234,5 +1334,44 @@ public class CustomModuleTester : MonoBehaviour
         }
     }
 
+    public void ResetAllValues() //reset every value in order to start from a clean state
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            filledBoxes[i] = false;
+            textBoxContent[i] = "";
+            nameBoxes[i] = "";
+            BoxValue[i] = 0;
 
+        }
+        VE_toggled = false; //stops every single box from being filled by a single variable each time
+        VT_toggled = false;
+        VO2_toggled = false;
+        VCO2_toggled = false;
+        fr_toggled = false;
+        MET_toggled = false;
+        FC_toggled = false;
+        RER_toggled = false;
+        VEVO2_toggled = false;
+        VEVCO2_toggled = false;
+        PETCO2_toggled = false;
+        PETO2_toggled = false;
+        TE_toggled = false;
+        TI_toggled = false;
+        TITE_toggled = false; //stops every single box from being filled by a single variable each time
+        TToT_toggled = false;
+        VO2FR_toggled = false;
+        VO2FC_toggled = false;
+        SpO2_toggled = false;
+        FcMAX_toggled = false;
+        FcRES_toggled = false;
+        EE_toggled = false;
+
+
+
+    }
+
+   
+  
+ 
 }

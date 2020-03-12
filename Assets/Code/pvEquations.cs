@@ -6,8 +6,9 @@ public class pvEquations : MonoBehaviour
 {
 
     [Header("Character")]
+
     //will probably have a lot of these pulmonary variables within the character eventually, this is just a basic thing for now so that i can test some stuff
-    CharacterAvatar avatar;
+    public CharacterAvatar avatar;
 
     [Space(10)]
     [Header("Values used for inspiration and expiration of air")] //ALMOST DEALT WITH
@@ -78,7 +79,6 @@ public class pvEquations : MonoBehaviour
 
     [Space(10)]
     [Header("Work Rate")]
-
     public float W; //USE 'BODYWORK' FROM 'EXERCISE' INSTEAD
 
     CharacterCustomiser Character;
@@ -103,7 +103,29 @@ public class pvEquations : MonoBehaviour
         
     }
 
-                                    //INSPI/EXPO FUNCTIONS
+    public void CalculateAll()
+    {
+        ExpireTime();
+        InspireExpireRatio();
+        CalcVE();
+        CalcVeATPS(5,5);
+        CalcVeSTPD(1, 1, 1); 
+        CalcVeBTPS(1, 1, 1);
+        calcVI();
+        calcVCO2();
+        OxygenConsumption();
+        respiratoryExRatio();
+        respiratoryQuotient();
+        VentCapacity(avatar.FEV1);
+        VentEquivOxygen();
+        VentEquivCO2();
+        calcEPOC(1, 1);
+        calcMET(avatar.weight);
+        OxygenBreath();
+        VO2MaxAge();
+        VO2MaxHeight();
+        VO2MaxWeight();
+    }
 
     public float ExpireTime()
     {
@@ -145,6 +167,7 @@ public class pvEquations : MonoBehaviour
 
     public float CalcVeATPS(float vol, float t)
     {
+        //time is relevant here, will use the timer value
         avatar.veATPS = (vol / t) * 60;
         //avatar.veatps = (VE/60)*60?
         return avatar.veATPS;
@@ -187,7 +210,7 @@ public class pvEquations : MonoBehaviour
         avatar.VO2 = avatar.veSTPD * (((1 - avatar.FEO2 - avatar.FECO2) / (1 - avatar.FIO2 - avatar.FICO2)) * avatar.FIO2) - (avatar.veSTPD * avatar.FEO2); //equation including the VI calculation within it
         return VO2;
     }
-
+    
     public float VO2MaxAge()
     {
         if(avatar.gender == 0)

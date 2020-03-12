@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class pvcustommodule : MonoBehaviour
 {
     public Text[] textBoxes = new Text[10];
+    public string[] nameBoxes = new string[10];
     /*
   
         FVC
@@ -24,21 +25,25 @@ public class pvcustommodule : MonoBehaviour
         TLC
         VC
      */
-    public Toggle Toggle_FVC; //1
-    public Toggle Toggle_FEV1; //2
-    public Toggle Toggle_FEV1FVC; //3
-    public Toggle Toggle_PEF; //4
-    public Toggle Toggle_PIF; //5
-    public Toggle Toggle_PImax; //6
-    public Toggle Toggle_PEmax; //7
-    public Toggle Toggle_VECap; //8
-    public Toggle Toggle_ERV; //9
-    public Toggle Toggle_FRC; //10
-    public Toggle Toggle_IC; //11
-    public Toggle Toggle_IRV; //12
-    public Toggle Toggle_RV; //13
-    public Toggle Toggle_TLC; //14
-    public Toggle Toggle_VC; //15
+
+
+    public Button FVC_button;
+    public Button FEV1_button;
+    public Button FEV1FVC_button;
+    public Button PEF_button;
+    public Button PIF_button;
+    public Button PImax_button;
+    public Button PEmax_button;
+    public Button VECap_button;
+    public Button ERV_button;
+    public Button FRC_button;
+    public Button IC_button;
+    public Button IRV_button;
+    public Button RV_button;
+    public Button TLC_button;
+    public Button VC_button;
+
+    
 
     public GameObject avatarHolder; //gameobject that will have the avatar script within it
     public CharacterAvatar avatar; //gets a reference to the character undergoing the module
@@ -66,55 +71,120 @@ public class pvcustommodule : MonoBehaviour
     {
         avatar = avatarHolder.GetComponent<CharacterAvatar>();
         //add listening events to each one of the toggle boxes 
-        Toggle_FVC.onValueChanged.AddListener((Value) => { ClickedFVCToggle(Value); });
-        Toggle_FEV1.onValueChanged.AddListener((Value) => { ClickedFEV1Toggle(Value); });
-        Toggle_FEV1FVC.onValueChanged.AddListener((Value) => { ClickedFEV1FVCToggle(Value); });
-        Toggle_PEF.onValueChanged.AddListener((Value) => { ClickedPEFToggle(Value); });
-        Toggle_PIF.onValueChanged.AddListener((Value) => { ClickedPIFToggle(Value); });
-        Toggle_PImax.onValueChanged.AddListener((Value) => { ClickedPImaxToggle(Value); });
-        Toggle_PEmax.onValueChanged.AddListener((Value) => { ClickedPEmaxToggle(Value); });
-        Toggle_VECap.onValueChanged.AddListener((Value) => { ClickedVECapToggle(Value); });
-        Toggle_ERV.onValueChanged.AddListener((Value) => { ClickedERVToggle(Value); });
-        Toggle_FRC.onValueChanged.AddListener((Value) => { ClickedFRCToggle(Value); });
-        Toggle_IC.onValueChanged.AddListener((Value) => { ClickedICToggle(Value); });
-        Toggle_IRV.onValueChanged.AddListener((Value) => { ClickedIRVToggle(Value); });
-        Toggle_RV.onValueChanged.AddListener((Value) => { ClickedRVToggle(Value); });
-        Toggle_TLC.onValueChanged.AddListener((Value) => { ClickedTLCToggle(Value); });
-        Toggle_VC.onValueChanged.AddListener((Value) => { ClickedVCToggle(Value); });
+       
+       
 
     }
 
+    public void AttachButtons()
+    {
+        //get the buttons from the UI 
+
+        //add the onlick events to the buttons
+        FVC_button.onClick.AddListener(ClickedFVCToggle);
+        FEV1_button.onClick.AddListener(ClickedFEV1Toggle);
+        FEV1FVC_button.onClick.AddListener(ClickedFEV1FVCToggle);
+        PEF_button.onClick.AddListener(ClickedPEFToggle);
+        PIF_button.onClick.AddListener(ClickedPIFToggle);
+        PImax_button.onClick.AddListener(ClickedPImaxToggle);
+        PEmax_button.onClick.AddListener(ClickedPEmaxToggle);
+        VECap_button.onClick.AddListener(ClickedVECapToggle);
+        ERV_button.onClick.AddListener(ClickedERVToggle);
+        FRC_button.onClick.AddListener(ClickedFRCToggle);
+        IC_button.onClick.AddListener(ClickedICToggle);
+        IRV_button.onClick.AddListener(ClickedIRVToggle);
+        RV_button.onClick.AddListener(ClickedRVToggle);
+        TLC_button.onClick.AddListener(ClickedTLCToggle);
+        VC_button.onClick.AddListener(ClickedVCToggle);
+    }
     // Update is called once per frame
     void Update()
     {
         
     }
 
-    private void ClickedFVCToggle(bool Value)
+    public void ManualUpdate()
     {
-        if (Toggle_FVC.isOn)
+        for (int i = 0; i < 10; i++)
+        {
+            if (filledBoxes[i] != false)
+            {
+                switch (BoxValue[i])
+                {
+                    case 1:
+                        textBoxes[i].text = avatar.FVC.ToString();
+                        break;
+                    case 2:
+                        textBoxes[i].text = avatar.FEV1.ToString();
+                        break;
+                    case 3:
+                        textBoxes[i].text = avatar.FEV1FVC.ToString();
+                        break;
+                    case 4:
+                        textBoxes[i].text = avatar.PEF.ToString();
+                        break;
+                    case 5:
+                        textBoxes[i].text = avatar.PIF.ToString();
+                        break;
+                    case 6:
+                        textBoxes[i].text = avatar.PImax.ToString();
+                        break;
+                    case 7:
+                        textBoxes[i].text = avatar.PEmax.ToString();
+                        break;
+                    case 8:
+                        textBoxes[i].text = avatar.Vecap.ToString();
+                        break;
+                    case 9:
+                        textBoxes[i].text = avatar.ERV.ToString();
+                        break;
+                    case 10:
+                        textBoxes[i].text = avatar.FRC.ToString();
+                        break;
+                    case 11:
+                        textBoxes[i].text = avatar.IC.ToString();
+                        break;
+                    case 12:
+                        textBoxes[i].text = avatar.IRV.ToString();
+                        break;
+                    case 13:
+                        textBoxes[i].text = avatar.RV.ToString();
+                        break;
+                    case 14:
+                        textBoxes[i].text = avatar.TLC.ToString();
+                        break;
+                    case 15:
+                        textBoxes[i].text = avatar.VC.ToString();
+                        break;
+
+
+                }
+            }
+        }
+    }
+    private void ClickedFVCToggle()
+    {
+        if (!FVC_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (FVC_toggled == false)
+                    if (!FVC_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 1;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.FVC.ToString();
+                        nameBoxes[i] = "FVC ";
                         filledBoxes[i] = true;
                         FVC_toggled = true;
-                        Toggle_FVC.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & FVC_toggled == false)
-                {
-                    Toggle_FVC.isOn = false;
+
+
                 }
             }
 
@@ -128,6 +198,7 @@ public class pvcustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FVC_toggled = false;
                 }
@@ -137,31 +208,29 @@ public class pvcustommodule : MonoBehaviour
         }
 
     }
-    private void ClickedFEV1Toggle(bool Value)
+    private void ClickedFEV1Toggle()
     {
-        if (Toggle_FEV1.isOn)
+        if (!FEV1_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (FEV1_toggled == false)
+                    if (!FEV1_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 2;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.FEV1.ToString();
+                        nameBoxes[i] = "FEV1 ";
                         filledBoxes[i] = true;
                         FEV1_toggled = true;
-                        Toggle_FEV1.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & FEV1_toggled == false)
-                {
-                    Toggle_FEV1.isOn = false;
+
+
                 }
             }
 
@@ -175,6 +244,7 @@ public class pvcustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEV1_toggled = false;
                 }
@@ -184,31 +254,29 @@ public class pvcustommodule : MonoBehaviour
         }
 
     }
-    private void ClickedFEV1FVCToggle(bool Value)
+    private void ClickedFEV1FVCToggle()
     {
-        if (Toggle_FEV1FVC.isOn)
+        if (!FEV1FVC_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (FEV1FVC_toggled == false)
+                    if (!FEV1FVC_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 3;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.FEV1FVC.ToString();
+                        nameBoxes[i] = "FEV1FVC ";
                         filledBoxes[i] = true;
-                        FEV1_toggled = true;
-                        Toggle_FEV1FVC.isOn = true;
-                        //this box will desplay the avatar's VE value 
+                        FEV1FVC_toggled = true;
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & FEV1FVC_toggled == false)
-                {
-                    Toggle_FEV1FVC.isOn = false;
+
+
                 }
             }
 
@@ -222,6 +290,7 @@ public class pvcustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEV1FVC_toggled = false;
                 }
@@ -231,31 +300,29 @@ public class pvcustommodule : MonoBehaviour
         }
 
     }
-    private void ClickedPEFToggle(bool Value)
+    private void ClickedPEFToggle()
     {
-        if (Toggle_PEF.isOn)
+        if (!PEF_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (PEF_toggled == false)
+                    if (!PEF_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 4;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.PEF.ToString();
+                        nameBoxes[i] = "PEF ";
                         filledBoxes[i] = true;
                         PEF_toggled = true;
-                        Toggle_PEF.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & PEF_toggled == false)
-                {
-                    Toggle_PEF.isOn = false;
+
+
                 }
             }
 
@@ -269,6 +336,7 @@ public class pvcustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PEF_toggled = false;
                 }
@@ -278,31 +346,29 @@ public class pvcustommodule : MonoBehaviour
         }
 
     }
-    private void ClickedPIFToggle(bool Value)
+    private void ClickedPIFToggle()
     {
-        if (Toggle_PIF.isOn)
+        if (!PIF_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (PIF_toggled == false)
+                    if (!PIF_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 5;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.PIF.ToString();
+                        nameBoxes[i] = "PIF ";
                         filledBoxes[i] = true;
                         PIF_toggled = true;
-                        Toggle_PIF.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & PIF_toggled == false)
-                {
-                    Toggle_PIF.isOn = false;
+
+
                 }
             }
 
@@ -316,6 +382,7 @@ public class pvcustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PIF_toggled = false;
                 }
@@ -325,31 +392,29 @@ public class pvcustommodule : MonoBehaviour
         }
 
     }
-    private void ClickedPImaxToggle(bool Value)
+    private void ClickedPImaxToggle()
     {
-        if (Toggle_PImax.isOn)
+        if (!PImax_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (PImax_toggled == false)
+                    if (!PImax_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 6;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.PImax.ToString();
+                        nameBoxes[i] = "PImax ";
                         filledBoxes[i] = true;
                         PImax_toggled = true;
-                        Toggle_PImax.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & PImax_toggled == false)
-                {
-                    Toggle_PImax.isOn = false;
+
+
                 }
             }
 
@@ -363,6 +428,7 @@ public class pvcustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PImax_toggled = false;
                 }
@@ -372,31 +438,29 @@ public class pvcustommodule : MonoBehaviour
         }
 
     }
-    private void ClickedPEmaxToggle(bool Value)
+    private void ClickedPEmaxToggle()
     {
-        if (Toggle_PEmax.isOn)
+        if (!PEmax_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (PEmax_toggled == false)
+                    if (!PEmax_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 7;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.PEmax.ToString();
+                        nameBoxes[i] = "PEmax ";
                         filledBoxes[i] = true;
                         PEmax_toggled = true;
-                        Toggle_PEmax.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & PEmax_toggled == false)
-                {
-                    Toggle_PEmax.isOn = false;
+
+
                 }
             }
 
@@ -410,6 +474,7 @@ public class pvcustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PEmax_toggled = false;
                 }
@@ -419,31 +484,29 @@ public class pvcustommodule : MonoBehaviour
         }
 
     }
-    private void ClickedVECapToggle(bool Value)
+    private void ClickedVECapToggle()
     {
-        if (Toggle_VECap.isOn)
+        if (!VECap_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (VECap_toggled == false)
+                    if (!VECap_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 8;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.Vecap.ToString();
+                        nameBoxes[i] = "VEcap ";
                         filledBoxes[i] = true;
                         VECap_toggled = true;
-                        Toggle_VECap.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & VECap_toggled == false)
-                {
-                    Toggle_VECap.isOn = false;
+
+
                 }
             }
 
@@ -457,6 +520,7 @@ public class pvcustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VECap_toggled = false;
                 }
@@ -466,31 +530,29 @@ public class pvcustommodule : MonoBehaviour
         }
 
     }
-    private void ClickedERVToggle(bool Value)
+    private void ClickedERVToggle()
     {
-        if (Toggle_ERV.isOn)
+        if (!ERV_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (ERV_toggled == false)
+                    if (!ERV_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 9;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.ERV.ToString();
+                        nameBoxes[i] = "ERV ";
                         filledBoxes[i] = true;
                         ERV_toggled = true;
-                        Toggle_ERV.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & ERV_toggled == false)
-                {
-                    Toggle_ERV.isOn = false;
+
+
                 }
             }
 
@@ -504,6 +566,7 @@ public class pvcustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     ERV_toggled = false;
                 }
@@ -513,31 +576,29 @@ public class pvcustommodule : MonoBehaviour
         }
 
     }
-    private void ClickedFRCToggle(bool Value)
+    private void ClickedFRCToggle()
     {
-        if (Toggle_FRC.isOn)
+        if (!FRC_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (FRC_toggled == false)
+                    if (!FRC_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 10;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.FRC.ToString();
+                        nameBoxes[i] = "FRC ";
                         filledBoxes[i] = true;
                         FRC_toggled = true;
-                        Toggle_FRC.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & FRC_toggled == false)
-                {
-                    Toggle_FRC.isOn = false;
+
+
                 }
             }
 
@@ -551,6 +612,7 @@ public class pvcustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FRC_toggled = false;
                 }
@@ -560,31 +622,29 @@ public class pvcustommodule : MonoBehaviour
         }
 
     }
-    private void ClickedICToggle(bool Value)
+    private void ClickedICToggle()
     {
-        if (Toggle_IC.isOn)
+        if (!IC_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (IC_toggled == false)
+                    if (!IC_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 11;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.IC.ToString();
+                        nameBoxes[i] = "IC";
                         filledBoxes[i] = true;
                         IC_toggled = true;
-                        Toggle_IC.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & IC_toggled == false)
-                {
-                    Toggle_IC.isOn = false;
+
+
                 }
             }
 
@@ -598,6 +658,7 @@ public class pvcustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     IC_toggled = false;
                 }
@@ -607,31 +668,29 @@ public class pvcustommodule : MonoBehaviour
         }
 
     }
-    private void ClickedIRVToggle(bool Value)
+    private void ClickedIRVToggle()
     {
-        if (Toggle_IRV.isOn)
+        if (!IRV_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (IRV_toggled == false)
+                    if (!IRV_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 12;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.IRV.ToString();
+                        nameBoxes[i] = "IRV ";
                         filledBoxes[i] = true;
                         IRV_toggled = true;
-                        Toggle_IRV.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & IRV_toggled == false)
-                {
-                    Toggle_IRV.isOn = false;
+
+
                 }
             }
 
@@ -645,6 +704,7 @@ public class pvcustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     IRV_toggled = false;
                 }
@@ -654,31 +714,29 @@ public class pvcustommodule : MonoBehaviour
         }
 
     }
-    private void ClickedRVToggle(bool Value)
+    private void ClickedRVToggle()
     {
-        if (Toggle_RV.isOn)
+        if (!RV_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (RV_toggled == false)
+                    if (!RV_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 13;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.RV.ToString();
+                        nameBoxes[i] = "RV ";
                         filledBoxes[i] = true;
                         RV_toggled = true;
-                        Toggle_RV.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & RV_toggled == false)
-                {
-                    Toggle_RV.isOn = false;
+
+
                 }
             }
 
@@ -692,6 +750,7 @@ public class pvcustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     RV_toggled = false;
                 }
@@ -701,31 +760,29 @@ public class pvcustommodule : MonoBehaviour
         }
 
     }
-    private void ClickedTLCToggle(bool Value)
+    private void ClickedTLCToggle()
     {
-        if (Toggle_TLC.isOn)
+        if (!TLC_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (TLC_toggled == false)
+                    if (!TLC_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 14;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.TLC.ToString();
+                        nameBoxes[i] = "TLC ";
                         filledBoxes[i] = true;
                         TLC_toggled = true;
-                        Toggle_TLC.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & TLC_toggled == false)
-                {
-                    Toggle_TLC.isOn = false;
+
+
                 }
             }
 
@@ -739,6 +796,7 @@ public class pvcustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TLC_toggled = false;
                 }
@@ -748,31 +806,29 @@ public class pvcustommodule : MonoBehaviour
         }
 
     }
-    private void ClickedVCToggle(bool Value)
+    private void ClickedVCToggle()
     {
-        if (Toggle_VC.isOn)
+        if (!VC_toggled)
         {
 
             for (int i = 0; i < 10; i++)
             {
                 if (filledBoxes[i] == false)
                 {
-                    if (VC_toggled == false)
+                    if (!VC_toggled)
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 15;
-                        //textBoxes[i].text = "ve";
+
                         textBoxes[i].text = avatar.VC.ToString();
+                        nameBoxes[i] = "VC ";
                         filledBoxes[i] = true;
                         VC_toggled = true;
-                        Toggle_VC.isOn = true;
-                        //this box will desplay the avatar's VE value 
+
                     }
 
-                }
-                else if (filledBoxes[i] == true & VC_toggled == false)
-                {
-                    Toggle_VC.isOn = false;
+
+
                 }
             }
 
@@ -786,6 +842,7 @@ public class pvcustommodule : MonoBehaviour
                 {
                     filledBoxes[i] = false;
                     textBoxes[i].text = "";
+                    nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VC_toggled = false;
                 }

@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Circle
+  - Avatar_Holder
+  - Button_Holder
+  - Result_Field
+  - Module_Text_Box
+  - Menu_Manager
+  - MS_Panel
+  - TS_Panel
   layers:
   - Default
   - TransparentFX

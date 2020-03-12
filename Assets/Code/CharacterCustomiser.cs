@@ -2,6 +2,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CharacterCustomiser : UIHiding
@@ -11,6 +12,9 @@ public class CharacterCustomiser : UIHiding
     public float age = 16f;
     public float height = 0.0f; //PLEASE PUT THIS IN CENTIMETRES
     public float weight = 0.0f; //kg
+
+    public GameObject avatarHolder; //won't let me just drag the avatar script in so will need a gameobject to get the component from.
+    public CharacterAvatar avatar; //the avatar that will store the values for the experiment
     //Class Variables
     //bool swimwear = false;
     //bool gasMarkOn = false;
@@ -33,11 +37,12 @@ public class CharacterCustomiser : UIHiding
     void Start()
     {
         //Declares and sets the buttons and toggles
-
+        avatarHolder = GameObject.FindGameObjectWithTag("Avatar_Holder");
         SliderPanel.gameObject.SetActive(false);
         GenderPanel.gameObject.SetActive(true);
         RacePanel.gameObject.SetActive(true);
 
+        avatar = avatarHolder.GetComponent<CharacterAvatar>();
         Button maleButton = GenderM.GetComponent<Button>();
         maleButton.onClick.AddListener(MaleChanger);
 
@@ -65,24 +70,70 @@ public class CharacterCustomiser : UIHiding
             BlackF.gameObject.SetActive(false);
             AsianF.gameObject.SetActive(false);
         }
+        if(avatar.gender == 0) //female
+        {
+            switch (avatar.race)
+            {
+                case (0)://white
+                    WhiteF.gameObject.SetActive(true);
+                    break;
+                case (1): //black
+                    BlackF.gameObject.SetActive(true);
+                    break;
+                case (2): //asian
+                    AsianF.gameObject.SetActive(true);
+                    break;
+
+            }
+
+        }
+        if (avatar.gender == 1) //male
+        {
+            switch (avatar.race)
+            {
+                case (0)://white
+                    WhiteM.gameObject.SetActive(true);
+                    break;
+                case (1): //black
+                    BlackM.gameObject.SetActive(true);
+                    break;
+                case (2): //asian
+                    AsianM.gameObject.SetActive(true);
+                    break;
+
+            }
+
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        age = Age.value;
-        height = Height.value;
-        weight = Weight.value;
+        avatar.age = Age.value; //sets the values within the avatar, since the equations are set to store variables there.
+        avatar.height = Height.value;
+        avatar.weight = Weight.value;
         AgeT.text = Age.value.ToString();
         HeightT.text = Height.value.ToString();
         WeightT.text = Weight.value.ToString();
+        //age = Age.value;
+        //height = Height.value;
+        //weight = Weight.value;
+
     }
 
     void SliderToggle()
     {
-        SliderPanel.gameObject.SetActive(true);
-        GenderPanel.gameObject.SetActive(false);
-        RacePanel.gameObject.SetActive(false);
+        if (SliderPanel.gameObject.activeInHierarchy == false)
+        {
+            SliderPanel.gameObject.SetActive(true);
+            GenderPanel.gameObject.SetActive(false);
+            RacePanel.gameObject.SetActive(false);
+        }
+        else
+        {
+            SceneManager.LoadScene("Module Selection Scene");
+        }
+        
     }
 
     void MaleChanger()
@@ -97,7 +148,8 @@ public class CharacterCustomiser : UIHiding
             AsianF.gameObject.SetActive(false);
         }
         gender = true;
-        switch (race)
+        avatar.gender = 1; //avatar's gender is stored as an int, 0 for female 1 for male.
+        switch (avatar.race)
         {
             case 0:
                 WhiteM.gameObject.SetActive(true);
@@ -115,17 +167,24 @@ public class CharacterCustomiser : UIHiding
 
     void FemaleChanger()
     {
-        if (WhiteM && BlackM && AsianM && WhiteF && BlackF && AsianF != false)
-        {
-            WhiteM.gameObject.SetActive(false);
-            BlackM.gameObject.SetActive(false);
-            AsianM.gameObject.SetActive(false);
-            WhiteF.gameObject.SetActive(false);
-            BlackF.gameObject.SetActive(false);
-            AsianF.gameObject.SetActive(false);
-        }
+        //if (WhiteM && BlackM && AsianM && WhiteF && BlackF && AsianF != false)
+        //{
+        //    WhiteM.gameObject.SetActive(false);
+        //    BlackM.gameObject.SetActive(false);
+        //    AsianM.gameObject.SetActive(false);
+        //    WhiteF.gameObject.SetActive(false);
+        //    BlackF.gameObject.SetActive(false);
+        //    AsianF.gameObject.SetActive(false);
+        //}
+        WhiteM.gameObject.SetActive(false);
+        BlackM.gameObject.SetActive(false);
+        AsianM.gameObject.SetActive(false);
+        WhiteF.gameObject.SetActive(false);
+        BlackF.gameObject.SetActive(false);
+        AsianF.gameObject.SetActive(false);
         gender = false;
-        switch (race)
+        avatar.gender = 0;
+        switch (avatar.race)
         {
             case 0:
                 WhiteF.gameObject.SetActive(true);
@@ -153,12 +212,13 @@ public class CharacterCustomiser : UIHiding
             AsianF.gameObject.SetActive(false);
         }
         race = 0;
-        switch (gender)
+        avatar.race = 0;
+        switch (avatar.gender)
         {
-            case false:
+            case 0:
                 WhiteF.gameObject.SetActive(true);
                 break;
-            case true:
+            case 1:
                 WhiteM.gameObject.SetActive(true);
                 break;
         }
@@ -176,12 +236,13 @@ public class CharacterCustomiser : UIHiding
             AsianF.gameObject.SetActive(false);
         }
         race = 1;
-        switch (gender)
+        avatar.race = 1;
+        switch (avatar.gender)
         {
-            case false:
+            case 0:
                 BlackF.gameObject.SetActive(true);
                 break;
-            case true:
+            case 1:
                 BlackM.gameObject.SetActive(true);
                 break;
         }
@@ -199,12 +260,13 @@ public class CharacterCustomiser : UIHiding
             AsianF.gameObject.SetActive(false);
         }
         race = 2;
-        switch (gender)
+        avatar.race = 2;
+        switch (avatar.gender)
         {
-            case false:
+            case 0:
                 AsianF.gameObject.SetActive(true);
                 break;
-            case true:
+            case 1:
                 AsianM.gameObject.SetActive(true);
                 break;
         }

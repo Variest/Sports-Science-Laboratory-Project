@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIHiding : MonoBehaviour
@@ -23,32 +24,74 @@ public class UIHiding : MonoBehaviour
     public Image BlackF;
     public Image AsianF;
 
-   
+
 
     // Start is called before the first frame update
     void Start()
     {
-        //Module Selection Scene
-        if (TSPanel && MSPanel != false)
+        if (SceneManager.GetActiveScene().name == "Module Selection Scene")
         {
-            TSPanel.gameObject.SetActive(false);
-            MSPanel.gameObject.SetActive(true);
+            //TSPanel.gameObject.SetActive(false);
+            TSPanel.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+            //MSPanel.gameObject.SetActive(true);
+            MSPanel.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         }
         else
-        if (CPanel && PAPanel && CAPanel && MAPanel != false)
+            if (SceneManager.GetActiveScene().name == "Variables Scene")
         {
-            //Variable Selection Scene
-            CPanel.gameObject.SetActive(true);
-            PAPanel.gameObject.SetActive(false);
-            CAPanel.gameObject.SetActive(false);
-            MAPanel.gameObject.SetActive(false);
-        }
+            if (MenuManager.selectedModule == ' ')
+            {
+                CPanel.gameObject.SetActive(true);
+                PAPanel.gameObject.SetActive(false);
+                CAPanel.gameObject.SetActive(false);
+                MAPanel.gameObject.SetActive(false);
 
+                //CPanel.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+                //PAPanel.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+                //CAPanel.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+                //MAPanel.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+            }
+            else
+                if (MenuManager.selectedModule == 'P')
+            {
+                CPanel.gameObject.SetActive(false);
+                PAPanel.gameObject.SetActive(true);
+                CAPanel.gameObject.SetActive(false);
+                MAPanel.gameObject.SetActive(false);
+            }
+            else
+                if (MenuManager.selectedModule == 'C')
+            {
+                CPanel.gameObject.SetActive(false);
+                PAPanel.gameObject.SetActive(false);
+                CAPanel.gameObject.SetActive(true);
+                MAPanel.gameObject.SetActive(false);
+            }
+            else
+                if (MenuManager.selectedModule == 'M')
+            {
+                CPanel.gameObject.SetActive(false);
+                PAPanel.gameObject.SetActive(false);
+                CAPanel.gameObject.SetActive(false);
+                MAPanel.gameObject.SetActive(true);
+            }
+        }
+        else
+            if (SceneManager.GetActiveScene().name == "Avatar Customisation Scene")
+        {
+            WhiteM.gameObject.SetActive(false);
+            BlackM.gameObject.SetActive(false);
+            AsianM.gameObject.SetActive(false);
+            WhiteF.gameObject.SetActive(false);
+            BlackF.gameObject.SetActive(false);
+            AsianF.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
+

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterAvatar : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     //stores all the variables for the person: will be the thing that gets updated as the program runs in the end version
 
     [Header("Base elements")] //basic elements for character creation, will change how the character looks on screen as well as the variables used in some of the equations
@@ -14,16 +14,9 @@ public class CharacterAvatar : MonoBehaviour
     public float height = 0.0f;
     public float weight = 0.0f;
 
-    [Header("Sprite Rendering")]
-    public SpriteRenderer spriteRenderer;
-    public Sprite spriteWMale;
-    public Sprite spriteWFemale;
-    public Sprite spriteBMale;
-    public Sprite spriteBFemale;
-    public Sprite spriteAMale;
-    public Sprite spriteAFemale;
 
-    [Space(10)]
+
+    //[Space(10)]
     [Space(10)]
     [Header("Pulmonary Elements")]
     //values used for inspiration and expiration of air
@@ -73,7 +66,7 @@ public class CharacterAvatar : MonoBehaviour
     //work rate
     public float W; //work rate
 
-    [Header("Other shit IDK")]
+    [Header("Not categorised")]
     public float EE;
     public float FCres;
     public float FCmax;
@@ -110,9 +103,26 @@ public class CharacterAvatar : MonoBehaviour
     public float RV; //residual volume - volume in lungs after maximum expiration
     public float TLC; //total lung capacity - volume in lungers after maximum inspiration
     public float VC; //vital capacity - the greatest amount of air that can be expired after a maximal inspiration
+
+
+    public static CharacterAvatar avatarInstance;
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+
+        if (avatarInstance == null)
+        {
+            avatarInstance = this;
+        }
+        else
+        {
+            DestroyObject(gameObject);
+            
+        }
+    }
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+       // spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
