@@ -22,8 +22,8 @@ public class MenuManager : MonoBehaviour
     public static char selectedModule = ' ';
     public static char selectedTemplate = ' ';
 
-    GameObject avatarHolder; //the object that holds the avatar value within it
-    Custom_Module_To_New_Scene moduleChanger; //the code that allows the module values to be transferred between scenes
+    public GameObject avatarHolder; //the object that holds the avatar value within it
+    public Custom_Module_To_New_Scene moduleChanger; //the code that allows the module values to be transferred between scenes
 
     public GameObject TSPanel; 
     public GameObject MSPanel;
@@ -37,19 +37,27 @@ public class MenuManager : MonoBehaviour
     public void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        //if (menuInstance == null)
-        //{
-        //    menuInstance = this;
-        //}
-        //else
-        //{
-        //    DestroyObject(gameObject);
+        if (menuInstance == null)
+        {
+            menuInstance = this;
+        }
+        else
+        {
+            DestroyObject(gameObject);
 
-        //}
+        }
         avatarHolder = GameObject.FindGameObjectWithTag("Avatar_Holder"); //gets a reference for the persistent game object representing the avatar
         moduleChanger = avatarHolder.GetComponent<Custom_Module_To_New_Scene>(); //gets the persistent module changing code
     }
 
+    private void Update()
+    {
+        if(SceneManager.GetActiveScene().name == "Module Selection Scene")
+        {
+            TSPanel = GameObject.FindGameObjectWithTag("TS_Panel");
+            MSPanel = GameObject.FindGameObjectWithTag("MS_Panel");
+        }
+    }
     public void GoToModuleSelection()
     {
         if (isStartLab)
@@ -88,8 +96,10 @@ public class MenuManager : MonoBehaviour
             selectedModule = 'P';
             moduleChanger.PV_ON = true;
             moduleChanger.Advanced_ON = true;
-            MSPanel.gameObject.SetActive(false);
-            TSPanel.gameObject.SetActive(true);
+            //MSPanel.gameObject.SetActive(false);
+            //TSPanel.gameObject.SetActive(true);
+            MSPanel.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+            TSPanel.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         }
     }
 
@@ -100,8 +110,10 @@ public class MenuManager : MonoBehaviour
             selectedModule = 'C';
             moduleChanger.Cardio_ON = true;
             moduleChanger.Advanced_ON = true;
-            MSPanel.gameObject.SetActive(false);
-            TSPanel.gameObject.SetActive(true);
+            //MSPanel.gameObject.SetActive(false);
+            //TSPanel.gameObject.SetActive(true);
+            MSPanel.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+            TSPanel.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         }
     }
 
@@ -111,9 +123,11 @@ public class MenuManager : MonoBehaviour
         {
             selectedModule = 'M';
             moduleChanger.MetCart_ON = true;
-            
-            MSPanel.gameObject.SetActive(false);
-            TSPanel.gameObject.SetActive(true);
+
+            //MSPanel.gameObject.SetActive(false);
+            //TSPanel.gameObject.SetActive(true);
+            MSPanel.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+            TSPanel.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         }
     }
 
@@ -135,6 +149,10 @@ public class MenuManager : MonoBehaviour
             {
                 moduleChanger.Custom_ON = true;
             }
+            else
+            {
+                moduleChanger.Custom_ON = false;
+            }
             moduleChanger.Advanced_ON = true;
             SceneManager.LoadScene("Variables Scene");
         }
@@ -155,7 +173,8 @@ public class MenuManager : MonoBehaviour
         {
             selectedModule = ' ';
             MSPanel.gameObject.SetActive(true);
-            TSPanel.gameObject.SetActive(false);
+            //TSPanel.gameObject.SetActive(false);
+            TSPanel.gameObject.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
         }
     }
 
@@ -165,10 +184,12 @@ public class MenuManager : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name == "Module Selection Scene")
             {
-                if (TSPanel.activeSelf)
+                if (TSPanel.GetComponent<RectTransform>().localScale == new Vector3(1, 1, 1))
                 {
-                    MSPanel.gameObject.SetActive(true);
-                    TSPanel.gameObject.SetActive(false);
+                    //MSPanel.gameObject.SetActive(true);
+                    //TSPanel.gameObject.SetActive(false);
+                    MSPanel.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+                    TSPanel.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
                     moduleChanger.ResetModuleValues();
                     selectedModule = ' ';
                 }
@@ -192,10 +213,17 @@ public class MenuManager : MonoBehaviour
         {
             SceneManager.LoadScene("Module Selection Scene");
             selectedModule = ' ';
+            moduleChanger.ResetModuleValues();
+            moduleChanger.Cardio_ON = false;
+            moduleChanger.MetCart_ON = false;
+            moduleChanger.PV_ON = false;
+            moduleChanger.Custom_ON = false;
             selectedTemplate = ' ';
 
-            MSPanel.gameObject.SetActive(true);
-            TSPanel.gameObject.SetActive(false);
+            //MSPanel.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+            //TSPanel.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+            //MSPanel.gameObject.SetActive(true);
+            //TSPanel.gameObject.SetActive(false);
         }
     }
 

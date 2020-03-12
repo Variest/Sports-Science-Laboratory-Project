@@ -257,7 +257,7 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     {
         for (int i = 0; i < 10; i++)
         {
-            nameBoxText[i] = custom_module.nameBoxes[i];
+            nameBoxText[i] = MetCart_module.nameBoxes[i];
             moduleTextObject = GameObject.FindGameObjectWithTag("Module_Text_Box");
             moduleNameText = moduleTextObject.GetComponent<Text>();
             moduleNameText.text = "Metabolic Cart"; 
@@ -347,9 +347,10 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     }
     void PvUpdate()
     {
+        
         for (int i = 0; i < 10; i++)
         {
-            nameBoxText[i] = custom_module.nameBoxes[i];
+            nameBoxText[i] = Pv_module.nameBoxes[i];
             moduleTextObject = GameObject.FindGameObjectWithTag("Module_Text_Box"); //changes the value present inside the name box at the top of the main scene
             moduleNameText = moduleTextObject.GetComponent<Text>();
             moduleNameText.text = "Pulmonary Vents";
@@ -422,7 +423,7 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     {
         for (int i = 0; i < 10; i++)
         {
-            nameBoxText[i] = custom_module.nameBoxes[i];
+            nameBoxText[i] = Cardio_Module.nameBoxes[i];
             moduleTextObject = GameObject.FindGameObjectWithTag("Module_Text_Box");
             moduleNameText = moduleTextObject.GetComponent<Text>();
             moduleNameText.text = "Cardio";
