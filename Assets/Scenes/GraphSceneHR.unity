@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16789784, g: 0.7264151, b: 0.64461344, a: 1}
+  m_Color: {r: 0.78431374, g: 0.9529412, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -755,6 +755,7 @@ MonoBehaviour:
   recalcCARDIO: 1
   resetLUNG: 0
   resetGRAPHHR: 0
+  resetGRAPHLUNG: 0
   FPS: 0
 --- !u!114 &975919263
 MonoBehaviour:
@@ -1076,8 +1077,11 @@ MonoBehaviour:
   TLC: 0
   VC: 0
   EILV: 0
+  BEILV: 0
   EELV: 0
+  BEELV: 0
   VT: 0
+  DH: 0
 --- !u!114 &975919272
 MonoBehaviour:
   m_ObjectHideFlags: 0
