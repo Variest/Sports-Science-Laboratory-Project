@@ -2,6 +2,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CharacterCustomiser : UIHiding
@@ -122,9 +123,17 @@ public class CharacterCustomiser : UIHiding
 
     void SliderToggle()
     {
-        SliderPanel.gameObject.SetActive(true);
-        GenderPanel.gameObject.SetActive(false);
-        RacePanel.gameObject.SetActive(false);
+        if (SliderPanel.gameObject.activeInHierarchy == false)
+        {
+            SliderPanel.gameObject.SetActive(true);
+            GenderPanel.gameObject.SetActive(false);
+            RacePanel.gameObject.SetActive(false);
+        }
+        else
+        {
+            SceneManager.LoadScene("Module Selection Scene");
+        }
+        
     }
 
     void MaleChanger()

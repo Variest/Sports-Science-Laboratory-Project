@@ -62,7 +62,6 @@ public class TestInput : MonoBehaviour {
     public Text StopwatchHours;
     public Button playPause;
     public Button reset;
-<<<<<<< HEAD
     public Button increaseTimeSpeed;
     public Button decreaseTimeSpeed;
     private bool play = false;
@@ -77,10 +76,8 @@ public class TestInput : MonoBehaviour {
     private int minutesInt;
     double hourRounder;
     private int hoursInt;
-=======
-    private bool play = false;
+    public Text Popup;
 
->>>>>>> refs/remotes/origin/master
     public int functionChosen; //int value depending on which function you are trying to find the answer to
     // Use this for initialization
     void Start () {
@@ -91,7 +88,7 @@ public class TestInput : MonoBehaviour {
         {
             customModule.textBoxes[i] = inputFields[i];
             customModule.nameBoxes[i] = nameBoxes[i];
-            Debug.Log(customModule.nameBoxText[i]);
+            //Debug.Log(customModule.nameBoxText[i]);
            
         }
         resultField = GetComponent<Text>();
@@ -117,6 +114,7 @@ public class TestInput : MonoBehaviour {
         reset.onClick.AddListener(Reset);
         increaseTimeSpeed.onClick.AddListener(plusTime);
         decreaseTimeSpeed.onClick.AddListener(minusTime);
+        Popup.GetComponent<Text>();
     }
 	
 	// Update is called once per frame
@@ -124,14 +122,12 @@ public class TestInput : MonoBehaviour {
 
         if(play == true)
         {
-<<<<<<< HEAD
             calculateTime();
             System.Math.Floor(hourRounder);
             System.Math.Floor(minuteRounder);
-            Stopwatch.text = seconds.ToString("00.00");
+            Stopwatch.text = remainingSeconds.ToString("00.00");
             StopwatchMinutes.text = minutesInt.ToString("00");
             StopwatchHours.text = hoursInt.ToString("00");
-=======
             testtime += Time.deltaTime;//constantly updates testtime based off of runtime.
             customModule.timeElapsed = testtime;
             Stopwatch.text = testtime.ToString("0.00");
@@ -141,8 +137,7 @@ public class TestInput : MonoBehaviour {
         for (int i = 0; i < 10; i++)
         {
             customModule.nameBoxes[i].text = customModule.nameBoxText[i];
-            Debug.Log(customModule.nameBoxText[i]);
->>>>>>> refs/remotes/origin/master
+            //Debug.Log(customModule.nameBoxText[i]);
         }
     }
 
@@ -171,14 +166,12 @@ public class TestInput : MonoBehaviour {
         minuteRounder = (double)minutes;
         minutesInt = (int)minuteRounder;
 
-        remainingSeconds = remainingSeconds % secondsInMinute;
-        seconds = remainingSeconds;
+        remainingSeconds %= secondsInMinute;
     }
 
     void Reset()
     {
         testtime = 0;
-<<<<<<< HEAD
         minuteRounder = 0;
         hourRounder = 0;
         timerCalculations = 0;
@@ -196,23 +189,29 @@ public class TestInput : MonoBehaviour {
 
     void plusTime()
     {
-        timeSpeed = timeSpeed + 1f;
+        timeSpeed = timeSpeed * 2;
         Debug.Log(timeSpeed);
+        StartCoroutine(WaitFor2());
     }
 
     void minusTime()
     {
-        timeSpeed = timeSpeed - 1f;
+        timeSpeed = timeSpeed / 2;
         Debug.Log(timeSpeed);
-=======
-        for (int i = 0; i < 10; i++)
+        StartCoroutine(WaitFor2());
+        /*for (int i = 0; i < 10; i++)
         {
             inputFields[i].text = "";
-        }
-    
-
->>>>>>> refs/remotes/origin/master
+        }*/
     }
+
+    IEnumerator WaitFor2()
+    {
+        Popup.text = timeSpeed.ToString("00.00");
+        yield return new WaitForSecondsRealtime(2);
+        Popup.text = "";
+    }
+
     public void Calculate()
     {
         //float temp1 = float.Parse(box1.text);
