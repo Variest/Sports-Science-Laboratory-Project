@@ -32,9 +32,20 @@ public class MenuManager : MonoBehaviour
     public GameObject CAPanel;
     public GameObject MAPanel;
 
+    public static MenuManager menuInstance;
+
     public void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        //if (menuInstance == null)
+        //{
+        //    menuInstance = this;
+        //}
+        //else
+        //{
+        //    DestroyObject(gameObject);
+
+        //}
         avatarHolder = GameObject.FindGameObjectWithTag("Avatar_Holder"); //gets a reference for the persistent game object representing the avatar
         moduleChanger = avatarHolder.GetComponent<Custom_Module_To_New_Scene>(); //gets the persistent module changing code
     }
@@ -76,6 +87,7 @@ public class MenuManager : MonoBehaviour
         {
             selectedModule = 'P';
             moduleChanger.PV_ON = true;
+            moduleChanger.Advanced_ON = true;
             MSPanel.gameObject.SetActive(false);
             TSPanel.gameObject.SetActive(true);
         }
@@ -87,6 +99,7 @@ public class MenuManager : MonoBehaviour
         {
             selectedModule = 'C';
             moduleChanger.Cardio_ON = true;
+            moduleChanger.Advanced_ON = true;
             MSPanel.gameObject.SetActive(false);
             TSPanel.gameObject.SetActive(true);
         }
@@ -94,19 +107,35 @@ public class MenuManager : MonoBehaviour
 
     public void GoToTemplateSelection3()
     { 
-            if (isMetabolicModule)
+        if (isMetabolicModule)
         {
             selectedModule = 'M';
             moduleChanger.MetCart_ON = true;
+            
             MSPanel.gameObject.SetActive(false);
             TSPanel.gameObject.SetActive(true);
         }
     }
 
+    public void SetBasic()
+    {
+        moduleChanger.Basic_ON = true;
+        SceneManager.LoadScene("Main Scene");
+    }
+    //public void SetAdvanced()
+    //{
+    //    moduleChanger.Advanced_ON = true;
+    //    SceneManager.LoadScene("MainScene");
+    //}
     public void GoToVariables()
     {
         if(isVariables)
         {
+            if(selectedModule != 'C' && selectedModule != 'M' && selectedModule != 'P')
+            {
+                moduleChanger.Custom_ON = true;
+            }
+            moduleChanger.Advanced_ON = true;
             SceneManager.LoadScene("Variables Scene");
         }
     }
@@ -140,16 +169,19 @@ public class MenuManager : MonoBehaviour
                 {
                     MSPanel.gameObject.SetActive(true);
                     TSPanel.gameObject.SetActive(false);
+                    moduleChanger.ResetModuleValues();
                     selectedModule = ' ';
                 }
                 else
                 {
                     SceneManager.LoadScene("Main Menu Scene");
+                    moduleChanger.ResetModuleValues();
                 }
             }
             else
             {
                 SceneManager.LoadScene("Main Menu Scene");
+                moduleChanger.ResetModuleValues();
             }
         }
     }

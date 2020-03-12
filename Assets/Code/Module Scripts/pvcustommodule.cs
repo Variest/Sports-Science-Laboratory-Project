@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class pvcustommodule : MonoBehaviour
 {
     public Text[] textBoxes = new Text[10];
+    public string[] textBoxContent = new string[10];
     public string[] nameBoxes = new string[10];
     /*
   
@@ -71,7 +72,10 @@ public class pvcustommodule : MonoBehaviour
     {
         avatar = avatarHolder.GetComponent<CharacterAvatar>();
         //add listening events to each one of the toggle boxes 
-       
+        for(int i = 0; i < 10; i++)
+        {
+            BoxValue.Add(0);
+        }
        
 
     }
@@ -79,7 +83,7 @@ public class pvcustommodule : MonoBehaviour
     public void AttachButtons()
     {
         //get the buttons from the UI 
-
+        Debug.Log("Buttons attached");
         //add the onlick events to the buttons
         FVC_button.onClick.AddListener(ClickedFVCToggle);
         FEV1_button.onClick.AddListener(ClickedFEV1Toggle);
@@ -164,6 +168,7 @@ public class pvcustommodule : MonoBehaviour
     }
     private void ClickedFVCToggle()
     {
+        Debug.Log("Hey this is kinda quirky tho :>>>");
         if (!FVC_toggled)
         {
 
@@ -175,11 +180,12 @@ public class pvcustommodule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 1;
-
-                        textBoxes[i].text = avatar.FVC.ToString();
+                        textBoxContent[i] = avatar.FVC.ToString();
+                        //textBoxes[i].text = avatar.FVC.ToString();
                         nameBoxes[i] = "FVC ";
                         filledBoxes[i] = true;
                         FVC_toggled = true;
+                        FVC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
 
                     }
 
@@ -197,10 +203,12 @@ public class pvcustommodule : MonoBehaviour
                 if (BoxValue[i] == 1)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FVC_toggled = false;
+                    FVC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -221,12 +229,12 @@ public class pvcustommodule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 2;
-
-                        textBoxes[i].text = avatar.FEV1.ToString();
+                        textBoxContent[i] = avatar.FEV1.ToString();
+                        //textBoxes[i].text = avatar.FEV1.ToString();
                         nameBoxes[i] = "FEV1 ";
                         filledBoxes[i] = true;
                         FEV1_toggled = true;
-
+                        FEV1_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -243,10 +251,12 @@ public class pvcustommodule : MonoBehaviour
                 if (BoxValue[i] == 2)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEV1_toggled = false;
+                    FEV1_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -267,12 +277,12 @@ public class pvcustommodule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 3;
-
-                        textBoxes[i].text = avatar.FEV1FVC.ToString();
+                        textBoxContent[i] = avatar.FEV1FVC.ToString();
+                        //textBoxes[i].text = avatar.FEV1FVC.ToString();
                         nameBoxes[i] = "FEV1FVC ";
                         filledBoxes[i] = true;
                         FEV1FVC_toggled = true;
-
+                        FEV1FVC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -289,10 +299,12 @@ public class pvcustommodule : MonoBehaviour
                 if (BoxValue[i] == 3)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEV1FVC_toggled = false;
+                    FEV1FVC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -313,11 +325,12 @@ public class pvcustommodule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 4;
-
-                        textBoxes[i].text = avatar.PEF.ToString();
+                        textBoxContent[i] = avatar.PEF.ToString();
+                        //textBoxes[i].text = avatar.PEF.ToString();
                         nameBoxes[i] = "PEF ";
                         filledBoxes[i] = true;
                         PEF_toggled = true;
+                        PEF_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
 
                     }
 
@@ -335,10 +348,12 @@ public class pvcustommodule : MonoBehaviour
                 if (BoxValue[i] == 4)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PEF_toggled = false;
+                    PEF_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -359,12 +374,12 @@ public class pvcustommodule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 5;
-
-                        textBoxes[i].text = avatar.PIF.ToString();
+                        textBoxContent[i] = avatar.PIF.ToString();
+                        //textBoxes[i].text = avatar.PIF.ToString();
                         nameBoxes[i] = "PIF ";
                         filledBoxes[i] = true;
                         PIF_toggled = true;
-
+                        PIF_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -381,10 +396,12 @@ public class pvcustommodule : MonoBehaviour
                 if (BoxValue[i] == 5)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PIF_toggled = false;
+                    PIF_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -405,12 +422,12 @@ public class pvcustommodule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 6;
-
-                        textBoxes[i].text = avatar.PImax.ToString();
+                        textBoxContent[i] = avatar.PImax.ToString();
+                        //textBoxes[i].text = avatar.PImax.ToString();
                         nameBoxes[i] = "PImax ";
                         filledBoxes[i] = true;
                         PImax_toggled = true;
-
+                        PImax_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -427,10 +444,12 @@ public class pvcustommodule : MonoBehaviour
                 if (BoxValue[i] == 6)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PImax_toggled = false;
+                    PImax_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -451,11 +470,12 @@ public class pvcustommodule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 7;
-
-                        textBoxes[i].text = avatar.PEmax.ToString();
+                        textBoxContent[i] = avatar.PEmax.ToString();
+                        //textBoxes[i].text = avatar.PEmax.ToString();
                         nameBoxes[i] = "PEmax ";
                         filledBoxes[i] = true;
                         PEmax_toggled = true;
+                        PEmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
 
                     }
 
@@ -473,10 +493,12 @@ public class pvcustommodule : MonoBehaviour
                 if (BoxValue[i] == 7)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     PEmax_toggled = false;
+                    PEmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -497,12 +519,12 @@ public class pvcustommodule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 8;
-
-                        textBoxes[i].text = avatar.Vecap.ToString();
+                        textBoxContent[i] = avatar.Vecap.ToString();
+                        //textBoxes[i].text = avatar.Vecap.ToString();
                         nameBoxes[i] = "VEcap ";
                         filledBoxes[i] = true;
                         VECap_toggled = true;
-
+                        VECap_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -519,10 +541,12 @@ public class pvcustommodule : MonoBehaviour
                 if (BoxValue[i] == 8)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VECap_toggled = false;
+                    VECap_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -543,12 +567,12 @@ public class pvcustommodule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 9;
-
-                        textBoxes[i].text = avatar.ERV.ToString();
+                        textBoxContent[i] = avatar.ERV.ToString();
+                        //textBoxes[i].text = avatar.ERV.ToString();
                         nameBoxes[i] = "ERV ";
                         filledBoxes[i] = true;
                         ERV_toggled = true;
-
+                        ERV_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -565,10 +589,12 @@ public class pvcustommodule : MonoBehaviour
                 if (BoxValue[i] == 9)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     ERV_toggled = false;
+                    ERV_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -589,12 +615,12 @@ public class pvcustommodule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 10;
-
-                        textBoxes[i].text = avatar.FRC.ToString();
+                        textBoxContent[i] = avatar.FRC.ToString();
+                        //textBoxes[i].text = avatar.FRC.ToString();
                         nameBoxes[i] = "FRC ";
                         filledBoxes[i] = true;
                         FRC_toggled = true;
-
+                        FRC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -611,10 +637,12 @@ public class pvcustommodule : MonoBehaviour
                 if (BoxValue[i] == 10)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     FRC_toggled = false;
+                    FRC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -635,12 +663,12 @@ public class pvcustommodule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 11;
-
-                        textBoxes[i].text = avatar.IC.ToString();
+                        textBoxContent[i] = avatar.IC.ToString();
+                        //textBoxes[i].text = avatar.IC.ToString();
                         nameBoxes[i] = "IC";
                         filledBoxes[i] = true;
                         IC_toggled = true;
-
+                        IC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -657,10 +685,12 @@ public class pvcustommodule : MonoBehaviour
                 if (BoxValue[i] == 11)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     IC_toggled = false;
+                    IC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -681,12 +711,12 @@ public class pvcustommodule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 12;
-
-                        textBoxes[i].text = avatar.IRV.ToString();
+                        textBoxContent[i] = avatar.IRV.ToString();
+                        //textBoxes[i].text = avatar.IRV.ToString();
                         nameBoxes[i] = "IRV ";
                         filledBoxes[i] = true;
                         IRV_toggled = true;
-
+                        IRV_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -703,10 +733,12 @@ public class pvcustommodule : MonoBehaviour
                 if (BoxValue[i] == 12)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     IRV_toggled = false;
+                    IRV_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -727,12 +759,12 @@ public class pvcustommodule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 13;
-
-                        textBoxes[i].text = avatar.RV.ToString();
+                        textBoxContent[i] = avatar.RV.ToString();
+                        //textBoxes[i].text = avatar.RV.ToString();
                         nameBoxes[i] = "RV ";
                         filledBoxes[i] = true;
                         RV_toggled = true;
-
+                        RV_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -749,10 +781,12 @@ public class pvcustommodule : MonoBehaviour
                 if (BoxValue[i] == 13)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     RV_toggled = false;
+                    RV_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -773,12 +807,12 @@ public class pvcustommodule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 14;
-
-                        textBoxes[i].text = avatar.TLC.ToString();
+                        textBoxContent[i] = avatar.TLC.ToString();
+                        //textBoxes[i].text = avatar.TLC.ToString();
                         nameBoxes[i] = "TLC ";
                         filledBoxes[i] = true;
                         TLC_toggled = true;
-
+                        TLC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -795,10 +829,12 @@ public class pvcustommodule : MonoBehaviour
                 if (BoxValue[i] == 14)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     TLC_toggled = false;
+                    TLC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
@@ -819,12 +855,12 @@ public class pvcustommodule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 15;
-
-                        textBoxes[i].text = avatar.VC.ToString();
+                        textBoxContent[i] = avatar.VC.ToString();
+                        //textBoxes[i].text = avatar.VC.ToString();
                         nameBoxes[i] = "VC ";
                         filledBoxes[i] = true;
                         VC_toggled = true;
-
+                        VC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                     }
 
 
@@ -841,15 +877,46 @@ public class pvcustommodule : MonoBehaviour
                 if (BoxValue[i] == 15)
                 {
                     filledBoxes[i] = false;
-                    textBoxes[i].text = "";
+                    textBoxContent[i] = "";
+                    //textBoxes[i].text = "";
                     nameBoxes[i] = "";
                     BoxValue[i] = 0;
                     VC_toggled = false;
+                    VC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }
 
 
         }
+
+    }
+    public void ResetAllValues() //reset every value in order to start from a clean state
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            filledBoxes[i] = false;
+            textBoxContent[i] = "";
+            nameBoxes[i] = "";
+            BoxValue[i] = 0;
+
+        }
+        FVC_toggled = false; //stops every single box from being filled by a single variable each time
+        FEV1FVC_toggled = false;
+        PEF_toggled = false;
+        PIF_toggled = false;
+        PImax_toggled = false;
+        PEmax_toggled = false;
+        VECap_toggled = false;
+        ERV_toggled = false;
+        FRC_toggled = false;
+        IC_toggled = false;
+        IRV_toggled = false;
+        RV_toggled = false;
+        TLC_toggled = false;
+        VC_toggled = false;
+
+
+
 
     }
 }

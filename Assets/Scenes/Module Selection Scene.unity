@@ -1721,7 +1721,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 659249916}
-        m_MethodName: GoToMain
+        m_MethodName: SetBasic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

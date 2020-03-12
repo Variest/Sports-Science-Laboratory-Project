@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -276,8 +277,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 30
@@ -476,8 +475,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &371032202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,8 +493,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -571,8 +566,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 50
@@ -650,8 +643,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
@@ -729,8 +720,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
@@ -869,8 +858,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
@@ -948,8 +935,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -1061,8 +1046,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1231706168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1081,8 +1064,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -1157,8 +1138,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -1236,8 +1215,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -1338,6 +1315,7 @@ GameObject:
   - component: {fileID: 1675852402}
   - component: {fileID: 1675852401}
   - component: {fileID: 1675852400}
+  - component: {fileID: 1675852408}
   m_Layer: 0
   m_Name: Avatar_Holder
   m_TagString: Avatar_Holder
@@ -1357,6 +1335,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d5bafb54a40b1f4eb199ba37bc7f4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textBoxContent:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   textBoxes:
   - {fileID: 0}
   - {fileID: 0}
@@ -1379,28 +1368,6 @@ MonoBehaviour:
   - 
   - 
   - 
-  ToggleVE: {fileID: 0}
-  ToggleVT: {fileID: 0}
-  ToggleVO2: {fileID: 0}
-  ToggleVCO2: {fileID: 0}
-  ToggleFr: {fileID: 0}
-  ToggleMET: {fileID: 0}
-  ToggleFc: {fileID: 0}
-  ToggleRER: {fileID: 0}
-  ToggleVEVO2: {fileID: 0}
-  ToggleVEVCO2: {fileID: 0}
-  TogglePETCO2: {fileID: 0}
-  TogglePETO2: {fileID: 0}
-  ToggleTE: {fileID: 0}
-  ToggleTI: {fileID: 0}
-  ToggleTITE: {fileID: 0}
-  ToggleTToT: {fileID: 0}
-  ToggleVO2FR: {fileID: 0}
-  ToggleVO2FC: {fileID: 0}
-  ToggleSpO2: {fileID: 0}
-  ToggleFcmax: {fileID: 0}
-  ToggleFcres: {fileID: 0}
-  ToggleEE: {fileID: 0}
   VE_button: {fileID: 0}
   VT_button: {fileID: 0}
   VO2_button: {fileID: 0}
@@ -1472,6 +1439,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  textBoxContent:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   nameBoxes:
   - 
   - 
@@ -1529,6 +1507,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ceeb2b34913f143975ef9d32ec74c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textBoxContent:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   textBoxes:
   - {fileID: 0}
   - {fileID: 0}
@@ -1671,6 +1660,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  textBoxContent:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   nameBoxes:
   - 
   - 
@@ -1742,11 +1742,30 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  nameBoxText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  custom_module: {fileID: 0}
+  MetCart_module: {fileID: 0}
+  Pv_module: {fileID: 0}
+  Cardio_Module: {fileID: 0}
+  testEquations: {fileID: 0}
   Custom_ON: 0
   MetCart_ON: 0
   PV_ON: 0
   Cardio_ON: 0
   Advanced_ON: 0
+  Basic_ON: 0
+  Timer_ON: 0
+  Update_ON: 0
 --- !u!114 &1675852405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1851,6 +1870,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a396284f2fbde214fab5724a69207ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1675852408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675852399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0899e9cd136cfb8499801d5576565c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avatar: {fileID: 0}
+  TI: 0
+  TE: 0
+  TITE: 0
+  breathTime: 0
+  FECO2: 0
+  FICO2: 0
+  FEO2: 0
+  FIO2: 0
+  veATPS: 0
+  veSTPD: 0
+  veBTPS: 0
+  VE: 0
+  VT: 0
+  MET: 0
+  VI: 0
+  VO2: 0
+  VO2maxAge: 0
+  VO2maxHeight: 0
+  VO2maxWeight: 0
+  VO2fr: 0
+  VCO2: 0
+  EPOC: 0
+  PETCO2: 0
+  PETO2: 0
+  fr: 0
+  RER: 0
+  RQ: 0
+  Vecap: 0
+  VeVO2: 0
+  VeVCO2: 0
+  Ttot: 0
+  W: 0
 --- !u!1 &2043131410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,8 +2008,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &2043131413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1964,8 +2026,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0

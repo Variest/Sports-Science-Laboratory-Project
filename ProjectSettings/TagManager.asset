@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Avatar_Holder
+  - Button_Holder
+  - Result_Field
+  - Module_Text_Box
   layers:
   - Default
   - TransparentFX
