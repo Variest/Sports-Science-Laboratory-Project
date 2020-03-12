@@ -901,6 +901,7 @@ public class pvcustommodule : MonoBehaviour
 
         }
         FVC_toggled = false; //stops every single box from being filled by a single variable each time
+        FEV1_toggled = false;
         FEV1FVC_toggled = false;
         PEF_toggled = false;
         PIF_toggled = false;
