@@ -20,7 +20,7 @@ public class Timer : MonoBehaviour
     public Stopwatch moments = new Stopwatch(); //every ten seconds, used for loops etc. automated.
 
     float seconds = 5000f; //in milliseconds
-    public float speedup = 1.0f;
+    public int speedup = 1;
 
     public bool Begin = false; //use this when you get a button for it
     public bool resetHEAT = true;

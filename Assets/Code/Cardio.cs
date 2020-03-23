@@ -173,13 +173,16 @@ public class Cardio : MonoBehaviour
 
     void BPsTargfunction()
     {
-        if (character.gender == 1) //male
+        switch(character.gender)
         {
-            BPsTarg = (0.346f * exercise.BodyWork);
-        }
-        else if (character.gender == 0) //female
-        {
-            BPsTarg = (0.103f * exercise.BodyWork);
+            case 1: //M         
+                BPsTarg = (0.346f * exercise.BodyWork);
+                break;
+            case 0: //F  
+                BPsTarg = (0.103f * exercise.BodyWork);
+                break;
+            default:
+                break;
         }
 
         if (BPsTarg < BPsBase)
