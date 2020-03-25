@@ -11617,7 +11617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -238.05, y: -14.149998}
+  m_AnchoredPosition: {x: -154, y: -14.15}
   m_SizeDelta: {x: 476.1, y: 650.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1262603164
@@ -16591,6 +16591,8 @@ MonoBehaviour:
   isBackMainMenu: 0
   isBackModules: 1
   isModuleVariable: 0
+  avatarHolder: {fileID: 0}
+  moduleChanger: {fileID: 0}
   TSPanel: {fileID: 0}
   MSPanel: {fileID: 0}
   CPanel: {fileID: 0}
