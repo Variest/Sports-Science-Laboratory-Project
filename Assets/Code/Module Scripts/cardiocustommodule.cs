@@ -12,6 +12,7 @@ public class cardiocustommodule : MonoBehaviour
     public Text[] textBoxes = new Text[10];
     public string[] textBoxContent = new string[10];
     public string[] nameBoxes = new string[10];
+    public string[] popupBoxes = new string[10];
     /*
      * fc
      * vo2fc
@@ -253,6 +254,7 @@ public class cardiocustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.fc.ToString();
                         //textBoxes[i].text = avatar.fc.ToString();
                         nameBoxes[i] = "fc ";
+                        popupBoxes[i] = "Heart Rate";
                         filledBoxes[i] = true;
                         fc_toggled = true;
                         fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -276,6 +278,7 @@ public class cardiocustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     fc_toggled = false;
@@ -303,6 +306,7 @@ public class cardiocustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.VO2fc.ToString();
                         //textBoxes[i].text = avatar.VO2fc.ToString();
                         nameBoxes[i] = "vo2fc ";
+                        popupBoxes[i] = "Oxygen Pulse";
                         filledBoxes[i] = true;
                         vo2fc_toggled = true;
                         vo2fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -326,6 +330,7 @@ public class cardiocustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     vo2fc_toggled = false;
                     vo2fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -352,6 +357,7 @@ public class cardiocustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.MAP.ToString();
                         //textBoxes[i].text = avatar.MAP.ToString();
                         nameBoxes[i] = "MAP ";
+                        popupBoxes[i] = "Mean Arterial Pressure";
                         filledBoxes[i] = true;
                         MAP_toggled = true;
                         MAP_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -374,6 +380,7 @@ public class cardiocustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     MAP_toggled = false;
                     MAP_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -400,6 +407,7 @@ public class cardiocustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.FCmax.ToString();
                         //textBoxes[i].text = avatar.FCmax.ToString();
                         nameBoxes[i] = "fcmax ";
+                        popupBoxes[i] = "Maximum Heart Rate";
                         filledBoxes[i] = true;
                         fcmax_toggled = true;
                         fcmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -423,6 +431,7 @@ public class cardiocustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     fcmax_toggled = false;
                     fcmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -449,6 +458,7 @@ public class cardiocustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.Bla.ToString();
                         //textBoxes[i].text = avatar.Bla.ToString();
                         nameBoxes[i] = "bla ";
+                        popupBoxes[i] = "Blood Lactate";
                         filledBoxes[i] = true;
                         bla_toggled = true;
                         bla_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -471,6 +481,7 @@ public class cardiocustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     bla_toggled = false;
                     bla_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -497,6 +508,7 @@ public class cardiocustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.CO.ToString();
                         //textBoxes[i].text = avatar.CO.ToString();
                         nameBoxes[i] = "CO ";
+                        popupBoxes[i] = "Cardiac Output";
                         filledBoxes[i] = true;
                         CO_toggled = true;
                         CO_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -519,6 +531,7 @@ public class cardiocustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     CO_toggled = false;
                     CO_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -545,6 +558,7 @@ public class cardiocustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.BPd.ToString();
                         //textBoxes[i].text = avatar.BPd.ToString();
                         nameBoxes[i] = "BPd ";
+                        popupBoxes[i] = "Diastolic Blood Pressure";
                         filledBoxes[i] = true;
                         BPd_toggled = true;
                         BPd_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -567,6 +581,7 @@ public class cardiocustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     BPd_toggled = false;
                     BPd_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -593,6 +608,7 @@ public class cardiocustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.BPs.ToString();
                         //textBoxes[i].text = avatar.BPs.ToString();
                         nameBoxes[i] = "BPs ";
+                        popupBoxes[i] = "Systolic Blood Pressure";
                         filledBoxes[i] = true;
                         BPs_toggled = true;
                         BPs_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -615,6 +631,7 @@ public class cardiocustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     BPs_toggled = false;
                     BPs_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -641,6 +658,7 @@ public class cardiocustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.SV.ToString();
                         //textBoxes[i].text = avatar.SV.ToString();
                         nameBoxes[i] = "SV ";
+                        popupBoxes[i] = "Stroke Volume";
                         filledBoxes[i] = true;
                         SV_toggled = true;
                         SV_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -663,6 +681,7 @@ public class cardiocustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     SV_toggled = false;
                     SV_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -689,6 +708,7 @@ public class cardiocustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.FCres.ToString();
                         //textBoxes[i].text = avatar.FCres.ToString();
                         nameBoxes[i] = "fcres ";
+                        popupBoxes[i] = "Heart Rate Reserve";
                         filledBoxes[i] = true;
                         fcres_toggled = true;
                         fcres_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -711,6 +731,7 @@ public class cardiocustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     fcres_toggled = false;
                     fcres_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -737,6 +758,7 @@ public class cardiocustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.SpO2.ToString();
                         //textBoxes[i].text = avatar.SpO2.ToString();
                         nameBoxes[i] = "SPO2 ";
+                        popupBoxes[i] = "Oxyheamoglobin Saturation Measured by Pulse Oximetry";
                         filledBoxes[i] = true;
                         SpO2_toggled = true;
                         SpO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -759,6 +781,7 @@ public class cardiocustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     SpO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     SpO2_toggled = false;
@@ -777,6 +800,7 @@ public class cardiocustommodule : MonoBehaviour
             filledBoxes[i] = false;
             textBoxContent[i] = "";
             nameBoxes[i] = "";
+            popupBoxes[i] = "";
             BoxValue[i] = 0;
 
         }
