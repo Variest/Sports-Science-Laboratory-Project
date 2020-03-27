@@ -12,7 +12,7 @@ public class Cardio : MonoBehaviour
     public float BPs; //I/M systolic blood pressure 	INPUT, and we have a DECENT way of modelling it;
     public float MAP; //CA mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
     public float HR; //M heart rate -					measured, but we have a decent way of calculating it;
-    public float HRmax; //CB heart rate maximum =		(220-age)
+    public float HRmax = 220; //CB heart rate maximum =		(220-age)
     public float OP; //CA oxygen pulse =				VO2/HR   
 
     //MEDIUM MODULE
@@ -68,15 +68,6 @@ public class Cardio : MonoBehaviour
         exercise = GetComponent<Exercise>();
         timer = GetComponent<Timer>();
         graph = GetComponent<GraphScriptHR>();
-
-        //
-        HRmax = 220;
-        HRrestfunction(80);
-        BlaTfunction();
-        character.gender = 1;
-        character.weight = 50;
-        character.age = 20;
-        //
     }
 
     public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
@@ -91,6 +82,7 @@ public class Cardio : MonoBehaviour
             //every time the work being done increases (when the timer mini resets)
             //a lot of things need to be recalculated (HR, BPs) and some other stuff too
             MathFunc();
+            HRmaxfunction();
             timer.resetCARDIO = false;
         }
 

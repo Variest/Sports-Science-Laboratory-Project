@@ -41,16 +41,11 @@ public class Exercise : MonoBehaviour
         heat = GetComponent<WaterVapourConversion>();
         timer = GetComponent<Timer>();
         customiser = GetComponent<CharacterAvatar>();
-
-        //
-        Modulefunc(2);
-        RPM = 20;
-        resistance = 5;
-        //
     }
 
     void Update()
     {
+        Modulefunc(Module);
         Workdonefunc();
     }
 
