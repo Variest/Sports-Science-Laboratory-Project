@@ -208,6 +208,8 @@ public class pvEquations : MonoBehaviour
         //VO2 = (VI * (FIO2 / 100)) - (veSTPD * (FEO2 / 100)); //values are divided by 100 as they must be expressed as decimals instead of percentages
         //v02 = VE STPD * (((1 - FEO2 - FECO2) /  (1-FIO2 - FICO2)) * FIO2) - (VE STPD * FEO2)
         avatar.VO2 = avatar.veSTPD * (((1 - avatar.FEO2 - avatar.FECO2) / (1 - avatar.FIO2 - avatar.FICO2)) * avatar.FIO2) - (avatar.veSTPD * avatar.FEO2); //equation including the VI calculation within it
+        ///avatar.VO2 = avatar.veSTPD * ((avatar.VI * avatar.FIO2) - (avatar.veSTPD * avatar.FEO2)); 
+
         return VO2;
     }
     

@@ -7,10 +7,8 @@ public class BodyHeat : MonoBehaviour
     BodyHeat(){ }
 
     //WATER
-    public float BodyWaterBase;
-    public float BodyWater;
+    public float customiser.BodyWaterBase;
     public float WaterDrunk = 1000; //DEFAULTS TO 1 LITRE, which is a normal amount
-    public float WaterPrcnt;
 
     //SWEAT
     public float SweatRate;
@@ -25,7 +23,6 @@ public class BodyHeat : MonoBehaviour
     public float HeatCapacity = 0.83f;
     public float KCAL = 4184; //4184 joules = 1KCAL
     public float metabolism = 85; //HUMAN METABOLISM TAKES 85W POWER CONSTANTLY
-    public float BodyTemp = 36.0f;
 
     public float heatDiff = 0;
     public float AirHC = 1.005f;
@@ -48,7 +45,8 @@ public class BodyHeat : MonoBehaviour
         exercise = GetComponent<Exercise>();
         time = GetComponent<Timer>();
         customiser = GetComponent<CharacterAvatar>();
-        bodywaterfunc();
+        customiser.BodyWaterfunc();
+        customiser.BodyTemp = 36.0f;
     }
 
     // Update is called once per frame
@@ -68,29 +66,29 @@ public class BodyHeat : MonoBehaviour
         HeatGain = ((exercise.HeatWork + metabolism) - CoolPower + AirHeat);
         if (HeatGain > 0)
         {
-            BodyTemp += (((HeatGain / KCAL) / customiser.weight) * (HeatCapacity * 10));
+            customiser.BodyTemp += (((HeatGain / KCAL) / customiser.weight) * (HeatCapacity * 10));
             //body temperature rise = how many KCAL's gained in heat energy/weight * HC coefficient (ten seconds)
             //if the temperature actually rises, check if it rose in a bad way
 
-            if (BodyTemp >= 37.0f)
+            if (customiser.BodyTemp >= 37.0f)
             {
                 //GETTING TIRED/SWEATY
                 MaxSweatRate = 1000;
                 HeatCond = 0;
 
-                if (BodyTemp >= 38.0f)
+                if (customiser.BodyTemp >= 38.0f)
                 {
                     //WOOZY, VERY SWEATY
                     MaxSweatRate = 2000;
                     HeatCond = 1;
 
-                    if (BodyTemp >= 39.0f)
+                    if (customiser.BodyTemp >= 39.0f)
                     {
                         //PROBABLY UNCONSCIOUS
                         MaxSweatRate = 3000;
                         HeatCond = 2;
 
-                        if (BodyTemp >= 40.0f)
+                        if (customiser.BodyTemp >= 40.0f)
                         {
                             //DEAD
                             HeatCond = 3;
@@ -105,7 +103,7 @@ public class BodyHeat : MonoBehaviour
     {
         if (heat.gasTemp > 0)
         {
-            heatDiff = (heat.gasTemp - BodyTemp);
+            heatDiff = (heat.gasTemp - customiser.BodyTemp);
             AirHeat = ((exercise.HeatWork * 0.15f) + (heatDiff * AirHC));
         }
     }
@@ -142,31 +140,31 @@ public class BodyHeat : MonoBehaviour
             }
         }
                 
-        BodyWater -= (SweatRate * 10); //this is calculated every ten seconds, so *10 
+        customiser.BodyWater -= (SweatRate * 10); //this is calculated every ten seconds, so *10 
         //EXPERIMENT WITH TURNING * 10 TO * 100 FOR INCREASED OUTPUT
-        //CHECKING BODYWATER NOW THAT IT IS DECREASED
+        //CHECKING customiser.BodyWater NOW THAT IT IS DECREASED
 
-        WaterPrcnt = (BodyWater / BodyWaterBase);
+        customiser.WaterPrcnt = (customiser.BodyWater / customiser.BodyWaterBase);
 
-        if(WaterPrcnt <= 0.97f)
+        if(customiser.WaterPrcnt <= 0.97f)
         {   
             //A BIT TIRED/THIRSTY
             sweatreserves = 0.9f;
             WaterCond = 1;
 
-            if(WaterPrcnt <= 0.93f)
+            if(customiser.WaterPrcnt <= 0.93f)
             {  
                 //DIZZY, SERIOUSLY TIRED
                 sweatreserves = 0.8f;
                 WaterCond = 2;   
                 
-                if(WaterPrcnt <= 0.9)
+                if(customiser.WaterPrcnt <= 0.9)
                 {   
                     //DANGEROUSLY EXHAUSTED
                     sweatreserves = 0.6f;
                     WaterCond = 3;   
                     
-                    if(WaterPrcnt <= 0.8)
+                    if(customiser.WaterPrcnt <= 0.8)
                     {
                         //DEAD
                         sweatreserves = 0.5f;
@@ -182,18 +180,18 @@ public class BodyHeat : MonoBehaviour
         WaterDrunk = waterdrink;
     }
 
-    void bodywaterfunc()
+    void customiser.BodyWaterfunc()
     {
         switch (customiser.gender)
         {
             case 1:
-                BodyWater = ((customiser.weight * 0.60f) * 1000); //in millilitres - a man's body is 60% water
+                customiser.BodyWater = ((customiser.weight * 0.60f) * 1000); //in millilitres - a man's body is 60% water
                 break;
             case 0:
-                BodyWater = ((customiser.weight * 0.55f) * 1000); //a woman's body is 55% water
+                customiser.BodyWater = ((customiser.weight * 0.55f) * 1000); //a woman's body is 55% water
                 break;
     }
-        BodyWaterBase = BodyWater;
-        BodyWater += WaterDrunk;
+        customiser.BodyWaterBase = customiser.BodyWater;
+        customiser.BodyWater += WaterDrunk;
     }
 }

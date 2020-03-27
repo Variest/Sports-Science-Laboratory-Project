@@ -11,7 +11,7 @@ public class Cardio : MonoBehaviour
     public float BPd; //I diastolic blood pressure  	INPUT 
     public float BPs; //I/M systolic blood pressure 	INPUT, and we have a DECENT way of modelling it;
     public float MAP; //CA mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
-    public float HR; //M heart rate -					measured, but we have a decent way of calculating it;
+    public float HR; //M heart rate/fc -					measured, but we have a decent way of calculating it;
     public float HRmax; //CB heart rate maximum =		(220-age)
     public float OP; //CA oxygen pulse =				VO2/HR   
 

@@ -31,17 +31,6 @@ public class GraphScriptHR : MonoBehaviour
         circles = new GameObject[10];
         transforms = new RectTransform[10];
         GraphContainer = transform.Find("GraphContainer").GetComponent<RectTransform>();
-
-        //
-        //character.gender = 1;
-        //character.age = 20;
-        //timer.intervals = 10;
-        //timer.increase = 10;
-        //timer.limit = 100000;
-        //exercise.Module = 2;
-        //exercise.RPM = 20;
-        //exercise.resistance = 5;
-        //
     }
 
     // Update is called once per frame
