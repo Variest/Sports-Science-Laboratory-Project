@@ -62,8 +62,8 @@ public class pvEquations : MonoBehaviour
     [Space(10)]
     [Header("End-Tidal Partial Pressures")] //DUNNO
 
-    public float PETCO2; //end-tidal carbon dioxide partial pressure
-    public float PETO2; //end-tidal oxygen partial pressure
+    public float PETCO2; //end-tidal carbon dioxide partial pressure - ISNT THIS JUST FECO2?
+    public float PETO2; //end-tidal oxygen partial pressure - AND FEO2?
 
     [Space(10)]
     [Header("Respiratory variables")] //DEALT WITH
@@ -89,6 +89,7 @@ public class pvEquations : MonoBehaviour
     Exercise Exercise;
     Timer Timer;
     Lung Lungs;
+    WaterVapourConversion WV;
 
     // Start is called before the first frame update
     public void Start()
@@ -99,6 +100,7 @@ public class pvEquations : MonoBehaviour
         Timer = GetComponent<Timer>();
         Lungs = GetComponent<Lung>();
         avatar = GetComponent<CharacterAvatar>();
+        WV = GetComponent<WaterVapourConversion>();
 
         //SETTING FRAC. CONC. VARIABLES TO THE 'NORMAL' LEVELS
         avatar.FICO2 = 0.04f;
@@ -121,9 +123,9 @@ public class pvEquations : MonoBehaviour
         FECO2Func();
         FEO2Func();
         CalcVE();
-        CalcVeATPS(5,5);
-        CalcVeSTPD(1, 1, 1); 
-        CalcVeBTPS(1, 1, 1);
+        CalcVeATPS(Lungs.VT, avatar.breathTime);
+        CalcVeSTPD(760, WV.waterVapour, WV.gasTemp); 
+        CalcVeBTPS(760, WV.waterVapour, WV.gasTemp);
         calcVI();
         calcVCO2();
         OxygenConsumption();
@@ -178,7 +180,7 @@ public class pvEquations : MonoBehaviour
     public float FEO2Func()
     {
         avatar.FEO2 = ((FIO2) - (FECO2 + 0.15f));
-        //PERCENTAGE OF EXHALED 02 = INHALED 02-EXHALED 02 (+0.15 FOR BALANCE) 
+        //PERCENTAGE OF EXHALED 02 = INHALED 02-EXHALED C02 (+0.15 FOR BALANCE) 
         return avatar.FEO2;
     }
 
@@ -202,13 +204,14 @@ public class pvEquations : MonoBehaviour
     public float CalcVeSTPD(float Pb, float PH2O, float expTemp)
     {
         //PH2O will be calculated from the water vapour pressure table she gave us depending on the gas temperature present
-        avatar.veSTPD = avatar.veATPS * (((Pb - PH2O) / 760) * (273 / 273 + expTemp));
+        avatar.veSTPD = avatar.veATPS * (((Pb - PH2O) / 760) * (273 / (273 + expTemp)));
         return avatar.veSTPD;
     }
 
     public float CalcVeBTPS(float Pb, float PH2O, float expTemp)
     {
-        avatar.veBTPS = avatar.veATPS * ((Pb - PH2O) / (Pb - 47.08f) * (310f) / (273f + expTemp));
+        //pb is typically 760, ph20 is watervapour
+        avatar.veBTPS = avatar.veATPS * (((Pb - PH2O) / (Pb - 47.08f)) * ((310f) / (273f + expTemp)));
         return avatar.veBTPS;
     }
 
