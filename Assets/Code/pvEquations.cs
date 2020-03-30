@@ -20,7 +20,7 @@ public class pvEquations : MonoBehaviour
 
 
     [Space(10)]
-    [Header("Fractional Concentrations")] //ALMOST DEALT WITH
+    [Header("Fractional Concentrations")] //DEALT WITH
 
     public float FECO2; //fractional concentration of expired carbon dioxide
     float FECO2P; //THIS IS A PLACEHOLDER FOR CALCULATION
@@ -48,7 +48,7 @@ public class pvEquations : MonoBehaviour
     //ATPS relates to ambient temperature and pressure, saturated with water
 
     [Space(10)]
-    [Header("Oxygen Consumption")] //FUCK
+    [Header("Oxygen Consumption")] //DEALT WITH - EPOC IGNORED
 
     public float VI; //used to calculate some stuff idk
     public float VO2; //value for oxygen consumption
@@ -60,7 +60,7 @@ public class pvEquations : MonoBehaviour
     public float EPOC; //excess post-exercise oxygen consumption
 
     [Space(10)]
-    [Header("End-Tidal Partial Pressures")] //DUNNO
+    [Header("End-Tidal Partial Pressures")] //IS THE SAME AS FRAC. CONC.
 
     public float PETCO2; //end-tidal carbon dioxide partial pressure - ISNT THIS JUST FECO2?
     public float PETO2; //end-tidal oxygen partial pressure - AND FEO2?
@@ -73,7 +73,7 @@ public class pvEquations : MonoBehaviour
     public float RQ; //respiratory quotient
 
     [Space(10)]
-    [Header("Ventilatory variables")] //NOPE
+    [Header("Ventilatory variables")] //DEALT WITH
 
     public float Vecap; //ventilatory capacity
     public float VeVO2; //ventilatory equivalent for oxygen
@@ -211,7 +211,7 @@ public class pvEquations : MonoBehaviour
     public float CalcVeBTPS(float Pb, float PH2O, float expTemp)
     {
         //pb is typically 760, ph20 is watervapour
-        avatar.veBTPS = avatar.veATPS * (((Pb - PH2O) / (Pb - 47.08f)) * ((310f) / (273f + expTemp)));
+        avatar.veBTPS = avatar.veATPS * (((Pb - PH2O) / (Pb - 47.08f)) * (310f / (273f + expTemp)));
         return avatar.veBTPS;
     }
 
