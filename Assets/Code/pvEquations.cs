@@ -23,11 +23,14 @@ public class pvEquations : MonoBehaviour
     [Header("Fractional Concentrations")] //ALMOST DEALT WITH
 
     public float FECO2; //fractional concentration of expired carbon dioxide
+    float FECO2P; //THIS IS A PLACEHOLDER FOR CALCULATION
     public float FICO2; //fractional concentration of inspired carbon dioxide 
     public float FEO2; //fractional concentration of expired oxygen
+    float FEO2P; //ALSO A PLACEHOLDER
     public float FIO2; //fractional concentration of inspired oxygen
     //THESE ALL APPEAR TO BE FIXED AT AROUND
-    //FECO - 2.5-4.0, FEO - 16-18,
+    //FICO - 0.04, FIO - 20.95
+    //FECO - 4.4, FEO - 16.4 (THIS ONE GOES UP)
 
     [Space(10)]
     [Header("Minute Ventilation")] //DEALT WITH
@@ -96,6 +99,14 @@ public class pvEquations : MonoBehaviour
         Timer = GetComponent<Timer>();
         Lungs = GetComponent<Lung>();
         avatar = GetComponent<CharacterAvatar>();
+
+        //SETTING FRAC. CONC. VARIABLES TO THE 'NORMAL' LEVELS
+        avatar.FICO2 = 0.04f;
+        avatar.FIO2 = 20.95f;
+        FEO2P = 16.4f;
+        FECO2P = 4.4f;
+        FEO2 = FEO2P;
+        FECO2 = FECO2P;
     }
 
     public void Update()
@@ -107,6 +118,8 @@ public class pvEquations : MonoBehaviour
     {
         ExpireTime();
         InspireExpireRatio();
+        FECO2Func();
+        FEO2Func();
         CalcVE();
         CalcVeATPS(5,5);
         CalcVeSTPD(1, 1, 1); 
@@ -154,7 +167,20 @@ public class pvEquations : MonoBehaviour
 
                                     //FRAC. CONC. FUNCTIONS
 
+    public float FECO2Func()
+    {
+        FECO2 = (FECO2P + (((avatar.frMax) / (avatar.fr)) * FEO2P));
+        //PERC. OF EXHALED C02 = BASE EXHALED C02% + (HRMAX% OF EXHALED 02)
+        //EVENTUALLY, HUMANS PUT OUT 1:1 CO2:O2, THIS IS JUST MODELLING THAT
+        return avatar.FECO2;
+    }
 
+    public float FEO2Func()
+    {
+        avatar.FEO2 = ((FIO2) - (FECO2 + 0.15f));
+        //PERCENTAGE OF EXHALED 02 = INHALED 02-EXHALED 02 (+0.15 FOR BALANCE) 
+        return avatar.FEO2;
+    }
 
 
                                     //MINUTE VENTILATION FUNCTIONS

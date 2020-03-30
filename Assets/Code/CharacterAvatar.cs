@@ -87,6 +87,7 @@ public class CharacterAvatar : MonoBehaviour
     public float MAP; //mean arterial pressure
     public float BPd; //diastolic blood pressure -		PROBABLY INPUT - this tends not to change too much with exercise
     public float CO; //cardiac output
+    public float frMax; //max HR
     [Space(10)]
     [Header("Lung stuff")]
     public float FEV1; //forced expired volume in the first second of exhalation
