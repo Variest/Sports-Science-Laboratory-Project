@@ -217,10 +217,12 @@ public class Cardio : MonoBehaviour
                 break;
         }
         //backup
+
         if(HRtarg < HRrest)
         {
-            HRtarg = (HRrest + (0.1f * exercise.BodyWork));
+            HRtarg = (HRrest + (0.05f * exercise.BodyWork));
         }
+
         if(HRtarg > HRmax)
         {
             HRtarg = HRmax;

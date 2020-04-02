@@ -13,21 +13,21 @@ public class pvEquations : MonoBehaviour
     [Space(10)]
     [Header("Values used for inspiration and expiration of air")] //ALMOST DEALT WITH
 
-    public float TI; //inspiratory time
-    public float TE; //expiratory time
-    public float TITE; //result for TI/TE
-    public float breathTime; //total breath time - SAME AS TTOT?
+    public float TI; //inspiratory time - HOPELESS
+    public float TE; //expiratory time - HOPELESS
+    public float TITE; //result for TI/TE - NEEDS TI AND TE
+    public float breathTime; //total breath time - SAME AS TTOT? - ALSO NEEDS TI AND TE
 
 
     [Space(10)]
     [Header("Fractional Concentrations")] //DEALT WITH
 
-    public float FECO2; //fractional concentration of expired carbon dioxide
+    public float FECO2; //fractional concentration of expired carbon dioxide - MODELLED
     float FECO2P; //THIS IS A PLACEHOLDER FOR CALCULATION
-    public float FICO2; //fractional concentration of inspired carbon dioxide 
-    public float FEO2; //fractional concentration of expired oxygen
+    public float FICO2; //fractional concentration of inspired carbon dioxide - STATIC
+    public float FEO2; //fractional concentration of expired oxygen - MODELLED
     float FEO2P; //ALSO A PLACEHOLDER
-    public float FIO2; //fractional concentration of inspired oxygen
+    public float FIO2; //fractional concentration of inspired oxygen - STATIC
     //THESE ALL APPEAR TO BE FIXED AT AROUND
     //FICO - 0.04, FIO - 20.95
     //FECO - 4.4, FEO - 16.4 (THIS ONE GOES UP)
@@ -35,14 +35,14 @@ public class pvEquations : MonoBehaviour
     [Space(10)]
     [Header("Minute Ventilation")] //DEALT WITH
 
-    public float veATPS; //minute ventilation in an ATPS environment
-    public float veSTPD; //minute ventilation in an STPD environment
-    public float veBTPS; //minute ventilation in a BTPS environment
-    public float VE;
+    public float veATPS; //minute ventilation in an ATPS environment - MODELLED
+    public float veSTPD; //minute ventilation in an STPD environment - MODELLED
+    public float veBTPS; //minute ventilation in a BTPS environment - MODELLED
+    public float VE; //MODELLED
 
-    public float VT; //tidal volume - USING 'VT' FROM 'LUNGS' INSTEAD
+    public float VT; //tidal volume - USING 'VT' FROM 'LUNGS' INSTEAD - MODELLED
 
-    public float MET; //metabolic equivalents
+    public float MET; //metabolic equivalents - ???
     //STPD relates to standard temperature and pressure, dry. (0c, 760 mmHg)
     //BTPS relates to body temperature and pressure, saturated with water vapor
     //ATPS relates to ambient temperature and pressure, saturated with water
@@ -50,13 +50,13 @@ public class pvEquations : MonoBehaviour
     [Space(10)]
     [Header("Oxygen Consumption")] //DEALT WITH - EPOC IGNORED
 
-    public float VI; //used to calculate some stuff idk
-    public float VO2; //value for oxygen consumption
+    public float VI; //used to calculate some stuff idk - MODELLED
+    public float VO2; //value for oxygen consumption - MODELLED
     public float VO2maxAge;
     public float VO2maxHeight;
     public float VO2maxWeight;
-    public float VO2fr; //oxygen breath value
-    public float VCO2; //carbon dioxide output
+    public float VO2fr; //oxygen breath value - MODELLED
+    public float VCO2; //carbon dioxide output - MODELLED
     public float EPOC; //excess post-exercise oxygen consumption
 
     [Space(10)]
@@ -68,17 +68,17 @@ public class pvEquations : MonoBehaviour
     [Space(10)]
     [Header("Respiratory variables")] //DEALT WITH
 
-    public float fr; //respiratory rate
-    public float RER; //respiratory exchange ratio
-    public float RQ; //respiratory quotient
+    public float fr; //respiratory rate - M
+    public float RER; //respiratory exchange ratio - M
+    public float RQ; //respiratory quotient - M
 
     [Space(10)]
     [Header("Ventilatory variables")] //DEALT WITH
 
-    public float Vecap; //ventilatory capacity
-    public float VeVO2; //ventilatory equivalent for oxygen
-    public float VeVCO2; //ventilatory equivalent for carbon dioxide
-    public float Ttot; //total breath time - SAME AS BREATHTIME?
+    public float Vecap; //ventilatory capacity - M
+    public float VeVO2; //ventilatory equivalent for oxygen - M
+    public float VeVCO2; //ventilatory equivalent for carbon dioxide - M
+    public float Ttot; //total breath time - SAME AS BREATHTIME? - I
 
     [Space(10)]
     [Header("Work Rate")]
