@@ -10,11 +10,11 @@ public class Exercise : MonoBehaviour
     public float efficiency;
     public float speed;
     public string Model = null;
-    public float exerciseType;
-    public int Module;
+    public int exerciseType; //INT
+    public int Module; //INT
 
     //FOR TREADMILLS
-    public float treadsetting = 0;
+    public int treadsetting = 0; //KEEP THIS AS AN INT
     public float incline;
     public float decline;
     public float MomentSpeed;
@@ -49,11 +49,11 @@ public class Exercise : MonoBehaviour
         Workdonefunc();
     }
 
-    void Modulefunc(float model)
+    void Modulefunc(int model)
     {
         switch (model) //switch based on what type of module theyre using
         {
-            case 1f:
+            case 1:
                 Model = "Treadmill";
                 MaxSpeed = 24; //km/h
                 inclineMax = 0.25f; //percent
@@ -61,7 +61,7 @@ public class Exercise : MonoBehaviour
                 exerciseType = 2;
                 efficiency = 0.05f;
                 break;
-            case 2f:
+            case 2:
                 Model = "Monarch";
                 WattMax = 2400;
                 RPMmax = 200;
@@ -69,7 +69,7 @@ public class Exercise : MonoBehaviour
                 exerciseType = 1;
                 efficiency = 0.2f;
                 break;
-            case 3f:
+            case 3:
                 Model = "Excalibur";
                 WattMax = 3000;
                 RPMmax = 180;
@@ -77,7 +77,7 @@ public class Exercise : MonoBehaviour
                 exerciseType = 1;
                 efficiency = 0.2f;
                 break;
-            case 4f:
+            case 4:
                 Model = "Arm Ergonometer";
                 WattMax = 3000;
                 RPMmax = 180;
@@ -85,7 +85,7 @@ public class Exercise : MonoBehaviour
                 exerciseType = 1;
                 efficiency = 0.15f;
                 break;
-            case 5f:
+            case 5:
                 Model = "Rower";
                 WattMax = 3000;
                 RPMmax = 100;

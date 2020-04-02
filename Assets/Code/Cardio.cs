@@ -11,8 +11,8 @@ public class Cardio : MonoBehaviour
     public float BPd; //I diastolic blood pressure  	INPUT 
     public float BPs; //I/M systolic blood pressure 	INPUT, and we have a DECENT way of modelling it;
     public float MAP; //CA mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
-    public float HR; //M heart rate -					measured, but we have a decent way of calculating it;
-    public float HRmax = 220; //CB heart rate maximum =		(220-age)
+    public float HR; //M heart rate/fc -					measured, but we have a decent way of calculating it;
+    public float HRmax; //CB heart rate maximum =		(220-age)
     public float OP; //CA oxygen pulse =				VO2/HR   
 
     //MEDIUM MODULE
@@ -44,6 +44,7 @@ public class Cardio : MonoBehaviour
     //OUTPUT
     public float BlaCond;
     public float HRCond;
+    public int danger = 0;
 
     //EXTRA
     public float health = 0;
@@ -153,6 +154,7 @@ public class Cardio : MonoBehaviour
     {
         HR = Mathf.SmoothDamp(HR, HRrest, ref velocityHR, 10);
         BPs = Mathf.SmoothDamp(BPs, BPsBase, ref velocityBps, 10);
+        Bla = Mathf.SmoothDamp(Bla, 1.0f, ref velocityBla, 10);
     }
 
     //FUNCTIONS LEVEL 1 - BASIC MODULE
@@ -165,13 +167,16 @@ public class Cardio : MonoBehaviour
 
     void BPsTargfunction()
     {
-        if (character.gender == 1) //male
+        switch(character.gender)
         {
-            BPsTarg = (0.346f * exercise.BodyWork);
-        }
-        else if (character.gender == 0) //female
-        {
-            BPsTarg = (0.103f * exercise.BodyWork);
+            case 1: //M         
+                BPsTarg = (0.346f * exercise.BodyWork);
+                break;
+            case 0: //F  
+                BPsTarg = (0.103f * exercise.BodyWork);
+                break;
+            default:
+                break;
         }
 
         if (BPsTarg < BPsBase)
@@ -202,6 +207,11 @@ public class Cardio : MonoBehaviour
         if(HRtarg < HRrest)
         {
             HRtarg = (HRrest + (0.1f * exercise.BodyWork));
+        }
+        if(HRtarg > HRmax)
+        {
+            HRtarg = HRmax;
+            danger++;
         }
     }
 
