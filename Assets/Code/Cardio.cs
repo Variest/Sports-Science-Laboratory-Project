@@ -69,15 +69,6 @@ public class Cardio : MonoBehaviour
         exercise = GetComponent<Exercise>();
         timer = GetComponent<Timer>();
         graph = GetComponent<GraphScriptHR>();
-
-        //
-        HRmax = 220;
-        HRrestfunction(80);
-        BlaTfunction();
-        character.gender = 1;
-        character.weight = 50;
-        character.age = 20;
-        //
     }
 
     public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
@@ -92,6 +83,7 @@ public class Cardio : MonoBehaviour
             //every time the work being done increases (when the timer mini resets)
             //a lot of things need to be recalculated (HR, BPs) and some other stuff too
             MathFunc();
+            HRmaxfunction();
             timer.resetCARDIO = false;
         }
 
