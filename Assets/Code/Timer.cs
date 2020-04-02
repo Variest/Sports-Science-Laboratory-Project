@@ -44,9 +44,7 @@ public class Timer : MonoBehaviour
         //CREATE A BUTTON FOR BEGIN ASAP
 
         //
-        intervals = 5;
-        increase = 10;
-        limit = 100000;
+
         //
 
         main.Start();

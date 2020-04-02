@@ -43,9 +43,7 @@ public class Exercise : MonoBehaviour
         customiser = GetComponent<CharacterAvatar>();
 
         //
-        Module = 2;
-        resistance = 5;
-        RPM = 30;
+
         //
     }
 

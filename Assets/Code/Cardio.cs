@@ -75,6 +75,12 @@ public class Cardio : MonoBehaviour
         character.gender = 1;
         character.weight = 50;
         HRrest = 60;
+        exercise.Module = 2;
+        exercise.resistance = 5;
+        exercise.RPM = 30;
+        timer.intervals = 5;
+        timer.increase = 10;
+        timer.limit = 100000;
         //
     }
 
