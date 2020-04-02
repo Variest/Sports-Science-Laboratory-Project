@@ -11,7 +11,7 @@ public class Cardio : MonoBehaviour
     public float BPd; //I diastolic blood pressure  	INPUT 
     public float BPs; //I/M systolic blood pressure 	INPUT, and we have a DECENT way of modelling it;
     public float MAP; //CA mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
-    public float HR; //M heart rate/fc -					measured, but we have a decent way of calculating it;
+    public float HR; //M heart rate/fc -				measured, but we have a decent way of calculating it;
     public float HRmax; //CB heart rate maximum =		(220-age)
     public float OP; //CA oxygen pulse =				VO2/HR   
 
@@ -69,6 +69,13 @@ public class Cardio : MonoBehaviour
         exercise = GetComponent<Exercise>();
         timer = GetComponent<Timer>();
         graph = GetComponent<GraphScriptHR>();
+
+        //
+        character.age = 20;
+        character.gender = 1;
+        character.weight = 50;
+        HRrest = 60;
+        //
     }
 
     public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
