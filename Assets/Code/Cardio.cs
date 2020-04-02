@@ -44,6 +44,7 @@ public class Cardio : MonoBehaviour
     //OUTPUT
     public float BlaCond;
     public float HRCond;
+    public int danger = 0;
 
     //EXTRA
     public float health = 0;
@@ -161,6 +162,7 @@ public class Cardio : MonoBehaviour
     {
         HR = Mathf.SmoothDamp(HR, HRrest, ref velocityHR, 10);
         BPs = Mathf.SmoothDamp(BPs, BPsBase, ref velocityBps, 10);
+        Bla = Mathf.SmoothDamp(Bla, 1.0f, ref velocityBla, 10);
     }
 
     //FUNCTIONS LEVEL 1 - BASIC MODULE
@@ -213,6 +215,11 @@ public class Cardio : MonoBehaviour
         if(HRtarg < HRrest)
         {
             HRtarg = (HRrest + (0.1f * exercise.BodyWork));
+        }
+        if(HRtarg > HRmax)
+        {
+            HRtarg = HRmax;
+            danger++;
         }
     }
 

@@ -7,7 +7,7 @@ public class BodyHeat : MonoBehaviour
     BodyHeat(){ }
 
     //WATER
-    public float customiser.BodyWaterBase;
+    public float BodyWaterBase;
     public float WaterDrunk = 1000; //DEFAULTS TO 1 LITRE, which is a normal amount
 
     //SWEAT
@@ -45,7 +45,7 @@ public class BodyHeat : MonoBehaviour
         exercise = GetComponent<Exercise>();
         time = GetComponent<Timer>();
         customiser = GetComponent<CharacterAvatar>();
-        customiser.BodyWaterfunc();
+        BodyWaterfunc();
         customiser.BodyTemp = 36.0f;
     }
 
@@ -144,7 +144,7 @@ public class BodyHeat : MonoBehaviour
         //EXPERIMENT WITH TURNING * 10 TO * 100 FOR INCREASED OUTPUT
         //CHECKING customiser.BodyWater NOW THAT IT IS DECREASED
 
-        customiser.WaterPrcnt = (customiser.BodyWater / customiser.BodyWaterBase);
+        customiser.WaterPrcnt = (customiser.BodyWater / BodyWaterBase);
 
         if(customiser.WaterPrcnt <= 0.97f)
         {   
@@ -180,7 +180,7 @@ public class BodyHeat : MonoBehaviour
         WaterDrunk = waterdrink;
     }
 
-    void customiser.BodyWaterfunc()
+    void BodyWaterfunc()
     {
         switch (customiser.gender)
         {
@@ -191,7 +191,7 @@ public class BodyHeat : MonoBehaviour
                 customiser.BodyWater = ((customiser.weight * 0.55f) * 1000); //a woman's body is 55% water
                 break;
     }
-        customiser.BodyWaterBase = customiser.BodyWater;
+        BodyWaterBase = customiser.BodyWater;
         customiser.BodyWater += WaterDrunk;
     }
 }
