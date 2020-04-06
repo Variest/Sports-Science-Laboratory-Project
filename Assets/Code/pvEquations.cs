@@ -115,11 +115,12 @@ public class pvEquations : MonoBehaviour
 
     public void Update()
     {
-        
+        CalculateAll();
     }
 
     public void CalculateAll()
     {
+        BreathTime();
         ExpireTime();
         InspireExpireRatio();
         FECO2Func();

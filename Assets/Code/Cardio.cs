@@ -117,6 +117,10 @@ public class Cardio : MonoBehaviour
         {
             HR = HRmax;
         }
+        if(HR < HRrest)
+        {
+            HR = HRrest;
+        }
 
         if (Bla >= 5)
         {
