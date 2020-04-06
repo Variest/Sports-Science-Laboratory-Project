@@ -43,10 +43,6 @@ public class Timer : MonoBehaviour
         //if all the correct integers are set, then GO
         //CREATE A BUTTON FOR BEGIN ASAP
 
-        //
-
-        //
-
         main.Start();
         mini.Start();
         moments.Start();

@@ -109,6 +109,8 @@ public class pvEquations : MonoBehaviour
         FECO2P = 4.4f;
         FEO2 = FEO2P;
         FECO2 = FECO2P;
+        //EXPERIMENTAL VARIABLES
+        avatar.TI = 1.5f;
     }
 
     public void Update()
@@ -163,7 +165,8 @@ public class pvEquations : MonoBehaviour
 
     public float BreathTime()
     {
-        avatar.breathTime = (avatar.fr / 60);
+        //avatar.breathTime = (avatar.fr / 60);
+        avatar.breathTime = (cardio.HR / 60);
         return avatar.breathTime;
     }
 
@@ -171,7 +174,9 @@ public class pvEquations : MonoBehaviour
 
     public float FECO2Func()
     {
-        FECO2 = (FECO2P + (((avatar.frMax) / (avatar.fr)) * FEO2P));
+        //FECO2 = (FECO2P + (((avatar.frMax) / (avatar.fr)) * FEO2P));
+        FECO2 = (FECO2P + (((cardio.HRmax) / (cardio.HR)) * FEO2P));
+
         //PERC. OF EXHALED C02 = BASE EXHALED C02% + (HRMAX% OF EXHALED 02)
         //EVENTUALLY, HUMANS PUT OUT 1:1 CO2:O2, THIS IS JUST MODELLING THAT
         return avatar.FECO2;
@@ -189,7 +194,8 @@ public class pvEquations : MonoBehaviour
 
     public float CalcVE()
     {
-        avatar.VE = Lungs.VT * avatar.fr;
+        avatar.VE = Lungs.VT * cardio.HR;
+        //avatar.VE = Lungs.VT * avatar.fr;
         return avatar.VE;
     }
 
@@ -259,7 +265,8 @@ public class pvEquations : MonoBehaviour
 
     public float OxygenBreath()
     {
-        avatar.VO2fr = avatar.VO2 / avatar.fr;
+        avatar.VO2fr = avatar.VO2 / cardio.HR;
+        //avatar.VO2fr = avatar.VO2 / avatar.fr;
         return avatar.VO2fr;
     }
 

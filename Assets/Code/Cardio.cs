@@ -70,18 +70,31 @@ public class Cardio : MonoBehaviour
         timer = GetComponent<Timer>();
         graph = GetComponent<GraphScriptHR>();
 
-        //
+        //DEFAULT VALUES
+
+        //BASE
         character.age = 20;
         character.gender = 1;
         character.weight = 50;
-        HRrest = 60;
+        character.BodyTemp = 36.0f;
+        //EXERCISE
         exercise.Module = 2;
         exercise.resistance = 5;
         exercise.RPM = 30;
+        //TIMER
         timer.intervals = 5;
         timer.increase = 10;
         timer.limit = 100000;
-        //
+        //CARDIO
+        BPs = 120;
+        BPd = 80;
+        EDV = 120;
+        ESV = 50;
+        HRrest = 60;
+        HRmax = 200;  
+        Bla = 2.0f;
+        BaseMath();
+        //PVE
     }
 
     public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
@@ -151,6 +164,11 @@ public class Cardio : MonoBehaviour
         //3 = THIS IS THE WIERD ONE. JUST DO A 'PRIVATE FLOAT'
         //4 - TIME IN SECONDS
 
+        BaseMath();
+    }
+
+    void BaseMath()
+    {
         SVfunction(); //update everything else for relevant stuff, the order is very important
         COfunction();
         OPfunction();

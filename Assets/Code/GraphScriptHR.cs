@@ -39,7 +39,7 @@ public class GraphScriptHR : MonoBehaviour
         if(timer.resetGRAPHHR == true)
         {
             timer.resetGRAPHHR = false;
-            GraphMaker(cardio.HR, cardio.HRmax, "Heart Rate");
+            GraphMaker(character.veATPS, 2, "ATPS");
             //GraphMaker(cardio.Bla, 30, "Blood Lactate");
             graphcounter++;
         }

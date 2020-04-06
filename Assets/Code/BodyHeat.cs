@@ -46,7 +46,6 @@ public class BodyHeat : MonoBehaviour
         time = GetComponent<Timer>();
         customiser = GetComponent<CharacterAvatar>();
         BodyWaterfunc();
-        customiser.BodyTemp = 36.0f;
     }
 
     // Update is called once per frame

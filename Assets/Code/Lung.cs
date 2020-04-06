@@ -59,7 +59,13 @@ public class Lung : MonoBehaviour
         {
             lungupdate();
             timer.resetLUNG = false;
-        }
+        }   
+        
+        IC = (TLC - EELV); //INS. CAP
+        IRV = (TLC - EILV); //INS. RES VOL
+        ERV = (EELV - BEELV); //EXP. RES VOL
+        VT = (EILV - EELV); //TIDAL VOLUME
+        DH = EELV / BEELV;  //DYN. HYPINF.
     }
 
     void lungupdate()
@@ -80,11 +86,7 @@ public class Lung : MonoBehaviour
                 EELV = (TLC * (0.5f + (0.1f * (cardio.HR / cardio.HRmax))));
                 break;
         }
-        IC = (TLC - EELV); //INS. CAP
-        IRV = (TLC - EILV); //INS. RES VOL
-        ERV = (EELV - BEELV); //EXP. RES VOL
-        VT = (EILV - EELV); //TIDAL VOLUME
-        DH = EELV / BEELV;  //DYN. HYPINF.
+
     }
 
     void setupfunction()
