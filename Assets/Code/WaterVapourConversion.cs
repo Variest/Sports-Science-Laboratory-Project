@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class WaterVapourConversion : MonoBehaviour
 {
-    float waterVapour = 0;
-    public float gasTemp = 0;
+    public float waterVapour = 0;
+    public float gasTemp = 24;
     // Start is called before the first frame update
 
     void gastempfunc(float gasfunc)
     {
         gasTemp = gasfunc;
+        WVfunc();
+    }
+
+    void Update()
+    {
         WVfunc();
     }
 
