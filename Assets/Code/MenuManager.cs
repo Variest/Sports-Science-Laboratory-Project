@@ -18,6 +18,9 @@ public class MenuManager : MonoBehaviour
     public bool isBackMainMenu;
     public bool isBackModules;
     public bool isModuleVariable;
+    public bool isTreadmill;
+    public bool isRower;
+    public bool isBike;
 
     public static char selectedModule = ' ';
     public static char selectedTemplate = ' ';
@@ -31,6 +34,10 @@ public class MenuManager : MonoBehaviour
     public GameObject PAPanel;
     public GameObject CAPanel;
     public GameObject MAPanel;
+
+    public GameObject imageTreadmill;
+    public GameObject imageRower;
+    public GameObject imageBike;
 
     public static MenuManager menuInstance;
 
@@ -168,6 +175,36 @@ public class MenuManager : MonoBehaviour
             Debug.Log("yeah this is kinda what you're doing here lol");
             moduleChanger.lungEquations.setupfunction();
             SceneManager.LoadScene("Main Scene");
+        }
+    }
+
+    public void GoToTreadmill()
+    {
+        if (isTreadmill)
+        {
+            imageTreadmill.gameObject.SetActive(true);
+            imageRower.gameObject.SetActive(false);
+            imageBike.gameObject.SetActive(false);
+        }
+    }
+
+    public void GoToRower()
+    {
+        if (isRower)
+        {
+            imageTreadmill.gameObject.SetActive(false);
+            imageRower.gameObject.SetActive(true);
+            imageBike.gameObject.SetActive(false);
+        }
+    }
+
+    public void GoToBike()
+    {
+        if (isBike)
+        {
+            imageTreadmill.gameObject.SetActive(false);
+            imageRower.gameObject.SetActive(false);
+            imageBike.gameObject.SetActive(true);
         }
     }
 

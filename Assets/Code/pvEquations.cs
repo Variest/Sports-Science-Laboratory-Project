@@ -20,14 +20,17 @@ public class pvEquations : MonoBehaviour
 
 
     [Space(10)]
-    [Header("Fractional Concentrations")] //ALMOST DEALT WITH
+    [Header("Fractional Concentrations")] //DEALT WITH
 
     public float FECO2; //fractional concentration of expired carbon dioxide
+    float FECO2P; //THIS IS A PLACEHOLDER FOR CALCULATION
     public float FICO2; //fractional concentration of inspired carbon dioxide 
     public float FEO2; //fractional concentration of expired oxygen
+    float FEO2P; //ALSO A PLACEHOLDER
     public float FIO2; //fractional concentration of inspired oxygen
     //THESE ALL APPEAR TO BE FIXED AT AROUND
-    //FECO - 2.5-4.0, FEO - 16-18,
+    //FICO - 0.04, FIO - 20.95
+    //FECO - 4.4, FEO - 16.4 (THIS ONE GOES UP)
 
     [Space(10)]
     [Header("Minute Ventilation")] //DEALT WITH
@@ -45,7 +48,7 @@ public class pvEquations : MonoBehaviour
     //ATPS relates to ambient temperature and pressure, saturated with water
 
     [Space(10)]
-    [Header("Oxygen Consumption")] //FUCK
+    [Header("Oxygen Consumption")] //DEALT WITH - EPOC IGNORED
 
     public float VI; //used to calculate some stuff idk
     public float VO2; //value for oxygen consumption
@@ -57,10 +60,10 @@ public class pvEquations : MonoBehaviour
     public float EPOC; //excess post-exercise oxygen consumption
 
     [Space(10)]
-    [Header("End-Tidal Partial Pressures")] //DUNNO
+    [Header("End-Tidal Partial Pressures")] //IS THE SAME AS FRAC. CONC.
 
-    public float PETCO2; //end-tidal carbon dioxide partial pressure
-    public float PETO2; //end-tidal oxygen partial pressure
+    public float PETCO2; //end-tidal carbon dioxide partial pressure - ISNT THIS JUST FECO2?
+    public float PETO2; //end-tidal oxygen partial pressure - AND FEO2?
 
     [Space(10)]
     [Header("Respiratory variables")] //DEALT WITH
@@ -70,7 +73,7 @@ public class pvEquations : MonoBehaviour
     public float RQ; //respiratory quotient
 
     [Space(10)]
-    [Header("Ventilatory variables")] //NOPE
+    [Header("Ventilatory variables")] //DEALT WITH
 
     public float Vecap; //ventilatory capacity
     public float VeVO2; //ventilatory equivalent for oxygen
@@ -86,6 +89,7 @@ public class pvEquations : MonoBehaviour
     Exercise Exercise;
     Timer Timer;
     Lung Lungs;
+    WaterVapourConversion WV;
 
     // Start is called before the first frame update
     public void Start()
@@ -96,6 +100,15 @@ public class pvEquations : MonoBehaviour
         Timer = GetComponent<Timer>();
         Lungs = GetComponent<Lung>();
         avatar = GetComponent<CharacterAvatar>();
+        WV = GetComponent<WaterVapourConversion>();
+
+        //SETTING FRAC. CONC. VARIABLES TO THE 'NORMAL' LEVELS
+        avatar.FICO2 = 0.04f;
+        avatar.FIO2 = 20.95f;
+        FEO2P = 16.4f;
+        FECO2P = 4.4f;
+        FEO2 = FEO2P;
+        FECO2 = FECO2P;
     }
 
     public void Update()
@@ -107,10 +120,18 @@ public class pvEquations : MonoBehaviour
     {
         ExpireTime();
         InspireExpireRatio();
+        FECO2Func();
+        FEO2Func();
         CalcVE();
+
         CalcVeATPS(5);
         CalcVeSTPD(1, 1, 1); 
         CalcVeBTPS(1, 1, 1);
+
+        CalcVeATPS(Lungs.VT, avatar.breathTime);
+        CalcVeSTPD(760, WV.waterVapour, WV.gasTemp); 
+        CalcVeBTPS(760, WV.waterVapour, WV.gasTemp);
+
         calcVI();
         calcVCO2();
         OxygenConsumption();
@@ -154,7 +175,20 @@ public class pvEquations : MonoBehaviour
 
                                     //FRAC. CONC. FUNCTIONS
 
+    public float FECO2Func()
+    {
+        FECO2 = (FECO2P + (((avatar.frMax) / (avatar.fr)) * FEO2P));
+        //PERC. OF EXHALED C02 = BASE EXHALED C02% + (HRMAX% OF EXHALED 02)
+        //EVENTUALLY, HUMANS PUT OUT 1:1 CO2:O2, THIS IS JUST MODELLING THAT
+        return avatar.FECO2;
+    }
 
+    public float FEO2Func()
+    {
+        avatar.FEO2 = ((FIO2) - (FECO2 + 0.15f));
+        //PERCENTAGE OF EXHALED 02 = INHALED 02-EXHALED C02 (+0.15 FOR BALANCE) 
+        return avatar.FEO2;
+    }
 
 
                                     //MINUTE VENTILATION FUNCTIONS
@@ -177,13 +211,14 @@ public class pvEquations : MonoBehaviour
     public float CalcVeSTPD(float Pb, float PH2O, float expTemp)
     {
         //PH2O will be calculated from the water vapour pressure table she gave us depending on the gas temperature present
-        avatar.veSTPD = avatar.veATPS * (((Pb - PH2O) / 760) * (273 / 273 + expTemp));
+        avatar.veSTPD = avatar.veATPS * (((Pb - PH2O) / 760) * (273 / (273 + expTemp)));
         return avatar.veSTPD;
     }
 
     public float CalcVeBTPS(float Pb, float PH2O, float expTemp)
     {
-        avatar.veBTPS = avatar.veATPS * ((Pb - PH2O) / (Pb - 47.08f) * (310f) / (273f + expTemp));
+        //pb is typically 760, ph20 is watervapour
+        avatar.veBTPS = avatar.veATPS * (((Pb - PH2O) / (Pb - 47.08f)) * (310f / (273f + expTemp)));
         return avatar.veBTPS;
     }
 
@@ -209,6 +244,8 @@ public class pvEquations : MonoBehaviour
         //VO2 = (VI * (FIO2 / 100)) - (veSTPD * (FEO2 / 100)); //values are divided by 100 as they must be expressed as decimals instead of percentages
         //v02 = VE STPD * (((1 - FEO2 - FECO2) /  (1-FIO2 - FICO2)) * FIO2) - (VE STPD * FEO2)
         avatar.VO2 = avatar.veSTPD * (((1 - avatar.FEO2 - avatar.FECO2) / (1 - avatar.FIO2 - avatar.FICO2)) * avatar.FIO2) - (avatar.veSTPD * avatar.FEO2); //equation including the VI calculation within it
+        //avatar.VO2 = avatar.veSTPD * ((avatar.VI * avatar.FIO2) - (avatar.veSTPD * avatar.FEO2)); 
+
         return VO2;
     }
     
