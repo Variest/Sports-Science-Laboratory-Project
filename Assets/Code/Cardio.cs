@@ -48,6 +48,7 @@ public class Cardio : MonoBehaviour
 
     //EXTRA
     public float health = 0;
+    public int healthsetting = 1;
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
 
@@ -77,6 +78,7 @@ public class Cardio : MonoBehaviour
         character.gender = 1;
         character.weight = 50;
         character.BodyTemp = 36.0f;
+        character.height = 150;  //150 cm, 1.5 m
         //EXERCISE
         exercise.Module = 2;
         exercise.resistance = 5;
@@ -92,8 +94,9 @@ public class Cardio : MonoBehaviour
         ESV = 50;
         HRrest = 60;
         HRmax = 200;  
-        Bla = 2.0f;
+        Bla = 1.0f;
         BaseMath();
+        healthfunction(healthsetting);
         //PVE
     }
 
@@ -148,7 +151,6 @@ public class Cardio : MonoBehaviour
 
         EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
         ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
-
     }
 
     //COMPUTING FUNCTIONS
@@ -158,9 +160,6 @@ public class Cardio : MonoBehaviour
         BPsTargfunction();
         HRtargfunction();
         BlaTargfunction();
-
-        //HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, 2); //MAYBE NOT THE INTERVAL? INTERVAL COULD BE VERY LONG
-
 
         //HOW TO USE SMOOTHDAMP
         //1 = START POSITION
@@ -183,6 +182,7 @@ public class Cardio : MonoBehaviour
         BPfunction();
         HRmaxfunction();
         HRresfunction();
+        healthfunction(healthsetting);
     }
 
     public void CardioResetfunc()

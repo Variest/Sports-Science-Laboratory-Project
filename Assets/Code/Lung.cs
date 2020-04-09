@@ -1,4 +1,4 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -204,6 +204,4 @@ public class Lung : MonoBehaviour
     {
         PEmax = (90 + (((cardio.HR / cardio.HRmax) / 100) * 210));
     }
-
-    Lung(){}
 };
