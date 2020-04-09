@@ -171,9 +171,6 @@ public class MenuManager : MonoBehaviour
         {
             selectedTemplate = 'B';
             SceneManager.LoadScene("Main Scene");
-            imageTreadmill.gameObject.SetActive(false);
-            imageRower.gameObject.SetActive(false);
-            imageBike.gameObject.SetActive(false);
         }
     }
 
