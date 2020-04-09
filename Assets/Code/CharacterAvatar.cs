@@ -10,7 +10,7 @@ public class CharacterAvatar : MonoBehaviour
     [Header("Base elements")] //basic elements for character creation, will change how the character looks on screen as well as the variables used in some of the equations
     public int gender = 0; // 0 = FEMALE 1 = MALE
     public int race = 0; // 0 = WHITE 1 = BLACK 2 = ASIAN
-    public float age = 16; 
+    public float age = 20; 
     public float height = 0.0f;
     public float weight = 0.0f;
 
