@@ -1935,7 +1935,7 @@ MonoBehaviour:
   m_Text: 0
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
-  m_ReadOnly: 0
+  m_ReadOnly: 1
 --- !u!1 &157083047
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,7 +2081,7 @@ MonoBehaviour:
   m_Text: 0
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
-  m_ReadOnly: 0
+  m_ReadOnly: 1
 --- !u!1 &165669703
 GameObject:
   m_ObjectHideFlags: 0
@@ -2538,7 +2538,7 @@ MonoBehaviour:
   m_Text: 0
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
-  m_ReadOnly: 0
+  m_ReadOnly: 1
 --- !u!114 &189007396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2744,7 +2744,7 @@ MonoBehaviour:
   m_Text: 0
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
-  m_ReadOnly: 0
+  m_ReadOnly: 1
 --- !u!1 &236263268
 GameObject:
   m_ObjectHideFlags: 0
@@ -3207,6 +3207,7 @@ GameObject:
   - component: {fileID: 292442636}
   - component: {fileID: 292442635}
   - component: {fileID: 292442634}
+  - component: {fileID: 292442637}
   m_Layer: 5
   m_Name: Time Text Minute
   m_TagString: Untagged
@@ -3226,7 +3227,7 @@ RectTransform:
   m_LocalScale: {x: 1.0001249, y: 1.0001249, z: 1.0001249}
   m_Children: []
   m_Father: {fileID: 1844484288}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3253,9 +3254,12 @@ MonoBehaviour:
   limit: 0
   speedup: 1
   Begin: 0
-  tensecondHEAT: 0
-  tensecondCARDIO: 0
-  recalculateCARDIO: 1
+  resetHEAT: 1
+  resetCARDIO: 1
+  recalcCARDIO: 1
+  resetLUNG: 1
+  resetGRAPHHR: 1
+  resetGRAPHLUNG: 0
   FPS: 0
 --- !u!114 &292442635
 MonoBehaviour:
@@ -3299,6 +3303,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292442632}
   m_CullTransparentMesh: 0
+--- !u!114 &292442637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292442632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8785ebbd91904443849d9c255113ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resistance: 0
+  RPM: 0
+  efficiency: 0
+  speed: 0
+  Model: 
+  exerciseType: 0
+  Module: 0
+  treadsetting: 0
+  incline: 0
+  decline: 0
+  MomentSpeed: 0
+  RPMmax: 0
+  LoadMax: 0
+  WattMax: 0
+  inclineMax: 0
+  declineMax: 0
+  MaxSpeed: 0
+  WorkDone: 0
+  BodyWork: 0
+  HeatWork: 0
 --- !u!1 &300045232
 GameObject:
   m_ObjectHideFlags: 0
@@ -4213,7 +4249,7 @@ MonoBehaviour:
   m_Text: 0
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
-  m_ReadOnly: 0
+  m_ReadOnly: 1
 --- !u!1 &438331654
 GameObject:
   m_ObjectHideFlags: 0
@@ -4778,7 +4814,7 @@ MonoBehaviour:
   m_Text: 0
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
-  m_ReadOnly: 0
+  m_ReadOnly: 1
 --- !u!114 &516419440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5045,7 +5081,7 @@ MonoBehaviour:
   m_Text: 0
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
-  m_ReadOnly: 0
+  m_ReadOnly: 1
 --- !u!1 &533314438
 GameObject:
   m_ObjectHideFlags: 0
@@ -6496,7 +6532,7 @@ MonoBehaviour:
   m_Text: 0
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
-  m_ReadOnly: 0
+  m_ReadOnly: 1
 --- !u!1 &780642056
 GameObject:
   m_ObjectHideFlags: 0
@@ -7301,7 +7337,7 @@ MonoBehaviour:
   m_Text: 0
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
-  m_ReadOnly: 0
+  m_ReadOnly: 1
 --- !u!114 &865981613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9251,9 +9287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-
   m_AnchoredPosition: {x: 21.5, y: -20.5}
-
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1004544564
@@ -12451,6 +12485,7 @@ GameObject:
   - component: {fileID: 1332909544}
   - component: {fileID: 1332909543}
   - component: {fileID: 1332909545}
+  - component: {fileID: 1332909546}
   m_Layer: 5
   m_Name: Time Text
   m_TagString: Untagged
@@ -12539,10 +12574,45 @@ MonoBehaviour:
   limit: 0
   speedup: 1
   Begin: 0
-  tensecondHEAT: 0
-  tensecondCARDIO: 0
-  recalculateCARDIO: 1
+  resetHEAT: 1
+  resetCARDIO: 1
+  recalcCARDIO: 1
+  resetLUNG: 1
+  resetGRAPHHR: 1
+  resetGRAPHLUNG: 0
   FPS: 0
+--- !u!114 &1332909546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332909541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8785ebbd91904443849d9c255113ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resistance: 0
+  RPM: 0
+  efficiency: 0
+  speed: 0
+  Model: 
+  exerciseType: 0
+  Module: 0
+  treadsetting: 0
+  incline: 0
+  decline: 0
+  MomentSpeed: 0
+  RPMmax: 0
+  LoadMax: 0
+  WattMax: 0
+  inclineMax: 0
+  declineMax: 0
+  MaxSpeed: 0
+  WorkDone: 0
+  BodyWork: 0
+  HeatWork: 0
 --- !u!1 &1336316265
 GameObject:
   m_ObjectHideFlags: 0
@@ -13972,6 +14042,7 @@ GameObject:
   - component: {fileID: 1490598035}
   - component: {fileID: 1490598034}
   - component: {fileID: 1490598033}
+  - component: {fileID: 1490598036}
   m_Layer: 5
   m_Name: Time Text Hours
   m_TagString: Untagged
@@ -13991,7 +14062,7 @@ RectTransform:
   m_LocalScale: {x: 1.0001249, y: 1.0001249, z: 1.0001249}
   m_Children: []
   m_Father: {fileID: 1844484288}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14018,9 +14089,12 @@ MonoBehaviour:
   limit: 0
   speedup: 1
   Begin: 0
-  tensecondHEAT: 0
-  tensecondCARDIO: 0
-  recalculateCARDIO: 1
+  resetHEAT: 1
+  resetCARDIO: 1
+  recalcCARDIO: 1
+  resetLUNG: 1
+  resetGRAPHHR: 1
+  resetGRAPHLUNG: 0
   FPS: 0
 --- !u!114 &1490598034
 MonoBehaviour:
@@ -14064,6 +14138,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1490598031}
   m_CullTransparentMesh: 0
+--- !u!114 &1490598036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490598031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8785ebbd91904443849d9c255113ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resistance: 0
+  RPM: 0
+  efficiency: 0
+  speed: 0
+  Model: 
+  exerciseType: 0
+  Module: 0
+  treadsetting: 0
+  incline: 0
+  decline: 0
+  MomentSpeed: 0
+  RPMmax: 0
+  LoadMax: 0
+  WattMax: 0
+  inclineMax: 0
+  declineMax: 0
+  MaxSpeed: 0
+  WorkDone: 0
+  BodyWork: 0
+  HeatWork: 0
 --- !u!1 &1491920797
 GameObject:
   m_ObjectHideFlags: 0
@@ -15910,7 +16016,7 @@ MonoBehaviour:
   m_Text: 0
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
-  m_ReadOnly: 0
+  m_ReadOnly: 1
 --- !u!1 &1677664588
 GameObject:
   m_ObjectHideFlags: 0
@@ -16494,12 +16600,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 974285687}
-  - {fileID: 1912467917}
-  - {fileID: 1332909542}
   - {fileID: 292442633}
   - {fileID: 1490598032}
   m_Father: {fileID: 1879217610}
-  m_RootOrder: 1
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -16664,6 +16768,8 @@ MonoBehaviour:
   isBackMainMenu: 0
   isBackModules: 1
   isModuleVariable: 0
+  avatarHolder: {fileID: 0}
+  moduleChanger: {fileID: 0}
   TSPanel: {fileID: 0}
   MSPanel: {fileID: 0}
   CPanel: {fileID: 0}
@@ -16720,6 +16826,7 @@ RectTransform:
   - {fileID: 956218218}
   - {fileID: 705499027}
   - {fileID: 957057836}
+  - {fileID: 1844484288}
   m_Father: {fileID: 375945805}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

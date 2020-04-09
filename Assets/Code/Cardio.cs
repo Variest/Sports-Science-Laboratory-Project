@@ -66,65 +66,65 @@ public class Cardio : MonoBehaviour
         character = GetComponent<CharacterAvatar>();
         vents = GetComponent<pvEquations>();
         exercise = GetComponent<Exercise>();
-        timer = GetComponent<Timer>();
+        //timer = GetComponent<Timer>();
         graph = GetComponent<GraphScriptHR>();
 
         //
         HRmax = 220;
         HRrestfunction(80);
         BlaTfunction();
-        character.gender = 1;
-        character.weight = 50;
-        character.age = 20;
+        //character.gender = 1; //why would this be set here? we have a character already that the user inputs values for/has default values already
+        //character.weight = 50;
+        //character.age = 20;
         //
     }
 
     public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
     {
-        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocityHR, timer.intervals);
-        BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocityBps, timer.intervals);
-        Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocityBla, timer.intervals);
+        //HR = Mathf.SmoothDamp(HR, HRtarg, ref velocityHR, timer.intervals);
+        //BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocityBps, timer.intervals);
+        //Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocityBla, timer.intervals);
    
-        //CALCULATION
-        if (timer.resetCARDIO == true)
-        {
-            //every time the work being done increases (when the timer mini resets)
-            //a lot of things need to be recalculated (HR, BPs) and some other stuff too
-            MathFunc();
-            timer.resetCARDIO = false;
-        }
+        ////CALCULATION
+        //if (timer.resetCARDIO == true)
+        //{
+        //    //every time the work being done increases (when the timer mini resets)
+        //    //a lot of things need to be recalculated (HR, BPs) and some other stuff too
+        //    MathFunc();
+        //    timer.resetCARDIO = false;
+        //}
 
-        if (HR >= HRmax)
-        {
-            HR = HRmax;
-        }
+        //if (HR >= HRmax)
+        //{
+        //    HR = HRmax;
+        //}
 
-        if (Bla >= 5)
-        {
-            BlaCond = 1;
-            //pretty okay, maybe a bit tired
+        //if (Bla >= 5)
+        //{
+        //    BlaCond = 1;
+        //    //pretty okay, maybe a bit tired
 
-            if (Bla >= 10)
-            {
-                BlaCond = 2;
-                //getting tired
+        //    if (Bla >= 10)
+        //    {
+        //        BlaCond = 2;
+        //        //getting tired
 
-                if (Bla >= 15)
-                {
-                    BlaCond = 3;
-                    //legs very tired, an unhealthy person would probably give up
+        //        if (Bla >= 15)
+        //        {
+        //            BlaCond = 3;
+        //            //legs very tired, an unhealthy person would probably give up
 
-                    if (Bla >= 20)
-                    {
-                        BlaCond = 4;
-                        //becoming dangerous; subject should stop or risk lasting injury
-                    }
-                }
-            }
-        }
+        //            if (Bla >= 20)
+        //            {
+        //                BlaCond = 4;
+        //                //becoming dangerous; subject should stop or risk lasting injury
+        //            }
+        //        }
+        //    }
+        //}
 
-        EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
-        ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
+        //EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
+        //ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
 
     }
 
@@ -168,6 +168,7 @@ public class Cardio : MonoBehaviour
     public void BPsfunction(float BPsfunc) //USE THIS ONE FOR INPUT
     {
         BPs = BPsfunc;
+        character.BPs = BPs;
         BPsBase = BPsfunc;
     }
 
@@ -191,6 +192,7 @@ public class Cardio : MonoBehaviour
     public void BPdfunction(float BPdfunc)
     {
         BPd = BPdfunc; //INPUT
+        character.BPd = BPd;
     }
 
     void HRtargfunction()
@@ -221,21 +223,25 @@ public class Cardio : MonoBehaviour
     void HRmaxfunction()
     {
         HRmax = (220 - character.age);
+        
     }
 
     void MAPfunction()
     {
         MAP = BPd + ((BPs - BPd) / 3);
+        character.MAP = MAP;
     }
 
     void OPfunction()
     {
         OP = (vents.VO2 / HR);
+        
     }
     
     void BlaTfunction()
     {
         BlaT = (HRmax * 0.85f);
+        character.BlaT = BlaT;
     }
 
     public void BlaTargfunction()
@@ -262,21 +268,25 @@ public class Cardio : MonoBehaviour
     void COfunction()
     {
         CO = (SV * HR);
+        character.CO = CO;
     }
 
     void BPfunction()
     {
         BP = (CO * TPR);
+       
     }
 
     void SVfunction()
     {
         SV = (EDV - ESV);
+        character.SV = SV;
     }
 
     void HRresfunction()
     {
         HRres = (HRmax - HRrest);
+        
     }
 
     //FUNCTIONS LEVEL 3 - ADVANCED MODULE
@@ -284,6 +294,7 @@ public class Cardio : MonoBehaviour
     void EFfunction()
     {
         EF = ((SV / EDV) * 100);
+        
     }
 
     public void EDVfunction(float EDVfunc)
@@ -335,5 +346,65 @@ public class Cardio : MonoBehaviour
         }
     }
     
+
+    public void CalculateAll() //used to update manually rather than every frame, stops crashes as well as being easier to control from other scripts
+    {
+        // HR = Mathf.SmoothDamp(HR, HRtarg, ref velocityHR, timer.intervals); //will need to swap the timer intervals out for the version of the variable that's on the module_to_new_scene script
+        // BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocityBps, timer.intervals);
+        // Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocityBla, timer.intervals);
+
+        MathFunc();
+
+        if (HR >= HRmax)
+        {
+            HR = HRmax;
+        }
+
+        //this below isn't great code: every frame for a bla > 20 we would need to perform 4 if statements and change the value of blacond 4 times, as it would revert back to 1, then 2 - 3 - 4. This is inefficient when it could be achieved more easily
+        //if (Bla >= 5)
+        //{
+        //    BlaCond = 1;
+        //    //pretty okay, maybe a bit tired
+
+        //    if (Bla >= 10)
+        //    {
+        //        BlaCond = 2;
+        //        //getting tired
+
+        //        if (Bla >= 15)
+        //        {
+        //            BlaCond = 3;
+        //            //legs very tired, an unhealthy person would probably give up
+
+        //            if (Bla >= 20)
+        //            {
+        //                BlaCond = 4;
+        //                //becoming dangerous; subject should stop or risk lasting injury
+        //            }
+        //        }
+        //    }
+        //}
+
+        //doing it this way will lower the amount of work the program has to do by setting the variables much less frequently 
+        if(Bla >=5 & Bla < 10 & BlaCond != 1)
+        {
+            BlaCond = 1;
+        }
+        else if (Bla >= 10 & Bla < 15 & BlaCond != 2)
+        {
+            BlaCond = 2;
+        }
+        else if (Bla >= 15 & Bla < 20 & BlaCond != 3)
+        {
+            BlaCond = 3;
+        }
+        else if (Bla >= 20 & BlaCond != 4)
+        {
+            BlaCond = 4;
+        }
+
+        EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
+        ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
+    }
     Cardio(){}
 };

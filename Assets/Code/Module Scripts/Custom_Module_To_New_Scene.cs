@@ -17,8 +17,10 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     public pvcustommodule Pv_module;
     public cardiocustommodule Cardio_Module;
 
-    public pvEquations testEquations;
-
+    public pvEquations pulmonaryEquations;
+    public Lung lungEquations;
+    public Cardio cardioEquations;
+    public Exercise exerciseEquations;
 
     public float timeElapsed; //takes the value from the testinput script
     //booleans to determine which of the modules is being used.
@@ -41,9 +43,12 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
         avatar = GetComponent<CharacterAvatar>();
 
         
-        testEquations = GetComponent<pvEquations>();
+        pulmonaryEquations = GetComponent<pvEquations>();
+        lungEquations = GetComponent<Lung>();
+        cardioEquations = GetComponent<Cardio>();
+        exerciseEquations = GetComponent<Exercise>();
         //adding the stuff to hopefully put the right values into the boxes on the new scene
-  
+
     }
 
     // Update is called once per frame
@@ -51,7 +56,7 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     {
         if(Update_ON)
         {
-            SetActorValues();
+           // SetActorValues();
             if (Custom_ON)
             {
                 CustomUpdate();
@@ -96,6 +101,10 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
         }
         if(Timer_ON)
         {
+            exerciseEquations.manualUpdate();
+            cardioEquations.CalculateAll();
+            lungEquations.CalculateAll();
+            pulmonaryEquations.CalculateAll();
             for (int i = 0; i < 10; i++)
             {
                 //Debug.Log("anime");
@@ -265,6 +274,10 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
         }
         if (Timer_ON)
         {
+            exerciseEquations.manualUpdate();
+            cardioEquations.CalculateAll();
+            lungEquations.CalculateAll();
+            pulmonaryEquations.CalculateAll();
             for (int i = 0; i < 10; i++)
             {
                 nameBoxText[i] = MetCart_module.nameBoxes[i];
@@ -358,7 +371,11 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
 
         if (Timer_ON)
         {
-            testEquations.CalculateAll();
+
+            exerciseEquations.manualUpdate();
+            cardioEquations.CalculateAll();
+            lungEquations.CalculateAll();
+            pulmonaryEquations.CalculateAll();
             for (int i = 0; i < 10; i++)
             {
                
@@ -430,7 +447,11 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
         }
         if (Timer_ON)
         {
-            testEquations.CalculateAll();
+          
+            exerciseEquations.manualUpdate();
+            cardioEquations.CalculateAll();
+            lungEquations.CalculateAll();
+            pulmonaryEquations.CalculateAll();
             for (int i = 0; i < 10; i++)
             {
                 
@@ -496,7 +517,10 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
         moduleNameText.text = "Metabolic Cart";
         if (Timer_ON)
         {
-            
+            exerciseEquations.manualUpdate();
+            cardioEquations.CalculateAll();
+            lungEquations.CalculateAll();
+            pulmonaryEquations.CalculateAll();
             textBoxes[0].text = avatar.VE.ToString();
             textBoxes[1].text = avatar.VT.ToString();
             textBoxes[2].text = avatar.VO2.ToString();
@@ -520,17 +544,24 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
         moduleTextObject = GameObject.FindGameObjectWithTag("Module_Text_Box");
         moduleNameText = moduleTextObject.GetComponent<Text>();
         moduleNameText.text = "Pulmonary Vents";
+        
         if (Timer_ON)
         {
-            testEquations.CalculateAll();
+            Debug.Log(avatar.FVC);
+           
             //float sdTime = float.Parse(timeElapsed.ToString("F0"));
             //Debug.Log("The man is " + sdTime);
-            if(timeElapsed >= intervalthing)
+            if (timeElapsed >= intervalthing)
             {
                 intervalthing++;
-                avatar.FVC = avatar.FVC * (intervalthing + 1);
+                pulmonaryEquations.timeInterval = intervalthing;
+                exerciseEquations.manualUpdate();
+                cardioEquations.CalculateAll();
+                lungEquations.CalculateAll();
+                pulmonaryEquations.CalculateAll();
+                //avatar.FVC = avatar.FVC * (intervalthing + 1);
                 textBoxes[0].text = avatar.FVC.ToString();
-                avatar.FEV1 = avatar.FEV1 * (intervalthing + 1);
+                //avatar.FEV1 = avatar.FEV1 * (intervalthing + 1);
                 textBoxes[1].text = avatar.FEV1.ToString();
                 textBoxes[2].text = avatar.FEV1FVC.ToString();
                 textBoxes[3].text = avatar.PEF.ToString();
@@ -553,7 +584,10 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
         moduleNameText.text = "Cardio";
         if (Timer_ON)
         {
-            
+            exerciseEquations.manualUpdate();
+            cardioEquations.CalculateAll();
+            lungEquations.CalculateAll();
+            pulmonaryEquations.CalculateAll();
             textBoxes[0].text = avatar.fc.ToString();
             textBoxes[1].text = avatar.VO2fc.ToString();
             textBoxes[2].text = avatar.MAP.ToString();

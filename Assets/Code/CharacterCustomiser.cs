@@ -14,6 +14,7 @@ public class CharacterCustomiser : UIHiding
     public float weight = 0.0f; //kg
 
     public GameObject avatarHolder; //won't let me just drag the avatar script in so will need a gameobject to get the component from.
+    Lung lungEquations;
     public CharacterAvatar avatar; //the avatar that will store the values for the experiment
     //Class Variables
     //bool swimwear = false;
@@ -38,6 +39,7 @@ public class CharacterCustomiser : UIHiding
     {
         //Declares and sets the buttons and toggles
         avatarHolder = GameObject.FindGameObjectWithTag("Avatar_Holder");
+        lungEquations = avatarHolder.GetComponent<Lung>();
         SliderPanel.gameObject.SetActive(false);
         GenderPanel.gameObject.SetActive(true);
         RacePanel.gameObject.SetActive(true);
@@ -149,6 +151,7 @@ public class CharacterCustomiser : UIHiding
         }
         gender = true;
         avatar.gender = 1; //avatar's gender is stored as an int, 0 for female 1 for male.
+        lungEquations.setupfunction();
         switch (avatar.race)
         {
             case 0:
@@ -184,6 +187,7 @@ public class CharacterCustomiser : UIHiding
         AsianF.gameObject.SetActive(false);
         gender = false;
         avatar.gender = 0;
+        lungEquations.setupfunction();
         switch (avatar.race)
         {
             case 0:
@@ -213,6 +217,7 @@ public class CharacterCustomiser : UIHiding
         }
         race = 0;
         avatar.race = 0;
+        lungEquations.setupfunction();
         switch (avatar.gender)
         {
             case 0:
@@ -237,6 +242,7 @@ public class CharacterCustomiser : UIHiding
         }
         race = 1;
         avatar.race = 1;
+        lungEquations.setupfunction();
         switch (avatar.gender)
         {
             case 0:
@@ -261,6 +267,7 @@ public class CharacterCustomiser : UIHiding
         }
         race = 2;
         avatar.race = 2;
+        lungEquations.setupfunction();
         switch (avatar.gender)
         {
             case 0:

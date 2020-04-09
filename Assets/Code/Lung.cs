@@ -46,20 +46,21 @@ public class Lung : MonoBehaviour
         vents = GetComponent<pvEquations>();
         cardio = GetComponent<Cardio>();
         exercise = GetComponent<Exercise>();
-        timer = GetComponent<Timer>();
+        //timer = GetComponent<Timer>(); attaching the timer here just causes stuff to break - better to use a single unifying script in the main scene that can get the values from the timer
         setupfunction();
     }
 
     public void Update()
     {
-        PImaxfunction();
-        PEmaxfunction();
 
-        if (timer.resetLUNG == true)
-        {
-            lungupdate();
-            timer.resetLUNG = false;
-        }
+        //PImaxfunction();
+        //PEmaxfunction();
+
+        //if (timer.resetLUNG == true)
+        //{
+        //    lungupdate();
+        //    timer.resetLUNG = false;
+        //}
     }
 
     void lungupdate()
@@ -87,7 +88,7 @@ public class Lung : MonoBehaviour
         DH = EELV / BEELV;  //DYN. HYPINF.
     }
 
-    void setupfunction()
+   public void setupfunction()
     {
         switch (character.gender)
         {
@@ -151,19 +152,23 @@ public class Lung : MonoBehaviour
         if(character.gender == 1)
         {
             FEV1 = ((0.043f * character.height) - (0.029f * character.age) - 2.49f);
+            character.FEV1 = FEV1;
         }
         else if(character.gender == 0)
         {
             FEV1 = ((0.0395f * character.height) - (0.025f * character.age) - 2.6f);
+            character.FEV1 = FEV1;
         };
         
         if(character.race == 1)
         {
             FEV1 *= 0.93f;
+            character.FEV1 = FEV1;
         }
         else if(character.race == 2)
         {
             FEV1 *= 0.87f;
+            character.FEV1 = FEV1;
         };        
     }
 
@@ -172,36 +177,51 @@ public class Lung : MonoBehaviour
         if (character.gender == 1)
         {
             FVC = ((0.0576f * character.height) - (0.026f * character.age) - 4.34f);
+            character.FVC = FVC;
         }
         else if (character.gender == 0)
         {
             FVC = ((0.0443f * character.height) - (0.026f * character.age) - 2.89f);
+            character.FVC = FVC;
         };
 
         if (character.race == 1)
         {
             FVC *= 0.93f;
+            character.FVC = FVC;
         }
         else if (character.race == 2)
         {
             FVC *= 0.87f;
+            character.FVC = FVC;
         };
     }
 
     void FVRfunction()
     {
         FVR = (FEV1 / FVC);
+        character.FEV1FVC = FVR;
     }
 
     void PImaxfunction()
     {
         PImax = (80 + (((cardio.HR / cardio.HRmax) / 100) * 220));
+        character.PImax = PImax;
     }
 
     void PEmaxfunction()
     {
         PEmax = (90 + (((cardio.HR / cardio.HRmax) / 100) * 210));
+        character.PEmax = PEmax;
     }
 
+
+    public void CalculateAll() //need a function that allows us to update all the values at once, without being inside the main update function as that will cause issues throughout the program
+    {
+        lungupdate();
+        PImaxfunction();
+        PEmaxfunction();
+
+    }
     Lung(){}
 };

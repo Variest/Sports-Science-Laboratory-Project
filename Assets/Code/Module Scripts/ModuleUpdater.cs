@@ -12,6 +12,9 @@ public class ModuleUpdater : MonoBehaviour
     public GameObject moduleHolder; //will we just have a gameobject that contains the script with the module we are using? seems like an easy way to do it
 
     public pvEquations pvSheet; //equation sheet for the pulmonary variables
+    public Cardio cardioSheet;
+    public Lung lungSheet;
+    public Exercise exSheet;
     public int selectedModule; //0 metabolic, 1 pv, 2 cardio, 3 custom
     public bool isBasic;
     public float Timer = 0.0f; //shows the amount of time that has passed. 
@@ -60,6 +63,7 @@ public class ModuleUpdater : MonoBehaviour
         int roundedTimer = Mathf.RoundToInt(Timer); //might not use this - but it will round the timer down to an integer so it may result in some less ridiculous numbers when performing calculations
         //it would update a "time" variable within the sheets used to calculate all the variables here - dunno how that's gonna be used yet so will just leave it as a nice little comment for now
         pvSheet.CalculateAll(); //function within the sheets to update every variable within them - guarantees that we never have any values wrong because we didn't fully update stuff.
+        Debug.Log("don't worry");
         if(selectedModule ==0)
         {
             if(isBasic)

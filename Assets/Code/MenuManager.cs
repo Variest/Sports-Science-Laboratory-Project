@@ -134,6 +134,8 @@ public class MenuManager : MonoBehaviour
     public void SetBasic()
     {
         moduleChanger.Basic_ON = true;
+        //Debug.Log("ok that's epic");
+        moduleChanger.lungEquations.setupfunction();
         SceneManager.LoadScene("Main Scene");
     }
     //public void SetAdvanced()
@@ -163,6 +165,8 @@ public class MenuManager : MonoBehaviour
         if(isBasic)
         {
             selectedTemplate = 'B';
+            Debug.Log("yeah this is kinda what you're doing here lol");
+            moduleChanger.lungEquations.setupfunction();
             SceneManager.LoadScene("Main Scene");
         }
     }

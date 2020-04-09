@@ -32,14 +32,14 @@ public class Exercise : MonoBehaviour
     public float BodyWork;
     public float HeatWork;
 
-    Timer timer;
-    WaterVapourConversion heat;
+  //  Timer timer;
+    //WaterVapourConversion heat; //never seems to be useed?
     CharacterAvatar customiser;
 
     private void Start()
     {
-        heat = GetComponent<WaterVapourConversion>();
-        timer = GetComponent<Timer>();
+       // heat = GetComponent<WaterVapourConversion>();
+       // timer = GetComponent<Timer>();
         customiser = GetComponent<CharacterAvatar>();
 
         //
@@ -51,7 +51,7 @@ public class Exercise : MonoBehaviour
 
     void Update()
     {
-        Workdonefunc();
+        //Workdonefunc();
     }
 
     void Modulefunc(float model)
@@ -169,5 +169,10 @@ public class Exercise : MonoBehaviour
 
         BodyWork = (WorkDone / efficiency);
         HeatWork = (BodyWork - WorkDone);
+    }
+
+    public void manualUpdate() //the same as the update would do, but we can call it ourselves
+    {
+        Workdonefunc();
     }
 }

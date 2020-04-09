@@ -9,7 +9,7 @@ public class pvEquations : MonoBehaviour
 
     //will probably have a lot of these pulmonary variables within the character eventually, this is just a basic thing for now so that i can test some stuff
     public CharacterAvatar avatar;
-
+    public int timeInterval; //the amount of full seconds that have passed.
     [Space(10)]
     [Header("Values used for inspiration and expiration of air")] //ALMOST DEALT WITH
 
@@ -81,7 +81,7 @@ public class pvEquations : MonoBehaviour
     [Header("Work Rate")]
     public float W; //USE 'BODYWORK' FROM 'EXERCISE' INSTEAD
 
-    CharacterCustomiser Character;
+    //CharacterCustomiser Character;
     Cardio cardio;
     Exercise Exercise;
     Timer Timer;
@@ -90,7 +90,7 @@ public class pvEquations : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        Character = GetComponent<CharacterCustomiser>();
+       // Character = GetComponent<CharacterCustomiser>();
         cardio = GetComponent<Cardio>();
         Exercise = GetComponent<Exercise>();
         Timer = GetComponent<Timer>();
@@ -108,7 +108,7 @@ public class pvEquations : MonoBehaviour
         ExpireTime();
         InspireExpireRatio();
         CalcVE();
-        CalcVeATPS(5,5);
+        CalcVeATPS(5);
         CalcVeSTPD(1, 1, 1); 
         CalcVeBTPS(1, 1, 1);
         calcVI();
@@ -116,11 +116,11 @@ public class pvEquations : MonoBehaviour
         OxygenConsumption();
         respiratoryExRatio();
         respiratoryQuotient();
-        VentCapacity(avatar.FEV1);
+        VentCapacity();
         VentEquivOxygen();
         VentEquivCO2();
         calcEPOC(1, 1);
-        calcMET(avatar.weight);
+        calcMET();
         OxygenBreath();
         VO2MaxAge();
         VO2MaxHeight();
@@ -161,14 +161,15 @@ public class pvEquations : MonoBehaviour
 
     public float CalcVE()
     {
-        avatar.VE = Lungs.VT * avatar.fr;
+        //avatar.VE = Lungs.VT * avatar.fr;  ///THIS BROKE THE ENTIRE THING, PLEASE STOP OVERWRITING MY STUFF UNLESS YOU'VE ACTUALLY TESTED IT WORKS
+        avatar.VE = avatar.VT * avatar.fr;
         return avatar.VE;
     }
 
-    public float CalcVeATPS(float vol, float t)
+    public float CalcVeATPS(float vol)
     {
         //time is relevant here, will use the timer value
-        avatar.veATPS = (vol / t) * 60;
+        avatar.veATPS = (vol / timeInterval) * 60;
         //avatar.veatps = (VE/60)*60?
         return avatar.veATPS;
     }
@@ -288,9 +289,9 @@ public class pvEquations : MonoBehaviour
 
                                         //VENTILATORY FUNCTIONS
 
-    public float VentCapacity(float FEV1)
+    public float VentCapacity()
     {
-        avatar.Vecap = FEV1 * 35;
+        avatar.Vecap = avatar.FEV1 * 35;
         return avatar.Vecap;
         //the sheet says "FEV1 * 40 or FEV1 * 35" so I don't know which one she wants us to use here????????????
         //apparently there is no set variable that changes whether we use 40 or 35, however 35 is apparently the more common number to use and as such shall be the one we use
@@ -308,10 +309,10 @@ public class pvEquations : MonoBehaviour
         return avatar.VeVCO2;
     }
 
-    public float calcMET(float weight)
+    public float calcMET()
     {
         float temp = avatar.VO2 * 1000;
-        float temp2 = temp / weight; //converting the VO2 value from litres into ml/kg
+        float temp2 = temp / avatar.weight; //converting the VO2 value from litres into ml/kg
         avatar.MET = temp2 / 3.5f;
         return avatar.MET;
 
