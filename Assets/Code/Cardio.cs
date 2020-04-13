@@ -88,10 +88,10 @@ public class Cardio : MonoBehaviour
         timer.increase = 10;
         timer.limit = 100000;
         //CARDIO
-        BPs = 120;
-        BPd = 80;
-        EDV = 120;
-        ESV = 50;
+        BPsfunction(120);
+        BPdfunction(50);
+        EDVfunction(120);
+        ESVfunction(50);
         HRrest = 60;
         HRmax = 200;  
         Bla = 1.0f;
