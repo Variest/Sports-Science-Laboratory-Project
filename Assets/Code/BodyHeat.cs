@@ -189,6 +189,9 @@ public class BodyHeat : MonoBehaviour
             case 0:
                 customiser.BodyWater = ((customiser.weight * 0.55f) * 1000); //a woman's body is 55% water
                 break;
+            default:
+                customiser.BodyWater = ((customiser.weight * 0.60f) * 1000);
+                break;
     }
         BodyWaterBase = customiser.BodyWater;
         customiser.BodyWater += WaterDrunk;
