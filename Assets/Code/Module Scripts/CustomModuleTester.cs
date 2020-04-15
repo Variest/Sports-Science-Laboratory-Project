@@ -55,6 +55,7 @@ public class CustomModuleTester : MonoBehaviour
     public string[] textBoxContent = new string[10];
     public Text[] textBoxes = new Text[10];
     public string[] nameBoxes = new string[10];
+    public string[] popUpBoxes = new string[10];
    
 
     public Button VE_button;
@@ -328,6 +329,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.VE.ToString();
                         //textBoxes[i].text = avatar.VE.ToString();
                         nameBoxes[i] = "VE ";
+                        popUpBoxes[i] = "Minute Ventilation";
                         filledBoxes[i] = true;
                         VE_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         VE_toggled = true;
@@ -350,6 +352,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     VE_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     VE_toggled = false;
@@ -376,6 +379,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.VT.ToString();
                         //textBoxes[i].text = avatar.VT.ToString();
                         nameBoxes[i] = "VT ";
+                        popUpBoxes[i] = "Tidal Volume";
                         filledBoxes[i] = true;
                         VT_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         VT_toggled = true;
@@ -398,6 +402,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     VT_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     VT_toggled = false;
@@ -423,6 +428,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.VO2.ToString();
                         //textBoxes[i].text = avatar.VO2.ToString();
                         nameBoxes[i] = "VO2 ";
+                        popUpBoxes[i] = "Oxygen Consumption";
                         filledBoxes[i] = true;
                         VO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         VO2_toggled = true;
@@ -445,6 +451,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     VO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     VO2_toggled = false;
@@ -470,6 +477,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.VCO2.ToString();
                         //textBoxes[i].text = avatar.VCO2.ToString();
                         nameBoxes[i] = "VCO2 ";
+                        popUpBoxes[i] = "Carbon Dioxide Output";
                         filledBoxes[i] = true;
                         VCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
                         VCO2_toggled = true;
@@ -492,6 +500,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     VCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
                     VCO2_toggled = false;
@@ -517,6 +526,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.fr.ToString();
                         //textBoxes[i].text = avatar.fr.ToString();
                         nameBoxes[i] = "fr ";
+                        popUpBoxes[i] = "Respiratory rate";
                         filledBoxes[i] = true;
                         fr_toggled = true;
                         FR_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -539,6 +549,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     fr_toggled = false;
                     FR_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -564,6 +575,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.MET.ToString();
                         //textBoxes[i].text = avatar.MET.ToString();
                         nameBoxes[i] = "MET ";
+                        popUpBoxes[i] = "Metabolic Equivalents";
                         filledBoxes[i] = true;
                         MET_toggled = true;
                         MET_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -586,6 +598,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     MET_toggled = false;
                     MET_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -611,6 +624,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.fc.ToString();
                         //textBoxes[i].text = avatar.fc.ToString();
                         nameBoxes[i] = "FC ";
+                        popUpBoxes[i] = "Heart Rate";
                         filledBoxes[i] = true;
                         FC_toggled = true;
                         Fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -632,6 +646,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     FC_toggled = false;
                     Fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -657,6 +672,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.RER.ToString();
                         //textBoxes[i].text = avatar.RER.ToString();
                         nameBoxes[i] = "RER ";
+                        popUpBoxes[i] = "Respiratory Exchange Ratio";
                         filledBoxes[i] = true;
                         RER_toggled = true;
                         RER_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -678,6 +694,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     RER_toggled = false;
                     RER_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -703,6 +720,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.VeVO2.ToString();
                         //textBoxes[i].text = avatar.VeVO2.ToString();
                         nameBoxes[i] = "VEVO2 ";
+                        popUpBoxes[i] = "Ventilatory Equivalent for Oxygen";
                         filledBoxes[i] = true;
                         VEVO2_toggled = true;
                         VEVO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -724,6 +742,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     VEVO2_toggled = false;
                     VEVO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -749,6 +768,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.VeVCO2.ToString();
                        // textBoxes[i].text = avatar.VeVCO2.ToString();
                         nameBoxes[i] = "VEVCO2 ";
+                        popUpBoxes[i] = "Ventilatory Equivalent for Carbon Dioxide";
                         filledBoxes[i] = true;
                         VEVCO2_toggled = true;
                         VEVCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -770,6 +790,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     VEVCO2_toggled = false;
                     VEVCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -795,6 +816,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.petco2.ToString();
                         //textBoxes[i].text = avatar.petco2.ToString();
                         nameBoxes[i] = "PETCO2 ";
+                        popUpBoxes[i] = "End-tidal Carbon Dioxide Partial Pressure";
                         filledBoxes[i] = true;
                         PETCO2_toggled = true;
                         PETCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -816,6 +838,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     PETCO2_toggled = false;
                     PETCO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -841,6 +864,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.peto2.ToString();
                         //textBoxes[i].text = avatar.peto2.ToString();
                         nameBoxes[i] = "PETO2 ";
+                        popUpBoxes[i] = "End-tidal Oxygen Partial Pressure";
                         filledBoxes[i] = true;
                         PETO2_toggled = true;
                         PETO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -862,6 +886,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     PETO2_toggled = false;
                     PETO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -887,6 +912,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.TE.ToString();
                         //textBoxes[i].text = avatar.TE.ToString();
                         nameBoxes[i] = "TE ";
+                        popUpBoxes[i] = "Expiratory Time";
                         filledBoxes[i] = true;
                         TE_toggled = true;
                         TE_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -908,6 +934,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     TE_toggled = false;
                     TE_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -933,6 +960,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.TI.ToString();
                         //textBoxes[i].text = avatar.TI.ToString();
                         nameBoxes[i] = "TI ";
+                        popUpBoxes[i] = "Inspiratory Time";
                         filledBoxes[i] = true;
                         TI_toggled = true;
                         TI_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -954,6 +982,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     TI_toggled = false;
                     TI_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -979,6 +1008,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.TITE.ToString();
                         //textBoxes[i].text = avatar.TITE.ToString();
                         nameBoxes[i] = "TITE ";
+                        popUpBoxes[i] = "Ratio of Inspiratory to Expiratory Time";
                         filledBoxes[i] = true;
                         TITE_toggled = true;
                         TITE_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -1000,6 +1030,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     TITE_toggled = false;
                     TITE_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -1025,6 +1056,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.Ttot.ToString();
                         //textBoxes[i].text = avatar.Ttot.ToString();
                         nameBoxes[i] = "TToT ";
+                        popUpBoxes[i] = "Total Breath Time";
                         filledBoxes[i] = true;
                         TToT_toggled = true;
                         TToT_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -1046,6 +1078,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     TToT_toggled = false;
                     TToT_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -1071,6 +1104,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.VO2fr.ToString();
                         //textBoxes[i].text = avatar.VO2fr.ToString();
                         nameBoxes[i] = "VO2FR ";
+                        popUpBoxes[i] = "Oxygen Breath";
                         filledBoxes[i] = true;
                         VO2FR_toggled = true;
                         VO2FR_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -1092,6 +1126,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     VO2FR_toggled = false;
                     VO2FR_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -1117,6 +1152,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.VO2fc.ToString();
                         //textBoxes[i].text = avatar.VO2fc.ToString();
                         nameBoxes[i] = "VO2FC ";
+                        popUpBoxes[i] = "Oxygen Pulse";
                         filledBoxes[i] = true;
                         VO2FC_toggled = true;
                         VO2FC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -1138,6 +1174,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     VO2FC_toggled = false;
                     VO2FC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -1163,6 +1200,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.SpO2.ToString();
                         //textBoxes[i].text = avatar.SpO2.ToString();
                         nameBoxes[i] = "SpO2 ";
+                        popUpBoxes[i] = "Oxyheamaglobin Saturation measured by Pulse Oximtery";
                         filledBoxes[i] = true;
                         SpO2_toggled = true;
                         SpO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -1184,6 +1222,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     SpO2_toggled = false;
                     SpO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -1209,6 +1248,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.FCmax.ToString();
                         //textBoxes[i].text = avatar.FCmax.ToString();
                         nameBoxes[i] = "FCmax ";
+                        popUpBoxes[i] = "Maximum Heart Rate";
                         filledBoxes[i] = true;
                         FcMAX_toggled = true;
                         Fcmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -1231,6 +1271,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     FcMAX_toggled = false;
                     Fcmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -1256,6 +1297,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.FCres.ToString();
                        // textBoxes[i].text = avatar.FCres.ToString();
                         nameBoxes[i] = "FCres ";
+                        popUpBoxes[i] = "Heart Rate Reserve";
                         filledBoxes[i] = true;
                         FcRES_toggled = true;
                         Fcres_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -1278,6 +1320,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     FcRES_toggled = false;
                     Fcres_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -1303,6 +1346,7 @@ public class CustomModuleTester : MonoBehaviour
                         textBoxContent[i] = avatar.EE.ToString();
                         //textBoxes[i].text = avatar.EE.ToString();
                         nameBoxes[i] = "EE ";
+                        popUpBoxes[i] = "Energy Expenditure";
                         filledBoxes[i] = true;
                         EE_toggled = true;
                         EE_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -1324,6 +1368,7 @@ public class CustomModuleTester : MonoBehaviour
                     filledBoxes[i] = false;
                     textBoxContent[i] = "";
                     nameBoxes[i] = "";
+                    popUpBoxes[i] = "";
                     BoxValue[i] = 0;
                     EE_toggled = false;
                     EE_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -1341,6 +1386,7 @@ public class CustomModuleTester : MonoBehaviour
             filledBoxes[i] = false;
             textBoxContent[i] = "";
             nameBoxes[i] = "";
+            popUpBoxes[i] = "";
             BoxValue[i] = 0;
 
         }

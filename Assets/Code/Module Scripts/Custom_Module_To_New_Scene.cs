@@ -10,6 +10,8 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     public InputField[] textBoxes = new InputField[10];
     public Text[] nameBoxes = new Text[10];
     public string[] nameBoxText = new string[10];
+    public string[] namePopup = new string[10];
+    public string[] longHand = new string[10];
     public GameObject moduleTextObject;
     public Text moduleNameText; //the name of the module that will be displayed at the top of the screen during the simulation.
     public FinalCustomModule custom_module;
@@ -85,6 +87,66 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
   
     }
 
+    IEnumerator WaitFor1(int i)
+    {
+        switch (i)
+        {
+            case 1:
+                namePopup[i] = longHand[i];
+                yield return new WaitForSecondsRealtime(1);
+                longHand[i] = "";
+                break;
+            case 2:
+                namePopup[i] = longHand[i];
+                yield return new WaitForSecondsRealtime(1);
+                longHand[i] = "";
+                break;
+            case 3:
+                namePopup[i] = longHand[i];
+                yield return new WaitForSecondsRealtime(1);
+                longHand[i] = "";
+                break;
+            case 4:
+                namePopup[i] = longHand[i];
+                yield return new WaitForSecondsRealtime(1);
+                longHand[i] = "";
+                break;
+            case 5:
+                namePopup[i] = longHand[i];
+                yield return new WaitForSecondsRealtime(1);
+                longHand[i] = "";
+                break;
+            case 6:
+                namePopup[i] = longHand[i];
+                yield return new WaitForSecondsRealtime(1);
+                longHand[i] = "";
+                break;
+            case 7:
+                namePopup[i] = longHand[i];
+                yield return new WaitForSecondsRealtime(1);
+                longHand[i] = "";
+                break;
+            case 8:
+                namePopup[i] = longHand[i];
+                yield return new WaitForSecondsRealtime(1);
+                longHand[i] = "";
+                break;
+            case 9:
+                namePopup[i] = longHand[i];
+                yield return new WaitForSecondsRealtime(1);
+                longHand[i] = "";
+                break;
+            case 10:
+                namePopup[i] = longHand[i];
+                yield return new WaitForSecondsRealtime(1);
+                longHand[i] = "";
+                break;
+            default:
+                yield return new WaitForSecondsRealtime(1);
+                break;
+        }
+    }
+
     void CustomUpdate()
     {
         for(int i = 0; i < 10; i++)
@@ -107,144 +169,191 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
                     {
                         case 1:
                             textBoxes[i].text = avatar.RPE.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 2:
                             textBoxes[i].text = avatar.Dyspnoea.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 3:
                             textBoxes[i].text = avatar.EE.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 4:
                             textBoxes[i].text = avatar.TE.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 5:
                             textBoxes[i].text = avatar.TI.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 6:
                             textBoxes[i].text = avatar.Ttot.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 7:
                             textBoxes[i].text = avatar.VT.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 8:
                             textBoxes[i].text = avatar.fr.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 9:
                             textBoxes[i].text = avatar.petco2.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 10:
                             textBoxes[i].text = avatar.peto2.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 11:
                             textBoxes[i].text = avatar.VE.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 12:
                             textBoxes[i].text = avatar.VO2.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 13:
                             textBoxes[i].text = avatar.VCO2.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 14:
                             textBoxes[i].text = avatar.RER.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 15:
                             textBoxes[i].text = avatar.MET.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 16:
                             textBoxes[i].text = avatar.VO2fr.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 17:
                             textBoxes[i].text = avatar.SpO2.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 18:
                             textBoxes[i].text = avatar.Vecap.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 19:
                             textBoxes[i].text = avatar.VeVO2.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 20:
                             textBoxes[i].text = avatar.VeVCO2.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 21:
                             textBoxes[i].text = avatar.FIO2.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 22:
                             textBoxes[i].text = avatar.FICO2.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 23:
                             textBoxes[i].text = avatar.FEO2.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 24:
                             textBoxes[i].text = avatar.FECO2.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 25:
                             textBoxes[i].text = avatar.BPd.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 26:
                             textBoxes[i].text = avatar.BPs.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 27:
                             textBoxes[i].text = avatar.MAP.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 28:
                             textBoxes[i].text = avatar.Bla.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 29:
                             textBoxes[i].text = avatar.CO.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 30:
                             textBoxes[i].text = avatar.FCmax.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 31:
                             textBoxes[i].text = avatar.FCres.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 32:
                             textBoxes[i].text = avatar.VO2fc.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 33:
                             textBoxes[i].text = avatar.SV.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 34:
                             textBoxes[i].text = avatar.FEV1.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 35:
                             textBoxes[i].text = avatar.FVC.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 36:
                             textBoxes[i].text = avatar.FEV1FVC.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 37:
                             textBoxes[i].text = avatar.PImax.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 38:
                             textBoxes[i].text = avatar.PEmax.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 39:
                             textBoxes[i].text = avatar.ERV.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 40:
                             textBoxes[i].text = avatar.FRC.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 41:
                             textBoxes[i].text = avatar.IC.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 42:
                             textBoxes[i].text = avatar.IRV.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 43:
                             textBoxes[i].text = avatar.PIF.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 44:
                             textBoxes[i].text = avatar.PEF.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 45:
                             textBoxes[i].text = avatar.RV.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 46:
                             textBoxes[i].text = avatar.TLC.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                         case 47:
                             textBoxes[i].text = avatar.VC.ToString();
+                            namePopup[i] = custom_module.popupBoxes[i];
                             break;
                     }
                 }
@@ -274,69 +383,91 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
                     {
                         case 1:
                             textBoxes[i].text = avatar.VE.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 2:
                             textBoxes[i].text = avatar.VT.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 3:
                             textBoxes[i].text = avatar.VO2.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 4:
                             textBoxes[i].text = avatar.VCO2.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 5:
                             textBoxes[i].text = avatar.fr.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 6:
                             textBoxes[i].text = avatar.MET.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 7:
                             textBoxes[i].text = avatar.fc.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 8:
                             textBoxes[i].text = avatar.RER.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 9:
                             textBoxes[i].text = avatar.VeVO2.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 10:
                             textBoxes[i].text = avatar.VeVCO2.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 11:
                             textBoxes[i].text = avatar.petco2.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 12:
                             textBoxes[i].text = avatar.petco2.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 13:
                             textBoxes[i].text = avatar.TE.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 14:
                             textBoxes[i].text = avatar.TI.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 15:
                             textBoxes[i].text = avatar.TITE.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 16:
                             textBoxes[i].text = avatar.Ttot.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 17:
                             textBoxes[i].text = avatar.VO2fr.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 18:
                             textBoxes[i].text = avatar.VO2fc.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 19:
                             textBoxes[i].text = avatar.SpO2.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 20:
                             textBoxes[i].text = avatar.FCmax.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 21:
                             textBoxes[i].text = avatar.FCres.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
                         case 22:
                             textBoxes[i].text = avatar.EE.ToString();
+                            namePopup[i] = MetCart_module.popUpBoxes[i];
                             break;
 
                     }
@@ -368,48 +499,63 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
                     {
                         case 1:
                             textBoxes[i].text = avatar.FVC.ToString();
+                            namePopup[i] = Pv_module.popupBoxes[i];
                             break;
                         case 2:
                             textBoxes[i].text = avatar.FEV1.ToString();
+                            namePopup[i] = Pv_module.popupBoxes[i];
                             break;
                         case 3:
                             textBoxes[i].text = avatar.FEV1FVC.ToString();
+                            namePopup[i] = Pv_module.popupBoxes[i];
                             break;
                         case 4:
                             textBoxes[i].text = avatar.PEF.ToString();
+                            namePopup[i] = Pv_module.popupBoxes[i];
                             break;
                         case 5:
                             textBoxes[i].text = avatar.PIF.ToString();
+                            namePopup[i] = Pv_module.popupBoxes[i];
                             break;
                         case 6:
                             textBoxes[i].text = avatar.PImax.ToString();
+                            namePopup[i] = Pv_module.popupBoxes[i];
                             break;
                         case 7:
                             textBoxes[i].text = avatar.PEmax.ToString();
+                            namePopup[i] = Pv_module.popupBoxes[i];
                             break;
                         case 8:
                             textBoxes[i].text = avatar.Vecap.ToString();
+                            namePopup[i] = Pv_module.popupBoxes[i];
                             break;
                         case 9:
                             textBoxes[i].text = avatar.ERV.ToString();
+                            namePopup[i] = Pv_module.popupBoxes[i];
                             break;
                         case 10:
                             textBoxes[i].text = avatar.FRC.ToString();
+                            namePopup[i] = Pv_module.popupBoxes[i];
                             break;
                         case 11:
                             textBoxes[i].text = avatar.IC.ToString();
+                            namePopup[i] = Pv_module.popupBoxes[i];
                             break;
                         case 12:
                             textBoxes[i].text = avatar.IRV.ToString();
+                            namePopup[i] = Pv_module.popupBoxes[i];
                             break;
                         case 13:
                             textBoxes[i].text = avatar.RV.ToString();
+                            namePopup[i] = Pv_module.popupBoxes[i];
                             break;
                         case 14:
                             textBoxes[i].text = avatar.TLC.ToString();
+                            namePopup[i] = Pv_module.popupBoxes[i];
                             break;
                         case 15:
                             textBoxes[i].text = avatar.VC.ToString();
+                            namePopup[i] = Pv_module.popupBoxes[i];
                             break;
 
 
@@ -440,36 +586,47 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
                     {
                         case 1:
                             textBoxes[i].text = avatar.fc.ToString();
+                            namePopup[i] = Cardio_Module.popupBoxes[i];
                             break;
                         case 2:
                             textBoxes[i].text = avatar.VO2fc.ToString();
+                            namePopup[i] = Cardio_Module.popupBoxes[i];
                             break;
                         case 3:
                             textBoxes[i].text = avatar.MAP.ToString();
+                            namePopup[i] = Cardio_Module.popupBoxes[i];
                             break;
                         case 4:
                             textBoxes[i].text = avatar.FCmax.ToString();
+                            namePopup[i] = Cardio_Module.popupBoxes[i];
                             break;
                         case 5:
                             textBoxes[i].text = avatar.Bla.ToString();
+                            namePopup[i] = Cardio_Module.popupBoxes[i];
                             break;
                         case 6:
                             textBoxes[i].text = avatar.CO.ToString();
+                            namePopup[i] = Cardio_Module.popupBoxes[i];
                             break;
                         case 7:
                             textBoxes[i].text = avatar.BPd.ToString();
+                            namePopup[i] = Cardio_Module.popupBoxes[i];
                             break;
                         case 8:
                             textBoxes[i].text = avatar.BPs.ToString();
+                            namePopup[i] = Cardio_Module.popupBoxes[i];
                             break;
                         case 9:
                             textBoxes[i].text = avatar.SV.ToString();
+                            namePopup[i] = Cardio_Module.popupBoxes[i];
                             break;
                         case 10:
                             textBoxes[i].text = avatar.FCres.ToString();
+                            namePopup[i] = Cardio_Module.popupBoxes[i];
                             break;
                         case 11:
                             textBoxes[i].text = avatar.SpO2.ToString();
+                            namePopup[i] = Cardio_Module.popupBoxes[i];
                             break;
 
 
@@ -569,6 +726,7 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
         {
             textBoxes[i].text = "";
             nameBoxes[i].text = "";
+            namePopup[i] = "";
             Custom_ON = false;
             MetCart_ON = false;
             PV_ON = false;
