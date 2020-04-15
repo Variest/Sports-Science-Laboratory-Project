@@ -10,11 +10,17 @@ public class Energy : MonoBehaviour
     public float ME; //mechanical efficency
 
     pvEquations vents;
-    Module exercise;
+    Exercise exercise;
     void Start()
     {
         vents = GetComponent<pvEquations>();
-        exercise = GetComponent<Module>();
+        exercise = GetComponent<Exercise>();
+    }
+
+    private void Update()
+    {
+        MEfunc();
+        CEfunction();
     }
 
     void MEfunc()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Module : MonoBehaviour
+public class Exercise : MonoBehaviour
 {
     //GENERAL INTS
     public float resistance;
@@ -10,10 +10,11 @@ public class Module : MonoBehaviour
     public float efficiency;
     public float speed;
     public string Model = null;
-    public float exerciseType;
+    public int exerciseType; //INT
+    public int Module; //INT
 
     //FOR TREADMILLS
-    public float treadsetting = 0;
+    public int treadsetting = 0; //KEEP THIS AS AN INT
     public float incline;
     public float decline;
     public float MomentSpeed;
@@ -33,25 +34,30 @@ public class Module : MonoBehaviour
 
     Timer timer;
     WaterVapourConversion heat;
-    CharacterCustomiser customiser;
+    CharacterAvatar customiser;
 
     private void Start()
     {
         heat = GetComponent<WaterVapourConversion>();
         timer = GetComponent<Timer>();
-        customiser = GetComponent<CharacterCustomiser>();
+        customiser = GetComponent<CharacterAvatar>();
+
+        //
+
+        //
     }
 
     void Update()
     {
+        Modulefunc(Module);
         Workdonefunc();
     }
 
-    void Modulefunc(float model)
+    void Modulefunc(int model)
     {
         switch (model) //switch based on what type of module theyre using
         {
-            case 1f:
+            case 1:
                 Model = "Treadmill";
                 MaxSpeed = 24; //km/h
                 inclineMax = 0.25f; //percent
@@ -59,7 +65,7 @@ public class Module : MonoBehaviour
                 exerciseType = 2;
                 efficiency = 0.05f;
                 break;
-            case 2f:
+            case 2:
                 Model = "Monarch";
                 WattMax = 2400;
                 RPMmax = 200;
@@ -67,7 +73,7 @@ public class Module : MonoBehaviour
                 exerciseType = 1;
                 efficiency = 0.2f;
                 break;
-            case 3f:
+            case 3:
                 Model = "Excalibur";
                 WattMax = 3000;
                 RPMmax = 180;
@@ -75,20 +81,20 @@ public class Module : MonoBehaviour
                 exerciseType = 1;
                 efficiency = 0.2f;
                 break;
-            case 4f:
+            case 4:
                 Model = "Arm Ergonometer";
                 WattMax = 3000;
                 RPMmax = 180;
                 LoadMax = 25;
-                exerciseType = 4;
+                exerciseType = 1;
                 efficiency = 0.15f;
                 break;
-            case 5f:
+            case 5:
                 Model = "Rower";
                 WattMax = 3000;
                 RPMmax = 100;
                 LoadMax = 30;
-                exerciseType = 3;
+                exerciseType = 1;
                 efficiency = 0.25f;
                 break;
         }
@@ -120,10 +126,18 @@ public class Module : MonoBehaviour
         if (treadsetting == 1)
         {
             incline = inclinefunc;
+            if (incline > inclineMax)
+            {
+                incline = inclineMax;
+            }
         }
         else if (treadsetting == 2)
         {
-            decline = inclinefunc;
+            decline = -inclinefunc;
+            if (decline < declineMax)
+            {
+                decline = declineMax;
+            }
         }
     }
 
@@ -133,7 +147,7 @@ public class Module : MonoBehaviour
         switch (exerciseType)
         {
             case 1:
-                WorkDone = ((RPM / 60) * (resistance * 10)); //watts are /s, rpm is /minute, *10 is for correction?
+                WorkDone = ((RPM / 60) * (resistance * 10)); //watts are /s, rpm is /minute, *10 is for correction
                 break;
             case 2:
                 MomentSpeed = ((speed * 1000) / 3600); //gets metres in a single second, then * by force
@@ -155,6 +169,4 @@ public class Module : MonoBehaviour
         BodyWork = (WorkDone / efficiency);
         HeatWork = (BodyWork - WorkDone);
     }
-
-    Module() { }
-};
+}

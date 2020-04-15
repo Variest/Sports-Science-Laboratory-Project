@@ -6,12 +6,12 @@ using UnityEngine;
 public class Cardio : MonoBehaviour
 {
     //BASIC MODULE
-    public float Bla = 1.0f; //blood lactate 	        SOMEWHAT appropriately modelled
+    public float Bla = 0.0f; //blood lactate 	        SOMEWHAT appropriately modelled
     public float BlaT; //CB blood lactate threshold     85% of max heart rate or 75% of VO2Max
     public float BPd; //I diastolic blood pressure  	INPUT 
     public float BPs; //I/M systolic blood pressure 	INPUT, and we have a DECENT way of modelling it;
     public float MAP; //CA mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
-    public float HR; //M heart rate -					measured, but we have a decent way of calculating it;
+    public float HR; //M heart rate/fc -				measured, but we have a decent way of calculating it;
     public float HRmax; //CB heart rate maximum =		(220-age)
     public float OP; //CA oxygen pulse =				VO2/HR   
 
@@ -30,19 +30,25 @@ public class Cardio : MonoBehaviour
     public float TPR; //CA total peripheral resistance = MAP/CO
 
     //FOR MODELLING 
-    public float BlaTarget;
-    public float HRtarg;
-    public float BPsTarg;
+    public float BlaTarget = 0.0f;
+    public float HRtarg = 0.0f;
+    public float BPsTarg = 0.0f;
     public float BPsBase;
     public float EDVbase;
     public float ESVbase;
 
-    private float velocity = 0.0f; //FOR SMOOTHDAMP
+    private float velocityBla = 0.0f; //FOR SMOOTHDAMP
+    private float velocityHR = 0.0f; //FOR SMOOTHDAMP
+    private float velocityBps = 0.0f; //FOR SMOOTHDAMP
 
     //OUTPUT
-    public float BlaCond = 0;
-    public float HRCond = 0;
+    public float BlaCond;
+    public float HRCond;
+    public int danger = 0;
 
+    //EXTRA
+    public float health = 0;
+    public int healthsetting = 1;
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
 
@@ -50,34 +56,73 @@ public class Cardio : MonoBehaviour
     //basic: Heart Rate (FC/HR), Oxygen Pulse (OP), Mean Arterial Pressure (MAP), Max Heart Rate (HRMax)
     //advanced: above + Blood Lactate (Bla), Cardiac Output (CO), Blood Pressure (Bpd, Bps), Stroke Volume (SV), Heart Rate Reserve (HRres), SPO2 (complicated thing from PVEquations)
 
-    //CharacterCustomiser character; //declares character script
-    CharacterAvatar character;
+    CharacterAvatar character; //declares character script
     pvEquations vents; //declares vents script
-    Module exercise; //declares bike script
+    Exercise exercise; //declares bike script
     Timer timer;
+    GraphScriptHR graph;
 
     public void Start()
     {
         //sets scripts to variables to allow them to be connected.
         character = GetComponent<CharacterAvatar>();
         vents = GetComponent<pvEquations>();
-        exercise = GetComponent<Module>();
+        exercise = GetComponent<Exercise>();
         timer = GetComponent<Timer>();
+        graph = GetComponent<GraphScriptHR>();
+
+        //DEFAULT VALUES
+
+        //BASE
+        character.age = 20;
+        character.gender = 1;
+        character.weight = 50;
+        character.BodyTemp = 36.0f;
+        character.height = 150;  //150 cm, 1.5 m
+        //EXERCISE
+        exercise.Module = 2;
+        exercise.resistance = 5;
+        exercise.RPM = 30;
+        //TIMER
+        timer.intervals = 5;
+        timer.increase = 10;
+        timer.limit = 100000;
+        //CARDIO
+        BPsfunction(120);
+        BPdfunction(50);
+        EDVfunction(120);
+        ESVfunction(50);
+        HRrest = 60;
+        HRmax = 200;  
+        Bla = 1.0f;
+        BaseMath();
+        healthfunction(healthsetting);
+        //PVE
     }
 
     public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
     {
+        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocityHR, timer.intervals);
+        BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocityBps, timer.intervals);
+        Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocityBla, timer.intervals);
+   
         //CALCULATION
-        if(timer.recalculateCARDIO == true)
+        if (timer.resetCARDIO == true)
         {
             //every time the work being done increases (when the timer mini resets)
             //a lot of things need to be recalculated (HR, BPs) and some other stuff too
             MathFunc();
+            HRmaxfunction();
+            timer.resetCARDIO = false;
         }
 
         if (HR >= HRmax)
         {
             HR = HRmax;
+        }
+        if(HR < HRrest)
+        {
+            HR = HRrest;
         }
 
         if (Bla >= 5)
@@ -106,15 +151,6 @@ public class Cardio : MonoBehaviour
 
         EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
         ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
-
-        SVfunction(); //update everything else for relevant stuff, the order is very important
-        COfunction();
-        OPfunction();
-        MAPfunction();
-        EFfunction();
-        SWfunction();
-        TPRfunction();
-        BPfunction();
     }
 
     //COMPUTING FUNCTIONS
@@ -125,23 +161,35 @@ public class Cardio : MonoBehaviour
         HRtargfunction();
         BlaTargfunction();
 
-        HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, timer.intervals);
-        BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocity, timer.intervals);
-        Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocity, timer.intervals);
-
         //HOW TO USE SMOOTHDAMP
         //1 = START POSITION
         //2 = FINISH
         //3 = THIS IS THE WIERD ONE. JUST DO A 'PRIVATE FLOAT'
         //4 - TIME IN SECONDS
 
-        timer.recalculateCARDIO = false;
+        BaseMath();
+    }
+
+    void BaseMath()
+    {
+        SVfunction(); //update everything else for relevant stuff, the order is very important
+        COfunction();
+        OPfunction();
+        MAPfunction();
+        EFfunction();
+        SWfunction();
+        TPRfunction();
+        BPfunction();
+        HRmaxfunction();
+        HRresfunction();
+        healthfunction(healthsetting);
     }
 
     public void CardioResetfunc()
     {
-        HR = Mathf.SmoothDamp(HR, HRrest, ref velocity, 5);
-        BPs = Mathf.SmoothDamp(BPs, BPsBase, ref velocity, 5);
+        HR = Mathf.SmoothDamp(HR, HRrest, ref velocityHR, 10);
+        BPs = Mathf.SmoothDamp(BPs, BPsBase, ref velocityBps, 10);
+        Bla = Mathf.SmoothDamp(Bla, 1.0f, ref velocityBla, 10);
     }
 
     //FUNCTIONS LEVEL 1 - BASIC MODULE
@@ -154,13 +202,16 @@ public class Cardio : MonoBehaviour
 
     void BPsTargfunction()
     {
-        if (character.gender == 1) //male
+        switch(character.gender)
         {
-            BPsTarg = (0.346f * exercise.BodyWork);
-        }
-        else if (character.gender == 0) //female
-        {
-            BPsTarg = (0.103f * exercise.BodyWork);
+            case 1: //M         
+                BPsTarg = (0.346f * exercise.BodyWork);
+                break;
+            case 0: //F  
+                BPsTarg = (0.103f * exercise.BodyWork);
+                break;
+            default:
+                break;
         }
 
         if (BPsTarg < BPsBase)
@@ -176,28 +227,34 @@ public class Cardio : MonoBehaviour
 
     void HRtargfunction()
     {
-        if (character.gender == 1) //male
+        switch (character.gender)
         {
-            HRtarg = (0.32f * exercise.BodyWork);
-            //HEALTHY PEOPLE CAN BE -0.9 AND UNHEALTHY +0.9
+            case 1:
+                HRtarg = ((0.32f * exercise.BodyWork) + (health * 0.9f));
+                //HEALTHY PEOPLE CAN BE -0.9 AND UNHEALTHY +0.9
+                break;
+            case 0:
+                HRtarg = ((0.43f * exercise.BodyWork) + (health * 0.15f));
+                //+/- 0.15
+                break;
         }
-        else if (character.gender == 0) // female
-        {
-            HRtarg = (0.43f * exercise.BodyWork);
-            //+/- 0.15
-        }
-
         //backup
+
         if(HRtarg < HRrest)
         {
-            HRtarg = (HRrest + (0.1f * exercise.BodyWork));
+            HRtarg = (HRrest + (0.05f * exercise.BodyWork));
+        }
+
+        if(HRtarg > HRmax)
+        {
+            HRtarg = HRmax;
+            danger++;
         }
     }
 
     public void HRrestfunction(float HRrestfunc)
     {
         HRrest = HRrestfunc; //INPUT
-        HR = HRrestfunc;
     }
 
     void HRmaxfunction()
@@ -222,19 +279,21 @@ public class Cardio : MonoBehaviour
 
     public void BlaTargfunction()
     {
-        if (HR >= BlaT)
+        if(HR < BlaT)
+        {
+            HRCond = 0;
+            BlaTarget = (Mathf.Pow((exercise.WorkDone/50), 2));
+
+        }
+        else if (HR >= BlaT)
         {
             HRCond = 1;
-            BlaTarget = (Mathf.Pow((exercise.WorkDone / 90), 2) + (timer.counter / 10));
+            BlaTarget = (Mathf.Pow((exercise.WorkDone / 25), 2));
 
             //NORMAL BL is like 1-2, but it can go up to 25 during intense exercise, but this is a worst-case scenario
             //normal people BL go up to like 10-15 before they give up. perhaps make this an option.
         }
-        else
-        {
-            HRCond = 0;
-            BlaTarget = (Mathf.Pow((exercise.WorkDone / 130), 2) + 1.0f + (timer.counter / 10));
-        }
+
     }
 
     //FUNCTIONS LEVEL 2 - MEDIUM MODULE
@@ -286,6 +345,33 @@ public class Cardio : MonoBehaviour
     void TPRfunction()
     {
         TPR = (MAP / CO);
+    }
+
+    void healthfunction(int healthiness)
+    {
+        switch(healthiness)
+        {
+            case 1:
+                //NORMAL PERSON, +0
+                health = 0;
+                break;
+            case 2:
+                //VERY UNHEALTHY -9
+                health = -1;
+                break;
+            case 3:
+                //MILDLY UNHEALTHY -4
+                health = -0.5f;
+                break;
+            case 4:
+                //VERY HEALTHY +9
+                health = 1;
+                break;
+            case 5:
+                //QUITE HEALTHY +4
+                health = 0.5f;
+                break;
+        }
     }
     
     Cardio(){}

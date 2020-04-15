@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Output : MonoBehaviour
 {
-    Output() { }
-
     Cardio cardio;
     //HEART RATE(0-1) AND BLOOD LACTATE(0-4)
     //PAINED FACE, AND TIRED LOOKING
@@ -13,7 +11,8 @@ public class Output : MonoBehaviour
     //HEAT(0-3) AND WATER CONTENT (0-4)
     //HOT AND SWEATY AND THIRSTY
     Timer timer;
-    Module exercise;
+    Exercise exercise;
+    GraphScriptHR graph;
 
     public string HR;
     public string Bla;
@@ -22,16 +21,17 @@ public class Output : MonoBehaviour
     public string Exercise;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         cardio = GetComponent<Cardio>();
+        graph = GetComponent<GraphScriptHR>();
         heat = GetComponent<BodyHeat>();
         timer = GetComponent<Timer>();
-        exercise = GetComponent<Module>();
+        exercise = GetComponent<Exercise>();
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         switch (cardio.HRCond)
         {
@@ -40,6 +40,9 @@ public class Output : MonoBehaviour
                 break;
             case 1:
                 HR = "Heart Rate High"; //LT or above
+                break;
+            default:
+                HR = "Heart Rate Normal"; //anything below lactate threshhold
                 break;
         }
 
@@ -60,21 +63,27 @@ public class Output : MonoBehaviour
             case 4:
                 Bla = "Blood Lactate Dangerous"; //20+
                 break;
+            default:
+                Bla = "Blood Lactate Normal"; //1-4
+                break;
         }
 
         switch(heat.HeatCond)
         {
             case 0:
-                Heat = "Core Body Heat Normal"; //37 degrees
+                Heat = "Body Heat Normal"; //37 degrees
                 break;
             case 1:
-                Heat = "Core Body Heat Rising"; //38 degrees
+                Heat = "Body Heat Rising"; //38 degrees
                 break;
             case 2:
-                Heat = "Core Body Heat High"; //39 degrees
+                Heat = "Body Heat High"; //39 degrees
                 break;
             case 3:
-                Heat = "Core Body Heat Dangerous"; //40 degrees
+                Heat = "Body Heat Dangerous"; //40 degrees
+                break;
+            default:
+                Heat = "Body Heat Normal"; //37 degrees
                 break;
         }
 
@@ -94,6 +103,9 @@ public class Output : MonoBehaviour
                 break;
             case 4:
                 Water = "Body Water Content Dangerous"; //80%
+                break;
+            default:
+                Water = "Body Water Content Normal"; //100% water percent+
                 break;
         }
 
