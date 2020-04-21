@@ -366,7 +366,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.654902, g: 0.75686276, b: 0.83137256, a: 1}
+    m_NormalColor: {r: 0.8666667, g: 0.94509804, b: 1, a: 1}
     m_HighlightedColor: {r: 0.75686276, g: 1, b: 0.9529412, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -731,6 +731,9 @@ MonoBehaviour:
   isBackMainMenu: 1
   isBackModules: 1
   isModuleVariable: 1
+  isTreadmill: 0
+  isRower: 0
+  isBike: 0
   avatarHolder: {fileID: 0}
   moduleChanger: {fileID: 0}
   TSPanel: {fileID: 0}
@@ -739,6 +742,9 @@ MonoBehaviour:
   PAPanel: {fileID: 0}
   CAPanel: {fileID: 0}
   MAPanel: {fileID: 0}
+  imageTreadmill: {fileID: 0}
+  imageRower: {fileID: 0}
+  imageBike: {fileID: 0}
 --- !u!4 &928917322
 Transform:
   m_ObjectHideFlags: 0
@@ -967,7 +973,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.654902, g: 0.75686276, b: 0.83137256, a: 1}
+    m_NormalColor: {r: 0.8666667, g: 0.94509804, b: 1, a: 1}
     m_HighlightedColor: {r: 0.75686276, g: 1, b: 0.9529412, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1654,6 +1660,7 @@ MonoBehaviour:
   MAP: 0
   BPd: 0
   CO: 0
+  frMax: 0
   FEV1: 0
   FVC: 0
   FEV1FVC: 0
@@ -1668,6 +1675,9 @@ MonoBehaviour:
   RV: 0
   TLC: 0
   VC: 0
+  BodyWater: 0
+  BodyTemp: 0
+  WaterPrcnt: 0
 --- !u!4 &1675852406
 Transform:
   m_ObjectHideFlags: 0
@@ -1799,7 +1809,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.654902, g: 0.75686276, b: 0.83137256, a: 1}
+    m_NormalColor: {r: 0.8666667, g: 0.94509804, b: 1, a: 1}
     m_HighlightedColor: {r: 0.75686276, g: 1, b: 0.9529412, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
