@@ -78,7 +78,7 @@ public class Cardio : MonoBehaviour
         character.gender = 1;
         character.weight = 50;
         character.BodyTemp = 36.0f;
-        character.height = 150;  //150 cm, 1.5 m
+        character.height = 170;  //150 cm, 1.5 m
         //EXERCISE
         exercise.Module = 2;
         exercise.resistance = 5;
@@ -100,7 +100,7 @@ public class Cardio : MonoBehaviour
         //PVE
     }
 
-    public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
+    public void Update()
     {
         HR = Mathf.SmoothDamp(HR, HRtarg, ref velocityHR, timer.intervals);
         BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocityBps, timer.intervals);

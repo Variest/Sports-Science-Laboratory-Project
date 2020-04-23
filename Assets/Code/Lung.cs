@@ -75,15 +75,15 @@ public class Lung : MonoBehaviour
         {
             case 1:
                 EILV = (TLC * (0.6f + (0.25f * (cardio.HR / cardio.HRmax))));
-                EELV = (TLC * (0.5f + (0.1f * (cardio.HR / cardio.HRmax))));
+                EELV = (TLC * (0.5f - (0.2f * (cardio.HR / cardio.HRmax))));
                 break;
             case 0:
                 EILV = (TLC * (0.54f + (0.2f * (cardio.HR / cardio.HRmax))));
-                EELV = (TLC * (0.4f + (0.05f * (cardio.HR / cardio.HRmax))));
+                EELV = (TLC * (0.4f - (0.05f * (cardio.HR / cardio.HRmax))));
                 break;
             default:
                 EILV = (TLC * (0.6f + (0.25f * (cardio.HR / cardio.HRmax))));
-                EELV = (TLC * (0.5f + (0.1f * (cardio.HR / cardio.HRmax))));
+                EELV = (TLC * (0.5f - (0.2f * (cardio.HR / cardio.HRmax))));
                 break;
         }
 
