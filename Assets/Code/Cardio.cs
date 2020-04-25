@@ -96,9 +96,8 @@ public class Cardio : MonoBehaviour
         exercise.resistance = 5;
         exercise.rpm = 30;
         //TIMER
-        timer.intervals = 5;
-        timer.increase = 10;
-        timer.limit = 100000;
+
+
         //CARDIO
         BPsFunction(120);
         BPdFunction(50);

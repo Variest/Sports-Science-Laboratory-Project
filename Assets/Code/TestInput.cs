@@ -63,7 +63,7 @@ public class TestInput : MonoBehaviour {
     private int minutesInt;
     double hourRounder;
     private int hoursInt;
-    public Text popUp;
+    //public Text popUp;
 
     public int functionChosen; //int value depending on which function you are trying to find the answer to
     // Use this for initialization
@@ -88,7 +88,7 @@ public class TestInput : MonoBehaviour {
         reset.onClick.AddListener(Reset);
         increaseTimeSpeed.onClick.AddListener(plusTime);
         decreaseTimeSpeed.onClick.AddListener(minusTime);
-        popUp.GetComponent<Text>();
+       // popUp.GetComponent<Text>();
     }
 	
 	// Update is called once per frame
@@ -181,9 +181,9 @@ public class TestInput : MonoBehaviour {
 
     IEnumerator WaitFor2()
     {
-        popUp.text = timeSpeed.ToString("00.00");
+       // popUp.text = timeSpeed.ToString("00.00");
         yield return new WaitForSecondsRealtime(2);
-        popUp.text = "";
+       // popUp.text = "";
     }
 
     public void Calculate()

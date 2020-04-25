@@ -3316,25 +3316,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resistance: 0
-  RPM: 0
+  rpm: 0
   efficiency: 0
   speed: 0
-  Model: 
+  model: 
   exerciseType: 0
-  Module: 0
-  treadsetting: 0
+  module: 0
+  treadSetting: 0
   incline: 0
   decline: 0
-  MomentSpeed: 0
-  RPMmax: 0
-  LoadMax: 0
-  WattMax: 0
+  momentSpeed: 0
+  rpmMax: 0
+  loadMax: 0
+  wattMax: 0
   inclineMax: 0
   declineMax: 0
-  MaxSpeed: 0
-  WorkDone: 0
-  BodyWork: 0
-  HeatWork: 0
+  maxSpeed: 0
+  workDone: 0
+  bodyWork: 0
+  heatWork: 0
 --- !u!1 &300045232
 GameObject:
   m_ObjectHideFlags: 0
@@ -10539,16 +10539,16 @@ MonoBehaviour:
   resultField: {fileID: 0}
   tempChoser: {fileID: 814341043}
   calcScripts: {fileID: 2101170954}
-  Stopwatch: {fileID: 1332909543}
-  StopwatchMinutes: {fileID: 292442635}
-  StopwatchHours: {fileID: 1490598034}
+  stopwatch: {fileID: 1332909543}
+  stopwatchMinutes: {fileID: 292442635}
+  stopwatchHours: {fileID: 1490598034}
   playPause: {fileID: 1445333486}
   reset: {fileID: 1469358656}
   increaseTimeSpeed: {fileID: 118969163}
   decreaseTimeSpeed: {fileID: 2072717208}
   timeSpeed: 1
-  testtime: 0
-  Popup: {fileID: 300045234}
+  testTime: 0
+  popUp: {fileID: 0}
   functionChosen: 0
 --- !u!114 &1131542320
 MonoBehaviour:
@@ -12580,25 +12580,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resistance: 0
-  RPM: 0
+  rpm: 0
   efficiency: 0
   speed: 0
-  Model: 
+  model: 
   exerciseType: 0
-  Module: 0
-  treadsetting: 0
+  module: 0
+  treadSetting: 0
   incline: 0
   decline: 0
-  MomentSpeed: 0
-  RPMmax: 0
-  LoadMax: 0
-  WattMax: 0
+  momentSpeed: 0
+  rpmMax: 0
+  loadMax: 0
+  wattMax: 0
   inclineMax: 0
   declineMax: 0
-  MaxSpeed: 0
-  WorkDone: 0
-  BodyWork: 0
-  HeatWork: 0
+  maxSpeed: 0
+  workDone: 0
+  bodyWork: 0
+  heatWork: 0
 --- !u!1 &1336316265
 GameObject:
   m_ObjectHideFlags: 0
@@ -14137,25 +14137,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resistance: 0
-  RPM: 0
+  rpm: 0
   efficiency: 0
   speed: 0
-  Model: 
+  model: 
   exerciseType: 0
-  Module: 0
-  treadsetting: 0
+  module: 0
+  treadSetting: 0
   incline: 0
   decline: 0
-  MomentSpeed: 0
-  RPMmax: 0
-  LoadMax: 0
-  WattMax: 0
+  momentSpeed: 0
+  rpmMax: 0
+  loadMax: 0
+  wattMax: 0
   inclineMax: 0
   declineMax: 0
-  MaxSpeed: 0
-  WorkDone: 0
-  BodyWork: 0
-  HeatWork: 0
+  maxSpeed: 0
+  workDone: 0
+  bodyWork: 0
+  heatWork: 0
 --- !u!1 &1491920797
 GameObject:
   m_ObjectHideFlags: 0
