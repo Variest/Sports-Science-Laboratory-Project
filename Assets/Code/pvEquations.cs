@@ -13,8 +13,8 @@ public class pvEquations : MonoBehaviour
     [Space(10)]
     [Header("Values used for inspiration and expiration of air")] //ALMOST DEALT WITH
 
-    public float TI; //inspiratory time - HOPELESS
-    public float TE; //expiratory time - HOPELESS
+    public float TI; //inspiratory time 
+    public float TE; //expiratory time 
     public float TITE; //result for TI/TE - NEEDS TI AND TE
     public float breathTime; //total breath time - SAME AS TTOT? - ALSO NEEDS TI AND TE
 
@@ -163,7 +163,7 @@ public class pvEquations : MonoBehaviour
     {
         //used to calculate the value for Expiratory time, or TE
         //calculated as total breath time - TI
-        //breathTime value is a placeholder for now as we may need to calculate it another way later in the project, this is just to get some stuff written down
+       
 
         avatar.TE = avatar.Ttot- avatar.TI;
         return avatar.TE;

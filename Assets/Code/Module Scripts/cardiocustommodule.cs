@@ -83,61 +83,7 @@ public class cardiocustommodule : MonoBehaviour
         SV_button.onClick.AddListener(ClickedSVToggle);
         fcres_button.onClick.AddListener(ClickedfcresToggle);
         SpO2_button.onClick.AddListener(ClickedSPO2Toggle);
-        if (fc_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || fc_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
-        {
-            fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
-            Debug.Log(fc_button.GetComponent<UnityEngine.UI.Image>().color);
-        }
-        if (vo2fc_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || vo2fc_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
-        {
-            vo2fc_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
-            Debug.Log(vo2fc_button.GetComponent<UnityEngine.UI.Image>().color);
-        }
-        if (MAP_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || MAP_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
-        {
-            MAP_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
-            Debug.Log(MAP_button.GetComponent<UnityEngine.UI.Image>().color);
-        }
-        if (fcmax_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || fcmax_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
-        {
-            fcmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
-            Debug.Log(fcmax_button.GetComponent<UnityEngine.UI.Image>().color);
-        }
-        if (bla_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || bla_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
-        {
-            bla_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
-            Debug.Log(bla_button.GetComponent<UnityEngine.UI.Image>().color);
-        }
-        if (CO_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || CO_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
-        {
-            CO_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
-            Debug.Log(CO_button.GetComponent<UnityEngine.UI.Image>().color);
-        }
-        if (BPd_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || BPd_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
-        {
-            BPd_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
-            Debug.Log(BPd_button.GetComponent<UnityEngine.UI.Image>().color);
-        }
-        if (BPs_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || BPs_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
-        {
-            BPs_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
-            Debug.Log(BPs_button.GetComponent<UnityEngine.UI.Image>().color);
-        }
-        if (SV_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || SV_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
-        {
-            SV_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
-            Debug.Log(SV_button.GetComponent<UnityEngine.UI.Image>().color);
-        }
-        if (fcres_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || fcres_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
-        {
-            fcres_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
-            Debug.Log(fcres_button.GetComponent<UnityEngine.UI.Image>().color);
-        }
-        if (SpO2_button.GetComponent<UnityEngine.UI.Image>().color != Color.white || SpO2_button.GetComponent<UnityEngine.UI.Image>().color != Color.grey)
-        {
-            SpO2_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
-            Debug.Log(SpO2_button.GetComponent<UnityEngine.UI.Image>().color);
-        }
+       
     }
     // Update is called once per frame
     void Update()
