@@ -5,17 +5,17 @@ using UnityEngine.UI;
 public class Custom_Module_To_New_Scene : MonoBehaviour
 {
     // Start is called before the first frame update
- 
+
     public CharacterAvatar avatar;
     public InputField[] textBoxes = new InputField[10];
     public Text[] nameBoxes = new Text[10];
     public string[] nameBoxText = new string[10];
     public GameObject moduleTextObject;
     public Text moduleNameText; //the name of the module that will be displayed at the top of the screen during the simulation.
-    public FinalCustomModule custom_module;
-    public CustomModuleTester MetCart_module;
-    public pvcustommodule Pv_module;
-    public cardiocustommodule Cardio_Module;
+    public FinalCustomModule customModule;
+    public CustomModuleTester metCartModule;
+    public pvcustommodule pvModule;
+    public cardiocustommodule cardioModule;
 
     public pvEquations pulmonaryEquations;
     public Lung lungEquations;
@@ -24,25 +24,25 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
 
     public float timeElapsed; //takes the value from the testinput script
     //booleans to determine which of the modules is being used.
-    public bool Custom_ON;
-    public bool MetCart_ON;
-    public bool PV_ON;
-    public bool Cardio_ON;
-    public bool Advanced_ON;
+    public bool customOn;
+    public bool metCartOn;
+    public bool pvOn;
+    public bool cardioOn;
+    public bool advancedOn;
     public bool Basic_ON;
     public bool Timer_ON; //used to determine whether the simulation is currently running or not
 
-    int intervalthing =0; //test for the update
+    int intervalthing = 0; //test for the update
     public bool Update_ON = false; //used to stop crashes if the script tries to update too early
     void Start()
     {
-        custom_module = GetComponent<FinalCustomModule>();
-        MetCart_module = GetComponent<CustomModuleTester>();
-        Pv_module = GetComponent<pvcustommodule>();
-        Cardio_Module = GetComponent<cardiocustommodule>();
+        customModule = GetComponent<FinalCustomModule>();
+        metCartModule = GetComponent<CustomModuleTester>();
+        pvModule = GetComponent<pvcustommodule>();
+        cardioModule = GetComponent<cardiocustommodule>();
         avatar = GetComponent<CharacterAvatar>();
 
-        
+
         pulmonaryEquations = GetComponent<pvEquations>();
         lungEquations = GetComponent<Lung>();
         cardioEquations = GetComponent<Cardio>();
@@ -54,54 +54,54 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Update_ON)
+        if (Update_ON)
         {
-           // SetActorValues();
-            if (Custom_ON)
+            // SetActorValues();
+            if (customOn)
             {
                 CustomUpdate();
             }
-            if (MetCart_ON && Advanced_ON)
+            if (metCartOn && advancedOn)
             {
                 MetCartUpdate();
             }
-            if (PV_ON && Advanced_ON)
+            if (pvOn && advancedOn)
             {
                 PvUpdate();
             }
-            if (Cardio_ON && Advanced_ON)
+            if (cardioOn && advancedOn)
             {
                 CardioUpdate();
             }
-            if(MetCart_ON && Basic_ON)
+            if (metCartOn && Basic_ON)
             {
                 MetCartUpdateB();
             }
-            if (PV_ON && Basic_ON)
+            if (pvOn && Basic_ON)
             {
                 PvUpdateB();
             }
-            if (Cardio_ON && Basic_ON)
+            if (cardioOn && Basic_ON)
             {
                 CardioUpdateB();
             }
 
         }
-  
+
     }
 
     void CustomUpdate()
     {
-        for(int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++)
         {
-            nameBoxText[i] = custom_module.nameBoxes[i];
+            nameBoxText[i] = customModule.nameBoxes[i];
             moduleTextObject = GameObject.FindGameObjectWithTag("Module_Text_Box");
             moduleNameText = moduleTextObject.GetComponent<Text>();
             moduleNameText.text = "Custom Module";
         }
-        if(Timer_ON)
+        if (Timer_ON)
         {
-            exerciseEquations.manualUpdate();
+            exerciseEquations.ManualUpdate();
             cardioEquations.CalculateAll();
             lungEquations.CalculateAll();
             pulmonaryEquations.CalculateAll();
@@ -109,10 +109,10 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
             {
                 //Debug.Log("anime");
 
-                
-                if (custom_module.filledBoxes[i] != false)
+
+                if (customModule.filledBoxes[i] != false)
                 {
-                    switch (custom_module.BoxValue[i])
+                    switch (customModule.BoxValue[i])
                     {
                         case 1:
                             textBoxes[i].text = avatar.RPE.ToString();
@@ -259,31 +259,30 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
                 }
             }
         }
-        
+
 
     }
     void MetCartUpdate()
     {
         for (int i = 0; i < 10; i++)
         {
-            nameBoxText[i] = MetCart_module.nameBoxes[i];
-            moduleTextObject = GameObject.FindGameObjectWithTag("Module_Text_Box");
-            moduleNameText = moduleTextObject.GetComponent<Text>();
-            moduleNameText.text = "Metabolic Cart"; 
-
+            nameBoxText[i] = metCartModule.nameBoxes[i]; 
         }
+        moduleTextObject = GameObject.FindGameObjectWithTag("Module_Text_Box");
+        moduleNameText = moduleTextObject.GetComponent<Text>();
+        moduleNameText.text = "Metabolic Cart";
         if (Timer_ON)
         {
-            exerciseEquations.manualUpdate();
+            exerciseEquations.ManualUpdate();
             cardioEquations.CalculateAll();
             lungEquations.CalculateAll();
             pulmonaryEquations.CalculateAll();
             for (int i = 0; i < 10; i++)
             {
-                nameBoxText[i] = MetCart_module.nameBoxes[i];
-                if (MetCart_module.filledBoxes[i] != false)
+                //nameBoxText[i] = metCartModule.nameBoxes[i];
+                if (metCartModule.filledBoxes[i] != false)
                 {
-                    switch (MetCart_module.BoxValue[i])
+                    switch (metCartModule.BoxValue[i])
                     {
                         case 1:
                             textBoxes[i].text = avatar.VE.ToString();
@@ -356,14 +355,14 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
                 }
             }
         }
-        
+
     }
     void PvUpdate()
     {
-        
+
         for (int i = 0; i < 10; i++)
         {
-            nameBoxText[i] = Pv_module.nameBoxes[i];
+            nameBoxText[i] = pvModule.nameBoxes[i];
             moduleTextObject = GameObject.FindGameObjectWithTag("Module_Text_Box"); //changes the value present inside the name box at the top of the main scene
             moduleNameText = moduleTextObject.GetComponent<Text>();
             moduleNameText.text = "Pulmonary Vents";
@@ -372,16 +371,16 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
         if (Timer_ON)
         {
 
-            exerciseEquations.manualUpdate();
+            exerciseEquations.ManualUpdate();
             cardioEquations.CalculateAll();
             lungEquations.CalculateAll();
             pulmonaryEquations.CalculateAll();
             for (int i = 0; i < 10; i++)
             {
-               
-                if (Pv_module.filledBoxes[i] != false)
+
+                if (pvModule.filledBoxes[i] != false)
                 {
-                    switch (Pv_module.BoxValue[i])
+                    switch (pvModule.BoxValue[i])
                     {
                         case 1:
                             textBoxes[i].text = avatar.FVC.ToString();
@@ -434,30 +433,30 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
                 }
             }
         }
-       
+
     }
     void CardioUpdate()
     {
         for (int i = 0; i < 10; i++)
         {
-            nameBoxText[i] = Cardio_Module.nameBoxes[i];
+            nameBoxText[i] = cardioModule.nameBoxes[i];
             moduleTextObject = GameObject.FindGameObjectWithTag("Module_Text_Box");
             moduleNameText = moduleTextObject.GetComponent<Text>();
             moduleNameText.text = "Cardio";
         }
         if (Timer_ON)
         {
-          
-            exerciseEquations.manualUpdate();
+
+            exerciseEquations.ManualUpdate();
             cardioEquations.CalculateAll();
             lungEquations.CalculateAll();
             pulmonaryEquations.CalculateAll();
             for (int i = 0; i < 10; i++)
             {
-                
-                if (Cardio_Module.filledBoxes[i] != false)
+
+                if (cardioModule.filledBoxes[i] != false)
                 {
-                    switch (Cardio_Module.BoxValue[i])
+                    switch (cardioModule.BoxValue[i])
                     {
                         case 1:
                             textBoxes[i].text = avatar.fc.ToString();
@@ -498,8 +497,8 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
                 }
             }
         }
-    
-       
+
+
     }
 
     void MetCartUpdateB()
@@ -517,7 +516,7 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
         moduleNameText.text = "Metabolic Cart";
         if (Timer_ON)
         {
-            exerciseEquations.manualUpdate();
+            exerciseEquations.ManualUpdate();
             cardioEquations.CalculateAll();
             lungEquations.CalculateAll();
             pulmonaryEquations.CalculateAll();
@@ -531,7 +530,7 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
             textBoxes[7].text = avatar.RER.ToString();
         }
 
-       
+
     }
     void PvUpdateB()
     {
@@ -544,18 +543,18 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
         moduleTextObject = GameObject.FindGameObjectWithTag("Module_Text_Box");
         moduleNameText = moduleTextObject.GetComponent<Text>();
         moduleNameText.text = "Pulmonary Vents";
-        
+
         if (Timer_ON)
         {
             Debug.Log(avatar.FVC);
-           
+
             //float sdTime = float.Parse(timeElapsed.ToString("F0"));
             //Debug.Log("The man is " + sdTime);
             if (timeElapsed >= intervalthing)
             {
                 intervalthing++;
                 pulmonaryEquations.timeInterval = intervalthing;
-                exerciseEquations.manualUpdate();
+                exerciseEquations.ManualUpdate();
                 cardioEquations.CalculateAll();
                 lungEquations.CalculateAll();
                 pulmonaryEquations.CalculateAll();
@@ -568,10 +567,10 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
                 textBoxes[4].text = avatar.PIF.ToString();
                 textBoxes[5].text = avatar.Vecap.ToString();
             }
-            
+
         }
-   
-     
+
+
     }
     void CardioUpdateB()
     {
@@ -584,7 +583,7 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
         moduleNameText.text = "Cardio";
         if (Timer_ON)
         {
-            exerciseEquations.manualUpdate();
+            exerciseEquations.ManualUpdate();
             cardioEquations.CalculateAll();
             lungEquations.CalculateAll();
             pulmonaryEquations.CalculateAll();
@@ -593,433 +592,56 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
             textBoxes[2].text = avatar.MAP.ToString();
             textBoxes[3].text = avatar.FCmax.ToString();
         }
-   
-  
+
+
     }
     public void ResetValues()
     {
-       
+
         for (int i = 0; i < 10; i++)
         {
             textBoxes[i].text = "";
             nameBoxes[i].text = "";
-            Custom_ON = false;
-            MetCart_ON = false;
-            PV_ON = false;
-            Cardio_ON = false;
+            customOn = false;
+            metCartOn = false;
+            pvOn = false;
+            cardioOn = false;
         }
-        Pv_module.ResetAllValues();
-        Cardio_Module.ResetAllValues();
-        MetCart_module.ResetAllValues();
-        custom_module.ResetAllValues();
+        pvModule.ResetAllValues();
+        cardioModule.ResetAllValues();
+        metCartModule.ResetAllValues();
+        customModule.ResetAllValues();
     }
 
     public void ResetModuleValues()
     {
-        Custom_ON = false;
-        MetCart_ON = false;
-        PV_ON = false;
-        Cardio_ON = false;
-        Pv_module.ResetAllValues();
-        Cardio_Module.ResetAllValues();
-        MetCart_module.ResetAllValues();
-        custom_module.ResetAllValues();
+        customOn = false;
+        metCartOn = false;
+        pvOn = false;
+        cardioOn = false;
+        pvModule.ResetAllValues();
+        cardioModule.ResetAllValues();
+        metCartModule.ResetAllValues();
+        customModule.ResetAllValues();
     }
     void ButtonAssign()
     {
-        if (Custom_ON && Advanced_ON)
+        if (customOn && advancedOn)
         {
-           custom_module.AttachButtons();
+            customModule.AttachButtons();
         }
-        if (MetCart_ON && Advanced_ON)
+        if (metCartOn && advancedOn)
         {
-            MetCart_module.AttachButtons();
+            metCartModule.AttachButtons();
         }
-        if (PV_ON && Advanced_ON)
+        if (pvOn && advancedOn)
         {
-           Pv_module.AttachButtons();
+            pvModule.AttachButtons();
         }
-        if (Cardio_ON && Advanced_ON)
+        if (cardioOn && advancedOn)
         {
-            Cardio_Module.AttachButtons();
-        }
-    }
-
-    void SetActorValues() //will set the values of each variable within the actor to be equal to the variables present within the text boxes, meaning that the user can input the starting values for their chosen variables. May conflict with values that are made up by adding other values together???
-    {
-     
-        if (Custom_ON)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                //Debug.Log("anime");
-
-
-                if (custom_module.filledBoxes[i] != false)
-                {
-                    switch (custom_module.BoxValue[i])
-                    {
-                        case 1:
-                            avatar.RPE = float.Parse(textBoxes[i].text);
-                            break;
-                        case 2:
-                            avatar.Dyspnoea = int.Parse(textBoxes[i].text);
-                            break;
-                        case 3:
-                            avatar.EE = float.Parse(textBoxes[i].text);
-                            break;
-                        case 4:
-                            avatar.TE = float.Parse(textBoxes[i].text);
-                            break;
-                        case 5:
-                            avatar.TI = float.Parse(textBoxes[i].text);
-                            break;
-                        case 6:
-                            avatar.Ttot = float.Parse(textBoxes[i].text);
-                            break;
-                        case 7:
-                           avatar.VT = float.Parse(textBoxes[i].text);
-                            break;
-                        case 8:
-                            avatar.fr = float.Parse(textBoxes[i].text);
-                            break;
-                        case 9:
-                            avatar.petco2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 10:
-                            avatar.peto2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 11:
-                            avatar.VE = float.Parse(textBoxes[i].text);
-                            break;
-                        case 12:
-                           avatar.VO2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 13:
-                            avatar.VCO2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 14:
-                           avatar.RER = float.Parse(textBoxes[i].text);
-                            break;
-                        case 15:
-                            avatar.MET = float.Parse(textBoxes[i].text);
-                            break;
-                        case 16:
-                           avatar.VO2fr = float.Parse(textBoxes[i].text);
-                            break;
-                        case 17:
-                            avatar.SpO2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 18:
-                            avatar.Vecap = float.Parse(textBoxes[i].text);
-                            break;
-                        case 19:
-                            avatar.VeVO2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 20:
-                            avatar.VeVCO2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 21:
-                            avatar.FIO2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 22:
-                            avatar.FICO2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 23:
-                            avatar.FEO2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 24:
-                            avatar.FECO2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 25:
-                            avatar.BPd = float.Parse(textBoxes[i].text);
-                            break;
-                        case 26:
-                            avatar.BPs = float.Parse(textBoxes[i].text);
-                            break;
-                        case 27:
-                            avatar.MAP = float.Parse(textBoxes[i].text);
-                            break;
-                        case 28:
-                            avatar.Bla = float.Parse(textBoxes[i].text);
-                            break;
-                        case 29:
-                            avatar.CO = float.Parse(textBoxes[i].text);
-                            break;
-                        case 30:
-                            avatar.FCmax = float.Parse(textBoxes[i].text);
-                            break;
-                        case 31:
-                           avatar.FCres = float.Parse(textBoxes[i].text);
-                            break;
-                        case 32:
-                            avatar.VO2fc = float.Parse(textBoxes[i].text);
-                            break;
-                        case 33:
-                          avatar.SV = float.Parse(textBoxes[i].text);
-                            break;
-                        case 34:
-                           avatar.FEV1 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 35:
-                           avatar.FVC = float.Parse(textBoxes[i].text);
-                            break;
-                        case 36:
-                            avatar.FEV1FVC = float.Parse(textBoxes[i].text);
-                            break;
-                        case 37:
-                            avatar.PImax = float.Parse(textBoxes[i].text);
-                            break;
-                        case 38:
-                            avatar.PEmax = float.Parse(textBoxes[i].text);
-                            break;
-                        case 39:
-                            avatar.ERV = float.Parse(textBoxes[i].text);
-                            break;
-                        case 40:
-                           avatar.FRC = float.Parse(textBoxes[i].text);
-                            break;
-                        case 41:
-                            avatar.IC = float.Parse(textBoxes[i].text);
-                            break;
-                        case 42:
-                            avatar.IRV = float.Parse(textBoxes[i].text);
-                            break;
-                        case 43:
-                            avatar.PIF = float.Parse(textBoxes[i].text);
-                            break;
-                        case 44:
-                            avatar.PEF = float.Parse(textBoxes[i].text);
-                            break;
-                        case 45:
-                            avatar.RV = float.Parse(textBoxes[i].text);
-                            break;
-                        case 46:
-                            avatar.TLC = float.Parse(textBoxes[i].text);
-                            break;
-                        case 47:
-                            avatar.VC = float.Parse(textBoxes[i].text);
-                            break;
-                    }
-                }
-            }
-        }
-    
-        if (MetCart_ON && Advanced_ON)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-               
-                if (MetCart_module.filledBoxes[i] != false)
-                {
-                    switch (MetCart_module.BoxValue[i])
-                    {
-                        case 1:
-                            avatar.VE = float.Parse(textBoxes[i].text);
-                            break;
-                        case 2:
-                            avatar.VT = float.Parse(textBoxes[i].text);
-                            break;
-                        case 3:
-                            avatar.VO2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 4:
-                            avatar.VCO2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 5:
-                            avatar.fr = float.Parse(textBoxes[i].text);
-                            break;
-                        case 6:
-                            avatar.MET = float.Parse(textBoxes[i].text);
-                            break;
-                        case 7:
-                            avatar.fc = float.Parse(textBoxes[i].text);
-                            break;
-                        case 8:
-                            avatar.RER = float.Parse(textBoxes[i].text);
-                            break;
-                        case 9:
-                            avatar.VeVO2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 10:
-                            avatar.VeVCO2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 11:
-                            avatar.petco2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 12:
-                            avatar.petco2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 13:
-                            avatar.TE = float.Parse(textBoxes[i].text);
-                            break;
-                        case 14:
-                            avatar.TI = float.Parse(textBoxes[i].text);
-                            break;
-                        case 15:
-                            avatar.TITE = float.Parse(textBoxes[i].text);
-                            break;
-                        case 16:
-                            avatar.Ttot = float.Parse(textBoxes[i].text);
-                            break;
-                        case 17:
-                            avatar.VO2fr = float.Parse(textBoxes[i].text);
-                            break;
-                        case 18:
-                            avatar.VO2fc = float.Parse(textBoxes[i].text);
-                            break;
-                        case 19:
-                            avatar.SpO2 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 20:
-                            avatar.FCmax = float.Parse(textBoxes[i].text);
-                            break;
-                        case 21:
-                            avatar.FCres = float.Parse(textBoxes[i].text);
-                            break;
-                        case 22:
-                            avatar.EE = float.Parse(textBoxes[i].text);
-                            break;
-
-                    }
-                }
-            }
-        }
-        if (PV_ON && Advanced_ON)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                
-                if (Pv_module.filledBoxes[i] != false)
-                {
-                    switch (Pv_module.BoxValue[i])
-                    {
-                        case 1:
-                            avatar.FVC = float.Parse(textBoxes[i].text);
-                            break;
-                        case 2:
-                            avatar.FEV1 = float.Parse(textBoxes[i].text);
-                            break;
-                        case 3:
-                            avatar.FEV1FVC = float.Parse(textBoxes[i].text);
-                            break;
-                        case 4:
-                            avatar.PEF = float.Parse(textBoxes[i].text);
-                            break;
-                        case 5:
-                            avatar.PIF = float.Parse(textBoxes[i].text);
-                            break;
-                        case 6:
-                            avatar.PImax = float.Parse(textBoxes[i].text);
-                            break;
-                        case 7:
-                            avatar.PEmax = float.Parse(textBoxes[i].text);
-                            break;
-                        case 8:
-                            avatar.Vecap = float.Parse(textBoxes[i].text);
-                            break;
-                        case 9:
-                            avatar.ERV = float.Parse(textBoxes[i].text);
-                            break;
-                        case 10:
-                            avatar.FRC = float.Parse(textBoxes[i].text);
-                            break;
-                        case 11:
-                            avatar.IC = float.Parse(textBoxes[i].text);
-                            break;
-                        case 12:
-                            avatar.IRV = float.Parse(textBoxes[i].text);
-                            break;
-                        case 13:
-                            avatar.RV = float.Parse(textBoxes[i].text);
-                            break;
-                        case 14:
-                            avatar.TLC = float.Parse(textBoxes[i].text);
-                            break;
-                        case 15:
-                            avatar.VC = float.Parse(textBoxes[i].text);
-                            break;
-
-
-                    }
-                }
-            }
-        }
-        if (Cardio_ON && Advanced_ON)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                nameBoxText[i] = Cardio_Module.nameBoxes[i];
-                if (Cardio_Module.filledBoxes[i] != false)
-                {
-                    switch (Cardio_Module.BoxValue[i])
-                    {
-                        case 1:
-                            avatar.fc = float.Parse(textBoxes[i].text);
-                            break;
-                        case 2:
-                            avatar.VO2fc = float.Parse(textBoxes[i].text);
-                            break;
-                        case 3:
-                            avatar.MAP = float.Parse(textBoxes[i].text);
-                            break;
-                        case 4:
-                            avatar.FCmax = float.Parse(textBoxes[i].text);
-                            break;
-                        case 5:
-                            avatar.Bla = float.Parse(textBoxes[i].text);
-                            break;
-                        case 6:
-                            avatar.CO = float.Parse(textBoxes[i].text);
-                            break;
-                        case 7:
-                            avatar.BPd = float.Parse(textBoxes[i].text);
-                            break;
-                        case 8:
-                            avatar.BPs = float.Parse(textBoxes[i].text);
-                            break;
-                        case 9:
-                            avatar.SV = float.Parse(textBoxes[i].text);
-                            break;
-                        case 10:
-                            avatar.FCres = float.Parse(textBoxes[i].text);
-                            break;
-                        case 11:
-                            avatar.SpO2 = float.Parse(textBoxes[i].text);
-                            break;
-
-
-                    }
-                }
-            }
-        }
-        if (MetCart_ON && Basic_ON)
-        {
-            avatar.VE = float.Parse(textBoxes[0].text);
-            avatar.VT = float.Parse(textBoxes[1].text);
-            avatar.VO2 = float.Parse(textBoxes[2].text);
-            avatar.VCO2 = float.Parse(textBoxes[3].text);
-            avatar.fr = float.Parse(textBoxes[4].text);
-            avatar.MET = float.Parse(textBoxes[5].text);
-            avatar.fc = float.Parse(textBoxes[6].text);
-            avatar.RER = float.Parse(textBoxes[7].text);
-        }
-        if (PV_ON && Basic_ON)
-        {
-            avatar.FVC = float.Parse(textBoxes[0].text);
-            avatar.FEV1 = float.Parse(textBoxes[1].text);
-            avatar.FEV1FVC = float.Parse(textBoxes[2].text);
-            avatar.PEF = float.Parse(textBoxes[3].text);
-            avatar.PIF = float.Parse(textBoxes[4].text);
-            avatar.Vecap = float.Parse(textBoxes[5].text);
-        }
-        if (Cardio_ON && Basic_ON)
-        {
-
-            avatar.fc = float.Parse(textBoxes[0].text);
-            avatar.VO2fc = float.Parse(textBoxes[1].text);
-            avatar.MAP = float.Parse(textBoxes[2].text);
-            avatar.FCmax = float.Parse(textBoxes[3].text);
+            cardioModule.AttachButtons();
         }
     }
 }
+  

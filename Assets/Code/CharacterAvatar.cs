@@ -23,7 +23,7 @@ public class CharacterAvatar : MonoBehaviour
     public float TI; //inspiratory time
     public float TE; //expiratory time
     public float TITE; //result for TI/TE
-    public float breathTime; //total breath time
+ 
     //fractional concentration variables
     public float FECO2; //fractional concentration of expired carbon dioxide
     public float FICO2; //fractional concentration of inspired carbon dioxide 

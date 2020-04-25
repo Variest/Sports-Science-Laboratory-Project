@@ -103,6 +103,7 @@ public class pvEquations : MonoBehaviour
         WV = GetComponent<WaterVapourConversion>();
 
         //SETTING FRAC. CONC. VARIABLES TO THE 'NORMAL' LEVELS
+        avatar.fr = 12;
         avatar.FICO2 = 0.04f;
         avatar.FIO2 = 20.95f;
         FEO2P = 16.4f;
@@ -118,6 +119,7 @@ public class pvEquations : MonoBehaviour
 
     public void CalculateAll()
     {
+        BreathTime();
         ExpireTime();
         InspireExpireRatio();
         FECO2Func();
@@ -128,7 +130,7 @@ public class pvEquations : MonoBehaviour
         CalcVeSTPD(1, 1, 1); 
         CalcVeBTPS(1, 1, 1);
 
-        CalcVeATPS(Lungs.VT, avatar.breathTime);
+       // CalcVeATPS(Lungs.VT, avatar.breathTime);
         CalcVeSTPD(760, WV.waterVapour, WV.gasTemp); 
         CalcVeBTPS(760, WV.waterVapour, WV.gasTemp);
 
@@ -154,7 +156,7 @@ public class pvEquations : MonoBehaviour
         //calculated as total breath time - TI
         //breathTime value is a placeholder for now as we may need to calculate it another way later in the project, this is just to get some stuff written down
 
-        avatar.TE = avatar.breathTime - avatar.TI;
+        avatar.TE = avatar.Ttot- avatar.TI;
         return avatar.TE;
 
     }
@@ -169,8 +171,8 @@ public class pvEquations : MonoBehaviour
 
     public float BreathTime()
     {
-        avatar.breathTime = (avatar.fr / 60);
-        return avatar.breathTime;
+        avatar.Ttot = (avatar.fr / 60);
+        return avatar.Ttot;
     }
 
                                     //FRAC. CONC. FUNCTIONS

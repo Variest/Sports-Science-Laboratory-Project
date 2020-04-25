@@ -61,8 +61,8 @@ public class Timer : MonoBehaviour
         if(mini.ElapsedMilliseconds >= (intervals*1000)) //intervals is probably measured in seconds
         {         
             mini.Restart(); //restarts the timer 
-            exercise.RPM += increase;
-            exercise.RPMfunction((exercise.RPM)); //increases the intensity at the user's input
+            exercise.rpm += increase;
+            exercise.rpmFunction((exercise.rpm)); //increases the intensity at the user's input
  
             resetCARDIO = true; //sends signals
             resetHEAT = true;

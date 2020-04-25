@@ -101,8 +101,8 @@ public class MenuManager : MonoBehaviour
         if (isPulmonaryModule)
         {
             selectedModule = 'P';
-            moduleChanger.PV_ON = true;
-            moduleChanger.Advanced_ON = true;
+            moduleChanger.pvOn = true;
+            moduleChanger.advancedOn = true;
             //MSPanel.gameObject.SetActive(false);
             //TSPanel.gameObject.SetActive(true);
             MSPanel.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
@@ -115,8 +115,8 @@ public class MenuManager : MonoBehaviour
         if (isCardiovascularModule)
         {
             selectedModule = 'C';
-            moduleChanger.Cardio_ON = true;
-            moduleChanger.Advanced_ON = true;
+            moduleChanger.cardioOn = true;
+            moduleChanger.advancedOn = true;
             //MSPanel.gameObject.SetActive(false);
             //TSPanel.gameObject.SetActive(true);
             MSPanel.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
@@ -129,7 +129,7 @@ public class MenuManager : MonoBehaviour
         if (isMetabolicModule)
         {
             selectedModule = 'M';
-            moduleChanger.MetCart_ON = true;
+            moduleChanger.metCartOn = true;
 
             //MSPanel.gameObject.SetActive(false);
             //TSPanel.gameObject.SetActive(true);
@@ -156,13 +156,13 @@ public class MenuManager : MonoBehaviour
         {
             if(selectedModule != 'C' && selectedModule != 'M' && selectedModule != 'P')
             {
-                moduleChanger.Custom_ON = true;
+                moduleChanger.customOn = true;
             }
             else
             {
-                moduleChanger.Custom_ON = false;
+                moduleChanger.customOn = false;
             }
-            moduleChanger.Advanced_ON = true;
+            moduleChanger.advancedOn = true;
             SceneManager.LoadScene("Variables Scene");
         }
     }
@@ -255,10 +255,10 @@ public class MenuManager : MonoBehaviour
             SceneManager.LoadScene("Module Selection Scene");
             selectedModule = ' ';
             moduleChanger.ResetModuleValues();
-            moduleChanger.Cardio_ON = false;
-            moduleChanger.MetCart_ON = false;
-            moduleChanger.PV_ON = false;
-            moduleChanger.Custom_ON = false;
+            moduleChanger.cardioOn = false;
+            moduleChanger.metCartOn = false;
+            moduleChanger.pvOn = false;
+            moduleChanger.customOn = false;
             selectedTemplate = ' ';
 
             //MSPanel.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);

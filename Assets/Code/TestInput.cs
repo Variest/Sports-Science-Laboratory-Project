@@ -44,16 +44,16 @@ public class TestInput : MonoBehaviour {
 
     public GameObject calcScripts;
 
-    public Text Stopwatch;
-    public Text StopwatchMinutes;
-    public Text StopwatchHours;
+    public Text stopwatch;
+    public Text stopwatchMinutes;
+    public Text stopwatchHours;
     public Button playPause;
     public Button reset;
     public Button increaseTimeSpeed;
     public Button decreaseTimeSpeed;
     private bool play = false;
     public float timeSpeed = 1.0f;
-    public float testtime = 0.0f;
+    public float testTime = 0.0f;
     private float timerCalculations;
     float hours, minutes, seconds;
     float remainingSeconds;
@@ -63,7 +63,7 @@ public class TestInput : MonoBehaviour {
     private int minutesInt;
     double hourRounder;
     private int hoursInt;
-    public Text Popup;
+    public Text popUp;
 
     public int functionChosen; //int value depending on which function you are trying to find the answer to
     // Use this for initialization
@@ -81,14 +81,14 @@ public class TestInput : MonoBehaviour {
         resultField = GetComponent<Text>();
         ventCalc = calcScripts.GetComponent<pvEquations>();
        
-        Stopwatch.GetComponent<Text>();
-        StopwatchMinutes.GetComponent<Text>();
-        StopwatchHours.GetComponent<Text>();
+        stopwatch.GetComponent<Text>();
+        stopwatchMinutes.GetComponent<Text>();
+        stopwatchHours.GetComponent<Text>();
         playPause.onClick.AddListener(PlayPause);
         reset.onClick.AddListener(Reset);
         increaseTimeSpeed.onClick.AddListener(plusTime);
         decreaseTimeSpeed.onClick.AddListener(minusTime);
-        Popup.GetComponent<Text>();
+        popUp.GetComponent<Text>();
     }
 	
 	// Update is called once per frame
@@ -99,12 +99,12 @@ public class TestInput : MonoBehaviour {
             calculateTime();
             System.Math.Floor(hourRounder);
             System.Math.Floor(minuteRounder);
-            Stopwatch.text = remainingSeconds.ToString("00.00");
-            StopwatchMinutes.text = minutesInt.ToString("00");
-            StopwatchHours.text = hoursInt.ToString("00");
-            testtime += Time.deltaTime;//constantly updates testtime based off of runtime.
-            customModule.timeElapsed = testtime;
-            Stopwatch.text = testtime.ToString("0.00");
+            stopwatch.text = remainingSeconds.ToString("00.00");
+            stopwatchMinutes.text = minutesInt.ToString("00");
+            stopwatchHours.text = hoursInt.ToString("00");
+            testTime += Time.deltaTime;//constantly updates testtime based off of runtime.
+            customModule.timeElapsed = testTime;
+            stopwatch.text = testTime.ToString("0.00");
            // Debug.Log("help");
         }
       
@@ -129,8 +129,8 @@ public class TestInput : MonoBehaviour {
 
     void calculateTime()
     {
-        testtime += Time.deltaTime * timeSpeed;//constantly updates testtime based off of runtime.
-        timerCalculations = testtime;
+        testTime += Time.deltaTime * timeSpeed;//constantly updates testtime based off of runtime.
+        timerCalculations = testTime;
         hours = timerCalculations / secondsInHour;
         hourRounder = (double)hours;
         hoursInt = (int)hourRounder;
@@ -145,7 +145,7 @@ public class TestInput : MonoBehaviour {
 
     void Reset()
     {
-        testtime = 0;
+        testTime = 0;
         minuteRounder = 0;
         hourRounder = 0;
         timerCalculations = 0;
@@ -156,9 +156,9 @@ public class TestInput : MonoBehaviour {
         minutesInt = 0;
         hoursInt = 0;
         timeSpeed = 1.0f;
-        Stopwatch.text = seconds.ToString("00.00");
-        StopwatchMinutes.text = minutes.ToString("00");
-        StopwatchHours.text = hours.ToString("00");
+        stopwatch.text = seconds.ToString("00.00");
+        stopwatchMinutes.text = minutes.ToString("00");
+        stopwatchHours.text = hours.ToString("00");
     }
 
     void plusTime()
@@ -181,9 +181,9 @@ public class TestInput : MonoBehaviour {
 
     IEnumerator WaitFor2()
     {
-        Popup.text = timeSpeed.ToString("00.00");
+        popUp.text = timeSpeed.ToString("00.00");
         yield return new WaitForSecondsRealtime(2);
-        Popup.text = "";
+        popUp.text = "";
     }
 
     public void Calculate()

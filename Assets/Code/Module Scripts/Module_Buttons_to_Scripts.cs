@@ -39,116 +39,116 @@ public class Module_Buttons_to_Scripts : MonoBehaviour
     }
     void ApplyCustomButtons()
     {
-        moduleScripts.custom_module.RPE_button = buttonScript.RPE_button_Custom; //1
-        moduleScripts.custom_module.Dyspnoea_button = buttonScript.Dyspnoea_button_Custom; //2
-        moduleScripts.custom_module.EE_button = buttonScript.EE_button_Custom; //3
-        moduleScripts.custom_module.TE_button = buttonScript.TE_button_Custom; //4
-        moduleScripts.custom_module.TI_button = buttonScript.TI_button_Custom; //5
-        moduleScripts.custom_module.TToT_button = buttonScript.TToT_button_Custom; //6
-        moduleScripts.custom_module.VT_button = buttonScript.VT_button_Custom; //7
-        moduleScripts.custom_module.fr_button = buttonScript.fr_button_Custom; //8
-        moduleScripts.custom_module.PETCO2_button = buttonScript.PETCO2_button_Custom; //9
-        moduleScripts.custom_module.PETO2_button = buttonScript.PETO2_button_Custom; //10
-        moduleScripts.custom_module.VE_button = buttonScript.VE_button_Custom; //11
-        moduleScripts.custom_module.VO2_button = buttonScript.VO2_button_Custom; //12
-        moduleScripts.custom_module.VCO2_button = buttonScript.VCO2_button_Custom; //13
-        moduleScripts.custom_module.RER_button = buttonScript.RER_button_Custom; //14
-        moduleScripts.custom_module.MET_button = buttonScript.MET_button_Custom; //15
-        moduleScripts.custom_module.VO2fr_button = buttonScript.VO2fr_button_Custom; //16
-        moduleScripts.custom_module.SpO2_button = buttonScript.SpO2_button_Custom; //17
-        moduleScripts.custom_module.VEcap_button = buttonScript.VEcap_button_Custom; //18
-        moduleScripts.custom_module.VEVO2_button = buttonScript.VEVO2_button_Custom; //19
-        moduleScripts.custom_module.VEVCO2_button = buttonScript.VEVCO2_button_Custom; //20
-        moduleScripts.custom_module.FIO2_button = buttonScript.FIO2_button_Custom; //21
-        moduleScripts.custom_module.FICO2_button = buttonScript.FICO2_button_Custom; //22
-        moduleScripts.custom_module.FEO2_button = buttonScript.FEO2_button_Custom; //23
-        moduleScripts.custom_module.FECO2_button = buttonScript.FECO2_button_Custom; //24
-        moduleScripts.custom_module.BPd_button = buttonScript.BPd_button_Custom; //25
-        moduleScripts.custom_module.BPs_button = buttonScript.BPs_button_Custom; //26
-        moduleScripts.custom_module.MAP_button = buttonScript.MAP_button_Custom; //27
-        moduleScripts.custom_module.Bla_button = buttonScript.Bla_button_Custom; //28
-        moduleScripts.custom_module.CO_button = buttonScript.CO_button_Custom; //29
-        moduleScripts.custom_module.Fcmax_button = buttonScript.Fcmax_button_Custom; //30
-        moduleScripts.custom_module.Fcres_button = buttonScript.Fcres_button_Custom; //31
-        moduleScripts.custom_module.VO2fc_button = buttonScript.VO2fc_button_Custom; //32
-        moduleScripts.custom_module.Sv_button = buttonScript.Sv_button_Custom; //33
-        moduleScripts.custom_module.FEV1_button = buttonScript.FEV1_button_Custom; //34
-        moduleScripts.custom_module.FVC_button = buttonScript.FVC_button_Custom; //35
-        moduleScripts.custom_module.FEV1FVC_button = buttonScript.FEV1FVC_button_Custom; //36
-        moduleScripts.custom_module.PImax_button = buttonScript.PImax_button_Custom; //37 
-        moduleScripts.custom_module.PEmax_button = buttonScript.PEmax_button_Custom; //38
-        moduleScripts.custom_module.ERV_button = buttonScript.ERV_button_Custom; //39
-        moduleScripts.custom_module.FRC_button = buttonScript.FRC_button_Custom; //40
-        moduleScripts.custom_module.IC_button = buttonScript.IC_button_Custom; //41
-        moduleScripts.custom_module.IRV_button = buttonScript.IRV_button_Custom; //42
-        moduleScripts.custom_module.PIF_button = buttonScript.PIF_button_Custom; //43
-        moduleScripts.custom_module.PEF_button = buttonScript.PEF_button_Custom; //44
-        moduleScripts.custom_module.RV_button = buttonScript.RV_button_Custom; //45
-        moduleScripts.custom_module.TLC_button = buttonScript.TLC_button_Custom; //46
-        moduleScripts.custom_module.VC_button = buttonScript.VC_button_Custom; //47 
+        moduleScripts.customModule.RPE_button = buttonScript.RPE_button_Custom; //1
+        moduleScripts.customModule.Dyspnoea_button = buttonScript.Dyspnoea_button_Custom; //2
+        moduleScripts.customModule.EE_button = buttonScript.EE_button_Custom; //3
+        moduleScripts.customModule.TE_button = buttonScript.TE_button_Custom; //4
+        moduleScripts.customModule.TI_button = buttonScript.TI_button_Custom; //5
+        moduleScripts.customModule.TToT_button = buttonScript.TToT_button_Custom; //6
+        moduleScripts.customModule.VT_button = buttonScript.VT_button_Custom; //7
+        moduleScripts.customModule.fr_button = buttonScript.fr_button_Custom; //8
+        moduleScripts.customModule.PETCO2_button = buttonScript.PETCO2_button_Custom; //9
+        moduleScripts.customModule.PETO2_button = buttonScript.PETO2_button_Custom; //10
+        moduleScripts.customModule.VE_button = buttonScript.VE_button_Custom; //11
+        moduleScripts.customModule.VO2_button = buttonScript.VO2_button_Custom; //12
+        moduleScripts.customModule.VCO2_button = buttonScript.VCO2_button_Custom; //13
+        moduleScripts.customModule.RER_button = buttonScript.RER_button_Custom; //14
+        moduleScripts.customModule.MET_button = buttonScript.MET_button_Custom; //15
+        moduleScripts.customModule.VO2fr_button = buttonScript.VO2fr_button_Custom; //16
+        moduleScripts.customModule.SpO2_button = buttonScript.SpO2_button_Custom; //17
+        moduleScripts.customModule.VEcap_button = buttonScript.VEcap_button_Custom; //18
+        moduleScripts.customModule.VEVO2_button = buttonScript.VEVO2_button_Custom; //19
+        moduleScripts.customModule.VEVCO2_button = buttonScript.VEVCO2_button_Custom; //20
+        moduleScripts.customModule.FIO2_button = buttonScript.FIO2_button_Custom; //21
+        moduleScripts.customModule.FICO2_button = buttonScript.FICO2_button_Custom; //22
+        moduleScripts.customModule.FEO2_button = buttonScript.FEO2_button_Custom; //23
+        moduleScripts.customModule.FECO2_button = buttonScript.FECO2_button_Custom; //24
+        moduleScripts.customModule.BPd_button = buttonScript.BPd_button_Custom; //25
+        moduleScripts.customModule.BPs_button = buttonScript.BPs_button_Custom; //26
+        moduleScripts.customModule.MAP_button = buttonScript.MAP_button_Custom; //27
+        moduleScripts.customModule.Bla_button = buttonScript.Bla_button_Custom; //28
+        moduleScripts.customModule.CO_button = buttonScript.CO_button_Custom; //29
+        moduleScripts.customModule.Fcmax_button = buttonScript.Fcmax_button_Custom; //30
+        moduleScripts.customModule.Fcres_button = buttonScript.Fcres_button_Custom; //31
+        moduleScripts.customModule.VO2fc_button = buttonScript.VO2fc_button_Custom; //32
+        moduleScripts.customModule.Sv_button = buttonScript.Sv_button_Custom; //33
+        moduleScripts.customModule.FEV1_button = buttonScript.FEV1_button_Custom; //34
+        moduleScripts.customModule.FVC_button = buttonScript.FVC_button_Custom; //35
+        moduleScripts.customModule.FEV1FVC_button = buttonScript.FEV1FVC_button_Custom; //36
+        moduleScripts.customModule.PImax_button = buttonScript.PImax_button_Custom; //37 
+        moduleScripts.customModule.PEmax_button = buttonScript.PEmax_button_Custom; //38
+        moduleScripts.customModule.ERV_button = buttonScript.ERV_button_Custom; //39
+        moduleScripts.customModule.FRC_button = buttonScript.FRC_button_Custom; //40
+        moduleScripts.customModule.IC_button = buttonScript.IC_button_Custom; //41
+        moduleScripts.customModule.IRV_button = buttonScript.IRV_button_Custom; //42
+        moduleScripts.customModule.PIF_button = buttonScript.PIF_button_Custom; //43
+        moduleScripts.customModule.PEF_button = buttonScript.PEF_button_Custom; //44
+        moduleScripts.customModule.RV_button = buttonScript.RV_button_Custom; //45
+        moduleScripts.customModule.TLC_button = buttonScript.TLC_button_Custom; //46
+        moduleScripts.customModule.VC_button = buttonScript.VC_button_Custom; //47 
 }
     void ApplyPvButtons()
     {
-        moduleScripts.Pv_module.FVC_button = buttonScript.FVC_button_PV;
-        moduleScripts.Pv_module.FEV1_button = buttonScript.FEV1_button_PV;
-        moduleScripts.Pv_module.FEV1FVC_button = buttonScript.FEV1FVC_button_PV;
-        moduleScripts.Pv_module.PEF_button = buttonScript.PEF_button_PV;
-        moduleScripts.Pv_module.PIF_button = buttonScript.PIF_button_PV;
-        moduleScripts.Pv_module.PImax_button = buttonScript.PImax_button_PV;
-        moduleScripts.Pv_module.PEmax_button = buttonScript.PEmax_button_PV;
-        moduleScripts.Pv_module.VECap_button = buttonScript.VECap_button_PV;
-        moduleScripts.Pv_module.ERV_button = buttonScript.ERV_button_PV;
-        moduleScripts.Pv_module.FRC_button = buttonScript.FRC_button_PV;
-        moduleScripts.Pv_module.IC_button = buttonScript.IC_button_PV;
-        moduleScripts.Pv_module.IRV_button = buttonScript.IRV_button_PV;
-        moduleScripts.Pv_module.RV_button = buttonScript.RV_button_PV;
-        moduleScripts.Pv_module.TLC_button = buttonScript.TLC_button_PV;
-        moduleScripts.Pv_module.VC_button = buttonScript.VC_button_PV;
+        moduleScripts.pvModule.FVC_button = buttonScript.FVC_button_PV;
+        moduleScripts.pvModule.FEV1_button = buttonScript.FEV1_button_PV;
+        moduleScripts.pvModule.FEV1FVC_button = buttonScript.FEV1FVC_button_PV;
+        moduleScripts.pvModule.PEF_button = buttonScript.PEF_button_PV;
+        moduleScripts.pvModule.PIF_button = buttonScript.PIF_button_PV;
+        moduleScripts.pvModule.PImax_button = buttonScript.PImax_button_PV;
+        moduleScripts.pvModule.PEmax_button = buttonScript.PEmax_button_PV;
+        moduleScripts.pvModule.VECap_button = buttonScript.VECap_button_PV;
+        moduleScripts.pvModule.ERV_button = buttonScript.ERV_button_PV;
+        moduleScripts.pvModule.FRC_button = buttonScript.FRC_button_PV;
+        moduleScripts.pvModule.IC_button = buttonScript.IC_button_PV;
+        moduleScripts.pvModule.IRV_button = buttonScript.IRV_button_PV;
+        moduleScripts.pvModule.RV_button = buttonScript.RV_button_PV;
+        moduleScripts.pvModule.TLC_button = buttonScript.TLC_button_PV;
+        moduleScripts.pvModule.VC_button = buttonScript.VC_button_PV;
 }
     void ApplyCardioButtons()
     {
-        moduleScripts.Cardio_Module.fc_button = buttonScript.fc_button_Cardio; //1
-        moduleScripts.Cardio_Module.vo2fc_button = buttonScript.vo2fc_button_Cardio; //2
-        moduleScripts.Cardio_Module.MAP_button = buttonScript.MAP_button_Cardio; //3
-        moduleScripts.Cardio_Module.fcmax_button = buttonScript.fcmax_button_Cardio; //4
-        moduleScripts.Cardio_Module.bla_button = buttonScript.bla_button_Cardio; //5
-        moduleScripts.Cardio_Module.CO_button = buttonScript.CO_button_Cardio; //6
-        moduleScripts.Cardio_Module.BPd_button = buttonScript.BPd_button_Cardio; //7
-        moduleScripts.Cardio_Module.BPs_button = buttonScript.BPs_button_Cardio; //8
-        moduleScripts.Cardio_Module.SV_button = buttonScript.SV_button_Cardio; //9
-        moduleScripts.Cardio_Module.fcres_button = buttonScript.fcres_button_Cardio; //10
-        moduleScripts.Cardio_Module.SpO2_button = buttonScript.SpO2_button_Cardio; //11
+        moduleScripts.cardioModule.fc_button = buttonScript.fc_button_Cardio; //1
+        moduleScripts.cardioModule.vo2fc_button = buttonScript.vo2fc_button_Cardio; //2
+        moduleScripts.cardioModule.MAP_button = buttonScript.MAP_button_Cardio; //3
+        moduleScripts.cardioModule.fcmax_button = buttonScript.fcmax_button_Cardio; //4
+        moduleScripts.cardioModule.bla_button = buttonScript.bla_button_Cardio; //5
+        moduleScripts.cardioModule.CO_button = buttonScript.CO_button_Cardio; //6
+        moduleScripts.cardioModule.BPd_button = buttonScript.BPd_button_Cardio; //7
+        moduleScripts.cardioModule.BPs_button = buttonScript.BPs_button_Cardio; //8
+        moduleScripts.cardioModule.SV_button = buttonScript.SV_button_Cardio; //9
+        moduleScripts.cardioModule.fcres_button = buttonScript.fcres_button_Cardio; //10
+        moduleScripts.cardioModule.SpO2_button = buttonScript.SpO2_button_Cardio; //11
 }
     void ApplyMetCartButtons()
     {
-        moduleScripts.MetCart_module.VE_button = buttonScript.VE_button_MC;
-        moduleScripts.MetCart_module.VT_button = buttonScript.VT_button_MC;
-        moduleScripts.MetCart_module.VO2_button = buttonScript.VO2_button_MC;
-        moduleScripts.MetCart_module.VCO2_button = buttonScript.VCO2_button_MC;
-        moduleScripts.MetCart_module.FR_button = buttonScript.FR_button_MC;
-        moduleScripts.MetCart_module.MET_button = buttonScript.MET_button_MC;
-        moduleScripts.MetCart_module.Fc_button = buttonScript.Fc_button_MC;
-        moduleScripts.MetCart_module.RER_button = buttonScript.RER_button_MC;
-        moduleScripts.MetCart_module.VEVO2_button = buttonScript.VEVO2_button_MC;
-        moduleScripts.MetCart_module.VEVCO2_button = buttonScript.VEVCO2_button_MC;
-        moduleScripts.MetCart_module.PETCO2_button = buttonScript.PETCO2_button_MC;
-        moduleScripts.MetCart_module.PETO2_button = buttonScript.PETO2_button_MC;
-        moduleScripts.MetCart_module.TE_button = buttonScript.TE_button_MC;
-        moduleScripts.MetCart_module.TI_button = buttonScript.TI_button_MC;
-        moduleScripts.MetCart_module.TITE_button = buttonScript.TITE_button_MC;
-        moduleScripts.MetCart_module.TToT_button = buttonScript.TToT_button_MC;
-        moduleScripts.MetCart_module.VO2FR_button = buttonScript.VO2FR_button_MC;
-        moduleScripts.MetCart_module.VO2FC_button = buttonScript.VO2FC_button_MC;
-        moduleScripts.MetCart_module.SpO2_button = buttonScript.SpO2_button_MC;
-        moduleScripts.MetCart_module.Fcmax_button = buttonScript.Fcmax_button_MC;
-        moduleScripts.MetCart_module.Fcres_button = buttonScript.Fcres_button_MC;
-        moduleScripts.MetCart_module.EE_button = buttonScript.EE_button_MC;
+        moduleScripts.metCartModule.VE_button = buttonScript.VE_button_MC;
+        moduleScripts.metCartModule.VT_button = buttonScript.VT_button_MC;
+        moduleScripts.metCartModule.VO2_button = buttonScript.VO2_button_MC;
+        moduleScripts.metCartModule.VCO2_button = buttonScript.VCO2_button_MC;
+        moduleScripts.metCartModule.FR_button = buttonScript.FR_button_MC;
+        moduleScripts.metCartModule.MET_button = buttonScript.MET_button_MC;
+        moduleScripts.metCartModule.Fc_button = buttonScript.Fc_button_MC;
+        moduleScripts.metCartModule.RER_button = buttonScript.RER_button_MC;
+        moduleScripts.metCartModule.VEVO2_button = buttonScript.VEVO2_button_MC;
+        moduleScripts.metCartModule.VEVCO2_button = buttonScript.VEVCO2_button_MC;
+        moduleScripts.metCartModule.PETCO2_button = buttonScript.PETCO2_button_MC;
+        moduleScripts.metCartModule.PETO2_button = buttonScript.PETO2_button_MC;
+        moduleScripts.metCartModule.TE_button = buttonScript.TE_button_MC;
+        moduleScripts.metCartModule.TI_button = buttonScript.TI_button_MC;
+        moduleScripts.metCartModule.TITE_button = buttonScript.TITE_button_MC;
+        moduleScripts.metCartModule.TToT_button = buttonScript.TToT_button_MC;
+        moduleScripts.metCartModule.VO2FR_button = buttonScript.VO2FR_button_MC;
+        moduleScripts.metCartModule.VO2FC_button = buttonScript.VO2FC_button_MC;
+        moduleScripts.metCartModule.SpO2_button = buttonScript.SpO2_button_MC;
+        moduleScripts.metCartModule.Fcmax_button = buttonScript.Fcmax_button_MC;
+        moduleScripts.metCartModule.Fcres_button = buttonScript.Fcres_button_MC;
+        moduleScripts.metCartModule.EE_button = buttonScript.EE_button_MC;
 }
     void AttachAllButtons()
     {
-        moduleScripts.Cardio_Module.AttachButtons();
-        moduleScripts.Pv_module.AttachButtons();
-        moduleScripts.MetCart_module.AttachButtons();
-        moduleScripts.custom_module.AttachButtons();
+        moduleScripts.cardioModule.AttachButtons();
+        moduleScripts.pvModule.AttachButtons();
+        moduleScripts.metCartModule.AttachButtons();
+        moduleScripts.customModule.AttachButtons();
     }
 }

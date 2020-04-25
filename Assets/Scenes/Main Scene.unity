@@ -10537,20 +10537,6 @@ MonoBehaviour:
   customModule: {fileID: 0}
   tbTimeTbox: {fileID: 612489455}
   resultField: {fileID: 0}
-  expiryTime: {fileID: 236263272}
-  expiryRatio: {fileID: 1491920801}
-  VE: {fileID: 871070536}
-  VI: {fileID: 45270903}
-  VCO2: {fileID: 438331658}
-  VO2: {fileID: 118561197}
-  RER: {fileID: 1268646591}
-  RQ: {fileID: 1523878194}
-  Vecap: {fileID: 458550338}
-  VeVO2: {fileID: 185276630}
-  VeVCO2: {fileID: 1614116817}
-  EPOC: {fileID: 843870055}
-  MET: {fileID: 187375781}
-  VO2fr: {fileID: 1186853099}
   tempChoser: {fileID: 814341043}
   calcScripts: {fileID: 2101170954}
   Stopwatch: {fileID: 1332909543}
@@ -11828,12 +11814,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   avatarImage: {fileID: 1262603164}
   possibleSprites:
-  - {fileID: 21300000, guid: f8559845a557cc64a82a52acba1343a7, type: 3}
-  - {fileID: 21300000, guid: 944adf10f845ccf44807832e7d025afc, type: 3}
-  - {fileID: 21300000, guid: 34b8a5995131d9c42a080f94b7de21c6, type: 3}
-  - {fileID: 21300000, guid: 76bf4c02aebe6194cabb4d61340c0707, type: 3}
-  - {fileID: 21300000, guid: 543c0ddee3e6ad34c93333ba06bf5733, type: 3}
-  - {fileID: 21300000, guid: c282f074794e0e449b781569c9058c40, type: 3}
+  - {fileID: 21300000, guid: 79d2b85e0b5fa624e8cea3331b41cbc5, type: 3}
+  - {fileID: 21300000, guid: eb32f1ecf61d88340b7af7ce44f3b667, type: 3}
+  - {fileID: 21300000, guid: ff9f7f618124a4c46a7f4d602ba8f54a, type: 3}
+  - {fileID: 21300000, guid: 8e334bd71c632374e999807c3e0575d2, type: 3}
+  - {fileID: 21300000, guid: 5ea0ae7e552ebd546ab948d52a1de1cd, type: 3}
+  - {fileID: 21300000, guid: ff1e596b07efb8a429983712f94a56f0, type: 3}
   spriteRenderer: {fileID: 1262603166}
 --- !u!1 &1268646587
 GameObject:
@@ -16768,6 +16754,9 @@ MonoBehaviour:
   isBackMainMenu: 0
   isBackModules: 1
   isModuleVariable: 0
+  isTreadmill: 0
+  isRower: 0
+  isBike: 0
   avatarHolder: {fileID: 0}
   moduleChanger: {fileID: 0}
   TSPanel: {fileID: 0}
@@ -16776,6 +16765,9 @@ MonoBehaviour:
   PAPanel: {fileID: 0}
   CAPanel: {fileID: 0}
   MAPanel: {fileID: 0}
+  imageTreadmill: {fileID: 0}
+  imageRower: {fileID: 0}
+  imageBike: {fileID: 0}
 --- !u!4 &1866898836
 Transform:
   m_ObjectHideFlags: 0
@@ -18115,7 +18107,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2101170956}
   - component: {fileID: 2101170955}
-  - component: {fileID: 2101170957}
   m_Layer: 5
   m_Name: CalculateScript
   m_TagString: Untagged
@@ -18159,51 +18150,6 @@ RectTransform:
   m_AnchoredPosition: {x: 299.7, y: 213}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2101170957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2101170954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0899e9cd136cfb8499801d5576565c2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  avatar: {fileID: 0}
-  TI: 0
-  TE: 0
-  TITE: 0
-  breathTime: 0
-  FECO2: 0
-  FICO2: 0
-  FEO2: 0
-  FIO2: 0
-  veATPS: 0
-  veSTPD: 0
-  veBTPS: 0
-  VE: 0
-  VT: 0
-  MET: 0
-  VI: 0
-  VO2: 0
-  VO2maxAge: 0
-  VO2maxHeight: 0
-  VO2maxWeight: 0
-  VO2fr: 0
-  VCO2: 0
-  EPOC: 0
-  PETCO2: 0
-  PETO2: 0
-  fr: 0
-  RER: 0
-  RQ: 0
-  Vecap: 0
-  VeVO2: 0
-  VeVCO2: 0
-  Ttot: 0
-  W: 0
 --- !u!1 &2117970338
 GameObject:
   m_ObjectHideFlags: 0

@@ -180,13 +180,13 @@ public class pvcustommodule : MonoBehaviour
                     {
                         Debug.Log("filledBoxes works");
                         BoxValue[i] = 1;
-                        textBoxContent[i] = avatar.FVC.ToString();
+                        textBoxContent[i] = avatar.FVC.ToString(); //delete this probably, not needed.
                         //textBoxes[i].text = avatar.FVC.ToString();
                         nameBoxes[i] = "FVC ";
                         filledBoxes[i] = true;
                         FVC_toggled = true;
                         FVC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
-
+                        
                     }
 
 

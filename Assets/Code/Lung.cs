@@ -15,7 +15,7 @@ public class Lung : MonoBehaviour
     public float MVV;           //maximal voluntary ventilation - measures ventilatory caspacity, requires deep breathing - ???
     public float PEF;           //peak expiratory flow rate - maximum flow available - INCREASE
     public float PEmax = 90;    //peak expiratory mouth pressure - pressure in mouth during expiration - INCREASE
-    public float PIF;           //peak inspiratory flow rate - maximum flow available - RARELY MEASURED? - INCREASE
+    public float PIF;           //peak inspiratory flow rate - maximum flow available - RARELY MEASURED? - INCREASE   ---client hasn't given us any way of calculating this but wants it in the modules?????????
     public float PImax = 80;    //peak inspiratory mouth pressure - pressure in mouth during inspiration - INCREASE
 
     public float RV;            //residual volume - volume in lungs after maximum expiration - DECREASE
@@ -106,6 +106,14 @@ public class Lung : MonoBehaviour
                 VC = 4.8f;
                 BEELV = EELV;
                 BEILV = EILV;
+                character.PEF = PEF;
+                character.IC = IC;
+                character.ERV = ERV;
+                character.TLC = TLC;
+                character.IRV = IRV;
+                character.VC = VC;
+                character.RV = RV;
+                
                 break;
             case 0: //F
                     //litres
@@ -121,6 +129,13 @@ public class Lung : MonoBehaviour
                 VC = 3.2f;
                 BEELV = EELV;
                 BEILV = EILV;
+                character.PEF = PEF;
+                character.IC = IC;
+                character.ERV = ERV;
+                character.TLC = TLC;
+                character.IRV = IRV;
+                character.VC = VC;
+                character.RV = RV;
                 break;
             default: //M
                 //litres
@@ -136,6 +151,13 @@ public class Lung : MonoBehaviour
                 VC = 4.8f;
                 BEELV = EELV;
                 BEILV = EILV;
+                character.PEF = PEF;
+                character.IC = IC;
+                character.ERV = ERV;
+                character.TLC = TLC;
+                character.IRV = IRV;
+                character.VC = VC;
+                character.RV = RV;
                 break;
         }
 
@@ -172,6 +194,11 @@ public class Lung : MonoBehaviour
         };        
     }
 
+    void PIFfunction()
+    {
+        PIF = VT * (60 / character.Ttot);
+        character.PIF = PIF;
+    }
     void FVCfunction()
     {
         if (character.gender == 1)

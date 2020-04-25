@@ -68,7 +68,7 @@ public class Output : MonoBehaviour
                 break;
         }
 
-        switch(heat.HeatCond)
+        switch(heat.heatCond)
         {
             case 0:
                 Heat = "Body Heat Normal"; //37 degrees
@@ -87,7 +87,7 @@ public class Output : MonoBehaviour
                 break;
         }
 
-        switch(heat.WaterCond)
+        switch(heat.waterCond)
         {
             case 0:
                 Water = "Body Water Content Normal"; //100% water percent+

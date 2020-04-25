@@ -73,8 +73,8 @@ public class Cardio : MonoBehaviour
 
         //
         HRmax = 220;
-        HRrestfunction(80);
-        BlaTfunction();
+        HrRestFunction(80);
+        BlatFunction();
         //character.gender = 1; //why would this be set here? we have a character already that the user inputs values for/has default values already
         //character.weight = 50;
         //character.age = 20;
@@ -145,9 +145,9 @@ public class Cardio : MonoBehaviour
 
     public void MathFunc()
     {
-        BPsTargfunction();
-        HRtargfunction();
-        BlaTargfunction();
+        BPsTargFunction();
+        HrTargFunction();
+        BlaTargFunction();
 
         //HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, 2); //MAYBE NOT THE INTERVAL? INTERVAL COULD BE VERY LONG
 
@@ -158,16 +158,16 @@ public class Cardio : MonoBehaviour
         //3 = THIS IS THE WIERD ONE. JUST DO A 'PRIVATE FLOAT'
         //4 - TIME IN SECONDS
 
-        SVfunction(); //update everything else for relevant stuff, the order is very important
-        COfunction();
-        OPfunction();
-        MAPfunction();
-        EFfunction();
-        SWfunction();
-        TPRfunction();
-        BPfunction();
-        HRmaxfunction();
-        HRresfunction();
+        SvFunction(); //update everything else for relevant stuff, the order is very important
+        CoFunction();
+        OpFunction();
+        MapFunction();
+        EfFunction();
+        SwFunction();
+        TprFunction();
+        BpFunction();
+        HrMaxFunction();
+        HrResFunction();
     }
 
     public void CardioResetfunc()
@@ -179,22 +179,22 @@ public class Cardio : MonoBehaviour
 
     //FUNCTIONS LEVEL 1 - BASIC MODULE
 
-    public void BPsfunction(float BPsfunc) //USE THIS ONE FOR INPUT
+    public void BPsFunction(float BPsfunc) //USE THIS ONE FOR INPUT
     {
         BPs = BPsfunc;
         character.BPs = BPs;
         BPsBase = BPsfunc;
     }
 
-    void BPsTargfunction()
+    void BPsTargFunction()
     {
         switch(character.gender)
         {
             case 1: //M         
-                BPsTarg = (0.346f * exercise.BodyWork);
+                BPsTarg = (0.346f * exercise.bodyWork);
                 break;
             case 0: //F  
-                BPsTarg = (0.103f * exercise.BodyWork);
+                BPsTarg = (0.103f * exercise.bodyWork);
                 break;
             default:
                 break;
@@ -206,29 +206,29 @@ public class Cardio : MonoBehaviour
         }
     }
 
-    public void BPdfunction(float BPdfunc)
+    public void BPdFunction(float BPdfunc)
     {
         BPd = BPdfunc; //INPUT
         character.BPd = BPd;
     }
 
-    void HRtargfunction()
+    void HrTargFunction()
     {
         switch (character.gender)
         {
             case 1:
-                HRtarg = ((0.32f * exercise.BodyWork) + (health * 0.9f));
+                HRtarg = ((0.32f * exercise.bodyWork) + (health * 0.9f));
                 //HEALTHY PEOPLE CAN BE -0.9 AND UNHEALTHY +0.9
                 break;
             case 0:
-                HRtarg = ((0.43f * exercise.BodyWork) + (health * 0.15f));
+                HRtarg = ((0.43f * exercise.bodyWork) + (health * 0.15f));
                 //+/- 0.15
                 break;
         }
         //backup
         if(HRtarg < HRrest)
         {
-            HRtarg = (HRrest + (0.1f * exercise.BodyWork));
+            HRtarg = (HRrest + (0.1f * exercise.bodyWork));
         }
         if(HRtarg > HRmax)
         {
@@ -237,47 +237,47 @@ public class Cardio : MonoBehaviour
         }
     }
 
-    public void HRrestfunction(float HRrestfunc)
+    public void HrRestFunction(float HRrestfunc)
     {
         HRrest = HRrestfunc; //INPUT
     }
 
-    void HRmaxfunction()
+    void HrMaxFunction()
     {
         HRmax = (220 - character.age);
         
     }
 
-    void MAPfunction()
+    void MapFunction()
     {
         MAP = BPd + ((BPs - BPd) / 3);
         character.MAP = MAP;
     }
 
-    void OPfunction()
+    void OpFunction()
     {
         OP = (vents.VO2 / HR);
         
     }
     
-    void BlaTfunction()
+    void BlatFunction()
     {
         BlaT = (HRmax * 0.85f);
         character.BlaT = BlaT;
     }
 
-    public void BlaTargfunction()
+    public void BlaTargFunction()
     {
         if(HR < BlaT)
         {
             HRCond = 0;
-            BlaTarget = (Mathf.Pow((exercise.WorkDone/50), 2));
+            BlaTarget = (Mathf.Pow((exercise.workDone/50), 2));
 
         }
         else if (HR >= BlaT)
         {
             HRCond = 1;
-            BlaTarget = (Mathf.Pow((exercise.WorkDone / 25), 2));
+            BlaTarget = (Mathf.Pow((exercise.workDone / 25), 2));
 
             //NORMAL BL is like 1-2, but it can go up to 25 during intense exercise, but this is a worst-case scenario
             //normal people BL go up to like 10-15 before they give up. perhaps make this an option.
@@ -287,25 +287,25 @@ public class Cardio : MonoBehaviour
 
     //FUNCTIONS LEVEL 2 - MEDIUM MODULE
 
-    void COfunction()
+    void CoFunction()
     {
         CO = (SV * HR);
         character.CO = CO;
     }
 
-    void BPfunction()
+    void BpFunction()
     {
         BP = (CO * TPR);
        
     }
 
-    void SVfunction()
+    void SvFunction()
     {
         SV = (EDV - ESV);
         character.SV = SV;
     }
 
-    void HRresfunction()
+    void HrResFunction()
     {
         HRres = (HRmax - HRrest);
         
@@ -313,35 +313,35 @@ public class Cardio : MonoBehaviour
 
     //FUNCTIONS LEVEL 3 - ADVANCED MODULE
 
-    void EFfunction()
+    void EfFunction()
     {
         EF = ((SV / EDV) * 100);
         
     }
 
-    public void EDVfunction(float EDVfunc)
+    public void EdvFunction(float EDVfunc)
     {
         EDV = EDVfunc; //INPUT, INCREASES BY UP TO 21%
         EDVbase = EDVfunc;        
     }
 
-    public void ESVfunction(float ESVfunc)
+    public void EsvFunction(float ESVfunc)
     {
         ESV = ESVfunc; //INPUT, DECREASES BY UP TO 18%
         ESVbase = ESVfunc;
     }
 
-    void SWfunction()
+    void SwFunction()
     {
         SW = (SV * MAP);
     }
 
-    void TPRfunction()
+    void TprFunction()
     {
         TPR = (MAP / CO);
     }
 
-    void healthfunction(int healthiness)
+    void HealthFunction(int healthiness)
     {
         switch(healthiness)
         {
