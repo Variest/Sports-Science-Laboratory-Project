@@ -13,21 +13,21 @@ public class pvEquations : MonoBehaviour
     [Space(10)]
     [Header("Values used for inspiration and expiration of air")] //ALMOST DEALT WITH
 
-    public float TI; //inspiratory time
-    public float TE; //expiratory time
-    public float TITE; //result for TI/TE
-    public float breathTime; //total breath time - SAME AS TTOT?
+    public float TI; //inspiratory time - HOPELESS
+    public float TE; //expiratory time - HOPELESS
+    public float TITE; //result for TI/TE - NEEDS TI AND TE
+    public float breathTime; //total breath time - SAME AS TTOT? - ALSO NEEDS TI AND TE
 
 
     [Space(10)]
     [Header("Fractional Concentrations")] //DEALT WITH
 
-    public float FECO2; //fractional concentration of expired carbon dioxide
+    public float FECO2; //fractional concentration of expired carbon dioxide - MODELLED
     float FECO2P; //THIS IS A PLACEHOLDER FOR CALCULATION
-    public float FICO2; //fractional concentration of inspired carbon dioxide 
-    public float FEO2; //fractional concentration of expired oxygen
+    public float FICO2; //fractional concentration of inspired carbon dioxide - STATIC
+    public float FEO2; //fractional concentration of expired oxygen - MODELLED
     float FEO2P; //ALSO A PLACEHOLDER
-    public float FIO2; //fractional concentration of inspired oxygen
+    public float FIO2; //fractional concentration of inspired oxygen - STATIC
     //THESE ALL APPEAR TO BE FIXED AT AROUND
     //FICO - 0.04, FIO - 20.95
     //FECO - 4.4, FEO - 16.4 (THIS ONE GOES UP)
@@ -35,14 +35,14 @@ public class pvEquations : MonoBehaviour
     [Space(10)]
     [Header("Minute Ventilation")] //DEALT WITH
 
-    public float veATPS; //minute ventilation in an ATPS environment
-    public float veSTPD; //minute ventilation in an STPD environment
-    public float veBTPS; //minute ventilation in a BTPS environment
-    public float VE;
+    public float veATPS; //minute ventilation in an ATPS environment - MODELLED
+    public float veSTPD; //minute ventilation in an STPD environment - MODELLED
+    public float veBTPS; //minute ventilation in a BTPS environment - MODELLED
+    public float VE; //MODELLED
 
-    public float VT; //tidal volume - USING 'VT' FROM 'LUNGS' INSTEAD
+    public float VT; //tidal volume - USING 'VT' FROM 'LUNGS' INSTEAD - MODELLED
 
-    public float MET; //metabolic equivalents
+    public float MET; //metabolic equivalents - ???
     //STPD relates to standard temperature and pressure, dry. (0c, 760 mmHg)
     //BTPS relates to body temperature and pressure, saturated with water vapor
     //ATPS relates to ambient temperature and pressure, saturated with water
@@ -50,13 +50,13 @@ public class pvEquations : MonoBehaviour
     [Space(10)]
     [Header("Oxygen Consumption")] //DEALT WITH - EPOC IGNORED
 
-    public float VI; //used to calculate some stuff idk
-    public float VO2; //value for oxygen consumption
+    public float VI; //used to calculate some stuff idk - MODELLED
+    public float VO2; //value for oxygen consumption - MODELLED
     public float VO2maxAge;
     public float VO2maxHeight;
     public float VO2maxWeight;
-    public float VO2fr; //oxygen breath value
-    public float VCO2; //carbon dioxide output
+    public float VO2fr; //oxygen breath value - MODELLED
+    public float VCO2; //carbon dioxide output - MODELLED
     public float EPOC; //excess post-exercise oxygen consumption
 
     [Space(10)]
@@ -68,17 +68,17 @@ public class pvEquations : MonoBehaviour
     [Space(10)]
     [Header("Respiratory variables")] //DEALT WITH
 
-    public float fr; //respiratory rate
-    public float RER; //respiratory exchange ratio
-    public float RQ; //respiratory quotient
+    public float fr; //respiratory rate - M
+    public float RER; //respiratory exchange ratio - M
+    public float RQ; //respiratory quotient - M
 
     [Space(10)]
     [Header("Ventilatory variables")] //DEALT WITH
 
-    public float Vecap; //ventilatory capacity
-    public float VeVO2; //ventilatory equivalent for oxygen
-    public float VeVCO2; //ventilatory equivalent for carbon dioxide
-    public float Ttot; //total breath time - SAME AS BREATHTIME?
+    public float Vecap; //ventilatory capacity - M
+    public float VeVO2; //ventilatory equivalent for oxygen - M
+    public float VeVCO2; //ventilatory equivalent for carbon dioxide - M
+    public float Ttot; //total breath time - SAME AS BREATHTIME? - I
 
     [Space(10)]
     [Header("Work Rate")]
@@ -110,15 +110,21 @@ public class pvEquations : MonoBehaviour
         FECO2P = 4.4f;
         FEO2 = FEO2P;
         FECO2 = FECO2P;
+        //EXPERIMENTAL VARIABLES
+        avatar.TI = 1.5f;
+        avatar.frMax = 60;
     }
 
     public void Update()
     {
-        
+        CalculateAll();
     }
 
     public void CalculateAll()
     {
+
+        BreathFreq();
+
         BreathTime();
         ExpireTime();
         InspireExpireRatio();
@@ -126,11 +132,14 @@ public class pvEquations : MonoBehaviour
         FEO2Func();
         CalcVE();
 
-        CalcVeATPS(5);
+
+        CalcVeATPS();
         CalcVeSTPD(1, 1, 1); 
         CalcVeBTPS(1, 1, 1);
 
-       // CalcVeATPS(Lungs.VT, avatar.breathTime);
+
+  
+
         CalcVeSTPD(760, WV.waterVapour, WV.gasTemp); 
         CalcVeBTPS(760, WV.waterVapour, WV.gasTemp);
 
@@ -179,7 +188,8 @@ public class pvEquations : MonoBehaviour
 
     public float FECO2Func()
     {
-        FECO2 = (FECO2P + (((avatar.frMax) / (avatar.fr)) * FEO2P));
+        FECO2 = (FECO2P + (((cardio.HR) / (cardio.HRmax)) * FEO2P));
+
         //PERC. OF EXHALED C02 = BASE EXHALED C02% + (HRMAX% OF EXHALED 02)
         //EVENTUALLY, HUMANS PUT OUT 1:1 CO2:O2, THIS IS JUST MODELLING THAT
         return avatar.FECO2;
@@ -202,10 +212,10 @@ public class pvEquations : MonoBehaviour
         return avatar.VE;
     }
 
-    public float CalcVeATPS(float vol)
+    public float CalcVeATPS()
     {
         //time is relevant here, will use the timer value
-        avatar.veATPS = (vol / timeInterval) * 60;
+        avatar.veATPS = (avatar.VT / timeInterval) * 60;
         //avatar.veatps = (VE/60)*60?
         return avatar.veATPS;
     }
@@ -229,7 +239,7 @@ public class pvEquations : MonoBehaviour
     public float calcVI()
     {
         // VI = veSTPD * (((1 - FEO2 - FECO2) / (1 - FIO2 - FICO2)) * FIO2) - (VE * FEO2);
-        //1 - FEO2 - FECO2) /  (1-FIO2 - FICO2
+        //1 - FEO2 - FECO2) /  (1-FIO2 - FICO)
         avatar.VI = (1 - avatar.FEO2 - avatar.FECO2) / (1 - avatar.FIO2 - avatar.FICO2); //new vi equation mitch gave us
         return VI;
     }
@@ -245,9 +255,13 @@ public class pvEquations : MonoBehaviour
     {
         //VO2 = (VI * (FIO2 / 100)) - (veSTPD * (FEO2 / 100)); //values are divided by 100 as they must be expressed as decimals instead of percentages
         //v02 = VE STPD * (((1 - FEO2 - FECO2) /  (1-FIO2 - FICO2)) * FIO2) - (VE STPD * FEO2)
+
         avatar.VO2 = avatar.veSTPD * (((1 - avatar.FEO2 - avatar.FECO2) / (1 - avatar.FIO2 - avatar.FICO2)) * avatar.FIO2) - (avatar.veSTPD * avatar.FEO2); //equation including the VI calculation within it
         //avatar.VO2 = avatar.veSTPD * ((avatar.VI * avatar.FIO2) - (avatar.veSTPD * avatar.FEO2)); 
-
+        
+        //it needs to be ML/KG
+        avatar.VO2 *= 1000; 
+        avatar.VO2 /= avatar.weight;
         return VO2;
     }
     

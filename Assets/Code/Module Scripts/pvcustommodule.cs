@@ -8,6 +8,7 @@ public class pvcustommodule : MonoBehaviour
     public Text[] textBoxes = new Text[10];
     public string[] textBoxContent = new string[10];
     public string[] nameBoxes = new string[10];
+    public string[] popupBoxes = new string[10];
     /*
   
         FVC
@@ -183,6 +184,7 @@ public class pvcustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.FVC.ToString(); //delete this probably, not needed.
                         //textBoxes[i].text = avatar.FVC.ToString();
                         nameBoxes[i] = "FVC ";
+                        popupBoxes[i] = "Forced Vital Capacity";
                         filledBoxes[i] = true;
                         FVC_toggled = true;
                         FVC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -206,6 +208,7 @@ public class pvcustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     FVC_toggled = false;
                     FVC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -232,6 +235,7 @@ public class pvcustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.FEV1.ToString();
                         //textBoxes[i].text = avatar.FEV1.ToString();
                         nameBoxes[i] = "FEV1 ";
+                        popupBoxes[i] = "Forced Expired Volume During Inital Exhalation";
                         filledBoxes[i] = true;
                         FEV1_toggled = true;
                         FEV1_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -254,6 +258,7 @@ public class pvcustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEV1_toggled = false;
                     FEV1_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -280,6 +285,7 @@ public class pvcustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.FEV1FVC.ToString();
                         //textBoxes[i].text = avatar.FEV1FVC.ToString();
                         nameBoxes[i] = "FEV1FVC ";
+                        popupBoxes[i] = "FEV1/FVC Ratio";
                         filledBoxes[i] = true;
                         FEV1FVC_toggled = true;
                         FEV1FVC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -302,6 +308,7 @@ public class pvcustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     FEV1FVC_toggled = false;
                     FEV1FVC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -328,6 +335,7 @@ public class pvcustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.PEF.ToString();
                         //textBoxes[i].text = avatar.PEF.ToString();
                         nameBoxes[i] = "PEF ";
+                        popupBoxes[i] = "Peak Expiratory Flow Rate";
                         filledBoxes[i] = true;
                         PEF_toggled = true;
                         PEF_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -351,6 +359,7 @@ public class pvcustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     PEF_toggled = false;
                     PEF_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -377,6 +386,7 @@ public class pvcustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.PIF.ToString();
                         //textBoxes[i].text = avatar.PIF.ToString();
                         nameBoxes[i] = "PIF ";
+                        popupBoxes[i] = "Peak Inspiratory Flow Rate";
                         filledBoxes[i] = true;
                         PIF_toggled = true;
                         PIF_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -399,6 +409,7 @@ public class pvcustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     PIF_toggled = false;
                     PIF_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -425,6 +436,7 @@ public class pvcustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.PImax.ToString();
                         //textBoxes[i].text = avatar.PImax.ToString();
                         nameBoxes[i] = "PImax ";
+                        popupBoxes[i] = "Peak Inspiratory Mouth Pressure";
                         filledBoxes[i] = true;
                         PImax_toggled = true;
                         PImax_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -447,6 +459,7 @@ public class pvcustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     PImax_toggled = false;
                     PImax_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -473,6 +486,7 @@ public class pvcustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.PEmax.ToString();
                         //textBoxes[i].text = avatar.PEmax.ToString();
                         nameBoxes[i] = "PEmax ";
+                        popupBoxes[i] = "Peak Expiratory Mouth Pressure";
                         filledBoxes[i] = true;
                         PEmax_toggled = true;
                         PEmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -496,6 +510,7 @@ public class pvcustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     PEmax_toggled = false;
                     PEmax_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -522,6 +537,7 @@ public class pvcustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.Vecap.ToString();
                         //textBoxes[i].text = avatar.Vecap.ToString();
                         nameBoxes[i] = "VEcap ";
+                        popupBoxes[i] = "Ventilatory Capacity";
                         filledBoxes[i] = true;
                         VECap_toggled = true;
                         VECap_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -544,6 +560,7 @@ public class pvcustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     VECap_toggled = false;
                     VECap_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -570,6 +587,7 @@ public class pvcustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.ERV.ToString();
                         //textBoxes[i].text = avatar.ERV.ToString();
                         nameBoxes[i] = "ERV ";
+                        popupBoxes[i] = "Expiratory Reserve Volume";
                         filledBoxes[i] = true;
                         ERV_toggled = true;
                         ERV_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -592,6 +610,7 @@ public class pvcustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     ERV_toggled = false;
                     ERV_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -618,6 +637,7 @@ public class pvcustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.FRC.ToString();
                         //textBoxes[i].text = avatar.FRC.ToString();
                         nameBoxes[i] = "FRC ";
+                        popupBoxes[i] = "Functional Residual Capacity";
                         filledBoxes[i] = true;
                         FRC_toggled = true;
                         FRC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -640,6 +660,7 @@ public class pvcustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     FRC_toggled = false;
                     FRC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -666,6 +687,7 @@ public class pvcustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.IC.ToString();
                         //textBoxes[i].text = avatar.IC.ToString();
                         nameBoxes[i] = "IC";
+                        popupBoxes[i] = "Inspiratory Capacity";
                         filledBoxes[i] = true;
                         IC_toggled = true;
                         IC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -688,6 +710,7 @@ public class pvcustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     IC_toggled = false;
                     IC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -714,6 +737,7 @@ public class pvcustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.IRV.ToString();
                         //textBoxes[i].text = avatar.IRV.ToString();
                         nameBoxes[i] = "IRV ";
+                        popupBoxes[i] = "Inspiratory Reserve Volume";
                         filledBoxes[i] = true;
                         IRV_toggled = true;
                         IRV_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -736,6 +760,7 @@ public class pvcustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     IRV_toggled = false;
                     IRV_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -762,6 +787,7 @@ public class pvcustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.RV.ToString();
                         //textBoxes[i].text = avatar.RV.ToString();
                         nameBoxes[i] = "RV ";
+                        popupBoxes[i] = "Residual Volume";
                         filledBoxes[i] = true;
                         RV_toggled = true;
                         RV_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -784,6 +810,7 @@ public class pvcustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     RV_toggled = false;
                     RV_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -810,6 +837,7 @@ public class pvcustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.TLC.ToString();
                         //textBoxes[i].text = avatar.TLC.ToString();
                         nameBoxes[i] = "TLC ";
+                        popupBoxes[i] = "Total Lung Capacity";
                         filledBoxes[i] = true;
                         TLC_toggled = true;
                         TLC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -832,6 +860,7 @@ public class pvcustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     TLC_toggled = false;
                     TLC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -858,6 +887,7 @@ public class pvcustommodule : MonoBehaviour
                         textBoxContent[i] = avatar.VC.ToString();
                         //textBoxes[i].text = avatar.VC.ToString();
                         nameBoxes[i] = "VC ";
+                        popupBoxes[i] = "Vital Capacity";
                         filledBoxes[i] = true;
                         VC_toggled = true;
                         VC_button.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -880,6 +910,7 @@ public class pvcustommodule : MonoBehaviour
                     textBoxContent[i] = "";
                     //textBoxes[i].text = "";
                     nameBoxes[i] = "";
+                    popupBoxes[i] = "";
                     BoxValue[i] = 0;
                     VC_toggled = false;
                     VC_button.GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -897,6 +928,7 @@ public class pvcustommodule : MonoBehaviour
             filledBoxes[i] = false;
             textBoxContent[i] = "";
             nameBoxes[i] = "";
+            popupBoxes[i] = "";
             BoxValue[i] = 0;
 
         }

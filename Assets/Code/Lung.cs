@@ -1,4 +1,4 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -53,6 +53,7 @@ public class Lung : MonoBehaviour
     public void Update()
     {
 
+
         //PImaxfunction();
         //PEmaxfunction();
 
@@ -61,6 +62,14 @@ public class Lung : MonoBehaviour
         //    lungupdate();
         //    timer.resetLUNG = false;
         //}
+
+
+        IC = (TLC - EELV); //INS. CAP
+        IRV = (TLC - EILV); //INS. RES VOL
+        ERV = (EELV - BEELV); //EXP. RES VOL
+        VT = (EILV - EELV); //TIDAL VOLUME
+        DH = EELV / BEELV;  //DYN. HYPINF.
+
     }
 
     void lungupdate()
@@ -70,22 +79,18 @@ public class Lung : MonoBehaviour
         {
             case 1:
                 EILV = (TLC * (0.6f + (0.25f * (cardio.HR / cardio.HRmax))));
-                EELV = (TLC * (0.5f + (0.1f * (cardio.HR / cardio.HRmax))));
+                EELV = (TLC * (0.5f - (0.2f * (cardio.HR / cardio.HRmax))));
                 break;
             case 0:
                 EILV = (TLC * (0.54f + (0.2f * (cardio.HR / cardio.HRmax))));
-                EELV = (TLC * (0.4f + (0.05f * (cardio.HR / cardio.HRmax))));
+                EELV = (TLC * (0.4f - (0.05f * (cardio.HR / cardio.HRmax))));
                 break;
             default:
                 EILV = (TLC * (0.6f + (0.25f * (cardio.HR / cardio.HRmax))));
-                EELV = (TLC * (0.5f + (0.1f * (cardio.HR / cardio.HRmax))));
+                EELV = (TLC * (0.5f - (0.2f * (cardio.HR / cardio.HRmax))));
                 break;
         }
-        IC = (TLC - EELV); //INS. CAP
-        IRV = (TLC - EILV); //INS. RES VOL
-        ERV = (EELV - BEELV); //EXP. RES VOL
-        VT = (EILV - EELV); //TIDAL VOLUME
-        DH = EELV / BEELV;  //DYN. HYPINF.
+
     }
 
    public void setupfunction()
@@ -243,6 +248,7 @@ public class Lung : MonoBehaviour
     }
 
 
+
     public void CalculateAll() //need a function that allows us to update all the values at once, without being inside the main update function as that will cause issues throughout the program
     {
         lungupdate();
@@ -251,4 +257,5 @@ public class Lung : MonoBehaviour
 
     }
     Lung(){}
+
 };

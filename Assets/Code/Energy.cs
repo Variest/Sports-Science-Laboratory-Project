@@ -17,6 +17,12 @@ public class Energy : MonoBehaviour
         exercise = GetComponent<Exercise>();
     }
 
+    private void Update()
+    {
+        MEfunc();
+        CEfunction();
+    }
+
     void MEfunc()
     {
         ME = (exercise.efficiency * 100);

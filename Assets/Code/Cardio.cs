@@ -11,7 +11,7 @@ public class Cardio : MonoBehaviour
     public float BPd; //I diastolic blood pressure  	INPUT 
     public float BPs; //I/M systolic blood pressure 	INPUT, and we have a DECENT way of modelling it;
     public float MAP; //CA mean arterial pressure =		(BPd + [0.3333(BPs-BPd)])
-    public float HR; //M heart rate/fc -					measured, but we have a decent way of calculating it;
+    public float HR; //M heart rate/fc -				measured, but we have a decent way of calculating it;
     public float HRmax; //CB heart rate maximum =		(220-age)
     public float OP; //CA oxygen pulse =				VO2/HR   
 
@@ -48,6 +48,7 @@ public class Cardio : MonoBehaviour
 
     //EXTRA
     public float health = 0;
+    public int healthsetting = 1;
     //level one is entirely self contained, aside from oxygen pulse needing VO2 from a different section
     //levels two and three are very codependent, however, with them needing variables from eachother
 
@@ -71,6 +72,7 @@ public class Cardio : MonoBehaviour
         graph = GetComponent<GraphScriptHR>();
 
 
+
         //
         HRmax = 220;
         HrRestFunction(80);
@@ -80,14 +82,44 @@ public class Cardio : MonoBehaviour
         //character.age = 20;
         //
 
+
+        //DEFAULT VALUES
+
+        //BASE
+        character.age = 20;
+        character.gender = 1;
+        character.weight = 50;
+        character.BodyTemp = 36.0f;
+        character.height = 170;  //150 cm, 1.5 m
+        //EXERCISE
+        exercise.module = 2;
+        exercise.resistance = 5;
+        exercise.rpm = 30;
+        //TIMER
+        timer.intervals = 5;
+        timer.increase = 10;
+        timer.limit = 100000;
+        //CARDIO
+        BPsFunction(120);
+        BPdFunction(50);
+        EdvFunction(120);
+        EsvFunction(50);
+        HRrest = 60;
+        HRmax = 200;  
+        Bla = 1.0f;
+        BaseMath();
+        HealthFunction(healthsetting);
+        //PVE
+
     }
 
-    public void Update() //IS THIS OK? IF NOT PUT IT IN THE MAIN UPDATE THING
+    public void Update()
     {
         //HR = Mathf.SmoothDamp(HR, HRtarg, ref velocityHR, timer.intervals);
         //BPs = Mathf.SmoothDamp(BPs, BPsTarg, ref velocityBps, timer.intervals);
         //Bla = Mathf.SmoothDamp(Bla, BlaTarget, ref velocityBla, timer.intervals);
    
+
 
         ////CALCULATION
         //if (timer.resetCARDIO == true)
@@ -130,6 +162,16 @@ public class Cardio : MonoBehaviour
         //EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
         //ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
 
+        if (HR >= HRmax)
+        {
+            HR = HRmax;
+        }
+        if(HR < HRrest)
+        {
+            HR = HRrest;
+        }
+
+
         //CALCULATION
    
 
@@ -137,7 +179,6 @@ public class Cardio : MonoBehaviour
 
         EDV = (EDVbase * (1 + (((HR / HRmax) / 100) * 0.18f))); //this tracks the change of blood volume as HR changes
         ESV = (ESVbase * (1 - (((HR / HRmax) / 100) * 0.21f)));
-
 
     }
 
@@ -149,14 +190,12 @@ public class Cardio : MonoBehaviour
         HrTargFunction();
         BlaTargFunction();
 
-        //HR = Mathf.SmoothDamp(HR, HRtarg, ref velocity, 2); //MAYBE NOT THE INTERVAL? INTERVAL COULD BE VERY LONG
-
-
         //HOW TO USE SMOOTHDAMP
         //1 = START POSITION
         //2 = FINISH
         //3 = THIS IS THE WIERD ONE. JUST DO A 'PRIVATE FLOAT'
         //4 - TIME IN SECONDS
+
 
         SvFunction(); //update everything else for relevant stuff, the order is very important
         CoFunction();
@@ -168,6 +207,24 @@ public class Cardio : MonoBehaviour
         BpFunction();
         HrMaxFunction();
         HrResFunction();
+
+        BaseMath();
+    }
+
+    void BaseMath()
+    {
+        SvFunction(); //update everything else for relevant stuff, the order is very important
+        CoFunction();
+        OpFunction();
+        MapFunction();
+        EfFunction();
+        SwFunction();
+        TprFunction();
+        BpFunction();
+        HrMaxFunction();
+        HrResFunction();
+        HealthFunction(healthsetting);
+
     }
 
     public void CardioResetfunc()
@@ -226,10 +283,16 @@ public class Cardio : MonoBehaviour
                 break;
         }
         //backup
+
         if(HRtarg < HRrest)
         {
+
             HRtarg = (HRrest + (0.1f * exercise.bodyWork));
+
+            HRtarg = (HRrest + (0.05f * exercise.bodyWork));
+
         }
+
         if(HRtarg > HRmax)
         {
             HRtarg = HRmax;

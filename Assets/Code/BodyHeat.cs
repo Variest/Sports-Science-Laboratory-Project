@@ -46,7 +46,9 @@ public class BodyHeat : MonoBehaviour
         time = GetComponent<Timer>();
         avatar = GetComponent<CharacterAvatar>();
         BodyWaterfunc();
+
         avatar.BodyTemp = 36.0f;
+
     }
 
     // Update is called once per frame
@@ -182,6 +184,9 @@ public class BodyHeat : MonoBehaviour
                 break;
             case 0:
                 avatar.BodyWater = ((avatar.weight * 0.55f) * 1000); //a woman's body is 55% water
+                break;
+            default:
+                avatar.BodyWater = ((avatar.weight * 0.60f) * 1000);
                 break;
     }
         bodyWaterBase = avatar.BodyWater;
