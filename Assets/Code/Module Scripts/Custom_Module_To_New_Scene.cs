@@ -34,7 +34,7 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
     public bool Basic_ON;
     public bool Timer_ON; //used to determine whether the simulation is currently running or not
 
-    int intervalthing = 0; //test for the update
+    int secondInterval = 0; //test for the update
     public bool Update_ON = false; //used to stop crashes if the script tries to update too early
     void Start()
     {
@@ -707,17 +707,17 @@ public class Custom_Module_To_New_Scene : MonoBehaviour
 
             //float sdTime = float.Parse(timeElapsed.ToString("F0"));
             //Debug.Log("The man is " + sdTime);
-            if (timeElapsed >= intervalthing)
+            if (timeElapsed >= secondInterval)
             {
-                intervalthing++;
-                pulmonaryEquations.timeInterval = intervalthing;
+                secondInterval++;
+                pulmonaryEquations.timeInterval = secondInterval;
                 exerciseEquations.ManualUpdate();
                 cardioEquations.CalculateAll();
                 lungEquations.CalculateAll();
                 pulmonaryEquations.CalculateAll();
-                //avatar.FVC = avatar.FVC * (intervalthing + 1);
+                //avatar.FVC = avatar.FVC * (secondInterval + 1);
                 textBoxes[0].text = avatar.FVC.ToString();
-                //avatar.FEV1 = avatar.FEV1 * (intervalthing + 1);
+                //avatar.FEV1 = avatar.FEV1 * (secondInterval + 1);
                 textBoxes[1].text = avatar.FEV1.ToString();
                 textBoxes[2].text = avatar.FEV1FVC.ToString();
                 textBoxes[3].text = avatar.PEF.ToString();

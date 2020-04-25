@@ -143,7 +143,7 @@ public class MenuManager : MonoBehaviour
         moduleChanger.Basic_ON = true;
         //Debug.Log("ok that's epic");
         moduleChanger.lungEquations.setupfunction();
-        SceneManager.LoadScene("Main Scene");
+        SceneManager.LoadScene("Main Scene Final");
     }
     //public void SetAdvanced()
     //{
@@ -174,7 +174,7 @@ public class MenuManager : MonoBehaviour
             selectedTemplate = 'B';
             Debug.Log("yeah this is kinda what you're doing here lol");
             moduleChanger.lungEquations.setupfunction();
-            SceneManager.LoadScene("Main Scene");
+            SceneManager.LoadScene("Main Scene Final");
         }
     }
 

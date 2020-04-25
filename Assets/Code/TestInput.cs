@@ -55,6 +55,7 @@ public class TestInput : MonoBehaviour {
     public float timeSpeed = 1.0f;
     public float testTime = 0.0f;
     private float timerCalculations;
+    float displayTime;
     float hours, minutes, seconds;
     float remainingSeconds;
     float secondsInHour = 3600;
@@ -102,9 +103,14 @@ public class TestInput : MonoBehaviour {
             stopwatch.text = remainingSeconds.ToString("00.00");
             stopwatchMinutes.text = minutesInt.ToString("00");
             stopwatchHours.text = hoursInt.ToString("00");
-            testTime += Time.deltaTime;//constantly updates testtime based off of runtime.
+            //testTime += Time.deltaTime;//constantly updates testtime based off of runtime.
+            displayTime += Time.deltaTime * timeSpeed;
             customModule.timeElapsed = testTime;
-            stopwatch.text = testTime.ToString("0.00");
+            if(displayTime >= 60)
+            {
+                displayTime =0;
+            }
+            stopwatch.text = displayTime.ToString("0.00");
            // Debug.Log("help");
         }
       
