@@ -68,7 +68,7 @@ public class Cardio : MonoBehaviour
         character = GetComponent<CharacterAvatar>();
         vents = GetComponent<pvEquations>();
         exercise = GetComponent<Exercise>();
-        //timer = GetComponent<Timer>();
+        timer = GetComponent<Timer>();
         graph = GetComponent<GraphScriptHR>();
 
 
@@ -96,8 +96,9 @@ public class Cardio : MonoBehaviour
         exercise.resistance = 5;
         exercise.rpm = 30;
         //TIMER
-
-
+        timer.intervals = 5;
+        timer.increase = 0;
+        timer.limit = 100000;
         //CARDIO
         BPsFunction(120);
         BPdFunction(50);
